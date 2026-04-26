@@ -262,8 +262,9 @@ def _stream_one_completion(
     return assistant_msg, finish_reason
 
 
-def core_agent_loop_streaming(user_input: str) -> str | None:
-    root = project_root()
+def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]:
+    """Start a new chat session: system prompt only. Emits ``system_prompt`` SSE once."""
+    root = root or project_root()
     system_text, prompt_meta = build_system_prompt(tools_for_api(), root=root)
     emit_sse(
         "system_prompt",
@@ -273,11 +274,32 @@ def core_agent_loop_streaming(user_input: str) -> str | None:
             "project_root": str(root.resolve()),
         },
     )
-    messages: list[dict[str, Any]] = [
-        {"role": "system", "content": system_text},
-        {"role": "user", "content": user_input},
-    ]
-    emit_sse("user", {"text": user_input})
+    return [{"role": "system", "content": system_text}]
+
+
+def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
+    """
+    Run one user turn in place: ``messages`` must already end with the new user message.
+
+    Appends assistant messages (with optional ``tool_calls``), then ``tool`` role messages,
+    until the model returns a final assistant reply without tools. The same ``messages`` list
+    is reused across turns in interactive mode, so history grows monotonically.
+    """
+    if not messages:
+        emit_sse("error", {"message": "core_agent_loop_streaming: empty messages"})
+        return None
+    last = messages[-1]
+    if last.get("role") != "user":
+        emit_sse(
+            "error",
+            {
+                "message": "core_agent_loop_streaming: last message must be role=user",
+                "got_role": last.get("role"),
+            },
+        )
+        return None
+    user_text = last.get("content") if isinstance(last.get("content"), str) else ""
+    emit_sse("user", {"text": user_text})
 
     while True:
         assistant_msg, finish_reason = _stream_one_completion(messages)
@@ -345,10 +367,13 @@ def main() -> None:
 
     one_shot = " ".join(args.prompt).strip()
     if one_shot:
-        core_agent_loop_streaming(one_shot)
+        session = init_conversation_messages()
+        session.append({"role": "user", "content": one_shot})
+        core_agent_loop_streaming(session)
         return
 
-    print("交互模式：输入问题后回车；支持中文。输入 exit / quit / 退出 结束。\n")
+    print("交互模式：多轮对话；上下文会保留。输入 exit / quit / 退出 结束。\n")
+    session_messages = init_conversation_messages()
     while True:
         try:
             user_input = input("你: ").strip()
@@ -360,7 +385,8 @@ def main() -> None:
         if user_input.lower() in ("exit", "quit", "q") or user_input in ("退出",):
             emit_sse("session", {"status": "goodbye"})
             break
-        core_agent_loop_streaming(user_input)
+        session_messages.append({"role": "user", "content": user_input})
+        core_agent_loop_streaming(session_messages)
 
 
 if __name__ == "__main__":
