@@ -11,6 +11,9 @@ OPENWEATHER_GEO_URL = "https://api.openweathermap.org/geo/1.0/direct"
 OPENWEATHER_CURRENT_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 
+READ_FILE_MAX_LINES = 100
+
+
 def read_file(file_path: str) -> str:
     path = Path(file_path).expanduser()
     if not path.is_absolute():
@@ -21,7 +24,16 @@ def read_file(file_path: str) -> str:
     if not path.is_file():
         return f"Path is not a file: {path}"
 
-    return path.read_text(encoding="utf-8")
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    if len(lines) <= READ_FILE_MAX_LINES:
+        return text
+    head = "\n".join(lines[:READ_FILE_MAX_LINES])
+    return (
+        f"{head}\n\n"
+        f"[truncated: showing first {READ_FILE_MAX_LINES} of {len(lines)} lines; "
+        f"ask for a smaller range or a different path if you need more]"
+    )
 
 
 def write_file(file_path: str, content: str) -> str:

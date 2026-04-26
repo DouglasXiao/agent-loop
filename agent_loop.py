@@ -2,6 +2,8 @@ import argparse
 import json
 import os
 import sys
+from datetime import date
+from pathlib import Path
 from typing import Any
 
 from openai import OpenAI
@@ -42,12 +44,95 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_
 
 MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 
+CLAUDE_MD_FILENAME = "CLAUDE.md"
+
+
+def project_root() -> Path:
+    return Path(__file__).resolve().parent
+
+
+def load_claude_md(root: Path | None = None) -> str | None:
+    path = (root or project_root()) / CLAUDE_MD_FILENAME
+    if not path.is_file():
+        return None
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return None
+
+
+def _tool_behavior_guidelines() -> str:
+    return """- read_file: Use to inspect project files the user mentions. Large files return at most the first 100 lines; tell the user if content was truncated and suggest a narrower path or follow-up read if needed.
+- write_file: Use only when the user explicitly wants files created or updated. Never overwrite critical secrets without confirmation. Prefer small, reviewable edits.
+- get_weather: Use for live weather only; requires OPENWEATHER_API_KEY on the host. If the tool reports a missing key, explain that to the user instead of retrying blindly."""
+
+
+def build_system_prompt(
+    tools: list[dict[str, Any]],
+    *,
+    root: Path | None = None,
+    extra_context: str | None = None,
+) -> tuple[str, dict[str, Any]]:
+    """
+    Assemble a modular system prompt: personality, safety, tools + guidelines,
+    optional CLAUDE.md, and dynamic environment lines.
+
+    Returns (system_text, meta) where meta includes claude_md_loaded.
+    """
+    root = root or project_root()
+    claude = load_claude_md(root)
+    meta: dict[str, Any] = {"claude_md_loaded": claude is not None}
+
+    tools_json = json.dumps(tools, ensure_ascii=False, indent=2)
+    today = date.today().isoformat()
+    cwd = str(Path.cwd().resolve())
+
+    blocks: list[str] = [
+        "[基础人格与行为规范]",
+        "You are a helpful AI assistant. Reason step by step when the task is non-trivial. "
+        "Answer in the same language the user uses when appropriate (e.g. Chinese for Chinese questions).",
+        "",
+        "[安全与防御规则]",
+        "Do not execute harmful or destructive actions beyond what write_file allows for normal file edits. "
+        "If a request is ambiguous, ask a short clarifying question before using tools. "
+        "Do not invent file paths or API results; use tools to ground answers when needed.",
+        "",
+        "[工具描述]",
+        "<tools>",
+        tools_json,
+        "<tool_behavior_guidelines>",
+        _tool_behavior_guidelines(),
+        "</tool_behavior_guidelines>",
+        "</tools>",
+        "",
+        "[项目上下文 (CLAUDE.md)]",
+        claude if claude else "(No CLAUDE.md found at project root; use read_file on README or source as needed.)",
+        "",
+        "[动态环境变量]",
+        f"- Current working directory: {cwd}",
+        f"- Project root (agent package): {root.resolve()}",
+        f"- Current date: {today}",
+    ]
+    if extra_context and extra_context.strip():
+        blocks.extend(["", "[附加说明]", extra_context.strip()])
+    return "\n".join(blocks).strip(), meta
+
+
+def tools_for_api() -> list[dict[str, Any]]:
+    """Tool definitions sent to the chat API (single source for names/schemas)."""
+    return TOOLS
+
+
 TOOLS = [
     {
         "type": "function",
         "function": {
             "name": "read_file",
-            "description": "Read a file and return the contents",
+            "description": (
+                "Read a UTF-8 text file and return its contents. "
+                "For very large files, only the first 100 lines are returned and the result notes truncation—summarize and offer next steps. "
+                "Use when the user references a path or when you need ground truth from the repo."
+            ),
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -61,7 +146,11 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "write_file",
-            "description": "Write text to a file. Creates the file and parent directories if needed.",
+            "description": (
+                "Write full text to a file; creates parent directories if needed. "
+                "Use only when the user wants a file created or replaced. "
+                "Prefer clear, complete content; warn before overwriting important files if the user did not ask to replace them."
+            ),
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -76,7 +165,11 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "get_weather",
-            "description": "Get current weather for a global city. City can include country code, for example: London,GB or Tokyo,JP.",
+            "description": (
+                "Get current weather for a global city via OpenWeather (host must have OPENWEATHER_API_KEY). "
+                "City may include country code, e.g. London,GB or Tokyo,JP. "
+                "If the tool returns a missing-key or location error, explain it to the user—do not fabricate weather."
+            ),
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -104,7 +197,7 @@ def _stream_one_completion(
     stream = client.chat.completions.create(
         model=MODEL,
         messages=messages,
-        tools=TOOLS,
+        tools=tools_for_api(),
         tool_choice="auto",
         stream=True,
     )
@@ -170,7 +263,20 @@ def _stream_one_completion(
 
 
 def core_agent_loop_streaming(user_input: str) -> str | None:
-    messages: list[dict[str, Any]] = [{"role": "user", "content": user_input}]
+    root = project_root()
+    system_text, prompt_meta = build_system_prompt(tools_for_api(), root=root)
+    emit_sse(
+        "system_prompt",
+        {
+            **prompt_meta,
+            "length": len(system_text),
+            "project_root": str(root.resolve()),
+        },
+    )
+    messages: list[dict[str, Any]] = [
+        {"role": "system", "content": system_text},
+        {"role": "user", "content": user_input},
+    ]
     emit_sse("user", {"text": user_input})
 
     while True:
