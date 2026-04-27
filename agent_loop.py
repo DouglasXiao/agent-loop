@@ -8,6 +8,12 @@ from typing import Any
 
 from openai import OpenAI
 
+from context_memory import (
+    budget_tool_result_for_messages,
+    ensure_memory_layout,
+    maybe_compress_conversation,
+    memory_prompt_section,
+)
 from tools_execution import execute_tool
 
 try:
@@ -62,9 +68,11 @@ def load_claude_md(root: Path | None = None) -> str | None:
 
 
 def _tool_behavior_guidelines() -> str:
-    return """- read_file: Use to inspect project files the user mentions. Large files return at most the first 100 lines; tell the user if content was truncated and suggest a narrower path or follow-up read if needed.
-- write_file: Use only when the user explicitly wants files created or updated. Never overwrite critical secrets without confirmation. Prefer small, reviewable edits.
-- get_weather: Use for live weather only; requires OPENWEATHER_API_KEY on the host. If the tool reports a missing key, explain that to the user instead of retrying blindly."""
+    return """- read_file: Use only when you need file contents; do not preload the repo. Large files return at most the first 100 lines from disk; tell the user if truncated. If a prior tool message points to a spill file under `.claude/memory/spill/`, read that path to see the full tool output.
+- write_file: Use when creating or fully replacing a file. Never overwrite critical secrets without confirmation.
+- edit_file: Use for small surgical edits (e.g. updating `MEMORY.md`). `old_string` must appear exactly once in the target file.
+- get_weather: Live weather only; requires OPENWEATHER_API_KEY. If the tool reports errors, explain to the user—do not fabricate weather.
+- Memory files under `.claude/memory/` may be stale hints—verify important facts with read_file on source code."""
 
 
 def build_system_prompt(
@@ -97,6 +105,9 @@ def build_system_prompt(
         "If a request is ambiguous, ask a short clarifying question before using tools. "
         "Do not invent file paths or API results; use tools to ground answers when needed.",
         "",
+        "[惰性加载]",
+        "Do not preload files or guess repository state. Fetch information only through explicit tool calls when the task requires it.",
+        "",
         "[工具描述]",
         "<tools>",
         tools_json,
@@ -107,6 +118,8 @@ def build_system_prompt(
         "",
         "[项目上下文 (CLAUDE.md)]",
         claude if claude else "(No CLAUDE.md found at project root; use read_file on README or source as needed.)",
+        "",
+        memory_prompt_section(root),
         "",
         "[动态环境变量]",
         f"- Current working directory: {cwd}",
@@ -158,6 +171,26 @@ TOOLS = [
                     "content": {"type": "string", "description": "Full file content"},
                 },
                 "required": ["file_path", "content"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "edit_file",
+            "description": (
+                "Replace exactly one occurrence of old_string with new_string in a UTF-8 text file. "
+                "Ideal for updating `.claude/memory/*.md` without rewriting the whole file. "
+                "If old_string is missing or not unique, the tool fails—adjust the snippet or use write_file."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file_path": {"type": "string", "description": "Path to the file to edit"},
+                    "old_string": {"type": "string", "description": "Literal substring to replace (must occur exactly once)"},
+                    "new_string": {"type": "string", "description": "Replacement text"},
+                },
+                "required": ["file_path", "old_string", "new_string"],
             },
         },
     },
@@ -265,6 +298,7 @@ def _stream_one_completion(
 def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]:
     """Start a new chat session: system prompt only. Emits ``system_prompt`` SSE once."""
     root = root or project_root()
+    ensure_memory_layout(root)
     system_text, prompt_meta = build_system_prompt(tools_for_api(), root=root)
     emit_sse(
         "system_prompt",
@@ -301,7 +335,9 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
     user_text = last.get("content") if isinstance(last.get("content"), str) else ""
     emit_sse("user", {"text": user_text})
 
+    root = project_root()
     while True:
+        maybe_compress_conversation(messages, client=client, model=MODEL, emit=emit_sse)
         assistant_msg, finish_reason = _stream_one_completion(messages)
         tool_calls = assistant_msg.get("tool_calls")
 
@@ -318,10 +354,9 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
             try:
                 tool_args = json.loads(raw_args)
             except json.JSONDecodeError as e:
-                tool_args = {}
                 err = f"Invalid JSON arguments for {tool_name}: {e}; raw={raw_args!r}"
                 emit_sse("tool_error", {"tool": tool_name, "error": err})
-                function_response = err
+                content_for_history = err
             else:
                 emit_sse(
                     "tool_call",
@@ -331,16 +366,25 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
                     tool_name=tool_name,
                     tool_input=tool_args,
                 )
-                emit_sse(
-                    "tool_result",
-                    {"tool_call_id": tc.get("id"), "name": tool_name, "result": function_response},
+                content_for_history = budget_tool_result_for_messages(
+                    function_response,
+                    tool_name=tool_name,
+                    root=root,
                 )
+                tr_payload: dict[str, Any] = {
+                    "tool_call_id": tc.get("id"),
+                    "name": tool_name,
+                    "result": content_for_history,
+                }
+                if len(content_for_history) < len(function_response):
+                    tr_payload["history_budgeted_from_chars"] = len(function_response)
+                emit_sse("tool_result", tr_payload)
 
             tool_outputs.append(
                 {
                     "tool_call_id": tc["id"],
                     "role": "tool",
-                    "content": function_response,
+                    "content": content_for_history,
                 }
             )
 

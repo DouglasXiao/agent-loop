@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Agent: large tool outputs spilled to disk (index files under .claude/memory/ will not be committed)
+.claude/memory
