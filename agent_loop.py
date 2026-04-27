@@ -4,7 +4,7 @@ import os
 import sys
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from openai import OpenAI
 
@@ -15,6 +15,7 @@ from context_memory import (
     memory_prompt_section,
 )
 from tools_execution import execute_tool
+from tools_registry import STANDARD_TOOLS
 
 try:
     from dotenv import load_dotenv
@@ -72,6 +73,8 @@ def _tool_behavior_guidelines() -> str:
 - write_file: Use when creating or fully replacing a file. Never overwrite critical secrets without confirmation.
 - edit_file: Use for small surgical edits (e.g. updating `MEMORY.md`). `old_string` must appear exactly once in the target file.
 - get_weather: Live weather only; requires OPENWEATHER_API_KEY. If the tool reports errors, explain to the user—do not fabricate weather.
+- run_sub_agent: Isolated worker with its own context (no access to this chat). Pass a self-contained task; result is JSON with ok, final_text, error, token_usage. Use for heavy subtasks.
+- run_sub_agents_parallel: Same as run_sub_agent but several tasks in parallel; input is a JSON array of {task, label?}; output JSON lists per-item results.
 - Memory files under `.claude/memory/` may be stale hints—verify important facts with read_file on source code."""
 
 
@@ -136,101 +139,105 @@ def tools_for_api() -> list[dict[str, Any]]:
     return TOOLS
 
 
-TOOLS = [
+DELEGATION_TOOLS: list[dict[str, Any]] = [
     {
         "type": "function",
         "function": {
-            "name": "read_file",
+            "name": "run_sub_agent",
             "description": (
-                "Read a UTF-8 text file and return its contents. "
-                "For very large files, only the first 100 lines are returned and the result notes truncation—summarize and offer next steps. "
-                "Use when the user references a path or when you need ground truth from the repo."
+                "Run an isolated worker agent (separate short-lived chat, SUB_AGENT_* env credentials, "
+                "typically Claude Sonnet via an OpenAI-compatible gateway). "
+                "The worker only sees the task string you pass—not this conversation. "
+                "Returns JSON with keys: ok, final_text, and optionally error, token_usage, spill_paths. "
+                "Use for delegated exploration, drafting, or multi-step side work without bloating your main context."
             ),
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "file_path": {"type": "string", "description": "The path to the file to read"},
-                },
-                "required": ["file_path"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "write_file",
-            "description": (
-                "Write full text to a file; creates parent directories if needed. "
-                "Use only when the user wants a file created or replaced. "
-                "Prefer clear, complete content; warn before overwriting important files if the user did not ask to replace them."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "file_path": {"type": "string", "description": "Path to the file to write"},
-                    "content": {"type": "string", "description": "Full file content"},
-                },
-                "required": ["file_path", "content"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "edit_file",
-            "description": (
-                "Replace exactly one occurrence of old_string with new_string in a UTF-8 text file. "
-                "Ideal for updating `.claude/memory/*.md` without rewriting the whole file. "
-                "If old_string is missing or not unique, the tool fails—adjust the snippet or use write_file."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "file_path": {"type": "string", "description": "Path to the file to edit"},
-                    "old_string": {"type": "string", "description": "Literal substring to replace (must occur exactly once)"},
-                    "new_string": {"type": "string", "description": "Replacement text"},
-                },
-                "required": ["file_path", "old_string", "new_string"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": (
-                "Get current weather for a global city via OpenWeather (host must have OPENWEATHER_API_KEY). "
-                "City may include country code, e.g. London,GB or Tokyo,JP. "
-                "If the tool returns a missing-key or location error, explain it to the user—do not fabricate weather."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
+                    "task": {
                         "type": "string",
-                        "description": "The global city name, optionally with country code",
+                        "description": "Standalone, self-contained instructions for the worker agent",
                     },
                 },
-                "required": ["city"],
+                "required": ["task"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "run_sub_agents_parallel",
+            "description": (
+                "Run multiple isolated worker agents in parallel (thread pool, up to 8 workers). "
+                "Each worker has its own context and the same SUB_AGENT_* configuration as run_sub_agent. "
+                "Returns JSON: { ok, results } where results align with the input order. "
+                "Each result object may include label, ok, final_text, error, token_usage, spill_paths."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "task": {"type": "string"},
+                                "label": {
+                                    "type": "string",
+                                    "description": "Optional string echoed back in that item's result",
+                                },
+                            },
+                            "required": ["task"],
+                        },
+                        "minItems": 1,
+                        "description": "List of { task, label? } objects",
+                    },
+                },
+                "required": ["tasks"],
             },
         },
     },
 ]
 
+TOOLS: list[dict[str, Any]] = STANDARD_TOOLS + DELEGATION_TOOLS
+
+
+def orchestrator_execute_tool(tool_name: str, tool_input: dict[str, Any]) -> str:
+    """Orchestrator-only tools + builtin file/weather tools (sub-agents never see this path)."""
+    if tool_name == "run_sub_agent":
+        from sub_agent import SubAgentOptions, run_sub_agent
+
+        task = str(tool_input.get("task", "")).strip()
+        res = run_sub_agent(task, SubAgentOptions())
+        return json.dumps(res.to_dict(), ensure_ascii=False)
+    if tool_name == "run_sub_agents_parallel":
+        from sub_agent import run_sub_agents_parallel_for_tool
+
+        tasks = tool_input.get("tasks")
+        if not isinstance(tasks, list):
+            return json.dumps({"ok": False, "error": "tasks must be a JSON array"}, ensure_ascii=False)
+        return run_sub_agents_parallel_for_tool(tasks)
+    return execute_tool(tool_name, tool_input)
+
 
 def _stream_one_completion(
     messages: list[dict[str, Any]],
+    *,
+    client: OpenAI,
+    model: str,
+    tools: list[dict[str, Any]],
+    emit: Callable[[str, Any], None],
 ) -> tuple[dict[str, Any], str | None]:
     """
     One model call with streaming. Returns assistant message dict and finish_reason.
     Emits SSE: thinking, content_delta, finish (tool 完整参数在 tool_call 事件中输出).
     """
-    emit_sse("thinking", {"model": MODEL, "message": "模型推理中…"})
+    emit("thinking", {"model": model, "message": "模型推理中…"})
 
     stream = client.chat.completions.create(
-        model=MODEL,
+        model=model,
         messages=messages,
-        tools=tools_for_api(),
+        tools=tools,
         tool_choice="auto",
         stream=True,
     )
@@ -251,7 +258,7 @@ def _stream_one_completion(
             continue
 
         if delta.content:
-            emit_sse("content_delta", {"chunk": delta.content})
+            emit("content_delta", {"chunk": delta.content})
             content_parts.append(delta.content)
 
         if delta.tool_calls:
@@ -283,7 +290,7 @@ def _stream_one_completion(
     if tool_calls_list:
         assistant_msg["tool_calls"] = tool_calls_list
 
-    emit_sse(
+    emit(
         "finish",
         {
             "reason": finish_reason,
@@ -338,7 +345,13 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
     root = project_root()
     while True:
         maybe_compress_conversation(messages, client=client, model=MODEL, emit=emit_sse)
-        assistant_msg, finish_reason = _stream_one_completion(messages)
+        assistant_msg, finish_reason = _stream_one_completion(
+            messages,
+            client=client,
+            model=MODEL,
+            tools=tools_for_api(),
+            emit=emit_sse,
+        )
         tool_calls = assistant_msg.get("tool_calls")
 
         if not tool_calls:
@@ -362,7 +375,7 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
                     "tool_call",
                     {"tool_call_id": tc.get("id"), "name": tool_name, "arguments": tool_args},
                 )
-                function_response = execute_tool(
+                function_response = orchestrator_execute_tool(
                     tool_name=tool_name,
                     tool_input=tool_args,
                 )
