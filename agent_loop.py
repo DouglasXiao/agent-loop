@@ -15,7 +15,13 @@ from context_memory import (
     memory_prompt_section,
 )
 from tools_execution import execute_tool
-from tools_registry import STANDARD_TOOLS
+from tools_registry import (
+    STANDARD_TOOLS,
+    TOOL_ACCESS,
+    filter_tools_by_policy,
+    tool_allowed,
+    tool_policy_from_env,
+)
 
 try:
     from dotenv import load_dotenv
@@ -69,10 +75,12 @@ def load_claude_md(root: Path | None = None) -> str | None:
 
 
 def _tool_behavior_guidelines() -> str:
-    return """- read_file: Use only when you need file contents; do not preload the repo. Large files return at most the first 100 lines from disk; tell the user if truncated. If a prior tool message points to a spill file under `.claude/memory/spill/`, read that path to see the full tool output.
-- write_file: Use when creating or fully replacing a file. Never overwrite critical secrets without confirmation.
-- edit_file: Use for small surgical edits (e.g. updating `MEMORY.md`). `old_string` must appear exactly once in the target file.
-- get_weather: Live weather only; requires OPENWEATHER_API_KEY. If the tool reports errors, explain to the user—do not fabricate weather.
+    return """- read_file: Fetch contents on demand; use offset/limit (1-based lines) for large files. Default whole-file reads cap at 100 lines unless you pass offset/limit (then up to 2000 lines per call). If a prior tool message points to a spill file under `.claude/memory/spill/`, read that path for full tool output.
+- glob_files / grep_files: Prefer glob → grep(files_with_matches) → read_file for exploration; avoid loading huge trees in one read_file.
+- write_file: Full create/replace; for small edits on existing files prefer edit_file. Never overwrite critical secrets without confirmation.
+- edit_file: Surgical edits; default requires exactly one match—use replace_all for intentional multi replacements (e.g. renames).
+- get_weather / web_fetch: Network tools—if disabled by policy or missing keys, explain to the user; never fabricate live data.
+- run_terminal_cmd: Host shell; only available when AGENT_ALLOW_BASH=1. Chain `cd dir && cmd` when directory matters; avoid interactive commands.
 - run_sub_agent: Isolated worker with its own context (no access to this chat). Pass a self-contained task; result is JSON with ok, final_text, error, token_usage. Use for heavy subtasks.
 - run_sub_agents_parallel: Same as run_sub_agent but several tasks in parallel; input is a JSON array of {task, label?}; output JSON lists per-item results.
 - Memory files under `.claude/memory/` may be stale hints—verify important facts with read_file on source code."""
@@ -135,8 +143,9 @@ def build_system_prompt(
 
 
 def tools_for_api() -> list[dict[str, Any]]:
-    """Tool definitions sent to the chat API (single source for names/schemas)."""
-    return TOOLS
+    """Tool definitions sent to the chat API (filtered by ``AGENT_TOOL_MODE`` / ``AGENT_ALLOW_BASH``)."""
+    policy = tool_policy_from_env(sub_agent=False)
+    return filter_tools_by_policy(TOOLS, policy)
 
 
 DELEGATION_TOOLS: list[dict[str, Any]] = [
@@ -204,6 +213,16 @@ TOOLS: list[dict[str, Any]] = STANDARD_TOOLS + DELEGATION_TOOLS
 
 def orchestrator_execute_tool(tool_name: str, tool_input: dict[str, Any]) -> str:
     """Orchestrator-only tools + builtin file/weather tools (sub-agents never see this path)."""
+    policy = tool_policy_from_env(sub_agent=False)
+    if tool_name in TOOL_ACCESS and not tool_allowed(tool_name, policy):
+        err = (
+            f"Tool {tool_name!r} is not permitted by the current tool policy "
+            f"(AGENT_TOOL_MODE / AGENT_ALLOW_BASH)."
+        )
+        if tool_name in ("run_sub_agent", "run_sub_agents_parallel"):
+            return json.dumps({"ok": False, "error": err}, ensure_ascii=False)
+        return err
+
     if tool_name == "run_sub_agent":
         from sub_agent import SubAgentOptions, run_sub_agent
 
@@ -217,7 +236,7 @@ def orchestrator_execute_tool(tool_name: str, tool_input: dict[str, Any]) -> str
         if not isinstance(tasks, list):
             return json.dumps({"ok": False, "error": "tasks must be a JSON array"}, ensure_ascii=False)
         return run_sub_agents_parallel_for_tool(tasks)
-    return execute_tool(tool_name, tool_input)
+    return execute_tool(tool_name, tool_input, policy=policy)
 
 
 def _stream_one_completion(

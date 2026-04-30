@@ -16,7 +16,7 @@ from openai import OpenAI
 
 from context_memory import budget_tool_result_for_messages, ensure_memory_layout, maybe_compress_conversation
 from tools_execution import execute_tool
-from tools_registry import STANDARD_TOOLS
+from tools_registry import STANDARD_TOOLS, filter_tools_by_policy, tool_policy_from_env
 
 # User fills these in .env (placeholders — no real secret in repo).
 # Typical setup: LiteLLM or another OpenAI-compatible proxy that routes to Claude.
@@ -97,7 +97,9 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
     base_url = opts.base_url or SUB_AGENT_OPENAI_BASE_URL
     sub_client = OpenAI(api_key=api_key.strip(), base_url=base_url.strip(), timeout=opts.timeout)
 
-    system_text, _meta = build_system_prompt(STANDARD_TOOLS, root=root)
+    sub_policy = tool_policy_from_env(sub_agent=True)
+    sub_tools = filter_tools_by_policy(STANDARD_TOOLS, sub_policy)
+    system_text, _meta = build_system_prompt(sub_tools, root=root)
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
         {"role": "user", "content": task.strip() or "(empty task)"},
@@ -114,7 +116,7 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
             resp = sub_client.chat.completions.create(
                 model=model,
                 messages=messages,
-                tools=STANDARD_TOOLS,
+                tools=sub_tools,
                 tool_choice="auto",
                 stream=False,
             )
@@ -167,7 +169,7 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
                 err_body = f"Invalid JSON arguments for {name}: {exc}"
                 messages.append({"role": "tool", "tool_call_id": tc.id, "content": err_body})
                 continue
-            raw = execute_tool(name, args)
+            raw = execute_tool(name, args, policy=sub_policy)
             budgeted = budget_tool_result_for_messages(raw, tool_name=name, root=root)
             _collect_spill_paths(budgeted, spill_paths)
             messages.append({"role": "tool", "tool_call_id": tc.id, "content": budgeted})
