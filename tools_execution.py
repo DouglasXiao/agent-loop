@@ -502,6 +502,13 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any], policy: ToolPolicy 
             new_string=tool_input["new_string"],
             replace_all=tool_input.get("replace_all"),
         )
+    elif tool_name == "todo_write":
+        from todo_manager import handle_todo_write
+
+        action = str(tool_input.get("action", "")).strip()
+        # Anchor todo storage to the agent package root, not cwd, so paths stay stable.
+        root = Path(__file__).resolve().parent
+        result = handle_todo_write(action, tool_input, root=root)
     elif tool_name == "glob_files":
         result = glob_files(pattern=tool_input["pattern"], path=tool_input.get("path"))
     elif tool_name == "grep_files":

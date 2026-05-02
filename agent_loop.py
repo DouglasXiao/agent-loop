@@ -14,6 +14,7 @@ from context_memory import (
     maybe_compress_conversation,
     memory_prompt_section,
 )
+from todo_manager import TodoState, todos_file
 from tools_execution import execute_tool
 from tools_registry import (
     STANDARD_TOOLS,
@@ -74,11 +75,31 @@ def load_claude_md(root: Path | None = None) -> str | None:
         return None
 
 
+def _render_current_todos(root: Path) -> str:
+    """Inline a snapshot of the persisted todo list so the model re-orients fast."""
+    try:
+        state = TodoState.load(root)
+    except Exception:  # noqa: BLE001 — defensive; never break startup on bad disk state
+        return "(todo state unavailable)"
+    if not state.items:
+        return (
+            "(no todos yet — for any multi-step task, plan with `todo_write` "
+            "action=set before acting; storage: `" + str(todos_file(root)) + "`)"
+        )
+    return state.render_markdown()
+
+
+# nag reminder: how many consecutive assistant rounds without a todo_write call
+# before we inject a <reminder> into the next tool result.
+TODO_NAG_AFTER_ROUNDS = int(os.getenv("AGENT_TODO_NAG_AFTER_ROUNDS", "3"))
+
+
 def _tool_behavior_guidelines() -> str:
     return """- read_file: Fetch contents on demand; use offset/limit (1-based lines) for large files. Default whole-file reads cap at 100 lines unless you pass offset/limit (then up to 2000 lines per call). If a prior tool message points to a spill file under `.claude/memory/spill/`, read that path for full tool output.
 - glob_files / grep_files: Prefer glob → grep(files_with_matches) → read_file for exploration; avoid loading huge trees in one read_file.
 - write_file: Full create/replace; for small edits on existing files prefer edit_file. Never overwrite critical secrets without confirmation.
 - edit_file: Surgical edits; default requires exactly one match—use replace_all for intentional multi replacements (e.g. renames).
+- todo_write: For any non-trivial multi-step task, FIRST call todo_write(action="set", items=[...]) to plan the steps; mark exactly one item as in_progress while you work on it, then update its status to completed before moving on. State persists in `.claude/todos/current.json` across context compression. Skip todo_write only for one-shot questions or single-tool answers.
 - get_weather / web_fetch: Network tools—if disabled by policy or missing keys, explain to the user; never fabricate live data.
 - run_terminal_cmd: Host shell; only available when AGENT_ALLOW_BASH=1. Chain `cd dir && cmd` when directory matters; avoid interactive commands.
 - run_sub_agent: Isolated worker with its own context (no access to this chat). Pass a self-contained task; result is JSON with ok, final_text, error, token_usage. Use for heavy subtasks.
@@ -131,6 +152,9 @@ def build_system_prompt(
         claude if claude else "(No CLAUDE.md found at project root; use read_file on README or source as needed.)",
         "",
         memory_prompt_section(root),
+        "",
+        "[当前 TODO 列表（持久化）]",
+        _render_current_todos(root),
         "",
         "[动态环境变量]",
         f"- Current working directory: {cwd}",
@@ -362,6 +386,7 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
     emit_sse("user", {"text": user_text})
 
     root = project_root()
+    rounds_since_todo = 0
     while True:
         maybe_compress_conversation(messages, client=client, model=MODEL, emit=emit_sse)
         assistant_msg, finish_reason = _stream_one_completion(
@@ -378,6 +403,16 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
             return assistant_msg.get("content")
 
         messages.append({k: v for k, v in assistant_msg.items() if v is not None})
+
+        # Track whether this assistant turn touched the planning tool;
+        # used downstream to inject a <reminder> on long stretches without planning.
+        called_todo_this_turn = any(
+            (tc.get("function") or {}).get("name") == "todo_write" for tc in tool_calls
+        )
+        if called_todo_this_turn:
+            rounds_since_todo = 0
+        else:
+            rounds_since_todo += 1
 
         tool_outputs: list[dict[str, Any]] = []
         for tc in tool_calls:
@@ -422,6 +457,24 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
 
         messages.extend(tool_outputs)
         emit_sse("tools_done", {"count": len(tool_outputs), "message": "工具已执行，继续推理…"})
+
+        # nag reminder: if the model has gone too many rounds without updating the
+        # plan, glue a one-line <reminder> onto the most recent tool result so it
+        # stays in the immediate attention window.
+        if (
+            tool_outputs
+            and rounds_since_todo >= TODO_NAG_AFTER_ROUNDS
+        ):
+            last_tool = tool_outputs[-1]
+            reminder = (
+                "\n\n<reminder>You haven't updated `todo_write` for "
+                f"{rounds_since_todo} rounds. If this is a multi-step task, "
+                "call `todo_write` (set/update/complete) to keep the plan current. "
+                "Skip only if the task is genuinely a one-shot.</reminder>"
+            )
+            last_tool["content"] = (last_tool.get("content") or "") + reminder
+            emit_sse("todo_nag", {"rounds_since_todo": rounds_since_todo})
+            rounds_since_todo = 0  # one nag per stretch, not every round
 
         if finish_reason not in (None, "tool_calls"):
             emit_sse("abort", {"reason": finish_reason, "message": "非正常结束"})

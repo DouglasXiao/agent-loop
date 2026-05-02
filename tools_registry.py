@@ -16,6 +16,7 @@ TOOL_ACCESS: dict[str, ToolAccess] = {
     "grep_files": "read",
     "write_file": "mutate",
     "edit_file": "mutate",
+    "todo_write": "mutate",
     "get_weather": "network",
     "web_fetch": "network",
     "run_terminal_cmd": "system",
@@ -260,6 +261,55 @@ STANDARD_TOOLS: list[dict[str, Any]] = [
                     },
                 },
                 "required": ["file_path", "old_string", "new_string"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "todo_write",
+            "description": (
+                "Maintain the persistent task checklist for the current goal. "
+                "Use it for any non-trivial multi-step request: list the steps before acting, "
+                "mark exactly one item as 'in_progress' while you work on it, then 'completed' when done. "
+                "State persists across context compression and restarts in `.claude/todos/current.json`. "
+                "Actions: set (replace all items), add (append one), update (change text/status by id), "
+                "complete (shortcut for status=completed), clear (wipe). "
+                "Returns a markdown snapshot of the list."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["set", "add", "update", "complete", "clear"],
+                        "description": "Which mutation to perform on the todo list",
+                    },
+                    "items": {
+                        "type": "array",
+                        "description": "For action=set: full list of {id?, text, status?} objects.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {"type": "integer"},
+                                "text": {"type": "string"},
+                                "status": {
+                                    "type": "string",
+                                    "enum": ["pending", "in_progress", "completed"],
+                                },
+                            },
+                            "required": ["text"],
+                        },
+                    },
+                    "id": {"type": "integer", "description": "Target item id for update/complete"},
+                    "text": {"type": "string", "description": "Item text (for add/update)"},
+                    "status": {
+                        "type": "string",
+                        "enum": ["pending", "in_progress", "completed"],
+                        "description": "New status (for add/update)",
+                    },
+                },
+                "required": ["action"],
             },
         },
     },
