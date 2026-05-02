@@ -28,6 +28,10 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - **`CLAUDE.md`** (this file) is injected into the system prompt on each run; keep it short and factual.
 - **`todo_write`** is the planning tool: for any multi-step task, call `action="set"` first; keep at most one `in_progress`. The current list is also rendered into the system prompt every turn.
 - A nag `<reminder>` is appended to the last tool result if the model goes `AGENT_TODO_NAG_AFTER_ROUNDS` (default 3) consecutive turns without calling `todo_write`.
+- Three-layer context compaction:
+  1. Per-turn `micro_compact_inplace` shrinks `role=tool` messages older than `AGENT_KEEP_RECENT_TOOL_RESULTS` (default 6) to a one-line placeholder; spill path is preserved so the body stays readable via `read_file`.
+  2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block.
+  3. (Reserved) Manual `compact` tool — same summary pipeline triggered by the model on demand; not yet exposed.
 
 ## Style
 

@@ -1,11 +1,25 @@
 """
 Context window budgeting, tool-result spilling, and .claude/memory/ layout helpers.
+
+Three-layer compaction (mirrors learn-claude-code s06):
+
+1. ``micro_compact_inplace`` — silently shrinks ``role=tool`` messages older
+   than ``KEEP_RECENT_TOOL_RESULTS`` to a one-line placeholder. Preserves
+   ``tool_call_id`` so the OpenAI chat protocol stays well-formed; the full
+   body is still on disk via ``budget_tool_result_for_messages`` spill.
+2. ``maybe_compress_conversation`` — when the budget is near the limit,
+   summarizes earlier turns through the LLM and replaces them with one
+   compact user message. Saves a complete transcript snapshot to
+   ``.claude/memory/transcripts/`` first so nothing is irretrievably lost.
+3. (Future) Manual ``compact`` tool — same summary pipeline triggered on
+   demand by the model. Hook is in place but the tool is not yet exposed.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import time
 import uuid
 from pathlib import Path
 from typing import Any, Callable
@@ -50,10 +64,14 @@ def past_tasks_dir(root: Path) -> Path:
     return memory_dir(root) / "past_tasks"
 
 
+def transcripts_dir(root: Path) -> Path:
+    return memory_dir(root) / "transcripts"
+
+
 def ensure_memory_layout(root: Path) -> None:
     """Create `.claude/memory/` tree and seed index files if missing."""
     md = memory_dir(root)
-    for d in (md, past_tasks_dir(root), spill_dir(root)):
+    for d in (md, past_tasks_dir(root), spill_dir(root), transcripts_dir(root)):
         d.mkdir(parents=True, exist_ok=True)
 
     seeds: list[tuple[str, str]] = [
@@ -74,6 +92,12 @@ You have a persistent memory directory at `{rel}` under the project root (absolu
 - Use `read_file` to read notes (start with `MEMORY.md` for the index before new tasks).
 - Use `write_file` to replace a whole file, or `edit_file` for a single exact `old_string` → `new_string` replacement (must match exactly once).
 - Optional task write-ups: add markdown under `{rel}past_tasks/` (e.g. dated summaries).
+- Older tool outputs may appear as `[micro-compacted: ...]` placeholders to keep
+  the context budget under control. The full body is still on disk at the
+  spill path mentioned in the placeholder — read it with `read_file` if needed.
+- When a heavy summary compression runs, the **complete pre-compression
+  transcript** is snapshotted to `{rel}transcripts/transcript_<ts>_<id>.jsonl`.
+  You can reload any earlier turn from there.
 
 **Stale data warning:** Memory files are user- and model-written hints. They may be outdated. Before critical edits or claims about the codebase, verify with `read_file` (and your other tools). Never treat memory as authoritative truth."""
 
@@ -100,6 +124,19 @@ def tool_history_max_chars() -> int:
 
 def tool_history_preview_lines() -> int:
     return int(os.getenv("AGENT_TOOL_HISTORY_PREVIEW_LINES", "40"))
+
+
+def keep_recent_tool_results() -> int:
+    """How many recent role=tool messages to keep in full before micro-compacting."""
+    return max(1, int(os.getenv("AGENT_KEEP_RECENT_TOOL_RESULTS", "6")))
+
+
+def micro_compact_min_chars() -> int:
+    """Skip messages already shorter than this when micro-compacting."""
+    return max(80, int(os.getenv("AGENT_MICRO_COMPACT_MIN_CHARS", "400")))
+
+
+_MICRO_COMPACT_MARK = "[micro-compacted: previous"
 
 
 def _strip_leading_tools(tail: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -146,6 +183,96 @@ def budget_tool_result_for_messages(
     )
 
 
+def _tool_name_for_call_id(messages: list[dict[str, Any]], call_id: str | None) -> str:
+    """Look back through assistant messages to recover the tool name for a tool_call_id."""
+    if not call_id:
+        return "<unknown>"
+    for msg in reversed(messages):
+        if msg.get("role") != "assistant":
+            continue
+        for tc in msg.get("tool_calls") or []:
+            if tc.get("id") == call_id:
+                return (tc.get("function") or {}).get("name") or "<unknown>"
+    return "<unknown>"
+
+
+def _spill_path_hint(content: str) -> str | None:
+    marker = "Full output saved to:"
+    idx = content.find(marker)
+    if idx < 0:
+        return None
+    rest = content[idx + len(marker):].strip().splitlines()
+    return rest[0].strip() if rest else None
+
+
+def micro_compact_inplace(
+    messages: list[dict[str, Any]],
+    *,
+    emit: Callable[[str, Any], None] | None = None,
+) -> int:
+    """
+    Replace the body of older ``role=tool`` messages with a one-line placeholder
+    so they stop eating context. Returns the number of messages compacted.
+
+    - Keeps the last ``keep_recent_tool_results()`` tool messages untouched.
+    - Skips already-compacted messages and messages shorter than the threshold.
+    - Preserves ``tool_call_id`` so the chat protocol stays valid.
+    - Preserves the spill path (if any) so the model can still recover the full body.
+    """
+    keep = keep_recent_tool_results()
+    threshold = micro_compact_min_chars()
+
+    tool_indices = [i for i, m in enumerate(messages) if m.get("role") == "tool"]
+    if len(tool_indices) <= keep:
+        return 0
+
+    targets = tool_indices[:-keep]
+    compacted = 0
+    freed = 0
+    for i in targets:
+        msg = messages[i]
+        content = msg.get("content") or ""
+        if not isinstance(content, str):
+            continue
+        if content.startswith(_MICRO_COMPACT_MARK):
+            continue
+        if len(content) < threshold:
+            continue
+        tool_name = _tool_name_for_call_id(messages, msg.get("tool_call_id"))
+        spill = _spill_path_hint(content)
+        new_body = (
+            f"{_MICRO_COMPACT_MARK} {tool_name} output, "
+            f"{len(content)} chars elided to free context"
+        )
+        if spill:
+            new_body += f"; full body still on disk at {spill}"
+        new_body += "]"
+        freed += len(content) - len(new_body)
+        msg["content"] = new_body
+        compacted += 1
+
+    if compacted and emit is not None:
+        emit(
+            "micro_compact",
+            {
+                "replaced_count": compacted,
+                "freed_chars": freed,
+                "kept_recent": keep,
+            },
+        )
+    return compacted
+
+
+def _save_transcript_snapshot(messages: list[dict[str, Any]], root: Path) -> Path:
+    ensure_memory_layout(root)
+    ts = int(time.time())
+    path = transcripts_dir(root) / f"transcript_{ts}_{uuid.uuid4().hex[:6]}.jsonl"
+    with path.open("w", encoding="utf-8") as f:
+        for msg in messages:
+            f.write(json.dumps(msg, ensure_ascii=False, default=str) + "\n")
+    return path
+
+
 def maybe_compress_conversation(
     messages: list[dict[str, Any]],
     *,
@@ -162,6 +289,10 @@ def maybe_compress_conversation(
 
     Returns True if compression ran.
     """
+    # Layer 1 (cheap): always try micro-compact first. Often pulls usage back
+    # under the threshold without paying for a summarizer call.
+    micro_compact_inplace(messages, emit=emit)
+
     max_tok = max_context_tokens()
     if estimate_message_tokens(messages) < max_tok * compress_trigger_ratio():
         return False
@@ -177,6 +308,16 @@ def maybe_compress_conversation(
     tail = _strip_leading_tools(messages[-preserve_n:])
     if not tail:
         return False
+
+    # Layer 2 (expensive): persist a full transcript snapshot before we
+    # collapse history into a summary. The model can `read_file` the path if
+    # it ever needs the original turns back.
+    transcript_path: Path | None = None
+    try:
+        transcript_path = _save_transcript_snapshot(messages, root=Path.cwd())
+    except OSError as exc:
+        if emit:
+            emit("transcript_snapshot_error", {"error": str(exc)})
 
     summary_model = os.getenv("AGENT_SUMMARY_MODEL", model)
     payload = json.dumps(old, ensure_ascii=False)
@@ -215,11 +356,19 @@ def maybe_compress_conversation(
         return False
 
     before_tokens = estimate_message_tokens(messages)
+    summary_block = "[会话压缩 — 早期轮次摘要]\n" + summary
+    if transcript_path is not None:
+        try:
+            rel = transcript_path.relative_to(Path.cwd())
+            rel_s = str(rel).replace("\\", "/")
+        except ValueError:
+            rel_s = str(transcript_path)
+        summary_block += (
+            f"\n\n[Full pre-compression transcript saved to: {rel_s} — "
+            "use read_file on that path if you need verbatim earlier turns.]"
+        )
     messages[:] = [messages[0]] + [
-        {
-            "role": "user",
-            "content": "[会话压缩 — 早期轮次摘要]\n" + summary,
-        },
+        {"role": "user", "content": summary_block},
         *tail,
     ]
     after_tokens = estimate_message_tokens(messages)
@@ -232,6 +381,7 @@ def maybe_compress_conversation(
                 "estimated_tokens_before": before_tokens,
                 "estimated_tokens_after": after_tokens,
                 "summary_model": summary_model,
+                "transcript_path": str(transcript_path) if transcript_path else None,
             },
         )
     return True

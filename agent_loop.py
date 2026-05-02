@@ -16,6 +16,7 @@ from context_memory import (
     ensure_memory_layout,
     maybe_compress_conversation,
     memory_prompt_section,
+    micro_compact_inplace,
 )
 from todo_manager import TodoState, todos_file
 from tools_execution import execute_tool
@@ -522,6 +523,10 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
     root = project_root()
     rounds_since_todo = 0
     while True:
+        # Cheap, silent: shrink stale tool_results before every model call so the
+        # context budget grows linearly even on long sessions.
+        micro_compact_inplace(messages, emit=emit_sse)
+        # Expensive (LLM summary) only when the budget threshold is crossed.
         maybe_compress_conversation(messages, client=client, model=MODEL, emit=emit_sse)
         assistant_msg, finish_reason = _stream_one_completion(
             messages,
