@@ -2,6 +2,9 @@ import argparse
 import json
 import os
 import sys
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
 from typing import Any, Callable
@@ -24,6 +27,13 @@ from tools_registry import (
     tool_policy_from_env,
 )
 
+# Risk classes safe to fan out within a single assistant turn (pure read or
+# external-fetch with no local side effects). Mutating tools and delegating
+# tools (sub-agents) stay strictly serial to avoid file-write races and to
+# keep token-usage bookkeeping deterministic.
+PARALLEL_TOOL_ACCESS_CLASSES = {"read", "network"}
+MAX_TOOL_PARALLELISM = int(os.getenv("AGENT_MAX_TOOL_PARALLELISM", "4"))
+
 try:
     from dotenv import load_dotenv
 except ImportError:
@@ -44,14 +54,23 @@ def _ensure_utf8_stdio() -> None:
                 pass
 
 
+_emit_lock = threading.Lock()
+
+
 def emit_sse(event: str, data: Any) -> None:
-    """Print one Server-Sent Events block to the terminal (single-line data, UTF-8, flushed)."""
+    """Print one Server-Sent Events block to the terminal (single-line data, UTF-8, flushed).
+
+    Holds a global lock because parallel tool execution may emit from worker
+    threads; without the lock, two events could interleave inside one SSE block
+    and corrupt the stream.
+    """
     if isinstance(data, (dict, list, str, int, float, bool)) or data is None:
         payload = json.dumps(data, ensure_ascii=False)
     else:
         payload = json.dumps(str(data), ensure_ascii=False)
-    sys.stdout.write(f"event: {event}\ndata: {payload}\n\n")
-    sys.stdout.flush()
+    with _emit_lock:
+        sys.stdout.write(f"event: {event}\ndata: {payload}\n\n")
+        sys.stdout.flush()
 
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
@@ -345,6 +364,121 @@ def _stream_one_completion(
     return assistant_msg, finish_reason
 
 
+def _run_one_tool_call(
+    tc: dict[str, Any],
+    *,
+    root: Path,
+    emit: Callable[[str, Any], None],
+) -> dict[str, Any]:
+    """
+    Execute a single ``tool_call`` end-to-end: parse args, dispatch, budget result, emit SSE.
+
+    Returns the ``role=tool`` history message for ``messages.extend(...)``. Errors are
+    captured into the ``content`` field so the model can recover instead of crashing the loop.
+    """
+    tool_name = (tc.get("function") or {}).get("name") or "<unknown>"
+    raw_args = (tc.get("function") or {}).get("arguments") or "{}"
+    tool_call_id = tc.get("id")
+    started = time.monotonic()
+    try:
+        tool_args = json.loads(raw_args)
+    except json.JSONDecodeError as e:
+        err = f"Invalid JSON arguments for {tool_name}: {e}; raw={raw_args!r}"
+        emit("tool_error", {"tool_call_id": tool_call_id, "tool": tool_name, "error": err})
+        return {"tool_call_id": tool_call_id, "role": "tool", "content": err}
+
+    emit(
+        "tool_call",
+        {"tool_call_id": tool_call_id, "name": tool_name, "arguments": tool_args},
+    )
+    try:
+        function_response = orchestrator_execute_tool(
+            tool_name=tool_name,
+            tool_input=tool_args,
+        )
+    except Exception as exc:  # noqa: BLE001 — never let one bad tool kill the loop
+        err = f"Unhandled exception in {tool_name}: {exc!s}"
+        emit(
+            "tool_error",
+            {"tool_call_id": tool_call_id, "tool": tool_name, "error": err},
+        )
+        return {"tool_call_id": tool_call_id, "role": "tool", "content": err}
+
+    content_for_history = budget_tool_result_for_messages(
+        function_response,
+        tool_name=tool_name,
+        root=root,
+    )
+    duration_ms = int((time.monotonic() - started) * 1000)
+    tr_payload: dict[str, Any] = {
+        "tool_call_id": tool_call_id,
+        "name": tool_name,
+        "result": content_for_history,
+        "duration_ms": duration_ms,
+    }
+    if len(content_for_history) < len(function_response):
+        tr_payload["history_budgeted_from_chars"] = len(function_response)
+    emit("tool_result", tr_payload)
+    return {"tool_call_id": tool_call_id, "role": "tool", "content": content_for_history}
+
+
+def _run_all_tool_calls(
+    tool_calls: list[dict[str, Any]],
+    *,
+    root: Path,
+    emit: Callable[[str, Any], None],
+) -> list[dict[str, Any]]:
+    """
+    Execute one assistant turn's worth of ``tool_calls``.
+
+    Read- and network-class calls fan out across a thread pool (bounded by
+    ``AGENT_MAX_TOOL_PARALLELISM``). Mutating, system, and delegating calls
+    stay serial so they cannot race on the workspace, on the persisted todo
+    list, or on sub-agent token bookkeeping.
+
+    Output order **always** matches input order — required by the OpenAI
+    chat protocol so each ``role=tool`` message lines up with its
+    ``tool_call_id`` from the previous assistant turn.
+    """
+    if not tool_calls:
+        return []
+
+    def parallelizable(tc: dict[str, Any]) -> bool:
+        name = (tc.get("function") or {}).get("name") or ""
+        return TOOL_ACCESS.get(name) in PARALLEL_TOOL_ACCESS_CLASSES
+
+    results: list[dict[str, Any] | None] = [None] * len(tool_calls)
+
+    # Group consecutive parallelizable calls so the global ordering of
+    # observable side effects (writes, sub-agent spawns) stays the same as
+    # the model intended.
+    i = 0
+    while i < len(tool_calls):
+        if parallelizable(tool_calls[i]):
+            j = i
+            while j < len(tool_calls) and parallelizable(tool_calls[j]):
+                j += 1
+            batch = list(range(i, j))
+            if len(batch) == 1:
+                results[batch[0]] = _run_one_tool_call(tool_calls[batch[0]], root=root, emit=emit)
+            else:
+                emit("tools_parallel", {"count": len(batch), "indices": batch})
+                with ThreadPoolExecutor(max_workers=min(MAX_TOOL_PARALLELISM, len(batch))) as pool:
+                    futs = {
+                        pool.submit(_run_one_tool_call, tool_calls[k], root=root, emit=emit): k
+                        for k in batch
+                    }
+                    for fut in as_completed(futs):
+                        k = futs[fut]
+                        results[k] = fut.result()
+            i = j
+        else:
+            results[i] = _run_one_tool_call(tool_calls[i], root=root, emit=emit)
+            i += 1
+
+    return [r for r in results if r is not None]
+
+
 def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]:
     """Start a new chat session: system prompt only. Emits ``system_prompt`` SSE once."""
     root = root or project_root()
@@ -414,46 +548,7 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
         else:
             rounds_since_todo += 1
 
-        tool_outputs: list[dict[str, Any]] = []
-        for tc in tool_calls:
-            tool_name = tc["function"]["name"]
-            raw_args = tc["function"]["arguments"] or "{}"
-            try:
-                tool_args = json.loads(raw_args)
-            except json.JSONDecodeError as e:
-                err = f"Invalid JSON arguments for {tool_name}: {e}; raw={raw_args!r}"
-                emit_sse("tool_error", {"tool": tool_name, "error": err})
-                content_for_history = err
-            else:
-                emit_sse(
-                    "tool_call",
-                    {"tool_call_id": tc.get("id"), "name": tool_name, "arguments": tool_args},
-                )
-                function_response = orchestrator_execute_tool(
-                    tool_name=tool_name,
-                    tool_input=tool_args,
-                )
-                content_for_history = budget_tool_result_for_messages(
-                    function_response,
-                    tool_name=tool_name,
-                    root=root,
-                )
-                tr_payload: dict[str, Any] = {
-                    "tool_call_id": tc.get("id"),
-                    "name": tool_name,
-                    "result": content_for_history,
-                }
-                if len(content_for_history) < len(function_response):
-                    tr_payload["history_budgeted_from_chars"] = len(function_response)
-                emit_sse("tool_result", tr_payload)
-
-            tool_outputs.append(
-                {
-                    "tool_call_id": tc["id"],
-                    "role": "tool",
-                    "content": content_for_history,
-                }
-            )
+        tool_outputs = _run_all_tool_calls(tool_calls, root=root, emit=emit_sse)
 
         messages.extend(tool_outputs)
         emit_sse("tools_done", {"count": len(tool_outputs), "message": "工具已执行，继续推理…"})
