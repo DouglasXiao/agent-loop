@@ -19,7 +19,7 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
 - `requirements.txt` — dependencies.
 - `.env` — local secrets (not committed). Provider selection is automatic:
-  - **OpenRouter (recommended)** — set `OPENROUTER_API_KEY=sk-or-...`. Optional: `OPENROUTER_BASE_URL` (default `https://openrouter.ai/api/v1`), `OPENROUTER_MODEL` (default `openai/gpt-5.2`; falls back to `OPENAI_MODEL` for back-compat), `OPENROUTER_REFERER` (sent as `HTTP-Referer`), `OPENROUTER_TITLE` (sent as `X-Title`).
+  - **OpenRouter (recommended)** — set `OPENROUTER_API_KEY=sk-or-...`. Optional: `OPENROUTER_BASE_URL` (default `https://openrouter.ai/api/v1`), `OPENROUTER_MODEL` (default `openrouter/auto` — OpenRouter's per-request auto-router; pin to e.g. `anthropic/claude-sonnet-4.6` if you want a specific model. `OPENAI_MODEL` is honored as a back-compat fallback), `OPENROUTER_REFERER` (sent as `HTTP-Referer`), `OPENROUTER_TITLE` (sent as `X-Title`).
   - **Plain OpenAI / OpenAI-compatible fallback** — set `OPENAI_API_KEY`, optional `OPENAI_BASE_URL`, `OPENAI_MODEL` (default `gpt-5`). Used only when `OPENROUTER_API_KEY` is empty.
   - Other: `OPENWEATHER_API_KEY`, `SUB_AGENT_*` (sub-agents have their own credentials, independent of the orchestrator's provider).
 

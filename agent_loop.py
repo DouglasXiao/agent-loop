@@ -87,9 +87,18 @@ def _build_main_client() -> tuple[OpenAI, str, str]:
 
     Provider selection order:
       1. ``OPENROUTER_API_KEY`` set → OpenRouter (default base
-         https://openrouter.ai/api/v1, default model openai/gpt-5.2).
+         https://openrouter.ai/api/v1, default model ``openrouter/auto``).
       2. otherwise → plain OpenAI (or any OpenAI-compatible endpoint via
          ``OPENAI_BASE_URL``).
+
+    Why ``openrouter/auto`` as the default:
+      OpenRouter's auto-router picks a cost-appropriate underlying model per
+      request (usually a Claude / Gemini / GPT mid-tier rather than the most
+      expensive frontier). For a tool-using agent loop where most turns are
+      cheap reasoning + tool dispatch, this typically lands at a small
+      fraction of hard-coded GPT-5-class cost. To pin a specific model — e.g.
+      for a benchmark or because auto picked something you don't like — set
+      ``OPENROUTER_MODEL=anthropic/claude-sonnet-4.6`` (or whatever).
 
     Optional OpenRouter env vars:
       - ``OPENROUTER_BASE_URL`` (override the default base)
@@ -105,7 +114,7 @@ def _build_main_client() -> tuple[OpenAI, str, str]:
         model = (
             os.getenv("OPENROUTER_MODEL")
             or os.getenv("OPENAI_MODEL")
-            or "openai/gpt-5.2"
+            or "openrouter/auto"
         )
         headers: dict[str, str] = {}
         ref = (os.getenv("OPENROUTER_REFERER") or "").strip()
