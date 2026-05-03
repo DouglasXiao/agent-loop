@@ -397,12 +397,9 @@ def _open_stream(
     messages: list[dict[str, Any]],
     tools: list[dict[str, Any]],
 ):
+    extra = {"stream_options": {"include_usage": True}} if PROVIDER == "openrouter" else {}
     return client.chat.completions.create(
-        model=model,
-        messages=messages,
-        tools=tools,
-        tool_choice="auto",
-        stream=True,
+        model=model, messages=messages, tools=tools, tool_choice="auto", stream=True, **extra
     )
 
 
@@ -423,7 +420,7 @@ def _stream_one_completion(
       Emit ``upstream_context_overflow`` so callers can observe the recovery.
     - Any other 4xx/5xx is re-raised so the orchestrator can decide what to do.
 
-    Emits SSE: thinking, content_delta, finish (tool 完整参数在 tool_call 事件中输出).
+    Emits SSE: thinking, content_delta, model_routed, finish (tool 完整参数在 tool_call 事件中输出).
     """
     emit("thinking", {"model": model, "message": "模型推理中…"})
 
@@ -452,8 +449,20 @@ def _stream_one_completion(
     content_parts: list[str] = []
     tool_calls_acc: dict[int, dict[str, Any]] = {}
     finish_reason: str | None = None
+    actual: str | None = None
+    usage: dict[str, int | None] | None = None
 
     for chunk in stream:
+        m = getattr(chunk, "model", None)
+        if isinstance(m, str) and m.strip():
+            actual = m.strip()
+        u = getattr(chunk, "usage", None)
+        if u is not None:
+            usage = {
+                "prompt_tokens": getattr(u, "prompt_tokens", None),
+                "completion_tokens": getattr(u, "completion_tokens", None),
+                "total_tokens": getattr(u, "total_tokens", None),
+            }
         if not chunk.choices:
             continue
         choice = chunk.choices[0]
@@ -497,6 +506,7 @@ def _stream_one_completion(
     if tool_calls_list:
         assistant_msg["tool_calls"] = tool_calls_list
 
+    emit("model_routed", {"requested": model, "actual": actual or model, "usage": usage})
     emit(
         "finish",
         {
