@@ -18,6 +18,7 @@ from context_memory import (
     memory_prompt_section,
     micro_compact_inplace,
 )
+from skill_loader import discover_skills, render_skill_index, skills_dir
 from todo_manager import TodoState, todos_file
 from tools_execution import execute_tool
 from tools_registry import (
@@ -120,6 +121,7 @@ def _tool_behavior_guidelines() -> str:
 - write_file: Full create/replace; for small edits on existing files prefer edit_file. Never overwrite critical secrets without confirmation.
 - edit_file: Surgical edits; default requires exactly one match—use replace_all for intentional multi replacements (e.g. renames).
 - todo_write: For any non-trivial multi-step task, FIRST call todo_write(action="set", items=[...]) to plan the steps; mark exactly one item as in_progress while you work on it, then update its status to completed before moving on. State persists in `.claude/todos/current.json` across context compression. Skip todo_write only for one-shot questions or single-tool answers.
+- list_skills / load_skill: Skills are domain workflows under `.claude/skills/<name>/SKILL.md`. The system prompt lists their names + short descriptions; call `load_skill(name=...)` to pull the full body before following a skill's instructions.
 - get_weather / web_fetch: Network tools—if disabled by policy or missing keys, explain to the user; never fabricate live data.
 - run_terminal_cmd: Host shell; only available when AGENT_ALLOW_BASH=1. Chain `cd dir && cmd` when directory matters; avoid interactive commands.
 - run_sub_agent: Isolated worker with its own context (no access to this chat). Pass a self-contained task; result is JSON with ok, final_text, error, token_usage. Use for heavy subtasks.
@@ -175,6 +177,14 @@ def build_system_prompt(
         "",
         "[当前 TODO 列表（持久化）]",
         _render_current_todos(root),
+        "",
+        "[已安装的 skill（按需加载，调用 load_skill 拉全文）]",
+        render_skill_index(discover_skills(root))
+        + (
+            f"\n_(skills directory: {skills_dir(root)})_"
+            if discover_skills(root)
+            else ""
+        ),
         "",
         "[动态环境变量]",
         f"- Current working directory: {cwd}",

@@ -509,6 +509,16 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any], policy: ToolPolicy 
         # Anchor todo storage to the agent package root, not cwd, so paths stay stable.
         root = Path(__file__).resolve().parent
         result = handle_todo_write(action, tool_input, root=root)
+    elif tool_name == "list_skills":
+        from skill_loader import handle_list_skills
+
+        root = Path(__file__).resolve().parent
+        result = handle_list_skills(tool_input, root=root)
+    elif tool_name == "load_skill":
+        from skill_loader import handle_load_skill
+
+        root = Path(__file__).resolve().parent
+        result = handle_load_skill(name=str(tool_input.get("name", "")), root=root)
     elif tool_name == "glob_files":
         result = glob_files(pattern=tool_input["pattern"], path=tool_input.get("path"))
     elif tool_name == "grep_files":

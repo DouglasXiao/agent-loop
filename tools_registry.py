@@ -17,6 +17,8 @@ TOOL_ACCESS: dict[str, ToolAccess] = {
     "write_file": "mutate",
     "edit_file": "mutate",
     "todo_write": "mutate",
+    "list_skills": "read",
+    "load_skill": "read",
     "get_weather": "network",
     "web_fetch": "network",
     "run_terminal_cmd": "system",
@@ -310,6 +312,40 @@ STANDARD_TOOLS: list[dict[str, Any]] = [
                     },
                 },
                 "required": ["action"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "list_skills",
+            "description": (
+                "List on-demand skills available under `.claude/skills/<name>/SKILL.md`. "
+                "Returns one line per skill (name + short description). The same index is "
+                "also injected into the system prompt — call this only if you need to "
+                "re-orient after compression or to confirm a skill exists before loading it."
+            ),
+            "parameters": {"type": "object", "properties": {}, "additionalProperties": False},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "load_skill",
+            "description": (
+                "Load the full instructions for a single skill by name. Returns the body "
+                "wrapped in `<skill name=\"…\">…</skill>` for you to follow. Cheap to call "
+                "but body can be a few thousand tokens, so only load skills you're about to use."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Skill name as shown by list_skills (matches the directory under .claude/skills/)",
+                    },
+                },
+                "required": ["name"],
             },
         },
     },

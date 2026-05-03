@@ -10,7 +10,8 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `tools_execution.py` / `tools_registry.py` — central tool dispatch + risk-class policy (read / mutate / network / system / delegate).
 - `context_memory.py` — context budgeting, tool-result spilling under `.claude/memory/spill/`, summary-based compression.
 - `todo_manager.py` — persistent in-task todo list under `.claude/todos/current.json`.
-- `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) using `SUB_AGENT_*` env vars.
+- `skill_loader.py` — on-demand skills under `.claude/skills/<name>/SKILL.md` (`list_skills` / `load_skill`).
+- `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors).
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
 - `requirements.txt` — dependencies.
 - `.env` — local secrets (not committed); use `OPENAI_API_KEY`, optional `OPENAI_BASE_URL`, `OPENAI_MODEL`, `OPENWEATHER_API_KEY`, `SUB_AGENT_*`.
@@ -28,6 +29,7 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - **`CLAUDE.md`** (this file) is injected into the system prompt on each run; keep it short and factual.
 - **`todo_write`** is the planning tool: for any multi-step task, call `action="set"` first; keep at most one `in_progress`. The current list is also rendered into the system prompt every turn.
 - A nag `<reminder>` is appended to the last tool result if the model goes `AGENT_TODO_NAG_AFTER_ROUNDS` (default 3) consecutive turns without calling `todo_write`.
+- Skills live at `.claude/skills/<name>/SKILL.md` with optional YAML frontmatter `--- name: foo\ndescription: short blurb ---`. The system prompt advertises name + description per skill (cheap); call `load_skill(name=...)` to pull the full body.
 - Three-layer context compaction:
   1. Per-turn `micro_compact_inplace` shrinks `role=tool` messages older than `AGENT_KEEP_RECENT_TOOL_RESULTS` (default 6) to a one-line placeholder; spill path is preserved so the body stays readable via `read_file`.
   2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block.
