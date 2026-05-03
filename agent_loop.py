@@ -201,8 +201,11 @@ DELEGATION_TOOLS: list[dict[str, Any]] = [
                 "Run an isolated worker agent (separate short-lived chat, SUB_AGENT_* env credentials, "
                 "typically Claude Sonnet via an OpenAI-compatible gateway). "
                 "The worker only sees the task string you pass—not this conversation. "
-                "Returns JSON with keys: ok, final_text, and optionally error, token_usage, spill_paths. "
-                "Use for delegated exploration, drafting, or multi-step side work without bloating your main context."
+                "Returns JSON: ok, final_text, label?, error?, error_category?, token_usage?, "
+                "spill_paths?, rounds_used?, duration_ms?, tools_used?, tool_errors?. "
+                "error_category ∈ {config_error, api_error, timeout, max_rounds, bad_finish, "
+                "policy_denied, unknown}. Use for delegated exploration, drafting, or multi-step "
+                "side work without bloating your main context."
             ),
             "parameters": {
                 "type": "object",
@@ -210,6 +213,10 @@ DELEGATION_TOOLS: list[dict[str, Any]] = [
                     "task": {
                         "type": "string",
                         "description": "Standalone, self-contained instructions for the worker agent",
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Optional correlation tag echoed back in the result",
                     },
                 },
                 "required": ["task"],
@@ -223,8 +230,10 @@ DELEGATION_TOOLS: list[dict[str, Any]] = [
             "description": (
                 "Run multiple isolated worker agents in parallel (thread pool, up to 8 workers). "
                 "Each worker has its own context and the same SUB_AGENT_* configuration as run_sub_agent. "
-                "Returns JSON: { ok, results } where results align with the input order. "
-                "Each result object may include label, ok, final_text, error, token_usage, spill_paths."
+                "Returns JSON: { ok, count, results } where results align with the input order. "
+                "Each result mirrors run_sub_agent (ok / final_text / label / error / "
+                "error_category / token_usage / spill_paths / rounds_used / duration_ms / "
+                "tools_used / tool_errors). Per-item overrides: model, timeout, max_tool_rounds."
             ),
             "parameters": {
                 "type": "object",
@@ -239,11 +248,14 @@ DELEGATION_TOOLS: list[dict[str, Any]] = [
                                     "type": "string",
                                     "description": "Optional string echoed back in that item's result",
                                 },
+                                "model": {"type": "string", "description": "Override SUB_AGENT_MODEL"},
+                                "timeout": {"type": "number", "description": "Wall-clock seconds"},
+                                "max_tool_rounds": {"type": "integer"},
                             },
                             "required": ["task"],
                         },
                         "minItems": 1,
-                        "description": "List of { task, label? } objects",
+                        "description": "List of { task, label?, model?, timeout?, max_tool_rounds? } objects",
                     },
                 },
                 "required": ["tasks"],
@@ -271,7 +283,9 @@ def orchestrator_execute_tool(tool_name: str, tool_input: dict[str, Any]) -> str
         from sub_agent import SubAgentOptions, run_sub_agent
 
         task = str(tool_input.get("task", "")).strip()
-        res = run_sub_agent(task, SubAgentOptions())
+        label = tool_input.get("label")
+        opts = SubAgentOptions(label=str(label) if label else None)
+        res = run_sub_agent(task, opts)
         return json.dumps(res.to_dict(), ensure_ascii=False)
     if tool_name == "run_sub_agents_parallel":
         from sub_agent import run_sub_agents_parallel_for_tool

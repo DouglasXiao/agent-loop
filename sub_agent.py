@@ -1,5 +1,19 @@
 """
-Isolated sub-agents (Agent-as-a-Tool): own messages, Claude Sonnet via dedicated client, no SSE.
+Isolated sub-agents (Agent-as-a-Tool): own messages, dedicated client, no SSE.
+
+Returns a structured ``SubAgentResult`` with classified errors so the
+orchestrator can react differently to retryable vs. fatal failures.
+
+Error categories (``SubAgentResult.error_category``):
+
+- ``config_error``    — credentials / model / base_url missing or invalid.
+- ``api_error``       — upstream API call raised (network, auth, schema).
+- ``timeout``         — sub_agent run exceeded ``options.timeout`` wall-clock.
+- ``max_rounds``      — exhausted ``max_tool_rounds`` without a final answer.
+- ``bad_finish``      — model returned with ``finish_reason`` other than
+                        ``stop`` / ``tool_calls`` (e.g. ``length``).
+- ``policy_denied``   — a tool call was rejected by the sub-agent ToolPolicy.
+- ``unknown``         — anything else; the message carries the raw exception.
 """
 
 from __future__ import annotations
@@ -7,6 +21,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -28,6 +43,23 @@ SUB_AGENT_OPENAI_BASE_URL = os.getenv(
 SUB_AGENT_MODEL = os.getenv("SUB_AGENT_MODEL", "")
 
 _SPILL_PATH_RE = re.compile(r"Full output saved to:\s*(\S+?)(?:\s|$)")
+_POLICY_DENIED_RE = re.compile(
+    r"is not permitted by the current tool policy", re.IGNORECASE
+)
+
+
+# -------- result types -----------------------------------------------------
+
+
+ERROR_CATEGORIES = (
+    "config_error",
+    "api_error",
+    "timeout",
+    "max_rounds",
+    "bad_finish",
+    "policy_denied",
+    "unknown",
+)
 
 
 @dataclass
@@ -40,19 +72,44 @@ class SubAgentOptions:
     timeout: float = 120.0
     max_tool_rounds: int = 24
     root: Path | None = None
+    label: str | None = None  # echoed back in result for correlation
 
 
 @dataclass
 class SubAgentResult:
     ok: bool
     final_text: str
+    label: str | None = None
     error: str | None = None
+    error_category: str | None = None
     token_usage: dict[str, int] | None = None
     spill_paths: list[str] = field(default_factory=list)
+    rounds_used: int = 0
+    duration_ms: int = 0
+    tools_used: list[str] = field(default_factory=list)
+    tool_errors: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         d: dict[str, Any] = asdict(self)
-        return {k: v for k, v in d.items() if v not in (None, [], {})}
+        # Drop empty / None fields so the JSON the orchestrator sees stays terse.
+        # Keep ``ok`` and ``final_text`` always (False / "" are meaningful).
+        keep_always = {"ok", "final_text"}
+        out: dict[str, Any] = {}
+        for k, v in d.items():
+            if k in keep_always:
+                out[k] = v
+                continue
+            if v is None or v == [] or v == {}:
+                continue
+            # int 0 is meaningful for tool_errors=0; only skip the rounds_used /
+            # duration_ms zeroes when both fields have no signal at all.
+            if isinstance(v, int) and v == 0 and k in ("rounds_used", "duration_ms", "tool_errors"):
+                continue
+            out[k] = v
+        return out
+
+
+# -------- helpers ----------------------------------------------------------
 
 
 def _merge_usage(acc: dict[str, int], usage: Any) -> None:
@@ -70,13 +127,47 @@ def _collect_spill_paths(text: str, bucket: list[str]) -> None:
             bucket.append(p)
 
 
+def _classify_api_error(exc: BaseException) -> tuple[str, str]:
+    """Map an exception during ``client.chat.completions.create`` to (category, message)."""
+    name = type(exc).__name__.lower()
+    text = str(exc)
+    if "timeout" in name or "timeout" in text.lower():
+        return "timeout", f"sub_agent upstream timeout: {text}"
+    return "api_error", f"sub_agent API error: {text}"
+
+
+def _build_assistant_msg(msg: Any) -> dict[str, Any]:
+    return {
+        "role": "assistant",
+        "content": msg.content,
+        "tool_calls": [
+            {
+                "id": tc.id,
+                "type": getattr(tc, "type", None) or "function",
+                "function": {
+                    "name": tc.function.name,
+                    "arguments": tc.function.arguments or "{}",
+                },
+            }
+            for tc in (getattr(msg, "tool_calls", None) or [])
+        ],
+    }
+
+
+# -------- main entry -------------------------------------------------------
+
+
 def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgentResult:
     """
     Run a standalone worker loop: fresh system + one user task, standard tools only, no SSE.
 
-    Uses ``SUB_AGENT_API_KEY`` / ``SUB_AGENT_OPENAI_BASE_URL`` / ``SUB_AGENT_MODEL`` (see module constants).
+    Uses ``SUB_AGENT_API_KEY`` / ``SUB_AGENT_OPENAI_BASE_URL`` / ``SUB_AGENT_MODEL``
+    (see module constants). Result is always a fully populated ``SubAgentResult``;
+    on error, ``error_category`` indicates which retry strategy is appropriate.
     """
     opts = options or SubAgentOptions()
+    started = time.monotonic()
+
     # Import after app startup to avoid circular import while ``agent_loop`` loads.
     from agent_loop import build_system_prompt, project_root
 
@@ -88,10 +179,23 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
         return SubAgentResult(
             ok=False,
             final_text="",
+            label=opts.label,
             error=(
                 "SUB_AGENT_API_KEY is not set. Add it to your environment or .env "
-                "(placeholder in code: set SUB_AGENT_API_KEY, SUB_AGENT_OPENAI_BASE_URL for an OpenAI-compatible Claude route)."
+                "(placeholder in code: set SUB_AGENT_API_KEY, SUB_AGENT_OPENAI_BASE_URL "
+                "for an OpenAI-compatible Claude route)."
             ),
+            error_category="config_error",
+            duration_ms=int((time.monotonic() - started) * 1000),
+        )
+    if not opts.model or not str(opts.model).strip():
+        return SubAgentResult(
+            ok=False,
+            final_text="",
+            label=opts.label,
+            error="SUB_AGENT_MODEL is not set; cannot dispatch sub-agent.",
+            error_category="config_error",
+            duration_ms=int((time.monotonic() - started) * 1000),
         )
 
     base_url = opts.base_url or SUB_AGENT_OPENAI_BASE_URL
@@ -107,9 +211,35 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
 
     usage_acc: dict[str, int] = {}
     spill_paths: list[str] = []
+    tools_used: list[str] = []
+    tool_errors = 0
     model = opts.model
+    rounds_used = 0
+
+    def _build_result(**overrides: Any) -> SubAgentResult:
+        return SubAgentResult(
+            ok=overrides.get("ok", False),
+            final_text=overrides.get("final_text", ""),
+            label=opts.label,
+            error=overrides.get("error"),
+            error_category=overrides.get("error_category"),
+            token_usage=usage_acc or None,
+            spill_paths=spill_paths,
+            rounds_used=rounds_used,
+            duration_ms=int((time.monotonic() - started) * 1000),
+            tools_used=tools_used,
+            tool_errors=tool_errors,
+        )
 
     for _ in range(opts.max_tool_rounds):
+        if (time.monotonic() - started) * 1000 >= opts.timeout * 1000:
+            return _build_result(
+                error=f"sub_agent wall-clock timeout after {opts.timeout}s "
+                f"(rounds_used={rounds_used})",
+                error_category="timeout",
+            )
+
+        rounds_used += 1
         maybe_compress_conversation(messages, client=sub_client, model=model, emit=None)
 
         try:
@@ -120,14 +250,9 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
                 tool_choice="auto",
                 stream=False,
             )
-        except Exception as exc:  # noqa: BLE001
-            return SubAgentResult(
-                ok=False,
-                final_text="",
-                error=f"sub_agent API error: {exc!s}",
-                token_usage=usage_acc or None,
-                spill_paths=spill_paths,
-            )
+        except Exception as exc:  # noqa: BLE001 — classify and surface
+            cat, msg = _classify_api_error(exc)
+            return _build_result(error=msg, error_category=cat)
 
         _merge_usage(usage_acc, getattr(resp, "usage", None))
         choice = resp.choices[0]
@@ -137,80 +262,70 @@ def run_sub_agent(task: str, options: SubAgentOptions | None = None) -> SubAgent
         tcalls = getattr(msg, "tool_calls", None) or []
         if not tcalls:
             text = (msg.content or "").strip()
-            return SubAgentResult(
-                ok=True,
-                final_text=text,
-                token_usage=usage_acc or None,
-                spill_paths=spill_paths,
-            )
+            return _build_result(ok=True, final_text=text)
 
-        assistant_msg: dict[str, Any] = {
-            "role": "assistant",
-            "content": msg.content,
-            "tool_calls": [
-                {
-                    "id": tc.id,
-                    "type": getattr(tc, "type", None) or "function",
-                    "function": {
-                        "name": tc.function.name,
-                        "arguments": tc.function.arguments or "{}",
-                    },
-                }
-                for tc in tcalls
-            ],
-        }
-        messages.append(assistant_msg)
+        messages.append(_build_assistant_msg(msg))
 
         for tc in tcalls:
             name = tc.function.name
+            tools_used.append(name)
             try:
                 args = json.loads(tc.function.arguments or "{}")
             except json.JSONDecodeError as exc:
+                tool_errors += 1
                 err_body = f"Invalid JSON arguments for {name}: {exc}"
                 messages.append({"role": "tool", "tool_call_id": tc.id, "content": err_body})
                 continue
             raw = execute_tool(name, args, policy=sub_policy)
+            if _POLICY_DENIED_RE.search(raw or ""):
+                tool_errors += 1
             budgeted = budget_tool_result_for_messages(raw, tool_name=name, root=root)
             _collect_spill_paths(budgeted, spill_paths)
             messages.append({"role": "tool", "tool_call_id": tc.id, "content": budgeted})
 
         if finish not in (None, "tool_calls"):
-            return SubAgentResult(
-                ok=False,
+            return _build_result(
                 final_text=msg.content or "",
                 error=f"sub_agent stopped with finish_reason={finish!r}",
-                token_usage=usage_acc or None,
-                spill_paths=spill_paths,
+                error_category="bad_finish",
             )
 
-    return SubAgentResult(
-        ok=False,
-        final_text="",
+    return _build_result(
         error=f"sub_agent exceeded max_tool_rounds={opts.max_tool_rounds}",
-        token_usage=usage_acc or None,
-        spill_paths=spill_paths,
+        error_category="max_rounds",
     )
+
+
+# -------- parallel + tool entry points -------------------------------------
 
 
 def run_sub_agents_parallel_for_tool(tasks: list[dict[str, Any]]) -> str:
     """
     Run multiple ``run_sub_agent`` calls in parallel (thread pool). Each item must have key ``task``;
-    optional ``label`` for correlation in the JSON result.
+    optional ``label`` for correlation, optional ``model`` / ``timeout`` / ``max_tool_rounds``
+    overrides.
     """
     if not tasks:
         return json.dumps({"ok": False, "error": "no tasks provided"}, ensure_ascii=False)
 
     def _work(item: dict[str, Any]) -> dict[str, Any]:
         task = str(item.get("task", "")).strip()
-        label = item.get("label", "")
-        res = run_sub_agent(task, SubAgentOptions())
-        out = res.to_dict()
-        out["label"] = label
-        out["ok"] = res.ok
-        return out
+        label = item.get("label") or None
+        opts = SubAgentOptions(
+            label=label,
+            model=str(item.get("model") or SUB_AGENT_MODEL),
+            timeout=float(item.get("timeout") or 120.0),
+            max_tool_rounds=int(item.get("max_tool_rounds") or 24),
+        )
+        return run_sub_agent(task, opts).to_dict()
 
     max_workers = min(8, len(tasks))
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
         futs = [pool.submit(_work, t) for t in tasks]
         results = [f.result() for f in futs]
-    return json.dumps({"ok": True, "results": results}, ensure_ascii=False)
+
+    overall_ok = all(r.get("ok") for r in results)
+    return json.dumps(
+        {"ok": overall_ok, "count": len(results), "results": results},
+        ensure_ascii=False,
+    )
