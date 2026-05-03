@@ -18,7 +18,10 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors).
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
 - `requirements.txt` — dependencies.
-- `.env` — local secrets (not committed); use `OPENAI_API_KEY`, optional `OPENAI_BASE_URL`, `OPENAI_MODEL`, `OPENWEATHER_API_KEY`, `SUB_AGENT_*`.
+- `.env` — local secrets (not committed). Provider selection is automatic:
+  - **OpenRouter (recommended)** — set `OPENROUTER_API_KEY=sk-or-...`. Optional: `OPENROUTER_BASE_URL` (default `https://openrouter.ai/api/v1`), `OPENROUTER_MODEL` (default `openai/gpt-5.2`; falls back to `OPENAI_MODEL` for back-compat), `OPENROUTER_REFERER` (sent as `HTTP-Referer`), `OPENROUTER_TITLE` (sent as `X-Title`).
+  - **Plain OpenAI / OpenAI-compatible fallback** — set `OPENAI_API_KEY`, optional `OPENAI_BASE_URL`, `OPENAI_MODEL` (default `gpt-5`). Used only when `OPENROUTER_API_KEY` is empty.
+  - Other: `OPENWEATHER_API_KEY`, `SUB_AGENT_*` (sub-agents have their own credentials, independent of the orchestrator's provider).
 
 ## Commands
 

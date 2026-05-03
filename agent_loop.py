@@ -81,9 +81,56 @@ def emit_sse(event: str, data: Any) -> None:
         sys.stdout.flush()
 
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
+def _build_main_client() -> tuple[OpenAI, str, str]:
+    """
+    Build the orchestrator's chat client + active model + provider label.
 
-MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+    Provider selection order:
+      1. ``OPENROUTER_API_KEY`` set → OpenRouter (default base
+         https://openrouter.ai/api/v1, default model openai/gpt-5.2).
+      2. otherwise → plain OpenAI (or any OpenAI-compatible endpoint via
+         ``OPENAI_BASE_URL``).
+
+    Optional OpenRouter env vars:
+      - ``OPENROUTER_BASE_URL`` (override the default base)
+      - ``OPENROUTER_MODEL`` (overrides the default model; ``OPENAI_MODEL``
+        is also honored as a secondary fallback for back-compat)
+      - ``OPENROUTER_REFERER``  → sent as the ``HTTP-Referer`` header
+      - ``OPENROUTER_TITLE``    → sent as the ``X-Title`` header
+        (both headers are optional; OpenRouter uses them only for app rankings)
+    """
+    or_key = (os.getenv("OPENROUTER_API_KEY") or "").strip()
+    if or_key:
+        base = (os.getenv("OPENROUTER_BASE_URL") or "https://openrouter.ai/api/v1").strip()
+        model = (
+            os.getenv("OPENROUTER_MODEL")
+            or os.getenv("OPENAI_MODEL")
+            or "openai/gpt-5.2"
+        )
+        headers: dict[str, str] = {}
+        ref = (os.getenv("OPENROUTER_REFERER") or "").strip()
+        if ref:
+            headers["HTTP-Referer"] = ref
+        title = (os.getenv("OPENROUTER_TITLE") or "").strip()
+        if title:
+            headers["X-Title"] = title
+        kwargs: dict[str, Any] = {"api_key": or_key, "base_url": base}
+        if headers:
+            kwargs["default_headers"] = headers
+        return OpenAI(**kwargs), model, "openrouter"
+
+    # Fallback: original OpenAI / OpenAI-compatible path.
+    return (
+        OpenAI(
+            api_key=os.getenv("OPENAI_API_KEY"),
+            base_url=os.getenv("OPENAI_BASE_URL"),
+        ),
+        os.getenv("OPENAI_MODEL", "gpt-5"),
+        "openai",
+    )
+
+
+client, MODEL, PROVIDER = _build_main_client()
 
 CLAUDE_MD_FILENAME = "CLAUDE.md"
 
@@ -579,6 +626,8 @@ def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]
             **prompt_meta,
             "length": len(system_text),
             "project_root": str(root.resolve()),
+            "provider": PROVIDER,
+            "model": MODEL,
         },
     )
     return [{"role": "system", "content": system_text}]
