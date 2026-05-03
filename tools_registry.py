@@ -19,6 +19,9 @@ TOOL_ACCESS: dict[str, ToolAccess] = {
     "todo_write": "mutate",
     "list_skills": "read",
     "load_skill": "read",
+    "task": "mutate",
+    "bg_run": "system",
+    "bg_check": "read",
     "get_weather": "network",
     "web_fetch": "network",
     "run_terminal_cmd": "system",
@@ -326,6 +329,85 @@ STANDARD_TOOLS: list[dict[str, Any]] = [
                 "re-orient after compression or to confirm a skill exists before loading it."
             ),
             "parameters": {"type": "object", "properties": {}, "additionalProperties": False},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "task",
+            "description": (
+                "Persistent task graph stored under `.claude/tasks/task_<id>.json`. "
+                "Survives context compression and full restart. Use this (instead of `todo_write`) "
+                "for goals that must outlive the current conversation, or that have explicit "
+                "dependency edges (`blocked_by`). "
+                "Actions: create (subject required), update (id required; status/subject/owner/"
+                "add_blocked_by/remove_blocked_by), complete (id required; auto-strips this id "
+                "from other tasks' blockedBy), get (id required), list "
+                "(optional status filter or only_unblocked=true)."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["create", "update", "complete", "get", "list"],
+                    },
+                    "id": {"type": "integer"},
+                    "subject": {"type": "string"},
+                    "description": {"type": "string"},
+                    "owner": {"type": "string"},
+                    "status": {
+                        "type": "string",
+                        "enum": ["pending", "in_progress", "completed", "cancelled"],
+                    },
+                    "blocked_by": {"type": "array", "items": {"type": "integer"}},
+                    "add_blocked_by": {"type": "array", "items": {"type": "integer"}},
+                    "remove_blocked_by": {"type": "array", "items": {"type": "integer"}},
+                    "only_unblocked": {"type": "boolean"},
+                },
+                "required": ["action"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "bg_run",
+            "description": (
+                "Spawn a long-running shell command in a background daemon thread and return "
+                "immediately with a task_id. Requires AGENT_ALLOW_BASH=1 (system risk class). "
+                "Use for builds, test suites, package installs — anything that would otherwise "
+                "block the agent loop. Results are auto-injected into the next agent turn as "
+                "`<background-results>...</background-results>`; you can also poll with bg_check. "
+                "Default timeout 300s, hard cap 1800s."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "command": {"type": "string", "description": "Shell command to run"},
+                    "description": {"type": "string", "description": "Short human-readable intent"},
+                    "timeout_sec": {"type": "number", "description": "Per-task timeout (default 300, max 1800)"},
+                    "cwd": {"type": "string", "description": "Working directory (default: agent cwd)"},
+                },
+                "required": ["command"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "bg_check",
+            "description": (
+                "Inspect background tasks. Without arguments returns a brief list of all tasks "
+                "spawned this session (no output bodies). With task_id returns the full record "
+                "including stdout/stderr (truncated to 20k chars)."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "task_id": {"type": "string"},
+                },
+            },
         },
     },
     {

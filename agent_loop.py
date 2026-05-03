@@ -18,7 +18,9 @@ from context_memory import (
     memory_prompt_section,
     micro_compact_inplace,
 )
+from bg_tasks import manager as bg_manager, render_drain_message
 from skill_loader import discover_skills, render_skill_index, skills_dir
+from task_graph import render_task_prompt_section, tasks_dir
 from todo_manager import TodoState, todos_file
 from tools_execution import execute_tool
 from tools_registry import (
@@ -121,7 +123,9 @@ def _tool_behavior_guidelines() -> str:
 - write_file: Full create/replace; for small edits on existing files prefer edit_file. Never overwrite critical secrets without confirmation.
 - edit_file: Surgical edits; default requires exactly one match—use replace_all for intentional multi replacements (e.g. renames).
 - todo_write: For any non-trivial multi-step task, FIRST call todo_write(action="set", items=[...]) to plan the steps; mark exactly one item as in_progress while you work on it, then update its status to completed before moving on. State persists in `.claude/todos/current.json` across context compression. Skip todo_write only for one-shot questions or single-tool answers.
+- task (graph): Use for goals that must outlive the current conversation, or that have explicit dependency edges (`blocked_by`). Stored under `.claude/tasks/`. Prefer `todo_write` for ephemeral plans, `task` for durable backlog items.
 - list_skills / load_skill: Skills are domain workflows under `.claude/skills/<name>/SKILL.md`. The system prompt lists their names + short descriptions; call `load_skill(name=...)` to pull the full body before following a skill's instructions.
+- bg_run / bg_check: Use bg_run for slow shell commands (tests, builds, installs) so the agent loop can keep thinking. Results are auto-injected as `<background-results>` before the next turn; you only need bg_check if you want to peek before the auto-drain.
 - get_weather / web_fetch: Network tools—if disabled by policy or missing keys, explain to the user; never fabricate live data.
 - run_terminal_cmd: Host shell; only available when AGENT_ALLOW_BASH=1. Chain `cd dir && cmd` when directory matters; avoid interactive commands.
 - run_sub_agent: Isolated worker with its own context (no access to this chat). Pass a self-contained task; result is JSON with ok, final_text, error, token_usage. Use for heavy subtasks.
@@ -177,6 +181,9 @@ def build_system_prompt(
         "",
         "[当前 TODO 列表（持久化）]",
         _render_current_todos(root),
+        "",
+        "[持久化任务图（.claude/tasks/）]",
+        render_task_prompt_section(root),
         "",
         "[已安装的 skill（按需加载，调用 load_skill 拉全文）]",
         render_skill_index(discover_skills(root))
@@ -547,6 +554,15 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
     root = project_root()
     rounds_since_todo = 0
     while True:
+        # Drain any background tasks that finished since the last LLM call so
+        # the model can react in this turn instead of next.
+        notifs = bg_manager().drain_notifications()
+        if notifs:
+            drained = render_drain_message(notifs)
+            if drained is not None:
+                messages.append(drained)
+                emit_sse("bg_drain", {"count": len(notifs)})
+
         # Cheap, silent: shrink stale tool_results before every model call so the
         # context budget grows linearly even on long sessions.
         micro_compact_inplace(messages, emit=emit_sse)

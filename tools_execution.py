@@ -519,6 +519,19 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any], policy: ToolPolicy 
 
         root = Path(__file__).resolve().parent
         result = handle_load_skill(name=str(tool_input.get("name", "")), root=root)
+    elif tool_name == "task":
+        from task_graph import handle_task_tool
+
+        root = Path(__file__).resolve().parent
+        result = handle_task_tool(str(tool_input.get("action", "")), tool_input, root=root)
+    elif tool_name == "bg_run":
+        from bg_tasks import handle_bg_run
+
+        result = handle_bg_run(tool_input)
+    elif tool_name == "bg_check":
+        from bg_tasks import handle_bg_check
+
+        result = handle_bg_check(tool_input)
     elif tool_name == "glob_files":
         result = glob_files(pattern=tool_input["pattern"], path=tool_input.get("path"))
     elif tool_name == "grep_files":
