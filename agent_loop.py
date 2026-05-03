@@ -13,7 +13,11 @@ from openai import OpenAI
 
 from context_memory import (
     budget_tool_result_for_messages,
+    emergency_compact_inplace,
+    emergency_compact_ratio,
     ensure_memory_layout,
+    estimate_message_tokens,
+    max_context_tokens,
     maybe_compress_conversation,
     memory_prompt_section,
     micro_compact_inplace,
@@ -316,6 +320,36 @@ def orchestrator_execute_tool(tool_name: str, tool_input: dict[str, Any]) -> str
     return execute_tool(tool_name, tool_input, policy=policy)
 
 
+_CONTEXT_LIMIT_HINTS = (
+    "context_length_exceeded",
+    "maximum context length",
+    "input tokens exceed",
+    "too many tokens",
+    "reduce the length",
+)
+
+
+def _is_context_limit_error(exc: BaseException) -> bool:
+    msg = str(exc).lower()
+    return any(hint in msg for hint in _CONTEXT_LIMIT_HINTS)
+
+
+def _open_stream(
+    client: OpenAI,
+    *,
+    model: str,
+    messages: list[dict[str, Any]],
+    tools: list[dict[str, Any]],
+):
+    return client.chat.completions.create(
+        model=model,
+        messages=messages,
+        tools=tools,
+        tool_choice="auto",
+        stream=True,
+    )
+
+
 def _stream_one_completion(
     messages: list[dict[str, Any]],
     *,
@@ -326,17 +360,38 @@ def _stream_one_completion(
 ) -> tuple[dict[str, Any], str | None]:
     """
     One model call with streaming. Returns assistant message dict and finish_reason.
+
+    Recovery contract:
+    - On upstream ``context_length_exceeded`` (4xx), run an emergency in-place
+      compaction (drop oldest history, no LLM needed) and retry **once**.
+      Emit ``upstream_context_overflow`` so callers can observe the recovery.
+    - Any other 4xx/5xx is re-raised so the orchestrator can decide what to do.
+
     Emits SSE: thinking, content_delta, finish (tool 完整参数在 tool_call 事件中输出).
     """
     emit("thinking", {"model": model, "message": "模型推理中…"})
 
-    stream = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        tools=tools,
-        tool_choice="auto",
-        stream=True,
-    )
+    try:
+        stream = _open_stream(client, model=model, messages=messages, tools=tools)
+    except Exception as exc:  # noqa: BLE001
+        if _is_context_limit_error(exc):
+            emit(
+                "upstream_context_overflow",
+                {
+                    "error": str(exc),
+                    "estimated_tokens": estimate_message_tokens(messages),
+                    "action": "emergency_compact_and_retry",
+                },
+            )
+            # ``force=True``: trust the upstream's verdict over our local
+            # char/4 estimate, which can be wildly off for non-Latin text.
+            elided = emergency_compact_inplace(messages, emit=emit, target_ratio=0.4, force=True)
+            if elided <= 0:
+                # We can't free room (already at minimum) — surface upstream error.
+                raise
+            stream = _open_stream(client, model=model, messages=messages, tools=tools)
+        else:
+            raise
 
     content_parts: list[str] = []
     tool_calls_acc: dict[int, dict[str, Any]] = {}
@@ -570,13 +625,32 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
         micro_compact_inplace(messages, emit=emit_sse)
         # Expensive (LLM summary) only when the budget threshold is crossed.
         maybe_compress_conversation(messages, client=client, model=MODEL, emit=emit_sse)
-        assistant_msg, finish_reason = _stream_one_completion(
-            messages,
-            client=client,
-            model=MODEL,
-            tools=tools_for_api(),
-            emit=emit_sse,
-        )
+        # Pre-flight: if we're still alarmingly close to the upstream limit
+        # (e.g. summary failed silently), do a non-LLM emergency compact so
+        # the next API call doesn't 4xx-out.
+        est = estimate_message_tokens(messages)
+        if est >= max_context_tokens() * emergency_compact_ratio():
+            emergency_compact_inplace(messages, emit=emit_sse)
+
+        try:
+            assistant_msg, finish_reason = _stream_one_completion(
+                messages,
+                client=client,
+                model=MODEL,
+                tools=tools_for_api(),
+                emit=emit_sse,
+            )
+        except Exception as exc:  # noqa: BLE001 — don't traceback out of the loop
+            emit_sse(
+                "upstream_error",
+                {
+                    "error": str(exc),
+                    "type": type(exc).__name__,
+                    "message": "模型调用失败；本轮中止。建议：检查 API key/额度，或减少 max context、调整 AGENT_CONTEXT_COMPRESS_RATIO。",
+                    "estimated_tokens": estimate_message_tokens(messages),
+                },
+            )
+            return None
         tool_calls = assistant_msg.get("tool_calls")
 
         if not tool_calls:

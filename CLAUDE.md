@@ -38,10 +38,11 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - **`bg_run` / `bg_check`** spawn slow shell work in a daemon thread (requires `AGENT_ALLOW_BASH=1`, system risk class). The orchestrator drains finished tasks at the top of every loop turn into a `<background-results>` user message so the model reacts on the next decision.
 - **`worktree`** isolates parallel work in `git worktree` directories on `wt/<name>` branches. Pair with `task` via `task_id` so the task lifecycle and the worktree lifecycle stay in sync; `worktree remove ... complete_task=true` marks the bound task done atomically. Requires `AGENT_ALLOW_BASH=1`.
 - **`team`** is a file-based mailbox for cross-session notes (no live agent threads). Use `register` once, then `send/broadcast/peek/read`. `read` drains by default — call `peek` if you want to look without consuming.
-- Three-layer context compaction:
+- Three-layer context compaction (defaults: `AGENT_MAX_CONTEXT_TOKENS=200000`, `AGENT_CONTEXT_COMPRESS_RATIO=0.7`, `AGENT_EMERGENCY_COMPACT_RATIO=0.95`):
   1. Per-turn `micro_compact_inplace` shrinks `role=tool` messages older than `AGENT_KEEP_RECENT_TOOL_RESULTS` (default 6) to a one-line placeholder; spill path is preserved so the body stays readable via `read_file`.
-  2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block.
-  3. (Reserved) Manual `compact` tool — same summary pipeline triggered by the model on demand; not yet exposed.
+  2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block. The summarizer call auto-detects whether the model wants `max_completion_tokens` (gpt-5 / o-series) or `max_tokens` (older chat models) and caches the winner per client.
+  3. `emergency_compact_inplace` — non-LLM, deterministic last resort. Drops the oldest non-system / non-tail messages and replaces them with a single placeholder. Triggered automatically (a) before each LLM call when usage crosses `AGENT_EMERGENCY_COMPACT_RATIO`, (b) after a summary attempt fails, and (c) inside `_stream_one_completion` when the upstream returns `context_length_exceeded` (it then retries the call once).
+- `_stream_one_completion` re-raises non-context-limit errors so the outer loop can SSE-emit `upstream_error` and return `None` instead of tracebacking out of the process.
 
 ## Style
 

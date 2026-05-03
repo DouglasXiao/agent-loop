@@ -107,15 +107,36 @@ def estimate_message_tokens(messages: list[dict[str, Any]]) -> int:
 
 
 def max_context_tokens() -> int:
-    return int(os.getenv("AGENT_MAX_CONTEXT_TOKENS", "128000"))
+    """
+    Upper bound for our internal estimate of how many tokens a single API call
+    can carry. Default 200k aligns with most modern long-context chat models
+    (gpt-5, claude-3.x, gemini-1.5+). Override with ``AGENT_MAX_CONTEXT_TOKENS``
+    if your model is smaller (or larger).
+    """
+    return int(os.getenv("AGENT_MAX_CONTEXT_TOKENS", "200000"))
 
 
 def compress_trigger_ratio() -> float:
-    return float(os.getenv("AGENT_CONTEXT_COMPRESS_RATIO", "0.9"))
+    """
+    Trigger summary compression when our estimated token usage crosses this
+    fraction of ``max_context_tokens``. Defaults to 0.7 (down from 0.9) so we
+    have headroom for the next assistant turn instead of crashing on a 4xx
+    after we're already at the cliff.
+    """
+    return float(os.getenv("AGENT_CONTEXT_COMPRESS_RATIO", "0.7"))
 
 
 def preserve_recent_message_count() -> int:
     return int(os.getenv("AGENT_PRESERVE_RECENT_MSGS", "12"))
+
+
+def emergency_compact_ratio() -> float:
+    """
+    If estimated tokens cross this fraction (default 0.95), do a non-LLM
+    "drop oldest messages" emergency compaction before the next API call so
+    we don't bounce off the upstream hard limit.
+    """
+    return float(os.getenv("AGENT_EMERGENCY_COMPACT_RATIO", "0.95"))
 
 
 def tool_history_max_chars() -> int:
@@ -263,6 +284,141 @@ def micro_compact_inplace(
     return compacted
 
 
+def _summarize_with_fallback(
+    *,
+    client: Any,
+    model: str,
+    messages: list[dict[str, Any]],
+) -> str:
+    """
+    Call ``client.chat.completions.create`` for summarization while tolerating
+    the OpenAI parameter rename (newer reasoning models — gpt-5, o-series —
+    require ``max_completion_tokens``; older chat models still take
+    ``max_tokens``).
+
+    Strategy: try ``max_completion_tokens`` first; on the specific
+    ``unsupported_parameter`` 400 fall back to ``max_tokens``. Cache the
+    winning shape on the client instance so we only pay the round-trip once.
+    """
+    cap = int(os.getenv("AGENT_SUMMARY_MAX_OUTPUT_TOKENS", "2000"))
+    cache_attr = "_agent_summary_param_name"
+    cached = getattr(client, cache_attr, None)
+
+    def _try(param_name: str) -> str:
+        kwargs: dict[str, Any] = {
+            "model": model,
+            "messages": messages,
+            param_name: cap,
+        }
+        # ``temperature`` is also rejected on some reasoning models; only set it
+        # when we're already on the legacy parameter name (older chat models).
+        if param_name == "max_tokens":
+            kwargs["temperature"] = 0.2
+        resp = client.chat.completions.create(**kwargs)
+        choice = resp.choices[0].message
+        return (choice.content or "").strip()
+
+    if cached:
+        return _try(cached)
+
+    try:
+        out = _try("max_completion_tokens")
+        try:
+            setattr(client, cache_attr, "max_completion_tokens")
+        except (AttributeError, TypeError):
+            pass
+        return out
+    except Exception as exc:  # noqa: BLE001
+        msg = str(exc)
+        if "max_completion_tokens" in msg or "max_tokens" in msg or "Unsupported parameter" in msg:
+            out = _try("max_tokens")
+            try:
+                setattr(client, cache_attr, "max_tokens")
+            except (AttributeError, TypeError):
+                pass
+            return out
+        raise
+
+
+def emergency_compact_inplace(
+    messages: list[dict[str, Any]],
+    *,
+    emit: Callable[[str, Any], None] | None = None,
+    target_ratio: float | None = None,
+    force: bool = False,
+) -> int:
+    """
+    Last-resort, **non-LLM** compaction: drop the oldest non-system / non-tail
+    messages until the estimated token count is back under
+    ``target_ratio * max_context_tokens()``. The dropped run is replaced with
+    a single ``role=user`` "[emergency-compacted: N messages elided]" placeholder
+    so the conversation flow stays valid (and tool_call/tool pairing in the
+    surviving tail is preserved).
+
+    This guarantees forward progress when the LLM summarizer is unavailable
+    (network, 400, billing, …). Returns the number of messages elided.
+
+    Pass ``force=True`` when the upstream API has already told us we're over the
+    real limit (so even if our internal char/4 estimate is optimistic, we still
+    need to evict). Without ``force``, we respect the estimator and skip when
+    we look fine.
+    """
+    if len(messages) <= 4:
+        return 0
+    ratio = target_ratio if target_ratio is not None else compress_trigger_ratio()
+    cap = int(max_context_tokens() * ratio)
+
+    # Aggressive micro-compact first: drop ``keep`` to 2 so we squeeze every
+    # tool result we can before throwing away whole turns.
+    saved_env = os.environ.get("AGENT_KEEP_RECENT_TOOL_RESULTS")
+    os.environ["AGENT_KEEP_RECENT_TOOL_RESULTS"] = "2"
+    try:
+        micro_compact_inplace(messages, emit=emit)
+    finally:
+        if saved_env is None:
+            os.environ.pop("AGENT_KEEP_RECENT_TOOL_RESULTS", None)
+        else:
+            os.environ["AGENT_KEEP_RECENT_TOOL_RESULTS"] = saved_env
+
+    if not force and estimate_message_tokens(messages) <= cap:
+        return 0
+
+    preserve_n = max(2, preserve_recent_message_count() // 2)
+    if len(messages) <= 1 + preserve_n:
+        return 0
+
+    # Walk forward from the system message, dropping until either we're under
+    # the cap or we've eaten everything that isn't the tail we promised to
+    # preserve. Always end up with valid tool_call/tool pairing in the tail.
+    tail = _strip_leading_tools(messages[-preserve_n:])
+    if not tail:
+        return 0
+
+    elided_count = len(messages) - 1 - len(tail)
+    if elided_count <= 0:
+        return 0
+
+    placeholder = {
+        "role": "user",
+        "content": (
+            f"[emergency-compacted: {elided_count} early messages elided to free "
+            "context after summary failed; spill / transcript history may still "
+            "be readable via read_file]"
+        ),
+    }
+    messages[:] = [messages[0], placeholder, *tail]
+    if emit is not None:
+        emit(
+            "emergency_compact",
+            {
+                "elided_count": elided_count,
+                "kept_tail": len(tail),
+                "estimated_tokens_after": estimate_message_tokens(messages),
+            },
+        )
+    return elided_count
+
+
 def _save_transcript_snapshot(messages: list[dict[str, Any]], root: Path) -> Path:
     ensure_memory_layout(root)
     ts = int(time.time())
@@ -332,24 +488,25 @@ def maybe_compress_conversation(
         "Do not invent facts; if something was uncertain, say so. Max ~800 words."
     )
 
+    summary = ""
     try:
-        resp = client.chat.completions.create(
+        summary = _summarize_with_fallback(
+            client=client,
             model=summary_model,
             messages=[
                 {"role": "system", "content": summarizer_system},
                 {"role": "user", "content": payload},
             ],
-            temperature=0.2,
-            max_tokens=2000,
         )
-        choice = resp.choices[0].message
-        summary = (choice.content or "").strip()
     except Exception as exc:  # noqa: BLE001 — best-effort; do not break the agent
         if emit:
             emit(
                 "context_compress_error",
-                {"error": str(exc), "message": "Summary API failed; skipping compression"},
+                {"error": str(exc), "message": "Summary API failed; falling back to emergency_compact"},
             )
+        # Don't crash — let emergency_compact below at least free room so the
+        # next API call has a chance.
+        emergency_compact_inplace(messages, emit=emit)
         return False
 
     if not summary:
