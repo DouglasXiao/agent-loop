@@ -22,6 +22,8 @@ TOOL_ACCESS: dict[str, ToolAccess] = {
     "task": "mutate",
     "bg_run": "system",
     "bg_check": "read",
+    "worktree": "system",
+    "team": "mutate",
     "get_weather": "network",
     "web_fetch": "network",
     "run_terminal_cmd": "system",
@@ -407,6 +409,76 @@ STANDARD_TOOLS: list[dict[str, Any]] = [
                 "properties": {
                     "task_id": {"type": "string"},
                 },
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "worktree",
+            "description": (
+                "Manage git worktrees so parallel work streams stay in isolated directories. "
+                "Each worktree is created on a new branch `wt/<name>`, registered in "
+                "`.worktrees/index.json`, and optionally bound to a task_id (binding pushes the "
+                "task to in_progress). Lifecycle is logged to `.worktrees/events.jsonl`. "
+                "Actions: create (name, optional task_id, optional base), remove (name; "
+                "optional complete_task=true to mark bound task done; force=true on stubborn "
+                "removals; delete_branch=true to also git branch -D), keep (mark a worktree as "
+                "kept-after-task-done), list, run (name + command — runs cwd=worktree path), "
+                "events (limit?=20). System risk class — requires AGENT_ALLOW_BASH=1."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["create", "remove", "keep", "list", "run", "events"],
+                    },
+                    "name": {"type": "string"},
+                    "task_id": {"type": "integer"},
+                    "base": {"type": "string", "description": "Branch/sha to fork from (default HEAD)"},
+                    "command": {"type": "string", "description": "For action=run"},
+                    "timeout_sec": {"type": "number"},
+                    "force": {"type": "boolean"},
+                    "complete_task": {"type": "boolean"},
+                    "delete_branch": {"type": "boolean"},
+                    "limit": {"type": "integer", "description": "For action=events"},
+                },
+                "required": ["action"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "team",
+            "description": (
+                "File-based team mailbox under `.team/`. Use it to leave structured notes for "
+                "collaborators (other sessions, the human, future runs). roster.json holds "
+                "members; each member has an append-only inbox `.team/inbox/<name>.jsonl`. "
+                "Actions: register (name, role?), send (to, content, from?, type?), "
+                "broadcast (content, from?, type?) — sends to every roster name except the "
+                "sender, read (name, drain?=true) — reads and clears the inbox by default, "
+                "peek (name, limit?=20) — non-destructive view, list (roster + inbox depths). "
+                "Mutate risk class."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["register", "send", "broadcast", "read", "peek", "list"],
+                    },
+                    "name": {"type": "string"},
+                    "to": {"type": "string"},
+                    "from": {"type": "string"},
+                    "role": {"type": "string"},
+                    "content": {"type": "string"},
+                    "type": {"type": "string"},
+                    "drain": {"type": "boolean"},
+                    "limit": {"type": "integer"},
+                },
+                "required": ["action"],
             },
         },
     },

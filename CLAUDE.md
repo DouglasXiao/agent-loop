@@ -12,6 +12,8 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `todo_manager.py` — persistent in-task todo list under `.claude/todos/current.json`.
 - `task_graph.py` — durable task graph under `.claude/tasks/task_<id>.json` (status + blockedBy DAG; survives restart).
 - `bg_tasks.py` — in-process background shell runner (`bg_run` / `bg_check`); finished tasks auto-injected as `<background-results>` before the next agent turn.
+- `worktree.py` — git worktree task isolation (`worktree create/remove/keep/list/run/events`); registry under `.worktrees/index.json`, lifecycle log under `.worktrees/events.jsonl`; can bind to a `task_id` so create→in_progress and remove(complete_task)→completed flip in lockstep.
+- `team_mailbox.py` — file-based team mailbox under `.team/` (register / send / broadcast / read / peek / list). Append-only JSONL inboxes per teammate.
 - `skill_loader.py` — on-demand skills under `.claude/skills/<name>/SKILL.md` (`list_skills` / `load_skill`).
 - `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors).
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
@@ -34,6 +36,8 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - Skills live at `.claude/skills/<name>/SKILL.md` with optional YAML frontmatter `--- name: foo\ndescription: short blurb ---`. The system prompt advertises name + description per skill (cheap); call `load_skill(name=...)` to pull the full body.
 - **`task`** is the persistent task graph (vs. `todo_write`'s in-session list). Use it when work needs to outlive the conversation or has explicit dependency edges. Completing a task auto-strips its id from every other task's `blockedBy`.
 - **`bg_run` / `bg_check`** spawn slow shell work in a daemon thread (requires `AGENT_ALLOW_BASH=1`, system risk class). The orchestrator drains finished tasks at the top of every loop turn into a `<background-results>` user message so the model reacts on the next decision.
+- **`worktree`** isolates parallel work in `git worktree` directories on `wt/<name>` branches. Pair with `task` via `task_id` so the task lifecycle and the worktree lifecycle stay in sync; `worktree remove ... complete_task=true` marks the bound task done atomically. Requires `AGENT_ALLOW_BASH=1`.
+- **`team`** is a file-based mailbox for cross-session notes (no live agent threads). Use `register` once, then `send/broadcast/peek/read`. `read` drains by default — call `peek` if you want to look without consuming.
 - Three-layer context compaction:
   1. Per-turn `micro_compact_inplace` shrinks `role=tool` messages older than `AGENT_KEEP_RECENT_TOOL_RESULTS` (default 6) to a one-line placeholder; spill path is preserved so the body stays readable via `read_file`.
   2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block.

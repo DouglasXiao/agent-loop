@@ -46,12 +46,18 @@
 - 新增 SSE 事件 `micro_compact`，包含 `replaced_count` / `freed_chars`。
 - 兼容现有 spill 机制；与 Phase 1 的 todo 持久化互补（todo 不进 micro-compact，因为它本身在工具结果里就只是几行）。
 
-## 3. 后续阶段（本次会话**不做**，留作 backlog）
+## 3. 后续阶段进度
 
-- **Phase 4**：subagent 协议结构化（label、错误分类、token usage 回写、spill 路径回流主代理）。
-- **Phase 5**：`.claude/skills/<name>/SKILL.md` 按需加载（list_skills / load_skill 工具）。
-- **Phase 6**：持久化 `task_graph`（s07）+ background tasks（s08）。
-- **Phase 7+**：team mailbox、协议握手、autonomous 自认领、worktree 隔离（s09–s12）。
+- **Phase 4 ✅**：subagent 协议结构化（label、error_category、rounds_used、duration_ms、tools_used、tool_errors；config_error 提前快路径；wall-clock 超时）。
+- **Phase 5 ✅**：`.claude/skills/<name>/SKILL.md` 按需加载（list_skills / load_skill；YAML frontmatter；system prompt 内联索引；附带 git-commit / code-review 两个 seed skill）。
+- **Phase 6 ✅**：持久化 `task_graph`（s07，`.claude/tasks/`，blockedBy DAG）+ background tasks（s08，`bg_run` / `bg_check`，下一轮自动 drain 为 `<background-results>`）。
+- **Phase 7 ✅**：worktree 隔离（s12，`.worktrees/index.json` + `events.jsonl`，与 `task` 绑定，`complete_task=true` 原子完成）+ team mailbox 雏形（s09 子集，`.team/inbox/<name>.jsonl` 文件型；不含 s10 协议握手 / s11 autonomous loop）。
+
+## 4. 仍未覆盖（明确留白）
+
+- **s10 协议握手**：shutdown / plan-approval 的 request_id ↔ response_id FSM；当前 mailbox 已经能承载消息载体，但没有强制状态机。
+- **s11 autonomous claim loop**：teammate 自动扫看板认领任务；需要长期运行的子线程或独立进程，跨 session 设计点更多。
+- **MCP 化**：把 sub_agent / task / worktree 抽成独立 MCP server 的可能性。
 
 ## 4. 提交策略
 

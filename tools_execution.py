@@ -532,6 +532,22 @@ def execute_tool(tool_name: str, tool_input: dict[str, Any], policy: ToolPolicy 
         from bg_tasks import handle_bg_check
 
         result = handle_bg_check(tool_input)
+    elif tool_name == "worktree":
+        if os.getenv("AGENT_ALLOW_BASH", "").strip() != "1":
+            result = (
+                "worktree is disabled. Set AGENT_ALLOW_BASH=1 in the environment to enable "
+                "(system risk: shells out to `git worktree`)."
+            )
+        else:
+            from worktree import handle_worktree_tool
+
+            root = Path.cwd()
+            result = handle_worktree_tool(str(tool_input.get("action", "")), tool_input, root=root)
+    elif tool_name == "team":
+        from team_mailbox import handle_team_tool
+
+        root = Path(__file__).resolve().parent
+        result = handle_team_tool(str(tool_input.get("action", "")), tool_input, root=root)
     elif tool_name == "glob_files":
         result = glob_files(pattern=tool_input["pattern"], path=tool_input.get("path"))
     elif tool_name == "grep_files":
