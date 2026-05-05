@@ -137,21 +137,66 @@ def _classify_api_error(exc: BaseException) -> tuple[str, str]:
 
 
 def _build_assistant_msg(msg: Any) -> dict[str, Any]:
-    return {
-        "role": "assistant",
-        "content": msg.content,
-        "tool_calls": [
-            {
-                "id": tc.id,
-                "type": getattr(tc, "type", None) or "function",
-                "function": {
-                    "name": tc.function.name,
-                    "arguments": tc.function.arguments or "{}",
-                },
-            }
-            for tc in (getattr(msg, "tool_calls", None) or [])
-        ],
-    }
+    """
+    Build the assistant message dict to append to ``messages`` for the next API call.
+
+    Strategy: when ``msg`` is a Pydantic model (the OpenAI SDK case), use
+    ``model_dump(exclude_none=True)`` so we capture *every* field the server
+    actually returned — including provider-specific extras the standard
+    OpenAI tool_call schema doesn't define. The most important one in
+    practice is Gemini's ``thought_signature`` on each tool_call: Gemini's
+    "thinking" models embed an opaque per-call token in the response and
+    require it to be echoed back verbatim on the next request, otherwise
+    multi-round tool conversations 4xx with::
+
+        Function call is missing a thought_signature in functionCall parts.
+        ... missing thought_signature may lead to degraded model performance.
+
+    OpenAI Python SDK pydantic models are configured with ``extra='allow'``,
+    so unknown fields survive ``model_dump`` and round-trip on the next
+    ``create()``. Plain OpenAI / OpenRouter responses just won't have any
+    extras to dump, so the behaviour is unchanged on those routes.
+
+    Then we normalize the bits the chat protocol is strict about:
+      - ``role`` is always ``"assistant"``.
+      - Each ``tool_calls[i].type`` defaults to ``"function"``.
+      - ``tool_calls[i].function.arguments`` is always a JSON **string**
+        (some providers return a parsed dict when ``stream=False``;
+        the chat API expects a string).
+    """
+    if hasattr(msg, "model_dump"):
+        d = msg.model_dump(exclude_none=True)
+    else:
+        d = {
+            "role": "assistant",
+            "content": getattr(msg, "content", None),
+            "tool_calls": [
+                {
+                    "id": tc.id,
+                    "type": getattr(tc, "type", None) or "function",
+                    "function": {
+                        "name": tc.function.name,
+                        "arguments": tc.function.arguments or "{}",
+                    },
+                }
+                for tc in (getattr(msg, "tool_calls", None) or [])
+            ],
+        }
+
+    d["role"] = "assistant"
+    for tc in d.get("tool_calls") or []:
+        tc.setdefault("type", "function")
+        fn = tc.get("function") or {}
+        args = fn.get("arguments")
+        if not isinstance(args, str):
+            try:
+                fn["arguments"] = (
+                    json.dumps(args, ensure_ascii=False) if args is not None else "{}"
+                )
+            except (TypeError, ValueError):
+                fn["arguments"] = "{}"
+            tc["function"] = fn
+    return d
 
 
 # -------- main entry -------------------------------------------------------

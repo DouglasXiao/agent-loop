@@ -16,7 +16,7 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `team_mailbox.py` — file-based team mailbox under `.team/` (register / send / broadcast / read / peek / list). Append-only JSONL inboxes per teammate.
 - `trajectory_logger.py` — append one JSONL record per user turn under `.claude/trajectories/<task_id>.jsonl`: `{user_input, thought, tool_calls, tool_results, final_answer, rounds, model:{requested,actual[]}, usage}`. Substrate for SFT/DPO/RL on the agent.
 - `skill_loader.py` — on-demand skills under `.claude/skills/<name>/SKILL.md` (`list_skills` / `load_skill`).
-- `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors).
+- `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors). The assistant-history serializer uses `msg.model_dump()` so provider-specific extras (e.g. Gemini's per-tool-call `thought_signature`) round-trip across rounds — required for multi-round tool use against Gemini "thinking" models.
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
 - `requirements.txt` — dependencies.
 - `.env` — local secrets (not committed). Provider selection is automatic:
