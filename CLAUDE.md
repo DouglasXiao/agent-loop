@@ -14,6 +14,7 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `bg_tasks.py` — in-process background shell runner (`bg_run` / `bg_check`); finished tasks auto-injected as `<background-results>` before the next agent turn.
 - `worktree.py` — git worktree task isolation (`worktree create/remove/keep/list/run/events`); registry under `.worktrees/index.json`, lifecycle log under `.worktrees/events.jsonl`; can bind to a `task_id` so create→in_progress and remove(complete_task)→completed flip in lockstep.
 - `team_mailbox.py` — file-based team mailbox under `.team/` (register / send / broadcast / read / peek / list). Append-only JSONL inboxes per teammate.
+- `trajectory_logger.py` — append one JSONL record per user turn under `.claude/trajectories/<task_id>.jsonl`: `{user_input, thought, tool_calls, tool_results, final_answer, rounds, model:{requested,actual[]}, usage}`. Substrate for SFT/DPO/RL on the agent.
 - `skill_loader.py` — on-demand skills under `.claude/skills/<name>/SKILL.md` (`list_skills` / `load_skill`).
 - `sub_agent.py` — isolated worker agents (`run_sub_agent` / parallel) with structured `SubAgentResult` (label, error_category, rounds_used, duration_ms, tools_used, tool_errors).
 - `PLAN.md` — improvement roadmap aligned with shareAI-lab/learn-claude-code.
@@ -21,7 +22,7 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
 - `.env` — local secrets (not committed). Provider selection is automatic:
   - **OpenRouter (recommended)** — set `OPENROUTER_API_KEY=sk-or-...`. Optional: `OPENROUTER_BASE_URL` (default `https://openrouter.ai/api/v1`), `OPENROUTER_MODEL` (default `openrouter/auto` — OpenRouter's per-request auto-router; pin to e.g. `anthropic/claude-sonnet-4.6` if you want a specific model. `OPENAI_MODEL` is honored as a back-compat fallback), `OPENROUTER_REFERER` (sent as `HTTP-Referer`), `OPENROUTER_TITLE` (sent as `X-Title`).
   - **Plain OpenAI / OpenAI-compatible fallback** — set `OPENAI_API_KEY`, optional `OPENAI_BASE_URL`, `OPENAI_MODEL` (default `gpt-5`). Used only when `OPENROUTER_API_KEY` is empty.
-  - Other: `OPENWEATHER_API_KEY`, `SUB_AGENT_*` (sub-agents have their own credentials, independent of the orchestrator's provider).
+  - Other: `OPENWEATHER_API_KEY`, `SUB_AGENT_*` (sub-agents have their own credentials, independent of the orchestrator's provider), `AGENT_TRAJECTORY=0|1`, `AGENT_TRAJECTORY_ID=<stable-id>`.
 
 ## Commands
 
@@ -46,6 +47,11 @@ A minimal **Python agent loop** using the OpenAI-compatible chat API with **stre
   2. When estimated tokens cross `AGENT_CONTEXT_COMPRESS_RATIO * AGENT_MAX_CONTEXT_TOKENS`, an LLM summary collapses early turns. A full pre-compression transcript is first snapshotted to `.claude/memory/transcripts/transcript_<ts>_<id>.jsonl`; the path is included in the summary block. The summarizer call auto-detects whether the model wants `max_completion_tokens` (gpt-5 / o-series) or `max_tokens` (older chat models) and caches the winner per client.
   3. `emergency_compact_inplace` — non-LLM, deterministic last resort. Drops the oldest non-system / non-tail messages and replaces them with a single placeholder. Triggered automatically (a) before each LLM call when usage crosses `AGENT_EMERGENCY_COMPACT_RATIO`, (b) after a summary attempt fails, and (c) inside `_stream_one_completion` when the upstream returns `context_length_exceeded` (it then retries the call once).
 - `_stream_one_completion` re-raises non-context-limit errors so the outer loop can SSE-emit `upstream_error` and return `None` instead of tracebacking out of the process.
+- **Trajectory logging** (`AGENT_TRAJECTORY=1` default; disable with `AGENT_TRAJECTORY=0`):
+  - One JSONL file per session under `.claude/trajectories/<task_id>.jsonl`. The session id is auto-generated as `sess_<unix_ts>_<uuid8>`; pin a stable id via `AGENT_TRAJECTORY_ID=...` for repeatable evals.
+  - One record per **user turn** (one user input → one final answer, possibly with multiple intermediate LLM rounds + tool calls). Shape documented in `trajectory_logger.py`.
+  - The system prompt asks the model to wrap reasoning in `<thinking>...</thinking>` tags; `extract_thought()` strips them out so `final_answer` only contains user-visible text and `thought` carries the reasoning. We additionally capture `delta.reasoning_content` / `delta.reasoning` from streaming chunks (o-series, R1, extended-thinking) — both sources merge into `thought`.
+  - The `system_prompt` SSE event reports the active trajectory path so external tooling can tail it live.
 
 ## Style
 

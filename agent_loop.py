@@ -26,6 +26,7 @@ from bg_tasks import manager as bg_manager, render_drain_message
 from skill_loader import discover_skills, render_skill_index, skills_dir
 from task_graph import render_task_prompt_section, tasks_dir
 from todo_manager import TodoState, todos_file
+from trajectory_logger import TrajectoryLogger, extract_thought, trajectories_dir
 from tools_execution import execute_tool
 from tools_registry import (
     STANDARD_TOOLS,
@@ -143,6 +144,17 @@ client, MODEL, PROVIDER = _build_main_client()
 
 CLAUDE_MD_FILENAME = "CLAUDE.md"
 
+# Trajectory logger — one JSONL file per session under .claude/trajectories/.
+# Disabled with AGENT_TRAJECTORY=0; pin a stable id with AGENT_TRAJECTORY_ID.
+_traj_logger: TrajectoryLogger | None = None
+
+
+def trajectory_logger() -> TrajectoryLogger:
+    global _traj_logger
+    if _traj_logger is None:
+        _traj_logger = TrajectoryLogger.from_env(project_root())
+    return _traj_logger
+
 
 def project_root() -> Path:
     return Path(__file__).resolve().parent
@@ -240,6 +252,15 @@ def build_system_prompt(
         claude if claude else "(No CLAUDE.md found at project root; use read_file on README or source as needed.)",
         "",
         memory_prompt_section(root),
+        "",
+        "[思考标签 — 用于轨迹日志]",
+        "Wrap any internal reasoning in `<thinking>...</thinking>` tags; "
+        "content outside the tags is what the user sees as your reply. "
+        "We extract `<thinking>` blocks into the trajectory log's `thought` "
+        "field — useful for replay, eval, and future SFT/DPO training. "
+        "Skip the tags for trivial answers (greetings, single tool dispatch with no judgment). "
+        "Do **not** restate tool results inside `<thinking>` (they're logged separately). "
+        "Tags are case-insensitive; nesting is not supported.",
         "",
         "[当前 TODO 列表（持久化）]",
         _render_current_todos(root),
@@ -447,6 +468,7 @@ def _stream_one_completion(
             raise
 
     content_parts: list[str] = []
+    reasoning_parts: list[str] = []  # only populated by reasoning models (o-series, R1, …)
     tool_calls_acc: dict[int, dict[str, Any]] = {}
     finish_reason: str | None = None
     actual: str | None = None
@@ -472,6 +494,14 @@ def _stream_one_completion(
         delta = choice.delta
         if delta is None:
             continue
+
+        # Some providers stream the model's chain-of-thought separately from
+        # the user-visible content (OpenAI o-series uses ``reasoning_content``;
+        # DeepSeek-R1 uses ``reasoning``). Capture either form when present —
+        # we'll merge it with any ``<thinking>`` blocks in ``content`` later.
+        rc = getattr(delta, "reasoning_content", None) or getattr(delta, "reasoning", None)
+        if isinstance(rc, str) and rc:
+            reasoning_parts.append(rc)
 
         if delta.content:
             emit("content_delta", {"chunk": delta.content})
@@ -506,6 +536,18 @@ def _stream_one_completion(
     if tool_calls_list:
         assistant_msg["tool_calls"] = tool_calls_list
 
+    # Smuggle out-of-band fields under leading-underscore keys so the caller
+    # can pluck them off before the message gets sent back to the API on the
+    # next turn (the chat protocol doesn't accept these).
+    reasoning_text = "".join(reasoning_parts).strip()
+    if reasoning_text:
+        assistant_msg["_reasoning_content"] = reasoning_text
+    assistant_msg["_routed_meta"] = {
+        "requested": model,
+        "actual": actual or model,
+        "usage": usage,
+    }
+
     emit("model_routed", {"requested": model, "actual": actual or model, "usage": usage})
     emit(
         "finish",
@@ -524,12 +566,19 @@ def _run_one_tool_call(
     *,
     root: Path,
     emit: Callable[[str, Any], None],
-) -> dict[str, Any]:
+) -> tuple[dict[str, Any], dict[str, Any]]:
     """
     Execute a single ``tool_call`` end-to-end: parse args, dispatch, budget result, emit SSE.
 
-    Returns the ``role=tool`` history message for ``messages.extend(...)``. Errors are
-    captured into the ``content`` field so the model can recover instead of crashing the loop.
+    Returns ``(history_msg, meta_record)``:
+      - ``history_msg``  → ``{"tool_call_id", "role": "tool", "content"}``
+                           goes back into ``messages`` for the next API call.
+      - ``meta_record``  → ``{"tool_call_id", "name", "arguments", "result",
+                           "duration_ms", "error"}`` for the trajectory log.
+
+    Errors are captured into ``history_msg.content`` (so the model can recover
+    instead of crashing the loop) **and** into ``meta_record.error`` (so the
+    trajectory file can flag failed calls cleanly).
     """
     tool_name = (tc.get("function") or {}).get("name") or "<unknown>"
     raw_args = (tc.get("function") or {}).get("arguments") or "{}"
@@ -540,7 +589,17 @@ def _run_one_tool_call(
     except json.JSONDecodeError as e:
         err = f"Invalid JSON arguments for {tool_name}: {e}; raw={raw_args!r}"
         emit("tool_error", {"tool_call_id": tool_call_id, "tool": tool_name, "error": err})
-        return {"tool_call_id": tool_call_id, "role": "tool", "content": err}
+        return (
+            {"tool_call_id": tool_call_id, "role": "tool", "content": err},
+            {
+                "tool_call_id": tool_call_id,
+                "name": tool_name,
+                "arguments": raw_args,
+                "result": err,
+                "duration_ms": int((time.monotonic() - started) * 1000),
+                "error": "json_decode",
+            },
+        )
 
     emit(
         "tool_call",
@@ -557,7 +616,17 @@ def _run_one_tool_call(
             "tool_error",
             {"tool_call_id": tool_call_id, "tool": tool_name, "error": err},
         )
-        return {"tool_call_id": tool_call_id, "role": "tool", "content": err}
+        return (
+            {"tool_call_id": tool_call_id, "role": "tool", "content": err},
+            {
+                "tool_call_id": tool_call_id,
+                "name": tool_name,
+                "arguments": tool_args,
+                "result": err,
+                "duration_ms": int((time.monotonic() - started) * 1000),
+                "error": "unhandled_exception",
+            },
+        )
 
     content_for_history = budget_tool_result_for_messages(
         function_response,
@@ -574,7 +643,15 @@ def _run_one_tool_call(
     if len(content_for_history) < len(function_response):
         tr_payload["history_budgeted_from_chars"] = len(function_response)
     emit("tool_result", tr_payload)
-    return {"tool_call_id": tool_call_id, "role": "tool", "content": content_for_history}
+    history_msg = {"tool_call_id": tool_call_id, "role": "tool", "content": content_for_history}
+    meta_record = {
+        "tool_call_id": tool_call_id,
+        "name": tool_name,
+        "arguments": tool_args,
+        "result": content_for_history,
+        "duration_ms": duration_ms,
+    }
+    return history_msg, meta_record
 
 
 def _run_all_tool_calls(
@@ -582,7 +659,7 @@ def _run_all_tool_calls(
     *,
     root: Path,
     emit: Callable[[str, Any], None],
-) -> list[dict[str, Any]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """
     Execute one assistant turn's worth of ``tool_calls``.
 
@@ -594,15 +671,17 @@ def _run_all_tool_calls(
     Output order **always** matches input order — required by the OpenAI
     chat protocol so each ``role=tool`` message lines up with its
     ``tool_call_id`` from the previous assistant turn.
+
+    Returns ``(history_msgs, meta_records)`` — both lists in input order.
     """
     if not tool_calls:
-        return []
+        return [], []
 
     def parallelizable(tc: dict[str, Any]) -> bool:
         name = (tc.get("function") or {}).get("name") or ""
         return TOOL_ACCESS.get(name) in PARALLEL_TOOL_ACCESS_CLASSES
 
-    results: list[dict[str, Any] | None] = [None] * len(tool_calls)
+    results: list[tuple[dict[str, Any], dict[str, Any]] | None] = [None] * len(tool_calls)
 
     # Group consecutive parallelizable calls so the global ordering of
     # observable side effects (writes, sub-agent spawns) stays the same as
@@ -631,7 +710,15 @@ def _run_all_tool_calls(
             results[i] = _run_one_tool_call(tool_calls[i], root=root, emit=emit)
             i += 1
 
-    return [r for r in results if r is not None]
+    history_msgs: list[dict[str, Any]] = []
+    meta_records: list[dict[str, Any]] = []
+    for r in results:
+        if r is None:
+            continue
+        h, m = r
+        history_msgs.append(h)
+        meta_records.append(m)
+    return history_msgs, meta_records
 
 
 def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]:
@@ -639,6 +726,7 @@ def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]
     root = root or project_root()
     ensure_memory_layout(root)
     system_text, prompt_meta = build_system_prompt(tools_for_api(), root=root)
+    logger = trajectory_logger()
     emit_sse(
         "system_prompt",
         {
@@ -647,6 +735,11 @@ def init_conversation_messages(root: Path | None = None) -> list[dict[str, Any]]
             "project_root": str(root.resolve()),
             "provider": PROVIDER,
             "model": MODEL,
+            "trajectory": {
+                "enabled": logger.enabled,
+                "task_id": logger.task_id,
+                "path": str(logger.path) if logger.path else None,
+            },
         },
     )
     return [{"role": "system", "content": system_text}]
@@ -678,6 +771,11 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
 
     root = project_root()
     rounds_since_todo = 0
+
+    # Begin a structured turn record. Even with logging disabled the
+    # accumulator is cheap; we just don't write the JSONL at the end.
+    logger = trajectory_logger()
+    accum = logger.start_turn(user_input=user_text or "")
     while True:
         # Drain any background tasks that finished since the last LLM call so
         # the model can react in this turn instead of next.
@@ -718,12 +816,47 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
                     "estimated_tokens": estimate_message_tokens(messages),
                 },
             )
+            accum.set_final_answer("(aborted: upstream_error)")
+            logger.finish_turn(accum)
             return None
+
+        # Pluck out the smuggled trajectory metadata before the message goes
+        # back into the API history (chat protocol rejects unknown keys).
+        reasoning_extra = assistant_msg.pop("_reasoning_content", "") or ""
+        routed_meta = assistant_msg.pop("_routed_meta", None)
+
+        content_str = assistant_msg.get("content") or ""
+        thought_from_tags, visible_content = extract_thought(content_str)
+        merged_thought = (
+            (thought_from_tags + ("\n\n" + reasoning_extra if reasoning_extra else "")).strip()
+            if thought_from_tags
+            else reasoning_extra
+        )
+        accum.add_round(thought=merged_thought, routed=routed_meta)
+
         tool_calls = assistant_msg.get("tool_calls")
 
         if not tool_calls:
+            # Final answer = visible content (with <thinking> stripped). If the
+            # model didn't bother with tags, ``visible_content == content_str``.
+            accum.set_final_answer(visible_content or content_str)
+            logger.finish_turn(accum)
             emit_sse("final", {"text": assistant_msg.get("content")})
             return assistant_msg.get("content")
+
+        # Record the model's tool intent on the trajectory before execution.
+        for tc in tool_calls:
+            fn = tc.get("function") or {}
+            raw_args = fn.get("arguments") or "{}"
+            try:
+                parsed_args: Any = json.loads(raw_args)
+            except json.JSONDecodeError:
+                parsed_args = raw_args
+            accum.add_tool_call(
+                call_id=tc.get("id"),
+                name=fn.get("name"),
+                arguments=parsed_args,
+            )
 
         messages.append({k: v for k, v in assistant_msg.items() if v is not None})
 
@@ -737,7 +870,17 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
         else:
             rounds_since_todo += 1
 
-        tool_outputs = _run_all_tool_calls(tool_calls, root=root, emit=emit_sse)
+        tool_outputs, tool_meta = _run_all_tool_calls(tool_calls, root=root, emit=emit_sse)
+
+        # Mirror tool results to the trajectory accumulator in input order.
+        for meta in tool_meta:
+            accum.add_tool_result(
+                tool_call_id=meta.get("tool_call_id"),
+                name=meta.get("name"),
+                result=meta.get("result", ""),
+                duration_ms=meta.get("duration_ms"),
+                error=meta.get("error"),
+            )
 
         messages.extend(tool_outputs)
         emit_sse("tools_done", {"count": len(tool_outputs), "message": "工具已执行，继续推理…"})
@@ -762,6 +905,8 @@ def core_agent_loop_streaming(messages: list[dict[str, Any]]) -> str | None:
 
         if finish_reason not in (None, "tool_calls"):
             emit_sse("abort", {"reason": finish_reason, "message": "非正常结束"})
+            accum.set_final_answer(visible_content or content_str or f"(aborted: {finish_reason})")
+            logger.finish_turn(accum)
             return assistant_msg.get("content")
 
 
