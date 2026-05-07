@@ -119,11 +119,14 @@ def max_context_tokens() -> int:
 def compress_trigger_ratio() -> float:
     """
     Trigger summary compression when our estimated token usage crosses this
-    fraction of ``max_context_tokens``. Defaults to 0.7 (down from 0.9) so we
-    have headroom for the next assistant turn instead of crashing on a 4xx
-    after we're already at the cliff.
+    fraction of ``max_context_tokens``. Defaults to **0.5** — empirically
+    higher ratios (0.7+) let the prompt grow to 130k+ tokens before we start
+    summarizing, and a 130k-token prompt to a Pro reasoning model means a
+    20–60s wall-clock TTFT every round. Trading some early summary cost
+    for shorter prompts is the right ergonomic default. Override with
+    ``AGENT_CONTEXT_COMPRESS_RATIO``.
     """
-    return float(os.getenv("AGENT_CONTEXT_COMPRESS_RATIO", "0.7"))
+    return float(os.getenv("AGENT_CONTEXT_COMPRESS_RATIO", "0.5"))
 
 
 def preserve_recent_message_count() -> int:

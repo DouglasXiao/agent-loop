@@ -441,9 +441,25 @@ def _stream_one_completion(
       Emit ``upstream_context_overflow`` so callers can observe the recovery.
     - Any other 4xx/5xx is re-raised so the orchestrator can decide what to do.
 
-    Emits SSE: thinking, content_delta, model_routed, finish (tool 完整参数在 tool_call 事件中输出).
+    Emits SSE: ``thinking`` (request sent, awaiting first chunk), ``first_token``
+    (first chunk arrived — TTFT in ms), ``content_delta``, ``model_routed`` (with
+    ``ttft_ms`` + ``duration_ms``), ``finish`` (with ``duration_ms``).
     """
-    emit("thinking", {"model": model, "message": "模型推理中…"})
+    # Pre-flight: tell the user how big the prompt actually is. Most "thinking
+    # took forever" cases turn out to be "we sent 130k+ tokens to a Pro model"
+    # — surfacing the count makes the cause obvious from the SSE log alone.
+    est_in_tokens = estimate_message_tokens(messages)
+    emit(
+        "thinking",
+        {
+            "model": model,
+            "message": "请求已发出, 等待上游首 token (TTFT)…",
+            "messages_count": len(messages),
+            "estimated_input_tokens": est_in_tokens,
+        },
+    )
+
+    started = time.monotonic()
 
     try:
         stream = _open_stream(client, model=model, messages=messages, tools=tools)
@@ -453,7 +469,7 @@ def _stream_one_completion(
                 "upstream_context_overflow",
                 {
                     "error": str(exc),
-                    "estimated_tokens": estimate_message_tokens(messages),
+                    "estimated_tokens": est_in_tokens,
                     "action": "emergency_compact_and_retry",
                 },
             )
@@ -473,8 +489,31 @@ def _stream_one_completion(
     finish_reason: str | None = None
     actual: str | None = None
     usage: dict[str, int | None] | None = None
+    ttft_ms: int | None = None  # ms from "thinking" emit to first chunk with payload
 
     for chunk in stream:
+        # Stamp TTFT on the *first* chunk that carries any user-visible payload
+        # (content delta, tool_call delta, finish_reason, or usage). Some
+        # providers send empty heartbeat chunks; don't count those.
+        _has_payload = (
+            (chunk.choices and chunk.choices[0].delta is not None and (
+                chunk.choices[0].delta.content
+                or chunk.choices[0].delta.tool_calls
+                or getattr(chunk.choices[0].delta, "reasoning_content", None)
+                or getattr(chunk.choices[0].delta, "reasoning", None)
+            ))
+            or (chunk.choices and chunk.choices[0].finish_reason)
+            or getattr(chunk, "usage", None) is not None
+        )
+        if ttft_ms is None and _has_payload:
+            ttft_ms = int((time.monotonic() - started) * 1000)
+            emit(
+                "first_token",
+                {
+                    "ttft_ms": ttft_ms,
+                    "estimated_input_tokens": est_in_tokens,
+                },
+            )
         m = getattr(chunk, "model", None)
         if isinstance(m, str) and m.strip():
             actual = m.strip()
@@ -536,6 +575,9 @@ def _stream_one_completion(
     if tool_calls_list:
         assistant_msg["tool_calls"] = tool_calls_list
 
+    duration_ms = int((time.monotonic() - started) * 1000)
+    streaming_ms = (duration_ms - ttft_ms) if ttft_ms is not None else None
+
     # Smuggle out-of-band fields under leading-underscore keys so the caller
     # can pluck them off before the message gets sent back to the API on the
     # next turn (the chat protocol doesn't accept these).
@@ -546,15 +588,30 @@ def _stream_one_completion(
         "requested": model,
         "actual": actual or model,
         "usage": usage,
+        "ttft_ms": ttft_ms,
+        "duration_ms": duration_ms,
+        "streaming_ms": streaming_ms,
     }
 
-    emit("model_routed", {"requested": model, "actual": actual or model, "usage": usage})
+    emit(
+        "model_routed",
+        {
+            "requested": model,
+            "actual": actual or model,
+            "usage": usage,
+            "ttft_ms": ttft_ms,
+            "duration_ms": duration_ms,
+            "streaming_ms": streaming_ms,
+        },
+    )
     emit(
         "finish",
         {
             "reason": finish_reason,
             "has_tool_calls": bool(tool_calls_list),
             "content_length": len(text),
+            "duration_ms": duration_ms,
+            "ttft_ms": ttft_ms,
         },
     )
 

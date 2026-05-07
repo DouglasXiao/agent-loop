@@ -101,6 +101,8 @@ class TurnAccumulator:
     usage: dict[str, int] = field(
         default_factory=lambda: {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
     )
+    ttft_ms_per_round: list[int] = field(default_factory=list)
+    duration_ms_per_round: list[int] = field(default_factory=list)
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
 
     # ---- per-round bookkeeping ------------------------------------------
@@ -127,6 +129,14 @@ class TurnAccumulator:
                     v = u.get(k)
                     if isinstance(v, int):
                         self.usage[k] = self.usage.get(k, 0) + v
+                # Per-round latency profile — useful for spotting which round
+                # was the slow one when reviewing a trajectory after the fact.
+                ttft = routed.get("ttft_ms")
+                if isinstance(ttft, int):
+                    self.ttft_ms_per_round.append(ttft)
+                dur = routed.get("duration_ms")
+                if isinstance(dur, int):
+                    self.duration_ms_per_round.append(dur)
 
     def add_tool_call(self, *, call_id: str | None, name: str | None, arguments: Any) -> None:
         with self._lock:
@@ -177,6 +187,10 @@ class TurnAccumulator:
                     "actual": list(self.actual_models),
                 },
                 "usage": dict(self.usage),
+                "latency": {
+                    "ttft_ms_per_round": list(self.ttft_ms_per_round),
+                    "duration_ms_per_round": list(self.duration_ms_per_round),
+                },
             }
 
 
