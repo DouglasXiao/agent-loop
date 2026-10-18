@@ -1,0 +1,340 @@
+[
+  {
+    "id": "sleep-001",
+    "category": "sleep",
+    "title": "一天睡够10到13小时",
+    "body": "3–5 岁的孩子一天总共需要 10–13 小时睡眠，午睡也算在里面。比如晚上 9 点睡到早上 7 点，再加一个半小时午睡，就在范围内。够不够，主要看白天：早上能自己醒、下午不常无缘无故闹脾气，一般就差不多。数字只是参考，每天规律比精确到分钟更重要。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "duration",
+      "routine"
+    ],
+    "source_ids": [
+      "aasm",
+      "who-under5",
+      "moe-3-6-guide"
+    ],
+    "basis": "AASM 与 WHO：3–5岁每24小时睡10–13小时（含午睡），并保持规律作息。"
+  },
+  {
+    "id": "sleep-002",
+    "category": "sleep",
+    "title": "午睡越来越短时",
+    "body": "中午躺很久都睡不着，或者一睡午觉，晚上十点多还精神，可能是她对午睡的需求在变少。多数孩子在 3–5 岁之间慢慢不再午睡，早晚因人而异。不必硬哄着睡，改成半小时到一小时的「安静时间」：拉上窗帘，躺着翻书、听故事都行。睡着了就让她睡，但别拖到傍晚。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "nap",
+      "quiet-time"
+    ],
+    "source_ids": [
+      "kidshealth",
+      "who-under5"
+    ],
+    "basis": "KidsHealth：多数孩子3–5岁间逐渐停止午睡；WHO：3–4岁的睡眠总量可包含午睡。"
+  },
+  {
+    "id": "sleep-003",
+    "category": "sleep",
+    "title": "睡前程序天天一样",
+    "body": "洗澡、刷牙、读一本书、抱一抱、关灯，每天按同样的顺序来，她的身体会把这串动作当成「要睡觉了」的信号。整套下来二三十分钟就够，太长反而拖。可以和她一起画一张步骤图贴在床边，让她自己指着说「下一个是刷牙」。今晚就从固定顺序开始。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "routine",
+      "bedtime"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP「Brush, Book, Bed」：刷牙、读书、按时上床，固定睡前程序有助入睡。"
+  },
+  {
+    "id": "sleep-004",
+    "category": "sleep",
+    "title": "一张睡前通行证",
+    "body": "「我要喝水」「再抱一下」「我想尿尿」……关灯后要求一个接一个。可以做一张「通行证」卡片，每晚一张，能换一次额外要求，比如喝口水或再抱一下。用掉之后你再进来，只轻声说「该睡了」，少说话、不开灯。没用掉的卡，第二天早上可以换一张小贴纸。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "stalling",
+      "bedtime"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "睡前通行证研究（Friman 等）：每晚一张卡换一次要求，3–6岁孩子下床和哭闹减少。"
+  },
+  {
+    "id": "sleep-005",
+    "category": "sleep",
+    "title": "怕黑时别说“没有怪兽”",
+    "body": "3 岁后想象力暴涨，窗帘的影子都能变成怪兽。一句「哪有怪兽，别瞎想」反而让她觉得你不懂她。先接住：「黑黑的，确实有点吓人。」再给她一些掌控感：让她挑一盏暗暗的暖光小夜灯，开关由她自己按，再请一个毛绒玩具「站岗」。白天也可以玩关灯找东西的游戏。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "fear",
+      "dark"
+    ],
+    "source_ids": [
+      "child-mind",
+      "raising-children-au"
+    ],
+    "basis": "Child Mind Institute：认可孩子的恐惧并给应对工具，比否认或嘲笑更能缓解焦虑。"
+  },
+  {
+    "id": "sleep-006",
+    "category": "sleep",
+    "title": "做噩梦后，先抱紧",
+    "body": "半夜哭醒说「有大灰狼」，这时她是真醒了，也记得梦的内容。先抱住她，用平稳的声音说：「那是梦，我在这儿，你很安全。」不用当场追问细节。第二天白天如果她愿意，可以把梦画出来，再一起给它换个结尾：「大灰狼后来变成了一只小狗。」偶尔做噩梦很常见，多在后半夜。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "nightmares",
+      "comfort"
+    ],
+    "source_ids": [
+      "aap",
+      "kidshealth"
+    ],
+    "basis": "AAP/KidsHealth：噩梦多在后半夜，孩子会醒且记得，安抚和陪伴是主要应对。"
+  },
+  {
+    "id": "sleep-007",
+    "category": "sleep",
+    "title": "尖叫却叫不醒：夜惊",
+    "body": "睡下一两个小时后，她突然坐起来尖叫，眼睛睁着却好像不认识你，怎么哄都没用，这可能是夜惊。她其实还在深睡中，第二天也不记得。别使劲摇醒她，守在旁边防止磕碰，多数过一会儿会自己躺下。太累、睡得少时更容易发生。如果很频繁或伴有异常动作，问问儿科医生。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "night-terrors",
+      "safety"
+    ],
+    "source_ids": [
+      "kidshealth",
+      "aap"
+    ],
+    "basis": "KidsHealth/AAP：夜惊多在入睡后几小时内，孩子不醒也不记得，勿强行唤醒。"
+  },
+  {
+    "id": "sleep-008",
+    "category": "sleep",
+    "title": "灯亮了才起床",
+    "body": "天刚亮她就跑来：「起床啦！」先看看房间是不是太亮，遮光窗帘常常立刻见效。再试一盏定时小灯：灯亮了才能出房间，灯没亮就在床上抱着玩偶安静躺着，想上厕所随时可以去。先设在她平时醒的时间，连续成功几天后，再往后调十分钟左右。3 岁多的孩子看颜色，比看时钟容易懂。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "early-waking",
+      "routine"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "kidshealth"
+    ],
+    "basis": "Raising Children：早醒时保持房间暗、用固定信号告诉孩子何时可以起床。"
+  },
+  {
+    "id": "sleep-009",
+    "category": "sleep",
+    "title": "睡前一小时关屏幕",
+    "body": "平板、手机的光和紧张的情节，都会让她更难入睡。睡前至少一小时关掉屏幕，电子设备不放进卧室。把这一小时留给洗澡、拼图、聊天和读书。怕她吵着还要看，可以提前预告：「看完这一集，电视就要睡觉啦。」再请她亲手按关机键，让关机也变成一个小仪式。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "screen",
+      "bedtime"
+    ],
+    "source_ids": [
+      "aap",
+      "kidshealth"
+    ],
+    "basis": "AAP/KidsHealth：睡前至少1小时关闭屏幕，卧室不放电子设备，有助睡眠。"
+  },
+  {
+    "id": "sleep-010",
+    "category": "sleep",
+    "title": "周末也别睡到中午",
+    "body": "周末一晚睡晚起，周一早上就像倒时差：起床难，送园也爱哭。尽量让周末上床和起床的时间跟平时差不多。出去玩到很晚的那天，第二天早上也照常叫她起来，困了中午多睡一会儿补一补。WHO 对 3–4 岁的建议里，特别强调要有规律的睡觉和起床时间。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "weekend",
+      "routine"
+    ],
+    "source_ids": [
+      "who-under5",
+      "aasm"
+    ],
+    "basis": "WHO 2019 指南：3–4岁需10–13小时优质睡眠，并保持规律的入睡和起床时间。"
+  },
+  {
+    "id": "sleep-011",
+    "category": "sleep",
+    "title": "分床前先让她参与",
+    "body": "换大床或搬进自己的房间，什么时候开始每家不同，不用跟别人比。决定了就提前一两周开始聊，让她挑床单、选一个陪睡的玩偶。睡前程序照旧，头几天你在床边陪着，再慢慢坐远一点。记得装床边护栏、把柜子固定在墙上。赶上搬家、入园或添弟妹时，可以先缓一缓。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "big-bed",
+      "transition"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：过渡到大床时注意防跌落与家具固定；Raising Children：循序渐进地分床。"
+  },
+  {
+    "id": "sleep-012",
+    "category": "sleep",
+    "title": "半夜跑到大床来",
+    "body": "凌晨两点，一只小手拍拍你：「我要跟你睡。」如果全家都睡得好，一起睡也没问题。如果想让她回自己床，关键是每次都做同一件事：平静地牵她回去，抱一下，说「回你的床睡，明早我来接你」，少聊天，不开大灯。头几晚会反复，坚持一致，她会慢慢适应。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "night-waking",
+      "cosleeping"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "triple-p"
+    ],
+    "basis": "Raising Children/Triple P：每次以同样平静、简短的方式送回床，一致性是关键。"
+  },
+  {
+    "id": "sleep-013",
+    "category": "sleep",
+    "title": "幼儿园午睡睡不着",
+    "body": "不少幼儿园午睡两小时左右，刚入园的孩子在陌生的小床上常常睡不着。周末在家可以按幼儿园的时间试着午睡，上午多安排些户外活动。问问老师能不能带一块小手帕或小玩偶陪睡。提前告诉她：「睡不着也没关系，安静躺着休息就好。」她不紧张了，反而容易睡着。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "nap"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4岁在提醒下按时睡觉起床、坚持午睡；午睡一般2小时左右。"
+  },
+  {
+    "id": "sleep-014",
+    "category": "sleep",
+    "title": "打呼噜要留意",
+    "body": "感冒鼻塞时偶尔打呼噜很常见。但如果不感冒也常打鼾，一周三晚以上，或者睡觉总张着嘴呼吸、呼吸中间有停顿、睡得很不安稳、白天特别困或格外烦躁，就值得留意。可以用手机录一段她睡觉时的声音和画面，带给儿科医生看，判断是否需要进一步检查。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "snoring",
+      "health"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP 临床指南：应询问儿童打鼾情况，经常打鼾伴呼吸暂停等症状需进一步评估。"
+  },
+  {
+    "id": "sleep-015",
+    "category": "sleep",
+    "title": "关灯后的悄悄话",
+    "body": "关灯后、睡着前那几分钟，孩子常会说出白天不肯说的事：「今天小美不跟我玩。」这时她放松了，你也不赶时间。先别急着给建议，听完复述一下：「她不跟你玩，你有点难过。」每天留十来分钟当悄悄话时间，到点了就温柔收尾：「剩下的，我们明晚接着聊。」",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "connection",
+      "bedtime"
+    ],
+    "source_ids": [
+      "gottman",
+      "harvard-cdc"
+    ],
+    "basis": "Gottman 情绪辅导：倾听并命名孩子的情绪，帮助孩子平复并愿意继续倾诉。"
+  },
+  {
+    "id": "sleep-016",
+    "category": "sleep",
+    "title": "暗一点凉一点静一点",
+    "body": "房间太亮、太热、太吵，都会让她睡得浅、醒得早。晚上关掉大灯，需要小夜灯就选光线暗的暖色；被子别太厚，摸摸后颈不出汗就合适；楼下吵就关好窗，或放点音量很小的白噪音。睡前把玩具收进箱子，让床只是睡觉的地方。今晚躺在她床上看看，哪里还漏光。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "environment",
+      "bedroom"
+    ],
+    "source_ids": [
+      "kidshealth",
+      "nhs"
+    ],
+    "basis": "KidsHealth/NHS：卧室保持安静、昏暗、温度适宜，有助孩子入睡和睡稳。"
+  },
+  {
+    "id": "sleep-017",
+    "category": "sleep",
+    "title": "旅行生病后慢慢拉回",
+    "body": "回老家过年、出门旅行或者病了几天，作息乱掉很正常。生病时以休息和安抚为主，多陪一陪也没关系。好了以后，第一天就恢复原来的起床时间和睡前程序，早上拉开窗帘晒晒太阳。头几天她可能会闹，提前跟她说：「到家啦，今晚又是熟悉的刷牙、读书、关灯。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "travel",
+      "illness"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "aap"
+    ],
+    "basis": "Raising Children/AAP：作息被打乱后尽快恢复固定起床时间和睡前程序。"
+  },
+  {
+    "id": "sleep-018",
+    "category": "sleep",
+    "title": "白天跑够了，晚上好睡",
+    "body": "整天待在屋里，晚上她常常精力用不完。尽量每天带她出门晒太阳、跑跑跳跳，上午的阳光对调整生物钟尤其有帮助。WHO 建议 3–4 岁每天各种身体活动加起来至少 3 小时。下班晚的话，可以请老人白天带她多在户外玩，周末再多补一些。睡前一小时就别再疯跑了。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "outdoor",
+      "activity"
+    ],
+    "source_ids": [
+      "who-under5",
+      "cn-preschool-exercise"
+    ],
+    "basis": "WHO 2019：3–4岁每天各类身体活动累计至少180分钟；国内运动指南强调户外活动。"
+  },
+  {
+    "id": "sleep-019",
+    "category": "sleep",
+    "title": "温柔的起床五分钟",
+    "body": "早上一把掀开被子喊「快起来，要迟到了」，她多半会哭着开始一天。换成固定的起床小仪式：拉开窗帘让光进来，放同一首歌，抱着赖床五分钟，再问：「今天先穿袜子还是先刷牙？」给她一点选择。早上时间紧，就前一晚把衣服摆好，腾出这五分钟。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "morning",
+      "routine"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children/ZERO TO THREE：可预期的固定流程和有限选择让过渡更顺利。"
+  },
+  {
+    "id": "sleep-020",
+    "category": "sleep",
+    "title": "全家统一睡前规矩",
+    "body": "爸妈带睡是读书关灯，奶奶带睡是边看电视边哄，换个人她就不肯睡。找个时间全家坐下来，商量几条核心规矩：几点上床、睡前做哪几步、半夜醒了怎么应对，写成小卡片贴在门上。细节可以有各家风格，关键几步一致，她就更容易安心入睡。定好后当着她的面说一遍：「奶奶和爸爸妈妈都这样做。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "grandparents",
+      "consistency"
+    ],
+    "source_ids": [
+      "triple-p",
+      "aap"
+    ],
+    "basis": "Triple P：照护者之间规则一致能减少孩子的抗拒；AAP：规律的睡前程序有助入睡。"
+  }
+]

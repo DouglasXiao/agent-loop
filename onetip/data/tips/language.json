@@ -1,0 +1,679 @@
+[
+  {
+    "id": "language-001",
+    "category": "language",
+    "title": "话多到停不下是好事",
+    "body": "她从早说到晚，还冒出「我明天去过公园了」这种混着时间词的句子。这正是 3 岁语言爆发的样子：她在试用刚学会的规则，说错恰恰说明她在动脑。能和你来回聊上两轮、爱问「谁」「哪里」「为什么」，都是这个年龄的典型表现。今天就试：少挑错，多接一句「然后呢？」",
+    "age_min_months": 30,
+    "age_max_months": 42,
+    "tags": [
+      "milestone",
+      "talking"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "asha"
+    ],
+    "basis": "CDC 3岁里程碑：能来回对话至少两轮，会问谁、什么、哪里、为什么。"
+  },
+  {
+    "id": "language-002",
+    "category": "language",
+    "title": "把“为什么”抛回去",
+    "body": "「月亮为什么跟着我走？」一天被问几十遍，不必每次给标准答案。先简短答一句，再把球抛回去：「你觉得呢？」她的猜想常常很有意思。真不知道就直说：「好问题，我也不知道，晚上我们一起查查书。」让她看到大人也在找答案，比答得完美更重要。实在被问累了，也可以说：「我的脑袋要休息一下，吃完饭再聊。」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "questions",
+      "curiosity"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter",
+      "harvard-cdc"
+    ],
+    "basis": "Gopnik《园丁与木匠》：孩子靠提问和探索学习；哈佛中心：有来有回的互动塑造大脑。"
+  },
+  {
+    "id": "language-003",
+    "category": "language",
+    "title": "她说三个字，你说七个",
+    "body": "她指着窗外说「狗狗跑」，你别只回一声「嗯」。在她的话上加一点点：「对，小黄狗跑得好快，它在追球吧？」每次只多加一两个词或一条新信息，她刚好够得着，像给句子搭台阶。她不用跟着重复，听到就够了。今天就试：把她说的短句原样接住，再加长一点还给她。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "expansion",
+      "conversation"
+    ],
+    "source_ids": [
+      "hanen",
+      "asha"
+    ],
+    "basis": "Hanen 中心：在孩子原话上稍作扩展（expansion），能示范更长、更完整的句子。"
+  },
+  {
+    "id": "language-004",
+    "category": "language",
+    "title": "说错了，就说对给她听",
+    "body": "她说「我看见三个鸟」，与其说「不对，是三只，重说一遍」，不如自然地接：「对，你看见三只小鸟，它们在干嘛？」把正确说法轻轻放进回应里，关键词说得稍微清楚些，不要求她跟着说。她听得出差别，过一阵自己就会改；当场被纠正，反而容易不想开口。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "recast",
+      "grammar"
+    ],
+    "source_ids": [
+      "hanen",
+      "asha"
+    ],
+    "basis": "ASHA/Hanen：用自然复述示范正确说法（recast），比要求孩子重说更能促进语言。"
+  },
+  {
+    "id": "language-005",
+    "category": "language",
+    "title": "“吃”说成“七”不用急",
+    "body": "把「老师」说成「老西」、「吃饭」说成「七饭」，3 岁时很常见。zh、ch、sh 这类卷舌音和 s、z、c，不少孩子要到四五岁以后才说稳。别让她一遍遍跟读，你只要在回应里把这个词清楚说一次：「对，老师来了。」只要家人以外的人大多时候能听懂她，就先别担心。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "pronunciation",
+      "speech"
+    ],
+    "source_ids": [
+      "asha",
+      "cdc-milestones"
+    ],
+    "basis": "ASHA：部分语音到学龄前后期才掌握；CDC：3岁时外人多数时候能听懂孩子。"
+  },
+  {
+    "id": "language-006",
+    "category": "language",
+    "title": "少考问，多解说",
+    "body": "「这是什么颜色？」「一共几个？」一连串考题，孩子很快就不想答了。换成像体育解说员那样，说出她正在做的事：「你把红积木放到最上面，塔越来越高了，小心哦。」不用她回答，她却听到了大量新词，也感到你在专心看她。每天陪玩时试着解说五分钟。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "describe",
+      "play"
+    ],
+    "source_ids": [
+      "pcit",
+      "hanen"
+    ],
+    "basis": "PCIT 的 PRIDE 技巧：描述孩子正在做的事，能增进互动并丰富语言输入。"
+  },
+  {
+    "id": "language-007",
+    "category": "language",
+    "title": "问“怎么”，不问“是不是”",
+    "body": "「好玩吗？」「是不是小猫？」只需要点头或一个字。换成开放式问题，她就得组织一整句话：「小猫后来去哪儿了？」「要是下雨了，小兔子怎么办？」「你是怎么搭这么高的？」她答得短也没关系，你帮她补完整。一天里把一两个「是不是」换成「怎么」就很好。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "questions",
+      "conversation"
+    ],
+    "source_ids": [
+      "dialogic-reading",
+      "hanen"
+    ],
+    "basis": "对话式阅读与 Hanen：开放式提问比是非题引出更长、更复杂的回答。"
+  },
+  {
+    "id": "language-008",
+    "category": "language",
+    "title": "说完数到五",
+    "body": "大人问完一句，常常一秒后就自问自答了。3 岁的孩子需要时间在脑子里找词、排顺序。说完话后看着她，心里默数五下，必要时再多等几秒，表情保持期待。你会发现，她常常就在你快忍不住的时候开口。今天就试：问完「你想怎么玩？」，先闭上嘴。还是没回应，就给个选择：「搭房子还是开火车？」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "waiting",
+      "turn-taking"
+    ],
+    "source_ids": [
+      "hanen",
+      "harvard-cdc"
+    ],
+    "basis": "Hanen OWL 策略：说完后安静期待地等待（可达约10秒），给孩子开口的机会。"
+  },
+  {
+    "id": "language-009",
+    "category": "language",
+    "title": "别问“今天开心吗”",
+    "body": "接她放学时问「今天好玩吗」，十有八九只得到「好玩」或「忘了」。具体的问题更好答：「今天谁坐你旁边？」「午饭有没有绿色的菜？」「有什么事让你笑了？」能讲出当天的一件事，是 4 岁左右的语言能力。她不想说就别追问，晚饭或洗澡时常常会自己冒出来。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "narrative",
+      "preschool"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "moe-3-6-guide"
+    ],
+    "basis": "CDC 4岁里程碑：能讲出当天发生的至少一件事；教育部指南鼓励多与幼儿交谈。"
+  },
+  {
+    "id": "language-010",
+    "category": "language",
+    "title": "睡前说三件小事",
+    "body": "关灯后，和她轮流说说今天：一件开心的、一件好笑的、一件有点难的。你先说，给她做个样子：「爸爸今天在地铁上看到一只小狗，还戴着帽子！」讲过去的事要用到时间词和先后顺序，正是她这个年龄在练的本事。她只说一件也很好，说「不知道」就换你多讲一件。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "narrative",
+      "bedtime"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "book-30m-words"
+    ],
+    "basis": "CDC 4岁里程碑含讲述当天经历；Suskind《父母的语言》：日常多聊塑造语言能力。"
+  },
+  {
+    "id": "language-011",
+    "category": "language",
+    "title": "读绘本时把话筒给她",
+    "body": "读绘本不只是你念她听。对话式阅读是这样：指着画面引她说（「这是谁呀？」），肯定她的回答，帮她说长一点（「对，是小熊，它在找妈妈」），再请她说一遍。不必每页都问，一本书停三四处就够。研究发现，这样读对学龄前孩子口语的帮助比只是朗读更明显。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "reading",
+      "dialogic"
+    ],
+    "source_ids": [
+      "dialogic-reading",
+      "moe-3-6-guide"
+    ],
+    "basis": "What Works Clearinghouse：对话式阅读（PEER）对学龄前儿童口语有正向效果。"
+  },
+  {
+    "id": "language-012",
+    "category": "language",
+    "title": "最后几个字留给她",
+    "body": "读熟悉的书时，读到句尾停一下，让她来补：「小猪小猪去哪里，它要去……」她喊出「外婆家！」会特别得意。读完可以问：「还记得小猪先遇到了谁？」也可以把书和生活连起来：「你也去过外婆家，坐的什么车？」填空、回忆、联系自己，是对话式阅读常用的几种提问。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "reading",
+      "recall"
+    ],
+    "source_ids": [
+      "dialogic-reading"
+    ],
+    "basis": "对话式阅读 CROWD 提问法：填空、回忆、开放式、wh-问题、联系生活。"
+  },
+  {
+    "id": "language-013",
+    "category": "language",
+    "title": "拍着手念儿歌",
+    "body": "押韵和节奏帮她听出字音的异同，这是将来识字的底子。一边拍手一边念「小白兔，白又白」，每拍一下念一个字。念熟了玩「像不像」：「猫和帽，听起来像不像？猫和狗呢？」她答对答错都好玩。教育部指南也把喜欢跟读韵律感强的儿歌、童谣列为 3–4 岁的阅读目标。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "rhyme",
+      "literacy"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "asha"
+    ],
+    "basis": "教育部指南：3–4岁喜欢跟读韵律感强的儿歌童谣；ASHA：3–4岁开始会说押韵词。"
+  },
+  {
+    "id": "language-014",
+    "category": "language",
+    "title": "“后来呢？”接龙",
+    "body": "你开个头：「从前有只小象，它的鼻子突然打了个结……」然后停下来问「后来呢？」她接一句，你再接一句。不管她编得多离谱都接住，偶尔加个小难题：「可是天黑了，怎么办？」来回编故事能练先后、因果和想象。开车、排队、等上菜时都能玩，不需要道具。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "storytelling",
+      "imagination"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "hirsh-pasek"
+    ],
+    "basis": "教育部指南：4–5岁能较连贯地讲述；Hirsh-Pasek：游戏化对话促进语言与创造力。"
+  },
+  {
+    "id": "language-015",
+    "category": "language",
+    "title": "一次说两件事",
+    "body": "3 岁左右，多数孩子能听懂两步连在一起的指令。可以把它变成小游戏：「把袜子放进篮子里，再去拍拍爸爸的肩膀。」做到了就击个掌。如果她只做了第一步，先别说她不听话，可能是没记住，放慢一点、配上手势再说一次。快 4 岁时，可以试试三步。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "directions",
+      "listening"
+    ],
+    "source_ids": [
+      "asha",
+      "harvard-cdc"
+    ],
+    "basis": "ASHA 发育参考：约3岁能跟两步指令，4–5岁能跟更长的多步指令。"
+  },
+  {
+    "id": "language-016",
+    "category": "language",
+    "title": "藏起来，让她找",
+    "body": "上面、下面、里面、旁边、后面，这些方位词在游戏里学得最快。把她的小兔子藏起来，给线索：「它在沙发后面，旁边有个红色的东西。」找到后换她藏、她给你线索，她就得自己用上这些词。收玩具时也能顺口练：「把小车停在箱子旁边，积木放进盒子里。」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "spatial",
+      "game"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "vroom"
+    ],
+    "basis": "教育部指南科学领域：在生活和游戏中理解上下、前后、里外等方位。"
+  },
+  {
+    "id": "language-017",
+    "category": "language",
+    "title": "切水果时比一比",
+    "body": "分水果、分饼干，是学「多和少」「大和小」「一样多」的好时机：「你两块，我三块，谁的多？」「这根香蕉比那根长一点。」也可以让她来分：「请你给爸爸和你自己分得一样多。」她分错了别急，一起数一数。把比较词放进真实的选择里，比卡片上的题好懂得多。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "math",
+      "vocabulary"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "hirsh-pasek"
+    ],
+    "basis": "教育部指南：3–4岁能感知比较多少、大小、长短；在生活情境中学习数学语言。"
+  },
+  {
+    "id": "language-018",
+    "category": "language",
+    "title": "玩具电话打给奶奶",
+    "body": "拿块积木当手机：「喂，是小兔医生吗？我的熊熊肚子疼。」打电话时她看不见对方，就得把话说清楚：问好、说事、说再见。你们轮流演不同角色，你偶尔故意「没听清」，让她换个说法再讲一遍。玩熟了，再请她在真电话里给奶奶讲一件今天的事。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "pretend",
+      "conversation"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "harvard-cdc"
+    ],
+    "basis": "ZERO TO THREE：假装游戏帮助孩子练习语言、轮流和理解他人角色。"
+  },
+  {
+    "id": "language-019",
+    "category": "language",
+    "title": "聊聊“他心里怎么想”",
+    "body": "3 到 5 岁，孩子慢慢明白：别人心里想的，可能和自己不一样。读绘本时停一下问：「小红帽以为床上躺的是谁？其实是谁？」生活里也可以说出你的想法：「我以为你在睡觉，原来你在看书！」多用「以为」「觉得」「想」这些词，她会越来越能站在别人角度想。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "theory-of-mind",
+      "feelings"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter",
+      "zero-to-three"
+    ],
+    "basis": "Gopnik 等研究：3–5岁逐渐理解他人想法可能与己不同；谈论想法有助于这种理解。"
+  },
+  {
+    "id": "language-020",
+    "category": "language",
+    "title": "她卡住时，你慢下来",
+    "body": "「我我我想要……」2 岁半到 5 岁，不少孩子会经历一段说话不流畅期，多数会自己好转。别替她说完，也别说「慢点说」「深呼吸」，只要看着她耐心等，用平稳偏慢的语速回应。若持续半年以上、说话时明显憋劲，或她开始躲着不说话，问问儿科医生是否要做语言评估。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "stuttering",
+      "fluency"
+    ],
+    "source_ids": [
+      "aap",
+      "asha"
+    ],
+    "basis": "AAP：2岁半到5岁常见发育性不流畅；ASHA：持续约半年或伴紧张、回避宜评估。"
+  },
+  {
+    "id": "language-021",
+    "category": "language",
+    "title": "“臭屁屁”笑翻天",
+    "body": "她突然爱说「屁屁」「臭粑粑」，说完自己笑得打滚。这是学龄前常见的阶段：她发现这几个词能让大人有反应。你越激动，她越来劲。平淡带过，再给它一个去处：「这是厕所词，去厕所里说吧。」平时多陪她玩别的好笑词语游戏，她的兴趣会慢慢转移。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "toilet-talk",
+      "humor"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children：学龄前爱说厕所词很常见，平静少关注、设定场合最有效。"
+  },
+  {
+    "id": "language-022",
+    "category": "language",
+    "title": "听到脏话先别炸",
+    "body": "她从小区或亲戚那里学来一句脏话，多半不懂意思，只是好奇大人会有什么反应。平静说一句就够：「这个词让人听了难受，我们家不说。」再给个替代：「生气时可以喊『气死我啦』！」不用追问在哪学的，也不必惩罚。大人自己生气时的用词，她都在听。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "swearing",
+      "modeling"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "教育部指南：4–5岁目标含不说脏话粗话；平静回应、示范替代说法更有效。"
+  },
+  {
+    "id": "language-023",
+    "category": "language",
+    "title": "方言普通话都说也不乱",
+    "body": "奶奶说家乡话、爸妈说普通话，甚至还夹点英语，并不会让她说话变晚。两种话混着说也是正常阶段，她会慢慢分清跟谁说哪种。让每个大人用自己最顺口的语言多和她聊就好。教育部指南对 3–4 岁的期待是基本会说本地话，普通话到 4–5 岁基本会说即可。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "bilingual",
+      "dialect"
+    ],
+    "source_ids": [
+      "asha",
+      "moe-3-6-guide"
+    ],
+    "basis": "ASHA：学两种语言不会导致语言迟缓；教育部指南：4–5岁基本会说普通话。"
+  },
+  {
+    "id": "language-024",
+    "category": "language",
+    "title": "没人看时就关电视",
+    "body": "电视开着当背景音，大人会不自觉地少跟孩子说话，她玩一会儿也会被画面拉走。学说话靠的是真人有来有回，动画片代替不了。家里有人想刷剧，可以戴耳机，或等她睡了再看。今天就试：晚饭后关掉电视半小时，把声音留给你们聊天，哪怕只是聊聊今天谁来过。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "screen",
+      "conversation"
+    ],
+    "source_ids": [
+      "aap",
+      "book-30m-words"
+    ],
+    "basis": "AAP《媒体与幼儿》：背景电视减少亲子对话和游戏质量；建议不用时关掉。"
+  },
+  {
+    "id": "language-025",
+    "category": "language",
+    "title": "视频时让她当主播",
+    "body": "和外地的爷爷奶奶视频，跟看动画片不一样：对方会回应她，她得接话，这本身就是对话练习。让通话更有来有回：请她拿最喜欢的玩具给奶奶「介绍」，或举着手机带奶奶看她搭的城堡。你在旁边帮着接话，冷场时提示一句：「告诉奶奶，你今天在小区看到了什么？」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "video-chat",
+      "family"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP：视频通话属于互动型媒体，与被动观看不同，可用于和亲人保持联系。"
+  },
+  {
+    "id": "language-026",
+    "category": "language",
+    "title": "她在跟自己说话",
+    "body": "她一个人搭积木时嘀咕：「这个放这里……不对，要大的。」或者给每个娃娃安排台词。这不奇怪，她在用语言帮自己想事情、管住自己的手。假装游戏里定角色、守规则，也在锻炼专注和自控。别急着打断或纠正，在一旁听听，偶尔被邀请时当个配角就好。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "self-talk",
+      "pretend"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛儿童发展中心：3–5岁假装游戏中为角色定规则并照做，锻炼执行功能。"
+  },
+  {
+    "id": "language-027",
+    "category": "language",
+    "title": "3岁时留意这几件事",
+    "body": "每个孩子快慢不同，但到 3 岁前后，下面这些值得留意：说不出自己的名字；不会说两三个字的短语；不能和你来回聊上两轮；家人以外的人大多听不懂她。还有一条不论几岁都要重视：已经会说的话又不会了。出现这些不用自己吓自己，但要找儿科医生做个评估。",
+    "age_min_months": 30,
+    "age_max_months": 42,
+    "tags": [
+      "milestone",
+      "red-flags"
+    ],
+    "source_ids": [
+      "nhc-psych-norm",
+      "cdc-milestones"
+    ],
+    "basis": "卫健委预警征象：3岁不会说自己名字需评估；CDC：能来回对话、技能倒退要及早就医。"
+  },
+  {
+    "id": "language-028",
+    "category": "language",
+    "title": "说话不清，先查听力",
+    "body": "她总说「啊？」、叫名字常不理、看电视要开很大声，或者感冒后说话更含糊，先别急着说她「不认真」。中耳积液等问题会让孩子一段时间听不清，说话也跟着受影响。体检时跟医生提一句，必要时做个听力检查。担心语言发育时，先排除听力问题是常规第一步。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "hearing",
+      "health"
+    ],
+    "source_ids": [
+      "asha",
+      "aap"
+    ],
+    "basis": "ASHA/AAP：担心语言发育时应先评估听力；中耳积液可暂时影响听力和说话。"
+  },
+  {
+    "id": "language-029",
+    "category": "language",
+    "title": "快4岁时再对照一次",
+    "body": "到 4 岁前后，大多数孩子能说四个词以上的句子，能讲出当天的一件事，会念几句儿歌，也会用形容词描述东西，比如「大大的红气球」。这些不是考试，只是一个参照。如果你感觉她明显跟不上同龄孩子，或幼儿园老师也提到担心，就带她去儿保科聊聊。",
+    "age_min_months": 40,
+    "age_max_months": 54,
+    "tags": [
+      "milestone",
+      "red-flags"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "nhc-psych-norm"
+    ],
+    "basis": "CDC 4岁里程碑：4词以上句子、讲当天经历；卫健委预警：4岁不会说带形容词的句子。"
+  },
+  {
+    "id": "language-030",
+    "category": "language",
+    "title": "“吃饭饭”可以升级了",
+    "body": "「吃饭饭」「车车」「喝水水」对一两岁的孩子很亲切，她快 3 岁了，可以听到更完整的说法：「我们去吃午饭吧，今天有你爱吃的番茄炒蛋。」语气照样温柔，只是换成真正的词和完整的句子。家里老人习惯说叠词也不用硬改，你多示范，她自然两种都懂。",
+    "age_min_months": 30,
+    "age_max_months": 42,
+    "tags": [
+      "modeling",
+      "vocabulary"
+    ],
+    "source_ids": [
+      "hanen",
+      "book-30m-words"
+    ],
+    "basis": "Hanen：示范应略长于孩子当前水平，用真实词语和完整句子丰富语言输入。"
+  },
+  {
+    "id": "language-031",
+    "category": "language",
+    "title": "讲讲你今天的一天",
+    "body": "孩子很少听到大人怎么讲一件完整的事。下班回家，给她讲一个两三句的小故事：「今天我的电脑突然黑屏了，我好着急，后来同事帮我修好了。」有开头、有麻烦、有结果，还有感受，这就是她以后讲自己经历的模板。讲完问问她：「要是你，会怎么办？」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "narrative",
+      "modeling"
+    ],
+    "source_ids": [
+      "book-30m-words",
+      "harvard-cdc"
+    ],
+    "basis": "Suskind《父母的语言》：多说（Talk More），丰富叙述性语言扩充孩子的词汇和句式。"
+  },
+  {
+    "id": "language-032",
+    "category": "language",
+    "title": "用“我想知道”开头",
+    "body": "比起一个接一个地提问，「我想知道……」更像邀请她一起想：「我想知道蚂蚁把面包屑搬到哪儿去了。」「我想知道小鸟晚上睡在哪里。」这种话没有标准答案，她不怕说错，常常会主动接一句自己的猜测。你顺着她的猜测往下聊，一段对话就展开了。散步时最好用。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "curiosity",
+      "conversation"
+    ],
+    "source_ids": [
+      "hirsh-pasek",
+      "vroom"
+    ],
+    "basis": "Hirsh-Pasek & Golinkoff：激发好奇的开放对话比一问一答更能引发孩子思考。"
+  },
+  {
+    "id": "language-033",
+    "category": "language",
+    "title": "故意说错，等她纠正",
+    "body": "3 岁的孩子最爱抓大人的「错」。指着小猫说：「快看，小狗在喵喵叫！」把袜子套在手上：「今天这副手套真好看。」她会笑着大喊「不对！」然后告诉你正确的说法。这种文字游戏让她在笑声里练词汇，也练习大胆说出不同意见，她会觉得自己特别厉害。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "humor",
+      "wordplay"
+    ],
+    "source_ids": [
+      "hirsh-pasek",
+      "vroom"
+    ],
+    "basis": "Hirsh-Pasek：快乐、主动参与的游戏化互动最利于学习；幽默是语言游戏的一种。"
+  },
+  {
+    "id": "language-034",
+    "category": "language",
+    "title": "她看哪儿，你就聊哪儿",
+    "body": "你想教她认颜色，她却盯着地上的蚂蚁。这时跟着她的视线聊，效果更好：「哇，蚂蚁排成一条线，它们在搬什么？」孩子在自己感兴趣的事上，最愿意听也最愿意说。Hanen 和《父母的语言》都把「跟随孩子的关注点」放在第一步。今天就试：先看她在看什么，再开口。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "follow-lead",
+      "attention"
+    ],
+    "source_ids": [
+      "hanen",
+      "book-30m-words"
+    ],
+    "basis": "Hanen「跟随孩子的引导」与 Suskind「3T」中的 Tune In：从孩子关注点开始对话。"
+  },
+  {
+    "id": "language-035",
+    "category": "language",
+    "title": "想插话？手放你肩上",
+    "body": "你一跟别人说话，她就拽着衣角喊「妈妈妈妈」。可以约个暗号：想说话时把手放在你肩上，你握一下她的手表示「我知道了」，说完手头这句就转向她：「谢谢你等我，你想说什么？」一开始只让她等几秒，再慢慢加长。被认真回应过，她才更愿意学着等。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "interrupting",
+      "manners"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-positive-discipline"
+    ],
+    "basis": "教育部指南：5–6岁目标为按次序轮流讲话、不随意打断别人，可从小练起。"
+  },
+  {
+    "id": "language-036",
+    "category": "language",
+    "title": "请她当小信使",
+    "body": "「去告诉爸爸：饭好了，请他洗手。」传一句话，她得先记住，再自己组织说出来，是记忆和表达的双重练习。从一句短话开始，慢慢加一个细节：「告诉奶奶，我们明天去公园，要带水壶。」传对了，请被传话的人认真回她一句，她会特别有成就感。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "memory",
+      "messages"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "vroom"
+    ],
+    "basis": "哈佛儿童发展中心：学龄前在脑中记住并执行指令，可锻炼工作记忆。"
+  },
+  {
+    "id": "language-037",
+    "category": "language",
+    "title": "翻手机相册讲故事",
+    "body": "手机里存着很多她的照片，挑一张一起看：「这是哪天？我们在干什么？你当时为什么笑？」照片给了线索，讲过去的事就容易多了。被问到时能说出图里正在发生什么，本来就是 3 岁的语言能力。她讲不全时你补上细节，再请她讲给爸爸听，同一段经历就讲了两遍。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "photos",
+      "narrative"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "book-30m-words"
+    ],
+    "basis": "CDC 3岁里程碑：被问到时能说出图片或书中正在发生的动作。"
+  },
+  {
+    "id": "language-038",
+    "category": "language",
+    "title": "请她教你一件事",
+    "body": "「你能教我怎么给小熊穿衣服吗？我不太会。」当了老师，她就得用「先……然后……最后」把步骤说清楚，还要看你听没听懂。你可以装糊涂，照她的话字面去做，做错了让她换个说法再讲一遍。这种角色互换她会玩得特别认真，顺便练了按顺序说话。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "sequencing",
+      "role-reversal"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "hirsh-pasek"
+    ],
+    "basis": "教育部指南：4–5岁讲述比较连贯；让孩子当讲解者有助于组织有顺序的表达。"
+  },
+  {
+    "id": "language-039",
+    "category": "language",
+    "title": "别逼她“快叫阿姨”",
+    "body": "过年走亲戚，一进门就是「快叫人！」她往你身后一躲，场面有点尴尬。被逼着开口，怕生的孩子往往更紧张。你可以先替她打招呼，给她别的方式：挥挥手、点点头都算。事后私下练练：「下次见到阿姨，你想挥手还是说你好？」她觉得安全了，话自然就多了。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "greetings",
+      "shyness"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-how-to-talk"
+    ],
+    "basis": "教育部指南：3–4岁在成人提醒下使用礼貌用语即可，重在示范而非强迫。"
+  },
+  {
+    "id": "language-040",
+    "category": "language",
+    "title": "大胆用“大人的词”",
+    "body": "别担心她听不懂「巨大」「疲惫」「犹豫」。在情境里用，再配一句解释，她就能猜出意思：「这只恐龙好巨大，比我们家房子还高！」「你好像有点犹豫，不知道选哪个。」孩子听到的词越丰富多样，自己的词汇长得越快。今天就挑一个新词，找机会用上三次。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "vocabulary",
+      "rich-talk"
+    ],
+    "source_ids": [
+      "book-30m-words",
+      "hirsh-pasek"
+    ],
+    "basis": "Suskind《父母的语言》：早期听到的词汇数量与多样性和日后语言能力相关。"
+  }
+]
