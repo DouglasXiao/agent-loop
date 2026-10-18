@@ -92,6 +92,16 @@ sources/*.json ──► harvest.py fetch ──► cache/（只抓 can_adapt �
 - `draft` 的 LLM 配置复用本仓库 `agent_loop.py` 的环境变量（`OPENROUTER_API_KEY` 或 `OPENAI_API_KEY`）。
 - 健康与安全类内容上线前最好请儿科医生或学前教育老师过一遍。
 
+**授权上要注意的几点**（详见 `data/SOURCES.md`）：
+
+- **CDC**：美国联邦政府作品，可改写，注明 CDC 即可，不能暗示 CDC 背书。
+- **NHS**：Open Government Licence，可改写，注明「Information from the NHS website」。
+- **WHO**：CC BY-NC-SA 3.0 IGO，含「非商业」条款。App 如果收费或带广告，只能引用 WHO 的结论，不能改编原文。
+- **Vroom**：免费但限非商业使用，改编需要授权。只能作为思路参考，不能改写它的活动卡。
+- **AAP / HealthyChildren.org**：版权保留，`llms.txt` 禁止拿来训练模型或大段转载，只能引用要点并链接。
+- **AAP 屏幕时间**：AAP 在 2026 年 1 月发布新政策，取代了 2016 年「2–5 岁每天 ≤1 小时」的说法。内容里的 1 小时一律引用 WHO 2019 和教育部近视防控方案，不写成 AAP 的建议。
+- **中国国家机关的官方文件**（卫健委、教育部的指南和规范）依《著作权法》第五条不受著作权保护，可改写引用。学会共识、期刊论文和商业平台（如营养学会膳食指南全文、丁香妈妈）仍有版权。
+
 ## 6. 选题算法
 
 `TipPicker`（Swift，`ios/OneTip/Logic/TipPicker.swift`）和 `web/picker.js` 规则一致：
@@ -149,5 +159,13 @@ python3 onetip/pipeline/harvest.py draft --limit 20
 brew install xcodegen
 cd onetip/ios && xcodegen generate && open OneTip.xcodeproj
 ```
+
+## 10. 上线前待办
+
+- [ ] **复核来源**：这一版是在云端沙箱里整理的，网络策略挡住了直接打开大多数来源网站（如 www.cdc.gov、raisingchildren.net.au、mama.dxy.com），搜索额度中途也用完了。约一半来源标为「待核实」（`verification.status` 或 `notes`）。要逐条打开原页核对 URL、授权和 `key_points_unverified`。
+- [ ] **专业审核**：请儿科医生过一遍 `safety`、`food`、`sleep` 三类，请学前教育老师过一遍 `social`、`discipline`。重点核对：近视防控方案对学龄前「单次 ≤15 分钟、每天 ≤1 小时」的表述，3 岁 A 群 C 群流脑疫苗，各地涂氟政策，膳食指南的奶量和饮水量（目前来自转载，没找到营养学会原文页）。
+- [ ] **跑一次采集管道**：`harvest.py fetch` 在本地或放开了网络的环境里运行，把 `can_adapt` 来源抓进缓存，再用 `draft` 补充新 tip。
+- [ ] **iOS 编译**：Swift 代码在 Linux 沙箱里没法编译（下载不到 Swift 工具链），需要在 Mac 上 `xcodegen generate` 后用 Xcode 跑一遍构建和 `OneTipTests`。
+- [ ] **持久化兼容**：`PersistedState` 现在用自动合成的 `Codable`，以后加字段要写 `decodeIfPresent`，否则老用户的已读和收藏会被清空。
 
 > 内容是一般性的养育建议，不能代替医生或专业人士对具体孩子的判断。
