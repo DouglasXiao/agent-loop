@@ -1,0 +1,761 @@
+[
+  {
+    "id": "discipline-001",
+    "category": "discipline",
+    "title": "把“别跑”换成“慢慢走”",
+    "body": "听到“别跑”，她得先想到“跑”，再自己琢磨不跑该干嘛，这对三岁孩子来说有点绕。直接说出要做的动作更好懂：“别爬桌子”换成“脚踩在地上”，“别扔”换成“把球滚给我”。今天就试：每次话到嘴边是“别……”，先停一秒，改成一个她马上能照做的动作。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "instructions",
+      "positive-language"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-how-to-talk"
+    ],
+    "basis": "CDC 育儿要点：指令要具体、正面，直接告诉孩子该做什么，而不是不该做什么。"
+  },
+  {
+    "id": "discipline-002",
+    "category": "discipline",
+    "title": "红杯子还是蓝杯子",
+    "body": "三岁的她特别想自己做主。与其命令“去洗澡”，不如问：“你想带小鸭子还是小船进浴缸？”洗澡这件事没变，她却拿到了一点掌控感，对抗自然少了。选项只给两个，而且都得是你真能接受的；如果她两个都不选，就说“那这次我帮你选”，然后照做。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "choices",
+      "autonomy"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-positive-discipline"
+    ],
+    "basis": "CDC 育儿要点与《正面管教》：提供有限的选择，满足幼儿自主需求、减少对抗。"
+  },
+  {
+    "id": "discipline-003",
+    "category": "discipline",
+    "title": "再滑三次就回家",
+    "body": "正玩得开心突然被抱走，换谁都会炸。离开游乐场、关电视、上床前，提前几分钟预告：“再滑三次，我们就回家。”这个年纪的孩子对“五分钟”没什么概念，用次数、沙漏或计时器更直观；铃响时说“计时器说时间到啦”，你就不用当坏人。预告了就要照做，她才会信。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "transitions",
+      "routine"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children Network 等：转换前提前预告、使用可视计时器，可减少孩子的抗拒。"
+  },
+  {
+    "id": "discipline-004",
+    "category": "discipline",
+    "title": "先穿鞋，然后找小狗",
+    "body": "“先……然后……”是给三岁孩子的小地图：不太想做的事放前面，期待的事放后面。“先把鞋穿上，然后我们下楼找小狗。”它不是交换条件，更不是“不穿就别想下楼”的威胁，语气平平常常，像在报今天的行程。说的时候伸出两根手指，一根一根数给她看，她更容易记住顺序。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "instructions",
+      "routine"
+    ],
+    "source_ids": [
+      "child-mind",
+      "triple-p"
+    ],
+    "basis": "Child Mind Institute：用“先…再…”（when-then）把要求与孩子期待的事相连，减少拉锯。"
+  },
+  {
+    "id": "discipline-005",
+    "category": "discipline",
+    "title": "不穿外套，就冷一下",
+    "body": "她坚持不穿外套出门？天不算太冷的话，把外套塞进包里，让她自己感受一下。几分钟后她说冷，你只需平静地递上：“冷了吧，外套在这儿。”不加一句“早跟你说了”。自然后果的前提是安全、轻微、马上能体会到；会伤到她的事，比如马路、热水、高处，永远由你来拦。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "consequences",
+      "autonomy"
+    ],
+    "source_ids": [
+      "book-positive-discipline",
+      "raising-children-au"
+    ],
+    "basis": "《正面管教》与 Raising Children：在安全前提下让孩子体验自然后果，大人不说教。"
+  },
+  {
+    "id": "discipline-006",
+    "category": "discipline",
+    "title": "画到墙上，就一起擦",
+    "body": "后果最好和事情本身有关。蜡笔画上了墙，就递给她一块湿布一起擦；骑着滑板车往马路边冲，滑板车今天就先收起来。比起“今天不许看动画片”，这种后果她看得懂其中的道理。说的时候语气平静：“蜡笔是画在纸上的。墙脏了，我们一起擦干净。”擦完照样抱抱她。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "consequences",
+      "limits"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-positive-discipline"
+    ],
+    "basis": "CDC 育儿要点与《正面管教》：后果应与行为相关、合理、及时，并平静地执行。"
+  },
+  {
+    "id": "discipline-007",
+    "category": "discipline",
+    "title": "把“真棒”换成实况转播",
+    "body": "“真棒”说多了，她不知道棒在哪。试试像解说员一样说出她做了什么：“你把积木一块块放回盒子里了。”“你等我说完才开口，好有耐心。”这种具体的表扬在亲子互动疗法里叫“标签式表扬”，被夸到的行为会更常出现。今晚找三个机会，各说一句。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "praise",
+      "connection"
+    ],
+    "source_ids": [
+      "pcit"
+    ],
+    "basis": "PCIT 的 PRIDE 技巧：具体说出被表扬的行为（labeled praise），可增加该行为。"
+  },
+  {
+    "id": "discipline-008",
+    "category": "discipline",
+    "title": "她乖乖玩时也去看看",
+    "body": "很多孩子都发现了一个规律：安静玩没人理，一捣乱大人马上就来。你的注意力是她最想要的奖励，那就多花在她做对的时候。她自己翻绘本、好好跟你说话、主动递东西时，走过去摸摸头：“你在看小猪的书呀。”今天就试：每提醒她一次，再找两次机会说说她做对的事。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "attention",
+      "praise"
+    ],
+    "source_ids": [
+      "aap",
+      "triple-p"
+    ],
+    "basis": "AAP 管教建议：主动留意并回应孩子的好行为（catch them being good），比只纠错有效。"
+  },
+  {
+    "id": "discipline-009",
+    "category": "discipline",
+    "title": "敲碗时，假装没听见",
+    "body": "饭桌上她咚咚敲碗、怪声怪调，眼睛却一直瞄着你——这多半是在要关注。只要不危险、不伤人，可以有计划地“看不见”：不笑、不训，接着和家人聊天。她一停下来、好好吃了一口，马上转向她：“你用勺子舀得好稳。”头几天她可能敲得更响，这是在试探，撑过去就会少下来。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "planned-ignoring",
+      "attention",
+      "mealtime"
+    ],
+    "source_ids": [
+      "triple-p",
+      "aap"
+    ],
+    "basis": "Triple P“有计划地忽略”：轻微的求关注行为不予回应，好行为一出现就给关注。"
+  },
+  {
+    "id": "discipline-010",
+    "category": "discipline",
+    "title": "心疼她，但规矩不变",
+    "body": "她哭着还要再讲一本书。你可以抱着她说：“你很想再听一本，书讲完了好舍不得，我懂。今天就讲到这儿。”共情和界限可以同时存在：理解她的难过，不等于收回决定。如果哭一哭规矩就变，她学到的是“哭得够久就行”。你要做的，只是陪她把这阵难过熬过去。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "limits",
+      "empathy"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "book-positive-discipline"
+    ],
+    "basis": "《Good Inside》与《正面管教》：温和与坚定并行，认可情绪的同时守住界限。"
+  },
+  {
+    "id": "discipline-011",
+    "category": "discipline",
+    "title": "家规三条，条条有理由",
+    "body": "规矩太多，三岁孩子记不住，大人也管不过来。挑出最要紧的两三条，比如“不伤害人”“东西用完放回去”“过马路要牵手”，每条配一句她听得懂的理由：“牵着手，我才能护着你。”还可以画成简单的小图贴在门口，出门前指一指，比天天念叨管用。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "rules",
+      "limits"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "triple-p"
+    ],
+    "basis": "教育部《3–6岁指南》：结合生活帮幼儿理解规则的意义；Triple P 主张家规少而明确。"
+  },
+  {
+    "id": "discipline-012",
+    "category": "discipline",
+    "title": "和老人先对好口径",
+    "body": "你说不能吃，奶奶偷偷给，孩子很快就学会去找“好说话”的那个人。趁孩子不在，和老人、伴侣挑出两三件必须统一的事，比如糖果、屏幕、睡觉时间，其余小事各有风格也无妨。当着孩子意见不同，先别拆台，事后再私下商量：“妈，下次她要糖，咱俩都说饭后吃。”",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "consistency",
+      "grandparents"
+    ],
+    "source_ids": [
+      "triple-p",
+      "aap"
+    ],
+    "basis": "Triple P 与 AAP：照顾者之间规则一致，孩子更清楚界限，行为问题更少。"
+  },
+  {
+    "id": "discipline-013",
+    "category": "discipline",
+    "title": "说出口的后果要做得到",
+    "body": "“再闹就把你丢在这儿！”这种话她听几次就明白：大人只是说说，有的孩子还会真的害怕被丢下。说后果前先问自己：我真会这么做吗？换成能落地的版本：“再扔一次沙子，我们就离开沙坑。”说了就不动声色地做到，一次执行胜过十次警告。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "consequences",
+      "follow-through"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "triple-p"
+    ],
+    "basis": "CDC 育儿要点：后果要提前说明、真能执行，并每次一致地执行；不用吓唬。"
+  },
+  {
+    "id": "discipline-014",
+    "category": "discipline",
+    "title": "数到三之后呢？",
+    "body": "“数到三”能用，前提是数完真有下一步，而且这一步平静、提前讲过，比如“数到三还不松手，玩具就先放高处”。如果每次都数到“二点五、二点九”，她学会的是等你数完再说。也别把它变成吓唬。很多时候，比数数更快的办法是走过去，蹲下来，帮她把手放下。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "warnings",
+      "follow-through"
+    ],
+    "source_ids": [
+      "triple-p",
+      "cdc-parenting"
+    ],
+    "basis": "Triple P：给一次清楚警告，不改正就执行事先说好的后果，避免反复警告。"
+  },
+  {
+    "id": "discipline-015",
+    "category": "discipline",
+    "title": "她动手了，先拦住手",
+    "body": "她在小区里推了别的小朋友。第一步是马上、平静地拦住：轻轻握住她的手，“我不会让你推人。”然后先去关心被推的孩子，而不是先训她，这样动手换不来关注。等她平静了，再教替代说法：“想玩秋千，可以说‘轮到我了吗’。”打回去、咬回去，只会让她学到：大人也用伤人的办法解决问题。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "hitting",
+      "aggression"
+    ],
+    "source_ids": [
+      "aap",
+      "zero-to-three"
+    ],
+    "basis": "AAP 与 ZERO TO THREE：幼儿打人咬人时立即平静制止、先照顾受伤方，再教表达方式。"
+  },
+  {
+    "id": "discipline-016",
+    "category": "discipline",
+    "title": "想扔？去扔袜子球",
+    "body": "扔东西是这个年纪很真实的身体需要，光说“不许扔”往往没用。给这股劲儿找个出口：“积木不能扔，会砸到人。想扔的话，把袜子球扔进篮子里。”家里备一个“可以扔”的篮子和几个软球，她一举手你就指过去。如果她继续扔积木，就不多说，把积木收起来一会儿。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "throwing",
+      "redirection"
+    ],
+    "source_ids": [
+      "aap",
+      "zero-to-three"
+    ],
+    "basis": "AAP“重新引导”策略：说明不能做什么的同时，给出可以做的替代活动。"
+  },
+  {
+    "id": "discipline-017",
+    "category": "discipline",
+    "title": "她躺在地上不肯走",
+    "body": "商场门口，她往地上一躺。先别急着拽，也别管路人的眼光。蹲在旁边，简短说出她的感受：“你还想玩，不想回家。”再给个小台阶：“你想自己走到门口，还是我抱你过去？”十几秒没反应，就稳稳地抱起来走，路上不训话。过后抱抱她，这一页就翻过去了。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "tantrum",
+      "public"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "nhs"
+    ],
+    "basis": "ZERO TO THREE 与 NHS 关于发脾气：保持冷静、简短共情，不在当下说教或让步。"
+  },
+  {
+    "id": "discipline-018",
+    "category": "discipline",
+    "title": "进超市前先说好买啥",
+    "body": "在门口就讲好：“今天买牛奶、香蕉和面包，不买玩具。”进去后给她派个活儿，比如负责找香蕉、把东西放进推车，她忙起来就顾不上闹。看到想要的，可以说：“这个真好看，我们拍张照，放进你的愿望清单。”如果她还是哭，就抱抱她，但别在收银台改主意。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "shopping",
+      "public"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：预判容易出问题的场合并提前准备；Raising Children 建议出门前讲好规则。"
+  },
+  {
+    "id": "discipline-019",
+    "category": "discipline",
+    "title": "她说“是小熊撕的”",
+    "body": "三岁孩子说“不是我”，多半不是存心骗人：愿望和现实她还分不太清，或者太怕你生气。与其追问“到底是不是你”，不如直接说你看到的：“书页破了，我们拿胶带粘一粘。”她编故事时，接住那个愿望：“你真希望家里有只恐龙呀。”她说了实话，就谢谢她：“谢谢你告诉我。”",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "lying",
+      "honesty"
+    ],
+    "source_ids": [
+      "zero-to-three"
+    ],
+    "basis": "ZERO TO THREE：幼儿说谎多出于愿望思维或怕被罚，宜平静回应并肯定说实话。"
+  },
+  {
+    "id": "discipline-020",
+    "category": "discipline",
+    "title": "比“对不起”更有用的事",
+    "body": "被大人按着头说出的“对不起”，她多半只学会了念一句咒语。等她平静后，帮她看见对方的感受，再一起想补救：“小米哭了，她的城堡倒了。我们能做点什么？”帮忙重新搭、递张纸巾、给个拥抱都算。她愿意说对不起当然好，但重点是学会弥补，而不是过关。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "apology",
+      "repair"
+    ],
+    "source_ids": [
+      "book-whole-brain",
+      "book-positive-discipline"
+    ],
+    "basis": "《不打不骂》与《正面管教》：引导孩子体会他人感受并做出弥补，而非强迫认错。"
+  },
+  {
+    "id": "discipline-021",
+    "category": "discipline",
+    "title": "你吼了她，也可以道歉",
+    "body": "谁都有失控的晚上。冷静下来后，回到她身边：“刚才我吼你了，对不起。我当时很着急，但吼人是不对的，下次我会先深呼吸。”道歉不会让你失去威信，反而让她亲眼看到：犯了错可以承认，关系也可以修好。不用长篇检讨，三句话、一个拥抱就够了。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "repair",
+      "parent-self"
+    ],
+    "source_ids": [
+      "book-good-inside"
+    ],
+    "basis": "《Good Inside》：冲突后的“修复”比从不犯错更重要，能重建孩子的安全感。"
+  },
+  {
+    "id": "discipline-022",
+    "category": "discipline",
+    "title": "玩具们要回家睡觉啦",
+    "body": "“收玩具！”喊十遍，不如开一场游戏。“小汽车们累了，要开回车库睡觉喽！”或者“我们比赛，我收红色的，你收蓝色的，看谁先收完。”小孩子靠游戏学合作，你也一起动手，别只站着指挥。今天就试：放一首她喜欢的歌，歌放完之前，把玩具都送回家。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "cleanup",
+      "playful"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "raising-children-au"
+    ],
+    "basis": "《如何说孩子才会听（2–7岁）》：用游戏和幽默邀请合作，比反复命令更有效。"
+  },
+  {
+    "id": "discipline-023",
+    "category": "discipline",
+    "title": "让小熊先犯个错",
+    "body": "规则直接讲，她容易左耳进右耳出；让玩偶演出来，她看得津津有味。拿出小熊：“小熊想要兔子的车，一把抢了过来——兔子哭了！怎么办呀？”请她来出主意，教小熊说“能给我玩一下吗”。孩子在假装游戏里练规则，比听道理记得牢，过两天还可以换她来演。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "pretend-play",
+      "rules"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "hirsh-pasek"
+    ],
+    "basis": "ZERO TO THREE：假装游戏帮助幼儿练习社交规则和自我控制。"
+  },
+  {
+    "id": "discipline-024",
+    "category": "discipline",
+    "title": "问她：你说怎么办？",
+    "body": "同一件事天天吵，比如每晚刷牙都像打仗，可以找个平静的时候一起商量：“每次刷牙我们俩都不开心，一起想想办法吧。”把她的主意都记下来，哪怕是“永远不刷”，再挑一个能试的，比如她自己挑牙刷、先给小熊刷再给她刷。自己出的主意，她会更愿意遵守。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "problem-solving",
+      "cooperation"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "book-positive-discipline"
+    ],
+    "basis": "《如何说孩子才会听》的“共同解决问题”与《正面管教》：让孩子参与想办法，更愿遵守。"
+  },
+  {
+    "id": "discipline-025",
+    "category": "discipline",
+    "title": "出发前，先讲讲去哪",
+    "body": "去亲戚家或饭店前，在路上花一分钟预告：“今天去姥姥家吃饭，人会很多。吃饭时坐在椅子上，想下来就告诉我。”只讲一两条，再说清楚她可以做什么：带上贴纸书，累了可以去阳台歇一会儿。孩子知道接下来会发生什么，就少了很多不安和失控。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "outings",
+      "preparation"
+    ],
+    "source_ids": [
+      "aap",
+      "cdc-parenting"
+    ],
+    "basis": "AAP 管教建议：提前告诉孩子要去的场合和期望的行为，可减少外出时的问题。"
+  },
+  {
+    "id": "discipline-026",
+    "category": "discipline",
+    "title": "气头上，少说两句",
+    "body": "她正在大哭大叫时，大脑里负责听道理的那部分基本“下线”了，这时讲“你应该……”只会火上浇油。先少说话，陪着她、保证安全就好。等她平静下来，比如睡前窝在一起时，再轻轻聊：“下午你很生气，扔了杯子。下次生气时，可以怎么办？”这时她才听得进去。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "tantrum",
+      "timing"
+    ],
+    "source_ids": [
+      "book-whole-brain"
+    ],
+    "basis": "《全脑教养法》：情绪激动时先连接、后引导，平静后再讲道理更有效。"
+  },
+  {
+    "id": "discipline-027",
+    "category": "discipline",
+    "title": "走过去，蹲下，说一件",
+    "body": "隔着客厅喊“快去洗手换衣服把玩具收好”，她多半听不进，更记不住。试试三步：走到她身边，蹲到和她一样高，轻碰她的肩，等她看你一眼，再说一个简短的指令：“去洗手吧。”做完一件，再说下一件。比起提高嗓门，拉近距离管用得多。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "instructions",
+      "attention"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "triple-p"
+    ],
+    "basis": "CDC 育儿要点：下指令前先靠近、引起注意，一次只给一个简短清楚的指令。"
+  },
+  {
+    "id": "discipline-028",
+    "category": "discipline",
+    "title": "把“不”留给大事",
+    "body": "一天里听几十次“不行”，她会慢慢把这个词当成背景音。试着把“不”留给安全和伤人的事，其余换成带条件的“可以”：“可以下楼，穿好鞋就去。”“可以玩水，在浴室里玩。”真正需要说“不”的时候，语气坚定、只说一次，她才更容易当回事。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "limits",
+      "positive-language"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "book-positive-discipline"
+    ],
+    "basis": "ZERO TO THREE：少用“不”，用“可以……当……”给出替代，可减少亲子对抗。"
+  },
+  {
+    "id": "discipline-029",
+    "category": "discipline",
+    "title": "动画片怎么关不哭",
+    "body": "看之前先说好：“今天看两集，看完我们去搭积木。”最后一集开始时提醒一次，结束时让她亲手按下关机键，然后马上接上说好的下一件事。看到一半突然关掉最容易引爆情绪。WHO 建议 3–4 岁孩子每天久坐看屏幕不超过 1 小时，越少越好，能陪着一起看更好。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "screen-time",
+      "transitions"
+    ],
+    "source_ids": [
+      "who-under5",
+      "aap"
+    ],
+    "basis": "WHO 2019：3–4 岁久坐屏幕时间每天不超过 1 小时，越少越好；AAP 建议陪看并定规则。"
+  },
+  {
+    "id": "discipline-030",
+    "category": "discipline",
+    "title": "用“我注意到”开头",
+    "body": "想提醒她又怕变成唠叨，可以只描述你看到的问题，不加评价：“我注意到积木还在门口，有人会被绊倒。”“我看到杯子快到桌边了。”不指责、不下结论，把思考留给她，她常常会自己去处理。她真的动手了，再补一句：“你把积木挪开了，路通了。”",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "instructions",
+      "describe"
+    ],
+    "source_ids": [
+      "book-how-to-talk"
+    ],
+    "basis": "《如何说孩子才会听》：描述你看到的问题而不指责，给孩子自己解决的机会。"
+  },
+  {
+    "id": "discipline-031",
+    "category": "discipline",
+    "title": "冷静时间不是关小黑屋",
+    "body": "短暂的冷静时间对三岁孩子可以用，但要用对：平时先讲好规则，出问题时平静地带她到一个安全、无聊的位置，不吼、不羞辱、不关进黑屋。AAP 建议时长大约按一岁一分钟，三岁就三分钟左右。有的孩子独处更慌，你可以坐在旁边陪她深呼吸。时间到了，就当事情结束，不翻旧账。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "time-out",
+      "calm-down"
+    ],
+    "source_ids": [
+      "aap",
+      "pcit"
+    ],
+    "basis": "AAP《Time-Outs 101》：时长约每岁 1 分钟，地点安全无刺激，结束后不再追究。"
+  },
+  {
+    "id": "discipline-032",
+    "category": "discipline",
+    "title": "别说“你就是磨蹭”",
+    "body": "“你怎么这么磨蹭”“她就是胆小”，这些话说多了，孩子会信以为真，慢慢活成那个样子。对事不对人，只说眼前这件事：“鞋子还没穿，我们快迟到了。”在亲戚面前也一样，别人说“这孩子真倔”，你可以笑着接一句：“她呀，很有自己的想法。”",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "labels",
+      "respect"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "aap"
+    ],
+    "basis": "《如何说孩子才会听》：不给孩子贴角色标签；AAP 指出羞辱性的言语会伤害孩子。"
+  },
+  {
+    "id": "discipline-033",
+    "category": "discipline",
+    "title": "贴纸表只盯一件事",
+    "body": "奖励贴纸可以帮她养成一个新习惯，但要用得巧：一次只盯一件具体的事，比如“早上自己穿袜子”；做到了马上贴，同时说一句具体的表扬。没做到不扣贴纸，只说“明天再试”。习惯稳了，就慢慢拉长间隔，从每天一张到几天一张，最后只留下你的鼓励。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "rewards",
+      "habits"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children Network：奖励表一次针对一种行为、不扣分，稳定后逐步拉长间隔撤掉。"
+  },
+  {
+    "id": "discipline-034",
+    "category": "discipline",
+    "title": "打屁股为什么不管用",
+    "body": "挨打那一刻她会停下来，但多半是因为害怕，而不是明白了为什么。美国儿科学会明确建议不打孩子：体罚和吼骂、羞辱只换来一时听话，之后孩子反而更具攻击性，亲子信任也会受损。她还会顺便学到：生气时可以打人。真想动手的那一刻，就是你该先离开一下的信号。",
+    "age_min_months": 30,
+    "age_max_months": 72,
+    "tags": [
+      "spanking",
+      "harsh-discipline"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP 2018 政策声明：体罚与严厉语言只换来短期服从，会增加攻击性，不应使用。"
+  },
+  {
+    "id": "discipline-035",
+    "category": "discipline",
+    "title": "易碎品先收到高处",
+    "body": "如果客厅里到处都是“别碰”，你一天要说上百次不，她也一直在挨批评。不如先改造环境：花瓶、遥控器、药品收高或锁好，低处只放她可以随便摸的东西，书架下层留给她的书和玩具。环境替你说了“不”，你就能把力气留给陪她玩，而不是一直盯着拦着。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "environment",
+      "prevention"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "aap"
+    ],
+    "basis": "ZERO TO THREE 与 AAP：调整家居环境、减少诱惑，可减少冲突和不必要的管教。"
+  },
+  {
+    "id": "discipline-036",
+    "category": "discipline",
+    "title": "她喊“不要！”的时候",
+    "body": "三岁孩子把“不”挂在嘴边，是在练习“我是我自己”。别急着和这个字较劲，先接住：“你现在不想穿。”再给点余地：“要自己穿，还是我帮你穿一只？”或者加点玩笑：“袜子在哭，它找不到小脚丫了。”真没得商量的事，就温和地帮她完成，不必赢下这场嘴仗。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "defiance",
+      "autonomy"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "book-how-to-talk"
+    ],
+    "basis": "ZERO TO THREE：常说“不”是幼儿自主意识发展的正常表现，宜给选择、避免硬碰硬。"
+  },
+  {
+    "id": "discipline-037",
+    "category": "discipline",
+    "title": "当着亲戚，带到一边说",
+    "body": "过年走亲戚，她当着一屋子人抢表哥的玩具。别在众人面前大声批评，也不用急着给谁一个交代。轻轻牵她到安静的房间，蹲下来小声说：“我知道你很想玩。抢是不行的，我们去问问表哥能不能轮流。”给她留面子，她更容易配合；回到人群里，就当事情过去了。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "public",
+      "respect"
+    ],
+    "source_ids": [
+      "aap",
+      "book-positive-discipline"
+    ],
+    "basis": "AAP 2018 声明指出羞辱有害；《正面管教》建议私下、尊重地处理孩子的不当行为。"
+  },
+  {
+    "id": "discipline-038",
+    "category": "discipline",
+    "title": "你也可以先暂停",
+    "body": "觉得火往上冒时，先照顾好自己。确认她安全后，说一句：“我现在很生气，需要冷静一下，马上回来。”去厨房喝口水，慢慢呼气，数到十。这不是逃避，而是在示范：生气时可以先停一停。等你能用平常的声音说话了，再回去处理刚才的事。",
+    "age_min_months": 30,
+    "age_max_months": 72,
+    "tags": [
+      "parent-self",
+      "calm-down"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-good-inside"
+    ],
+    "basis": "CDC 育儿要点：家长快失控时先短暂离开、让自己冷静，再回来处理孩子的行为。"
+  },
+  {
+    "id": "discipline-039",
+    "category": "discipline",
+    "title": "饿了累了，规矩最易崩",
+    "body": "很多“不听话”发生在固定时段：午睡刚醒、晚饭前肚子饿、从幼儿园接回来的那一路。留意她每天哪个时间最容易失控，提前准备：出门带上水和健康小点心，晚饭前安排安静的活动，困了就别再加行程。先照顾好身体的需要，管教能省一半力气。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "prevention",
+      "routine"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP“提前做好准备”与 Raising Children：孩子饿了、累了更易失控，可提前安排。"
+  },
+  {
+    "id": "discipline-040",
+    "category": "discipline",
+    "title": "哼唧时，换个声音说",
+    "body": "“我——要——那——个——”拖着哭腔的哼唧最磨人。蹲下来告诉她：“哼唧的声音我听不清，用你平常的声音再说一遍。”你可以先示范一遍正常的说法。她一换回正常声音，就立刻回应，哪怕答案还是“现在不行”。坚持几天，她会发现好好说话才是最快的路。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "whining",
+      "attention"
+    ],
+    "source_ids": [
+      "triple-p",
+      "child-mind"
+    ],
+    "basis": "Triple P 与 Child Mind：不回应哼唧、只回应正常说话，并示范恰当的表达方式。"
+  },
+  {
+    "id": "discipline-041",
+    "category": "discipline",
+    "title": "指令后别加“好不好”",
+    "body": "“我们去睡觉好不好？”她回一句“不好”，你就被动了。如果这件事没得选，就用平和、肯定的陈述句：“睡觉时间到了，我们去关灯吧。”语气可以很温柔，但不必征求同意。真心想让她决定的事，才用问句。把问句留给真正的选择，她也更清楚哪些事可以商量。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "instructions",
+      "clarity"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "triple-p"
+    ],
+    "basis": "CDC 育儿要点：必须执行的要求用清楚直接的陈述句，而不是用提问的方式。"
+  },
+  {
+    "id": "discipline-042",
+    "category": "discipline",
+    "title": "安全座椅没得商量",
+    "body": "有些事必须做，比如坐安全座椅、过马路牵手。这类事不讨价还价，也不用长篇解释：“扣好安全带，车才开。”她哭也可以，你一边扣一边说：“你不喜欢被绑着，我知道。”每次都一样，没扣好就不出发。几次下来，她就知道这件事不会变。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "safety",
+      "limits"
+    ],
+    "source_ids": [
+      "aap",
+      "cn-child-injury"
+    ],
+    "basis": "AAP 与中国儿童伤害预防建议：乘车全程使用儿童安全座椅，规则须每次一致。"
+  },
+  {
+    "id": "discipline-043",
+    "category": "discipline",
+    "title": "说完一遍，就动手帮她",
+    "body": "必须做的事，说了一遍她没动，不用再说第二遍、第三遍。走过去，平静地说“我来帮你”，轻轻握着她的手把玩具放进盒子，或者牵着她走到洗手池。不生气、不多话，只是让事情发生。她慢慢会明白，大人说的话是会落实的，下次你一开口，她更可能自己动起来。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "follow-through",
+      "instructions"
+    ],
+    "source_ids": [
+      "triple-p",
+      "pcit"
+    ],
+    "basis": "Triple P、PCIT 等行为养育项目：指令未执行时平静地肢体引导完成，避免反复唠叨。"
+  },
+  {
+    "id": "discipline-044",
+    "category": "discipline",
+    "title": "想插话，先摸摸我的手",
+    "body": "你在打电话，她在旁边一遍遍喊你。平时先约好一个暗号：想说话时，把手放在你的胳膊上；你握一下她的手，表示“我知道了，马上来”。一开始只让她等几秒就回应，并谢谢她：“你等我说完了，真有耐心。”再慢慢拉长时间。三岁孩子还不太会等，这需要练习。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "waiting",
+      "self-control"
+    ],
+    "source_ids": [
+      "book-montessori-toddler",
+      "harvard-cdc"
+    ],
+    "basis": "《蒙特梭利幼儿教育》：教孩子用手示意等待；哈佛儿童发展中心：等待练习锻炼自控。"
+  },
+  {
+    "id": "discipline-045",
+    "category": "discipline",
+    "title": "她不是故意跟你作对",
+    "body": "同一件事说了八百遍还在做，很容易觉得她是故意的。其实三岁孩子的冲动控制还很弱，知道规矩不等于管得住手；她反复试探，也是在确认边界稳不稳。你的每一次平静重复都不是白费，而是在帮她装上那个“刹车”。今晚对自己说一句：她还小，我们慢慢来。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "development",
+      "self-control"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "zero-to-three"
+    ],
+    "basis": "哈佛儿童发展中心：抑制控制等执行功能在 3–5 岁快速发展，但仍远未成熟。"
+  }
+]

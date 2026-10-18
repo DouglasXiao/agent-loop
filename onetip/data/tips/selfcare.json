@@ -1,0 +1,511 @@
+[
+  {
+    "id": "selfcare-001",
+    "category": "selfcare",
+    "title": "尿布能干两小时了吗",
+    "body": "如厕训练看的是她准备好没有，不是看日历。可以留意这些信号：尿布能保持两小时左右不湿；会用话或动作告诉你“尿了”“要拉”；对大人上厕所好奇；能自己拉下松紧裤；尿湿了会觉得不舒服。出现几样再开始会更顺。还没准备好就先放一放，过几周再试，不用跟别人家比。",
+    "age_min_months": 28,
+    "age_max_months": 40,
+    "tags": [
+      "potty",
+      "readiness"
+    ],
+    "source_ids": [
+      "aap",
+      "nhs"
+    ],
+    "basis": "AAP 与 NHS：看孩子的准备信号再开始如厕训练，如能保持干爽约两小时、能表达便意。"
+  },
+  {
+    "id": "selfcare-002",
+    "category": "selfcare",
+    "title": "睡醒、饭后坐一坐",
+    "body": "白天练如厕，可以把坐小马桶变成固定节奏：早上醒来、饭后二三十分钟、出门前、洗澡前，各请她坐几分钟，尿没尿出来都没关系。脚要能踩稳地面或小凳子，她才坐得住、使得上劲。可以说：“小马桶在等你啦，去看看有没有尿尿。”坐不住就起来，不按着、不催促。",
+    "age_min_months": 28,
+    "age_max_months": 42,
+    "tags": [
+      "potty",
+      "routine"
+    ],
+    "source_ids": [
+      "nhs",
+      "aap"
+    ],
+    "basis": "NHS 与 AAP：在固定时间（如饭后）让孩子坐便盆，脚下有支撑，不强迫久坐。"
+  },
+  {
+    "id": "selfcare-003",
+    "category": "selfcare",
+    "title": "尿裤子了，说“没关系”",
+    "body": "练如厕时尿裤子是必经之路，学会以后也常有，玩得太投入或紧张时最容易。平静地说：“尿湿了，我们去换条干的。”让她帮忙把湿裤子放进盆里，不批评、不叹气，也别当着别人说起。责备只会让她紧张，越怕越憋，反而更容易出错。出门包里常备一套换洗衣裤，你也能更从容。",
+    "age_min_months": 28,
+    "age_max_months": 48,
+    "tags": [
+      "potty",
+      "accidents"
+    ],
+    "source_ids": [
+      "nhs",
+      "aap"
+    ],
+    "basis": "NHS：3 岁时多数孩子白天基本干爽，但仍会偶尔尿湿；意外很正常，不应责备。"
+  },
+  {
+    "id": "selfcare-004",
+    "category": "selfcare",
+    "title": "白天会了，晚上不急",
+    "body": "白天不尿裤子了，晚上还得穿纸尿裤，这很正常。夜里不尿床靠的是身体发育，不是意志力，通常比白天晚得多。英国 NHS 提到，多数孩子在 3 到 5 岁之间学会整夜不尿，5 岁时仍有多达五分之一偶尔尿床。可以等她连续多个早上醒来尿布都是干的，再试着脱掉。尿了床就换掉床单，不提、不怪。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "potty",
+      "night"
+    ],
+    "source_ids": [
+      "nhs"
+    ],
+    "basis": "NHS：多数孩子 3–5 岁间夜间干爽，5 岁时多达 1/5 偶尔尿床；尿布连续数晨干再撤。"
+  },
+  {
+    "id": "selfcare-005",
+    "category": "selfcare",
+    "title": "入园后又尿裤子了",
+    "body": "本来已经会了，入园、搬家、添了弟弟妹妹后又频繁尿裤子，这很常见，是她在用身体消化变化和压力。别把穿回纸尿裤当惩罚，也别说“你都多大了”。回到最初的节奏：定时提醒，尿湿了平静地换，多给她一些单独陪伴。通常几周会好转；如伴随尿痛、次数特别多或持续很久，问问儿科医生。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "potty",
+      "regression"
+    ],
+    "source_ids": [
+      "aap",
+      "nhs"
+    ],
+    "basis": "AAP：入园、搬家、弟妹出生等变化常引起如厕退步，宜平和地回到原来的节奏。"
+  },
+  {
+    "id": "selfcare-006",
+    "category": "selfcare",
+    "title": "擦屁股，从前往后",
+    "body": "女孩擦屁股要从前往后，这样能减少把大便里的细菌带到尿道口，降低尿路感染的机会。三岁多的她可以开始自己试，先从尿尿后擦干练起；拉臭臭后，大人最好再帮着检查一遍。边做边教：“纸巾从前面往后面擦，看看纸干净了没有，不干净就再拿一张。”",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "potty",
+      "hygiene"
+    ],
+    "source_ids": [
+      "nhs",
+      "kidshealth"
+    ],
+    "basis": "NHS 与 KidsHealth：女孩应从前往后擦，减少细菌进入尿道，降低尿路感染风险。"
+  },
+  {
+    "id": "selfcare-007",
+    "category": "selfcare",
+    "title": "洗手唱两遍生日歌",
+    "body": "洗手要搓够 20 秒左右才洗得干净，差不多是唱两遍《生日快乐》的时间。手心、手背、指缝、指尖和大拇指都要搓到。可以和她编一首洗手歌，或者用口令一个部位一个部位地搓：“手心搓搓，手背搓搓，小手指头钻山洞。”饭前、便后、从外面回家，都是洗手时间。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "handwashing",
+      "hygiene"
+    ],
+    "source_ids": [
+      "nhs",
+      "kidshealth",
+      "moe-3-6-guide"
+    ],
+    "basis": "NHS 与 KidsHealth：用肥皂洗手至少 20 秒，约为唱两遍生日歌的时间。"
+  },
+  {
+    "id": "selfcare-008",
+    "category": "selfcare",
+    "title": "她先刷，你再补一遍",
+    "body": "三岁的她想自己刷牙，就让她先刷；但她的小手还刷不干净后槽牙和牙齿内侧，最后要由你再补刷一遍。英国 NHS 的建议是，孩子至少到 7 岁左右，刷牙都需要大人看着。可以让她站在你身前、头靠着你，对着镜子刷，边刷边数：“左边的小白牙，一、二、三。”早晚各一次。",
+    "age_min_months": 30,
+    "age_max_months": 72,
+    "tags": [
+      "toothbrushing",
+      "hygiene"
+    ],
+    "source_ids": [
+      "nhs"
+    ],
+    "basis": "NHS 相关指南：儿童刷牙需大人监督到约 7 岁，每天早晚各刷一次。"
+  },
+  {
+    "id": "selfcare-009",
+    "category": "selfcare",
+    "title": "外套翻个跟头",
+    "body": "这是不少幼儿园老师会教的穿外套小魔术：把外套平铺在地上，里子朝上，领子靠近她的脚。她站在领子这头，弯腰把两只手伸进袖子，然后双手举过头顶往后一翻，外套就“翻个跟头”穿到身上了。第一次你可以帮她扶着袖口：“外套要翻跟头啦，一、二、三！”",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "dressing",
+      "independence"
+    ],
+    "source_ids": [
+      "book-montessori-toddler",
+      "cdc-milestones"
+    ],
+    "basis": "蒙特梭利常用“翻转法”穿外套；CDC：3 岁左右能自己穿上外套等宽松衣物。"
+  },
+  {
+    "id": "selfcare-010",
+    "category": "selfcare",
+    "title": "坐着穿裤子不摔跤",
+    "body": "站着单脚穿裤子，对三岁孩子来说是个平衡难题，容易摔，也容易急。让她坐在小凳子或地板上，把裤子摊在面前，裤腰朝向她，先伸一条腿、再伸另一条，然后站起来往上提。选松紧腰的裤子更容易成功。边穿边说：“小脚钻山洞，一个洞里一只脚。”",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "dressing",
+      "independence"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "moe-3-6-guide"
+    ],
+    "basis": "CDC：3 岁能自己穿宽松的裤子；教育部《3–6岁指南》建议衣物简单实用、便于孩子穿脱。"
+  },
+  {
+    "id": "selfcare-011",
+    "category": "selfcare",
+    "title": "最后一步留给她",
+    "body": "学穿衣服可以倒着教：你帮她把袜子套到脚后跟，她只负责往上一拉；你把裤子提到膝盖，她自己拉到腰。由她完成最后一步，每次都能尝到“我做到了”的滋味。熟练了，再一点点多交给她。脱比穿简单，也可以先从自己脱袜子、脱鞋开始练。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "dressing",
+      "independence"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "book-montessori-toddler"
+    ],
+    "basis": "CDC：约 30 个月能自己脱宽松衣物，3 岁能穿一些；先脱后穿、分步教更易成功。"
+  },
+  {
+    "id": "selfcare-012",
+    "category": "selfcare",
+    "title": "一张贴纸分两半",
+    "body": "鞋子总穿反？找一张她喜欢的贴纸，从中间剪成两半，分别贴在两只鞋的鞋垫内侧。穿鞋前把两只鞋并排放，让她拼出完整的图案：“小兔子拼好了吗？拼好了，鞋子就没穿反。”选魔术贴的鞋，她自己穿脱更容易，系鞋带可以等到五六岁再学。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "shoes",
+      "dressing"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：5–6 岁才要求会自己系鞋带；之前选便于穿脱的鞋即可。"
+  },
+  {
+    "id": "selfcare-013",
+    "category": "selfcare",
+    "title": "睡前挑好明天的衣服",
+    "body": "早上赶时间，最怕她在衣柜前犹豫或闹脾气。睡前看一眼天气预报，拿出两套合适的衣服让她选一套，叠好放在小椅子上。第二天醒来就照着穿，不再重新选。她得到了做主的机会，你也避开了早上的拉锯。可以问：“明天有点冷，这两套都暖和，你挑哪套？”",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "dressing",
+      "routine"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "book-montessori-toddler"
+    ],
+    "basis": "Raising Children Network：前一晚准备好衣物并给有限选择，早晨流程更顺。"
+  },
+  {
+    "id": "selfcare-014",
+    "category": "selfcare",
+    "title": "玩具住在矮架子上",
+    "body": "玩具都堆在大箱子里，她只能翻得满地都是，也不知道该往哪收。换成低矮的开放架，每样玩具有固定位置，一次只摆出少量几样，其余收起来，过一两周轮换。东西少了，她更容易专心玩，也更容易自己放回去。今天就试：挑出她最近常玩的几样，给每样找个“家”。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "tidying",
+      "environment"
+    ],
+    "source_ids": [
+      "book-montessori-toddler",
+      "moe-3-6-guide"
+    ],
+    "basis": "《蒙特梭利幼儿教育》：低矮开放架、少量玩具定期轮换，便于孩子自主取放。"
+  },
+  {
+    "id": "selfcare-015",
+    "category": "selfcare",
+    "title": "收纳盒上贴张照片",
+    "body": "她还不识字，收纳盒上写“积木”两个字没用。给每个盒子拍一张里面玩具的照片，或画个简笔画，贴在盒子正面和架子上对应的位置。收拾时，她只要“对图找家”：“小汽车的家在哪？找找有汽车照片的盒子。”配对本身也是这个年纪爱玩的游戏。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "tidying",
+      "visual-cues"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：3–4 岁目标之一是能把玩具和图书放回原处，建议提供收纳盒。"
+  },
+  {
+    "id": "selfcare-016",
+    "category": "selfcare",
+    "title": "饭前摆筷子，饭后送碗",
+    "body": "吃饭前请她给每个人摆一双筷子、一把勺子，顺便数一数：“爸爸、妈妈、奶奶、你，一共几个人？”吃完把自己的碗送到厨房台面上。用不易碎的碗盘，打翻了也不要紧。她会觉得自己是这个家里有用的一员，这份感觉比做得好不好重要得多。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "chores",
+      "belonging"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-hunt-gather-parent"
+    ],
+    "basis": "CDC 学龄前育儿建议：让孩子参与简单家务；《Hunt, Gather, Parent》强调家务带来归属感。"
+  },
+  {
+    "id": "selfcare-017",
+    "category": "selfcare",
+    "title": "给她一盆自己的花",
+    "body": "给她一盆好养的小植物，比如绿萝，放在她够得着的地方，再配一个小水壶。约好每周哪天浇水，在日历上画个小水滴，到时候提醒她。家里有宠物的话，可以让她负责往碗里倒猫粮狗粮，你在旁边看着。照顾一个小生命，会让她觉得自己被需要、能负责。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "chores",
+      "responsibility"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：3–4 岁幼儿“喜欢承担一些小任务”，照顾植物宠物正合适。"
+  },
+  {
+    "id": "selfcare-018",
+    "category": "selfcare",
+    "title": "洒了？小抹布在这儿",
+    "body": "牛奶打翻时，一句“又洒了”很容易冲口而出。试着平静地递上她专属的小抹布：“洒了，擦干净就好。”在她够得着的地方挂一块小毛巾或放一块小海绵，告诉她那是她的。洒了自己擦，不是惩罚，而是一件很自然的事。没擦干净的地方，你可以说“我来擦这边”，一起收尾。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "chores",
+      "spills"
+    ],
+    "source_ids": [
+      "book-montessori-toddler",
+      "book-positive-discipline"
+    ],
+    "basis": "《蒙特梭利幼儿教育》：备好孩子尺寸的清洁工具，让收拾洒漏成为平常小事。"
+  },
+  {
+    "id": "selfcare-019",
+    "category": "selfcare",
+    "title": "门口装个矮挂钩",
+    "body": "她很多事做不了，常常只是因为东西放得太高。在门口装个矮挂钩挂她的外套和小书包，鞋柜留出最下面一层给她，洗手台前放个防滑踏脚凳，再备一把小扫帚和小簸箕。东西都在她够得着的地方，“自己来”才有可能。今天就试：蹲下来，用她的高度把家里走一圈。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "environment",
+      "independence"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：提供有利于幼儿生活自理的条件；蒙特梭利强调孩子尺寸的工具。"
+  },
+  {
+    "id": "selfcare-020",
+    "category": "selfcare",
+    "title": "早晚流程画成小卡片",
+    "body": "她还看不懂钟，但看得懂图。把早上要做的事拍成照片或画成小卡片：起床、尿尿、洗脸、穿衣、吃早饭、穿鞋，按顺序贴在门边。每完成一项，让她把卡片翻过来。你只要问一句：“看看下一张是什么？”不用一遍遍催。晚上的洗澡、刷牙、讲故事也可以做一套。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "routine",
+      "visual-cues"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children Network：图片化的日常流程表帮学龄前儿童预知步骤、减少催促。"
+  },
+  {
+    "id": "selfcare-021",
+    "category": "selfcare",
+    "title": "她喊“我自己来”时",
+    "body": "“我自己来！”可她扣一颗扣子要两分钟，你急得想伸手。这个阶段很宝贵，她在攒“我能行”的感觉。早上多留出十分钟，给她慢慢试；实在赶时间就分工：“你穿裤子，我帮你穿袜子。”她卡住时先等一等，问一句“要不要我帮一点点？”再出手。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "independence",
+      "patience"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "zero-to-three"
+    ],
+    "basis": "教育部《3–6岁指南》：鼓励幼儿做力所能及的事，不因做不好或做得慢而包办代替。"
+  },
+  {
+    "id": "selfcare-022",
+    "category": "selfcare",
+    "title": "自己的小书包自己背",
+    "body": "出门或去幼儿园时，让她背一个小小的双肩包，里面装自己的水杯、备用衣服和一本书。东西要轻，背着不费劲。前一晚一起收拾：“明天的水杯放进去了吗？”回家后，也让她自己把书包挂回挂钩。这件小事会让她觉得：这是我的东西，我能负责。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "kindergarten",
+      "responsibility"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：4–5 岁能整理自己的物品，可从背好、收好自己的书包练起。"
+  },
+  {
+    "id": "selfcare-023",
+    "category": "selfcare",
+    "title": "小壶倒水，托盘兜底",
+    "body": "倒水能同时练小手的控制和专注力。准备一个带把手的小塑料壶，只装小半壶水，连同杯子放在托盘上，洒了也只洒在托盘里。先慢慢示范：“壶嘴对准杯口，慢慢倒，水快满了就停。”美国 CDC 把“在大人看护下自己倒水”列为 4 岁左右的里程碑，现在开始练正合适。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "pouring",
+      "fine-motor"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "book-montessori-toddler"
+    ],
+    "basis": "CDC：约 4 岁能在大人看护下自己倒水或盛饭；蒙特梭利用小壶加托盘练倒水。"
+  },
+  {
+    "id": "selfcare-024",
+    "category": "selfcare",
+    "title": "用鼻子吹走小纸片",
+    "body": "很多三岁孩子不会擤鼻涕，只会往回吸。先把它变成游戏：闭上嘴巴，用鼻子把桌上的小纸片或棉花球“吹”走。会了再拿纸巾：按住一边鼻孔，用另一边轻轻往外呼气，换边再来，不要两边一起使劲擤。擤完把纸扔进垃圾桶，再去洗手。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "nose-blowing",
+      "hygiene"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "kidshealth"
+    ],
+    "basis": "教育部《3–6岁指南》：指导幼儿学会擦鼻涕等自理方法；KidsHealth 建议轻轻擤。"
+  },
+  {
+    "id": "selfcare-025",
+    "category": "selfcare",
+    "title": "洗澡时，肚子归她洗",
+    "body": "洗澡时把一部分交给她：给她一块小毛巾，“你负责洗肚子和胳膊，我来洗背和头发。”边洗边说说身体部位的名字，冲水时让她自己拿花洒冲冲小脚。慢慢再多交给她一些。不管她洗得多投入，大人都要全程在旁边，接电话、拿毛巾也不离开，浴缸里的水放浅一点。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "bath",
+      "independence"
+    ],
+    "source_ids": [
+      "cn-child-injury",
+      "moe-3-6-guide"
+    ],
+    "basis": "中国儿童伤害预防建议：幼儿洗澡须全程有大人看护，浅水也可能溺水。"
+  },
+  {
+    "id": "selfcare-026",
+    "category": "selfcare",
+    "title": "叠歪了也不重叠",
+    "body": "她帮你叠的毛巾歪歪扭扭，被子铺得鼓鼓囊囊。忍住别当着她的面重新弄一遍，那等于告诉她“你做的不算数”。只要不影响安全和卫生，就让它保持原样，说一句：“你把毛巾都放进篮子里了，谢谢你！”技巧会慢慢变好，可愿意动手的心一旦被浇灭，就很难再点燃。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "chores",
+      "encouragement"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-montessori-toddler"
+    ],
+    "basis": "教育部《3–6岁指南》：对幼儿的尝试与努力给予肯定，不因做得不好就包办代替。"
+  },
+  {
+    "id": "selfcare-027",
+    "category": "selfcare",
+    "title": "入园前练好这几件事",
+    "body": "幼儿园里一位老师要照顾很多孩子，她越会照顾自己，越能安心。入园前几个月，可以在家慢慢练：想尿尿时说出来或举手、自己坐马桶、用勺子吃完一顿饭、用杯子喝水、穿脱鞋子、认得自己的东西。不求样样熟练，重要的是让她知道：“不会的时候，可以请老师帮忙。”",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "independence"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "cdc-milestones"
+    ],
+    "basis": "教育部《3–6岁指南》：3–4 岁目标包括在帮助下穿脱衣物、在提醒下饭前便后洗手等。"
+  },
+  {
+    "id": "selfcare-028",
+    "category": "selfcare",
+    "title": "外面的厕所也要练",
+    "body": "在家会用小马桶，出门却憋着不敢上，这很常见：马桶太大、声音太响、自动冲水吓人一跳。可以随身带一个折叠马桶圈，平时带她参观一下商场的厕所；遇到感应冲水的，用便利贴先贴住感应器，等她起身再揭开。出门前和到达后各去一次，减少憋尿。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "potty",
+      "outings"
+    ],
+    "source_ids": [
+      "nhs",
+      "aap"
+    ],
+    "basis": "NHS 如厕建议：外出时带上便盆或座圈，帮孩子在新环境也能放心如厕、不憋尿。"
+  },
+  {
+    "id": "selfcare-029",
+    "category": "selfcare",
+    "title": "先学解开大扣子",
+    "body": "解扣子比扣扣子容易，可以先从解开练起。挑一件大扣子的开衫平铺在桌上，让她一只手捏住扣子，另一只手撑开扣眼，把扣子推出去。熟练了再倒过来练扣上。美国 CDC 把“能解开一些扣子”列为 4 岁左右的里程碑，三岁多慢慢摸索就好，扣不上别急着接手。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "buttons",
+      "fine-motor"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "moe-3-6-guide"
+    ],
+    "basis": "CDC：约 4 岁能解开一些扣子；教育部《3–6岁指南》：4–5 岁能自己扣纽扣。"
+  },
+  {
+    "id": "selfcare-030",
+    "category": "selfcare",
+    "title": "夸她“试了好几次”",
+    "body": "她第一次自己穿好袜子，脚后跟还歪在脚背上。与其说“真聪明”，不如说出她的过程：“你试了好几次，一直没放弃，最后自己穿上了！”为努力和方法鼓掌，她会更愿意挑战难一点的事；只夸结果，她可能只挑容易成功的做。今晚找一件她正在学的事，夸夸过程。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "praise",
+      "effort"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "zero-to-three"
+    ],
+    "basis": "教育部《3–6岁指南》：对幼儿的尝试与努力给予肯定；ZERO TO THREE 建议夸过程。"
+  }
+]
