@@ -165,7 +165,7 @@ cd onetip/ios && xcodegen generate && open OneTip.xcodeproj
 - [ ] **复核来源**：这一版是在云端沙箱里整理的，网络策略挡住了直接打开大多数来源网站（如 www.cdc.gov、raisingchildren.net.au、mama.dxy.com），搜索额度中途也用完了。约一半来源标为「待核实」（`verification.status` 或 `notes`）。要逐条打开原页核对 URL、授权和 `key_points_unverified`。
 - [ ] **专业审核**：请儿科医生过一遍 `safety`、`food`、`sleep` 三类，请学前教育老师过一遍 `social`、`discipline`。重点核对：近视防控方案对学龄前「单次 ≤15 分钟、每天 ≤1 小时」的表述，3 岁 A 群 C 群流脑疫苗，各地涂氟政策，膳食指南的奶量和饮水量（目前来自转载，没找到营养学会原文页）。
 - [ ] **跑一次采集管道**：`harvest.py fetch` 在本地或放开了网络的环境里运行，把 `can_adapt` 来源抓进缓存，再用 `draft` 补充新 tip。
-- [ ] **iOS 编译**：Swift 代码在 Linux 沙箱里没法编译（下载不到 Swift 工具链），需要在 Mac 上 `xcodegen generate` 后用 Xcode 跑一遍构建和 `OneTipTests`。
+- [x] **iOS 编译**：已在 Mac（Xcode 26.6）上构建通过，`OneTipTests` 5 个测试全过，已装到真机（iOS 27.2）。签名用的是免费 Personal Team，描述文件 7 天过期，过期后要重新构建安装。
 - [ ] **持久化兼容**：`PersistedState` 现在用自动合成的 `Codable`，以后加字段要写 `decodeIfPresent`，否则老用户的已读和收藏会被清空。
 
 > 内容是一般性的养育建议，不能代替医生或专业人士对具体孩子的判断。
