@@ -1,0 +1,798 @@
+[
+  {
+    "id": "family-001",
+    "category": "family",
+    "title": "给专属时光起个名字",
+    "body": "每天留出 10–15 分钟只属于她的时间，起个名字，比如「小兔时间」。这段时间玩什么、怎么玩都由她决定，你跟着她走，不教、不考、不看手机。忙的日子 5 分钟也算，关键是天天都有。被你全心关注过，她就不那么需要靠捣乱来求关注。开场可以说：「小兔时间到啦，今天你想玩什么？」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "special-time",
+      "connection",
+      "child-led"
+    ],
+    "source_ids": [
+      "pcit",
+      "child-mind"
+    ],
+    "basis": "PCIT「特别时光」：每天几分钟由孩子主导、家长全程专注，可增进亲子关系、减少对抗。"
+  },
+  {
+    "id": "family-002",
+    "category": "family",
+    "title": "陪她时手机放远点",
+    "body": "她举着积木喊你，你嘴上「嗯嗯」，眼睛还盯着屏幕——这种被手机打断的陪伴，研究者叫它「技术干扰」，和孩子更多哭闹、发脾气有关。陪玩和吃饭时，把手机放到另一个房间或开勿扰，想拍照就拍完马上放下。今天就试：进门把手机放进门口的小篮子，她睡了再拿。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "phone",
+      "attention",
+      "connection"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP/HealthyChildren：家长看手机会减少与幼儿的交流；“技术干扰”与幼儿行为问题相关。"
+  },
+  {
+    "id": "family-003",
+    "category": "family",
+    "title": "进门先蹲下 5 分钟",
+    "body": "下班进门那几分钟，她攒了一整天的想念。进门前先在门外深呼吸三次，把工作留在门外。进门别急着换衣服、回消息，蹲到她的高度抱一抱，听她说几句，哪怕只是「我今天玩了滑梯」。先给她「充满电」，她往往更肯放你去做饭。可以说：「我回来啦！先抱五分钟，你给我讲讲今天。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "reunion",
+      "after-work",
+      "connection"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "zero-to-three"
+    ],
+    "basis": "哈佛儿童发展中心：发展依赖日常“发球-回球”式回应互动，重聚时的专注回应正是好时机。"
+  },
+  {
+    "id": "family-004",
+    "category": "family",
+    "title": "告别要短，别偷偷溜",
+    "body": "「抱一下，亲一下，等你吃完晚饭我就回来。」每天出门都用同一套简短告别：一个拥抱、一句固定的话、挥挥手就走。别趁她不注意溜掉，那会让她更警惕、更黏人。回来的时间用她懂的事说，比如「睡醒午觉」。她哭也没关系，交给家里大人安抚，你说完就走。回来时告诉她：「你看，我说到做到。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "separation",
+      "goodbye",
+      "ritual"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "raising-children-au"
+    ],
+    "basis": "ZERO TO THREE：固定的告别仪式帮幼儿应对分离；偷偷溜走会削弱信任、加重分离焦虑。"
+  },
+  {
+    "id": "family-005",
+    "category": "family",
+    "title": "出差时的想念日历",
+    "body": "出差前和她做一张「想念日历」：一天一格，每晚睡前贴一个贴纸，格子贴满你就到家了。视频约在固定时间，十分钟就够，别只问「想我没」，可以隔着屏幕一起读一页绘本，或给她看看你窗外的风景。她聊两句就跑开也没关系，别勉强。到家那天，一起把最后一格贴上。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "travel",
+      "video-call",
+      "separation"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：与家人视频通话不同于看视频，有大人陪伴的实时互动对幼儿有益。"
+  },
+  {
+    "id": "family-006",
+    "category": "family",
+    "title": "沙发上的打闹游戏",
+    "body": "骑大马、在床上摔跤、假装被她「打倒」——很多爸爸擅长的打闹游戏，能让她练力气、学控制力度，也学会看别人的表情。先定好暂停暗号，比如一喊「停」就立刻停；在软垫上玩，不碰头颈、不摇晃。偶尔让她赢，也让她看到你输得起。睡前一小时别再疯玩，留几分钟慢慢安静下来。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "dad",
+      "rough-play",
+      "self-control"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children：打闹游戏帮孩子练身体和社交技能、安全地冒险，并了解自己的力量。"
+  },
+  {
+    "id": "family-007",
+    "category": "family",
+    "title": "让爸爸包下洗澡时间",
+    "body": "爸爸别只当「帮手」，最好固定包下一个环节，比如每晚洗澡或讲睡前故事。天天由爸爸来，这就成了父女俩的专属时光。另一位大人这时走开，别在旁边纠正「水太凉了」「不是这么穿」——方法不同没关系，孩子能适应两种风格。今晚就把分工定下来，先坚持一个月。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "dad",
+      "routine",
+      "coparenting"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP 报告：父亲积极参与日常照护，与孩子更好的情绪、行为和认知发展相关。"
+  },
+  {
+    "id": "family-008",
+    "category": "family",
+    "title": "先谢老人，再提一件事",
+    "body": "想请老人改个做法，先说具体的感谢：「妈，这周您天天接送，还变着花样做饭，辛苦了。」辛苦被看见了，老人才听得进建议。然后只提一件事，用「我们」开头：「我们一起试试让她自己吃饭，好不好？」挑大家都不累的时候说，别在饭桌上或当着孩子的面说。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "grandparents",
+      "communication"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children 祖辈带娃建议：选平静的时机，先表达尊重与感谢，再具体商量做法。"
+  },
+  {
+    "id": "family-009",
+    "category": "family",
+    "title": "和老人只对齐三条",
+    "body": "老人和你的做法不可能处处一样，也没必要。全家只对齐两三条最要紧的：比如坐车必须用安全座椅、不打孩子、不拿糖和手机哄她。多穿一件衣服、晚睡半小时这类事，就放手。可以写下来贴在冰箱上，说：「这三条咱们一起守住，别的您看着办。」老人有了空间，反而更愿意配合。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "grandparents",
+      "rules",
+      "consistency"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "cn-child-injury"
+    ],
+    "basis": "Raising Children：与祖辈明确少数关键规则，其余保留弹性，可减少带娃冲突。"
+  },
+  {
+    "id": "family-010",
+    "category": "family",
+    "title": "不当她的面驳老人",
+    "body": "奶奶正喂她吃饭，你一句「别喂了，让她自己吃」，孩子听到的是：大人意见不一样，奶奶说了不算。不涉及安全的事，当场先不纠正，事后私下再聊；真有危险，就平静地说「这个我来吧」。也别让孩子帮忙传话。她跑来告状时，可以说：「这件事我和奶奶商量，你先去玩吧。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "grandparents",
+      "conflict",
+      "respect"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children：大人之间的分歧应避开孩子讨论，不让孩子夹在中间传话。"
+  },
+  {
+    "id": "family-011",
+    "category": "family",
+    "title": "让医生替你开口",
+    "body": "跟老人说「网上说的」，常换来一句「我们以前都这么带」。换个方法更管用：把国家卫健委养育照护指南、营养学会膳食指南里相关的那一页截图给老人看，或者体检时请儿保医生当面讲。一次只给一两条，别甩一堆链接。可以说：「医生说现在建议这样，咱们先试两周看看？」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "grandparents",
+      "evidence",
+      "communication"
+    ],
+    "source_ids": [
+      "nhc-care-guide",
+      "cns-preschool-diet"
+    ],
+    "basis": "国家卫健委《3岁以下婴幼儿健康养育照护指南》等官方指南，可作全家统一做法的共同依据。"
+  },
+  {
+    "id": "family-012",
+    "category": "family",
+    "title": "请老人教她一首童谣",
+    "body": "老人带娃有不少宝贝：童谣、方言儿歌、折纸、擀饺子皮的手艺。请老人当这些事的「老师」：「妈，您教她那首拍手歌吧，我小时候最爱。」被看重的老人更愿意听你的想法，孩子也多了一份和祖辈之间独有的连接。今天就试：请老人教她一首你小时候听过的歌谣。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "grandparents",
+      "respect",
+      "culture"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "moe-3-6-guide"
+    ],
+    "basis": "Raising Children：祖孙亲密关系对孩子有益，尊重祖辈的经验有助于全家合作带娃。"
+  },
+  {
+    "id": "family-013",
+    "category": "family",
+    "title": "分歧回房间再说",
+    "body": "她要第三块饼干，你说不行，伴侣说「就一块嘛」——这种当场拆台最让孩子困惑，她会学着去找那个「好说话」的人。当着她，先支持对方的决定；真有不同意见，等她睡了再商量，定下来后两人口径一致。一时拿不准，可以说：「我们俩商量一下，再告诉你。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "coparenting",
+      "consistency",
+      "rules"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "triple-p"
+    ],
+    "basis": "Raising Children：父母规则一致、分歧私下协商，孩子更有安全感，规则也更好执行。"
+  },
+  {
+    "id": "family-014",
+    "category": "family",
+    "title": "吵了架，也让她看到和好",
+    "body": "夫妻偶尔当着孩子争执很难避免，她又很会察言观色，装作没事反而更让她不安。真正伤孩子的是吼叫、冷战和一直没有下文；让她看到矛盾被化解，安全感就能回来。和好后当着她说：「刚才我们声音太大了，现在已经说好了。大人吵架不是你的错。」再一家人抱一抱。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "conflict",
+      "repair",
+      "coparenting"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children：父母冲突中的敌意伤害孩子；看到冲突被化解，有助孩子恢复安全感。"
+  },
+  {
+    "id": "family-015",
+    "category": "family",
+    "title": "周六早上的松饼约定",
+    "body": "家庭仪式不用隆重，只要固定、值得期待：每周六早上一起做松饼，或周五晚上铺好毯子，全家一起看一部短片。孩子会开始盼着、倒数着，这种「我知道接下来会发生什么」的感觉让她安稳。今天就试：和她一起选一个每周的小仪式，再给它起个名字。偶尔错过一次没关系，下周照常就好。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "ritual",
+      "routine",
+      "belonging"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children：家庭传统和仪式给孩子安全感、身份认同和归属感。"
+  },
+  {
+    "id": "family-016",
+    "category": "family",
+    "title": "每天三个抱抱",
+    "body": "早上醒来、出门前、晚上重聚，各给她一个拥抱，哪怕当天刚闹过别扭。温暖的身体接触能帮她平静下来，也让她确认你一直都在。不过先问再抱：「要抱抱吗？」她摇头，就换成击掌或碰碰鼻尖，让她知道自己的身体自己做主。睡前还可以加一个「三秒紧紧抱」。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "affection",
+      "touch",
+      "body-autonomy"
+    ],
+    "source_ids": [
+      "zero-to-three"
+    ],
+    "basis": "ZERO TO THREE：温暖的身体接触帮幼儿调节情绪、建立安全依恋，同时应尊重孩子意愿。"
+  },
+  {
+    "id": "family-017",
+    "category": "family",
+    "title": "夸她怎么做，不夸“真聪明”",
+    "body": "她拼好了拼图，「你真聪明」很顺口，但听多了，她可能怕做不好就不敢再试。换成说她做了什么：「你试了好几块，转个方向就对上了！」具体说出她的努力、方法和坚持，她会明白本事是练出来的，下次碰到难的也更愿意接着试。也可以只描述不评价：「你画了好多圈圈，还用了三种颜色。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "praise",
+      "effort",
+      "mindset"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "pcit"
+    ],
+    "basis": "Raising Children 等：具体描述努力和过程的表扬，比笼统夸“聪明”更能鼓励坚持。"
+  },
+  {
+    "id": "family-018",
+    "category": "family",
+    "title": "少夸漂亮，多说她做了啥",
+    "body": "女孩从小最常听到的就是「真漂亮」「裙子真好看」。外貌不是她能努力的事，听多了容易以为好看最重要。见面换个开场：「你今天搭的城堡好高！」「你编的故事真有意思。」她照镜子时，夸夸身体能做什么：「你的腿真有劲，跑得好快！」亲戚夸漂亮不必纠正，你笑着接一句她最近做过的事就好。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "praise",
+      "gender",
+      "self-esteem"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children：多关注孩子的兴趣、能力与行为而非外表，有助形成健康的自我认知。"
+  },
+  {
+    "id": "family-019",
+    "category": "family",
+    "title": "讲讲她小时候的故事",
+    "body": "三岁的孩子特别爱听「你小时候」的故事。找几张她婴儿时的照片，讲点有画面的细节：「你第一次尝柠檬，皱着小脸，还伸手要第二口。」再让她指着照片讲给你听：「这是谁？那时候你在干什么呀？」这既练语言，也让她感到自己是这个家故事里的主角。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "family-story",
+      "photos",
+      "belonging"
+    ],
+    "source_ids": [
+      "vroom"
+    ],
+    "basis": "Vroom「家庭时光」活动：和孩子一起看家庭照片并请她讲述，能练语言、增进亲近感。"
+  },
+  {
+    "id": "family-020",
+    "category": "family",
+    "title": "讲讲祖辈的老故事",
+    "body": "睡前讲一个家里长辈的真事：「奶奶小时候没有玩具，就捡五颗小石子玩「抓石子」。」或者视频时请老人讲讲自己小时候，你也可以讲讲自己小时候闯的小祸。她会慢慢明白，家里的大人也当过小孩，自己属于一个更大的家。故事短一点、细节多一点，她会缠着你讲很多遍。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "family-story",
+      "grandparents",
+      "identity"
+    ],
+    "source_ids": [
+      "vroom"
+    ],
+    "basis": "Vroom 建议与孩子分享家人的照片和故事；细节丰富的回忆对话有助叙事和情绪理解。"
+  },
+  {
+    "id": "family-021",
+    "category": "family",
+    "title": "请她帮一个真忙",
+    "body": "三岁的孩子很想加入大人的事，却常被一句「别添乱」挡回去。给她真实、有用的小任务：把袜子配成对、把勺子摆上桌、给花浇水。做得慢、不完美，也让她做完；太难的就拆成一小步。做完说：「谢谢你，这个家少了你可不行。」被需要的感觉，会让她愿意一直帮下去。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "chores",
+      "belonging",
+      "independence"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-hunt-gather-parent"
+    ],
+    "basis": "CDC 建议让学龄前儿童做简单家务；《Hunt, Gather, Parent》：参与真实劳动增强归属感。"
+  },
+  {
+    "id": "family-022",
+    "category": "family",
+    "title": "周末去哪，让她投一票",
+    "body": "三四岁版的家庭会议很简单：周五晚饭后全家坐一起，你给两个选项——「明天去公园，还是去外婆家？」每人说一个理由，她用贴纸投票。定下来就照做，让她看到自己的意见真的算数；她选的没选上，就说「这次大家选了公园，下次你还可以提」。整个过程控制在五分钟内，最后来个全家击掌。",
+    "age_min_months": 40,
+    "age_max_months": 60,
+    "tags": [
+      "family-meeting",
+      "choice",
+      "voice"
+    ],
+    "source_ids": [
+      "book-positive-discipline"
+    ],
+    "basis": "《正面管教》：家庭会议让孩子练习表达和参与决策；学龄前可简化为二选一。"
+  },
+  {
+    "id": "family-023",
+    "category": "family",
+    "title": "睡前问一件开心事",
+    "body": "关灯前问她：「今天最开心的一件事是什么？」你也说一件自己的：「我最开心的是你给我讲了恐龙的故事。」她说「不知道」也没关系，你先示范几天，她就会开始主动去想。偶尔再加一句：「今天有谁帮了你吗？」帮她留意身边的善意。坚持几周，这会变成你们睡前的固定悄悄话。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "gratitude",
+      "bedtime",
+      "positive"
+    ],
+    "source_ids": [
+      "aap",
+      "child-mind"
+    ],
+    "basis": "AAP/HealthyChildren：睡前花几分钟一起说一件值得感谢的小事，有助培养感恩之心。"
+  },
+  {
+    "id": "family-024",
+    "category": "family",
+    "title": "周末只排一件事",
+    "body": "周末从早到晚连轴转——早教、商场、聚餐，她累你也累，晚上最容易崩。给周末留点白：上午只安排一件事，下午留给发呆、玩沙子、在家随便翻翻。没人安排的时间里，她会自己琢磨玩法，创造力常常就在这时冒出来。今天就试：划掉一个可有可无的安排。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "slow-down",
+      "free-play",
+      "weekend"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter",
+      "hirsh-pasek"
+    ],
+    "basis": "《园丁与木匠》Gopnik：孩子在自由、无结构的玩耍中探索学习，不需要被填满的日程。"
+  },
+  {
+    "id": "family-025",
+    "category": "family",
+    "title": "用季节告诉她宝宝何时来",
+    "body": "如果家里要添二宝：九个月对三岁孩子太漫长，可以等肚子明显了再告诉她，用她懂的时间说：「等天冷了、过完年，宝宝就出生啦。」也要说实话：「刚出生的宝宝只会哭和睡，还不能陪你玩。」一起读讲二胎的绘本，让她摸摸肚子，问什么都认真回答。最好由你亲口告诉她，别让她先从别人嘴里听到。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "sibling",
+      "new-baby",
+      "preparation"
+    ],
+    "source_ids": [
+      "child-mind",
+      "who-unicef-nurturing-care"
+    ],
+    "basis": "Child Mind/UNICEF：用孩子能懂的方式告知、如实描述新生儿，并预期大孩子的情绪反应。"
+  },
+  {
+    "id": "family-026",
+    "category": "family",
+    "title": "大宝变回小宝宝时",
+    "body": "二宝出生后，她突然又要奶瓶、尿裤子、说话奶声奶气，这很常见，是在确认「我还被爱着吗」。别说「你都是姐姐了」，不妨陪她玩一会儿「当小宝宝」：「来，让我抱抱我的大宝宝。」需求被满足了，退行通常会慢慢过去；持续很久或很明显，问问儿科医生。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "sibling",
+      "regression",
+      "reassurance"
+    ],
+    "source_ids": [
+      "who-unicef-nurturing-care",
+      "child-mind"
+    ],
+    "basis": "UNICEF/Child Mind：新生儿到来后大孩子出现退行很常见，多为寻求关注，会随时间消退。"
+  },
+  {
+    "id": "family-027",
+    "category": "family",
+    "title": "让她当宝宝的“顾问”",
+    "body": "别只派她去拿尿布，给她真正的选择权：「宝宝今天穿哪双袜子，你来定？」「宝宝哭了，你猜宝宝想要什么？」再替宝宝「说话」：「你看，你一唱歌宝宝就不哭了。」帮忙要自愿，她不想帮也没关系。这样她会觉得宝宝是「我们的」，而不是来抢爸妈的。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "sibling",
+      "helper",
+      "belonging"
+    ],
+    "source_ids": [
+      "child-mind",
+      "raising-children-au"
+    ],
+    "basis": "Child Mind 等：让大孩子以适合年龄的方式参与照顾新生儿，有助建立手足连接。"
+  },
+  {
+    "id": "family-028",
+    "category": "family",
+    "title": "二宝来了，留10分钟给大宝",
+    "body": "有了二宝，她最怕的是你被抢走。每天找 10 分钟，把宝宝交给别人，专门陪她做她想做的事。少说「等一下，宝宝要喂奶」，换成「宝宝吃完奶，我就陪你搭积木」——别让宝宝成了她得不到你的理由。偶尔也让宝宝等等：「宝宝，我先给姐姐讲完故事哦。」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "sibling",
+      "one-on-one",
+      "jealousy"
+    ],
+    "source_ids": [
+      "who-unicef-nurturing-care",
+      "child-mind"
+    ],
+    "basis": "UNICEF/Child Mind：新生儿到来后，每天保留与大孩子的一对一时间，帮助其适应。"
+  },
+  {
+    "id": "family-029",
+    "category": "family",
+    "title": "做个“够好”的家长",
+    "body": "没有人能每次都耐心、温柔、做对。孩子需要的不是完美的父母，而是会犯错、也愿意修复的父母。今天哪怕只有一半时间做得还行，就已经够好了。想想今天做对的一件小事，比如认真听她讲完了一个故事，再对自己说一句：「今天我尽力了，明天再试。」把对自己的苛责省下来，留点力气给明天。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "self-care",
+      "self-compassion",
+      "parent"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "triple-p"
+    ],
+    "basis": "《Good Inside》：亲子关系看重出错后的修复而非从不出错；Triple P 强调家长善待自己。"
+  },
+  {
+    "id": "family-030",
+    "category": "family",
+    "title": "快炸了，先暂停一分钟",
+    "body": "她第五次把饭倒在地上，你感觉火直往上冒——这时先管住自己。确认她安全后，把话说出来：「我现在很生气，需要冷静一下，马上回来。」去厨房喝口水、慢慢呼吸几次，再回来处理；走不开就原地转过身，慢慢数到十。你这时示范的，正是希望她学会的：情绪上来时，先停一停。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "self-care",
+      "anger",
+      "modeling"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "triple-p"
+    ],
+    "basis": "Raising Children 家长愤怒管理：快失控时先离开现场冷静，既避免吼叫，也给孩子示范。"
+  },
+  {
+    "id": "family-031",
+    "category": "family",
+    "title": "把求助说得具体点",
+    "body": "「你也帮帮我啊」常换来一句「要我做什么？」求助越具体，越容易被接住：「今晚你负责洗澡和哄睡，我出去走半小时。」和伴侣或老人排个固定「轮班」，让每个大人每周都有一段完全不用管孩子的时间。会开口求助不是软弱，是让这个家转得更久。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "self-care",
+      "support",
+      "coparenting"
+    ],
+    "source_ids": [
+      "triple-p",
+      "raising-children-au"
+    ],
+    "basis": "Triple P：照顾好自己是积极养育的核心原则之一；明确分工能减轻家长压力。"
+  },
+  {
+    "id": "family-032",
+    "category": "family",
+    "title": "这些信号说明你太累了",
+    "body": "留意这些信号：一点小事就想吼人；明明很累却睡不着；对以前喜欢的事提不起劲；常觉得「我是个糟糕的家长」。偶尔出现很正常，说明你需要休息和帮手。如果持续两周以上、影响到日常，别硬撑，去看医生或心理门诊，就像孩子生病要看医生一样。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "self-care",
+      "burnout",
+      "mental-health"
+    ],
+    "source_ids": [
+      "aap",
+      "child-mind"
+    ],
+    "basis": "AAP：家长抑郁和耗竭常见且可治疗；情绪低落持续两周以上应寻求专业帮助。"
+  },
+  {
+    "id": "family-033",
+    "category": "family",
+    "title": "吼了她以后这样修复",
+    "body": "吼完以后，等你们都平静下来，蹲下来说：「刚才我吼你了，对不起。我是着急，但吼人不对，下次我会先停一停。」只为自己的行为道歉，不加「但是你也……」，再抱一抱她。说过伤人的话要单独收回：「我说你烦人，那不是真的。」认错不会让你失去权威，反而让她学到：犯了错可以弥补，关系不会断。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "repair",
+      "apology",
+      "yelling"
+    ],
+    "source_ids": [
+      "aap",
+      "book-good-inside"
+    ],
+    "basis": "AAP/HealthyChildren：家长失控后冷静道歉并说明以后怎么做，示范如何从错误中恢复。"
+  },
+  {
+    "id": "family-034",
+    "category": "family",
+    "title": "换阿姨前先“预演”",
+    "body": "搬家、换阿姨、老人回老家，对三岁孩子都是大事。提前几天开始预告，配上照片，用简单的话说清接下来会怎样：「下周一王阿姨来陪你，奶奶回老家，我们每天和她视频。」新阿姨最好先和原来的人一起带几天。她闹情绪时先接住：「你想奶奶了，对吗？」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "change",
+      "transition",
+      "preparation"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children/ZERO TO THREE：提前用孩子能懂的方式预告变化、保留熟悉日常，可减少不安。"
+  },
+  {
+    "id": "family-035",
+    "category": "family",
+    "title": "家人住院，这样告诉她",
+    "body": "家里有人住院，孩子能感觉到大人的紧张，什么都不说反而更害怕。用简单真实的话讲：「爷爷的心脏生病了，医生在医院给他治。」再讲清两件事：「这不是你造成的。」「这几天由我和外婆照顾你。」可以让她画张画送给爷爷。她反复问，就耐心再答一遍。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "illness",
+      "hospital",
+      "honesty"
+    ],
+    "source_ids": [
+      "kidshealth",
+      "child-mind"
+    ],
+    "basis": "KidsHealth：用简单具体的话告诉孩子家人生病，说明不是孩子的错，并安排好日常照顾。"
+  },
+  {
+    "id": "family-036",
+    "category": "family",
+    "title": "说“死了”，别说“睡着了”",
+    "body": "家里的老人或小宠物去世，别说「睡着了」「去很远的地方了」，她可能因此害怕睡觉，或一直等着他回来。用简单真实的话：「太爷爷死了，他的身体停止工作，不会再疼，也不会再回来了。」三岁孩子还不懂「永远」，会反复问，每次平静地答就好。你难过，也可以让她看见。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "death",
+      "grief",
+      "honesty"
+    ],
+    "source_ids": [
+      "child-mind",
+      "kidshealth"
+    ],
+    "basis": "Child Mind/KidsHealth：用“死”等明确的词，避免“睡着了”等委婉说法；幼儿需反复解释。"
+  },
+  {
+    "id": "family-037",
+    "category": "family",
+    "title": "蓝色和挖掘机也是她的",
+    "body": "「女孩子玩什么挖掘机」「粉色才是女孩的颜色」——三四岁正是孩子给世界分男女的时候，这类话她听得最认真。让玩具、颜色和梦想都敞开：积木、球、娃娃、工具箱都能玩。读绘本时指给她看：「这位消防员是女的。」她说「这是男孩玩的」，就问：「谁说的？女孩也可以玩呀。」",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "gender",
+      "stereotypes",
+      "play"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children：提供多样的玩具和榜样，帮孩子形成不受刻板印象限制的性别观念。"
+  },
+  {
+    "id": "family-038",
+    "category": "family",
+    "title": "扫码付钱，她看不见钱",
+    "body": "手机一扫就付完了，在她眼里，东西像是「免费」的。4 岁左右可以开始金钱启蒙：偶尔用现金，让她把钱递给收银员；在家玩「开小店」，用硬币买卖；准备一个透明存钱罐，看硬币一点点变多。她想要的小玩具，可以说：「我们一起存，存满这罐就去买。」",
+    "age_min_months": 42,
+    "age_max_months": 60,
+    "tags": [
+      "money",
+      "saving",
+      "delayed-gratification"
+    ],
+    "source_ids": [
+      "raising-children-au"
+    ],
+    "basis": "Raising Children：学龄前先认识实物钱币，用透明储蓄罐和“开小店”理解金钱。"
+  },
+  {
+    "id": "family-039",
+    "category": "family",
+    "title": "过年给她一件真差事",
+    "body": "节日的意义，孩子是从「我也参与了」里记住的。过年让她贴一张福字、包一个歪歪扭扭的饺子；中秋一起看月亮、切月饼；端午闻闻粽叶香。来历讲一两句就够，不用讲全。今天就试：问问她「今年过年，你想负责什么？」给她一份自己的任务，比如给爷爷奶奶拜年时递上一杯茶。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "festival",
+      "tradition",
+      "culture"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "教育部《3–6岁儿童学习与发展指南》社会领域：引导幼儿感受家乡与民族文化，萌发归属感。"
+  },
+  {
+    "id": "family-040",
+    "category": "family",
+    "title": "种一盆小葱，剪来下锅",
+    "body": "把吃剩的葱根泡进水里或插进土里，几天就冒新芽。让她每天负责浇水、比比长了多高，长好了用儿童剪刀亲手剪下来，撒进你们一起做的鸡蛋饼里。自己种的、自己动手做的菜，孩子往往更愿意尝。洗菜、搅蛋液、揉面团，也都可以交给她。没有阳台，窗台上一个小杯子也行。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "gardening",
+      "cooking",
+      "nature"
+    ],
+    "source_ids": [
+      "cns-preschool-diet",
+      "moe-3-6-guide"
+    ],
+    "basis": "中国学龄前儿童膳食指南（2022）：鼓励儿童参与食物选择与制作，增进对食物的认知和喜爱。"
+  },
+  {
+    "id": "family-041",
+    "category": "family",
+    "title": "周末找一片草地",
+    "body": "周末不一定要去远方，小区绿地、城市公园就够。让她踩落叶、捡石子、蹲着看蚂蚁搬家，你跟着她的速度慢慢走。3–4 岁孩子每天需要累计至少 3 小时各种强度的活动，户外跑跑跳跳最容易攒够。带个小袋子装她的「宝藏」，回家一起摆出来看看。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "nature",
+      "outdoor",
+      "active"
+    ],
+    "source_ids": [
+      "who-under5",
+      "cn-preschool-exercise"
+    ],
+    "basis": "WHO 2019 指南：3–4 岁儿童每天至少 180 分钟各类身体活动，其中至少 60 分钟中高强度。"
+  },
+  {
+    "id": "family-042",
+    "category": "family",
+    "title": "让她看到你也在学",
+    "body": "让她看见大人也有不会的事。学一首新歌唱跑调了，就笑着说：「我还没练熟，再来一遍。」她问的问题你答不上，就说：「我也不知道，咱们一起查查。」做错了也大方承认：「哎呀，我放错了，重来。」你面对难题时的样子，比一百句「要坚持哦」都管用：不会不丢人，可以慢慢学。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "modeling",
+      "learning",
+      "mistakes"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter",
+      "harvard-cdc"
+    ],
+    "basis": "《园丁与木匠》：幼儿主要通过观察和模仿身边成人来学习，包括大人怎样面对不会的事。"
+  },
+  {
+    "id": "family-043",
+    "category": "family",
+    "title": "小事上让她说“不”",
+    "body": "三岁的孩子常靠说「不」来确认自己是个独立的人。小事上给她说不的空间：穿哪件衣服、先吃哪样菜，不想亲亲长辈，挥手说再见也行。关乎安全和健康的事就温和而坚定：「过马路必须牵手，这个不商量。」分清哪些能让、哪些不让，她反而更少跟你较劲。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "autonomy",
+      "limits",
+      "choice"
+    ],
+    "source_ids": [
+      "book-positive-discipline",
+      "zero-to-three"
+    ],
+    "basis": "《正面管教》：给幼儿有限选择、尊重其自主，同时坚定守住安全底线，可减少权力之争。"
+  },
+  {
+    "id": "family-044",
+    "category": "family",
+    "title": "那句话，是你小时候听的吗",
+    "body": "「哭什么哭！」脱口而出的那一刻，你可能听到了自己父母的声音。小时候怎么被对待，会在压力大时自动冒出来。留意那些让你特别上火的场景，问问自己：「这让我想起小时候的什么？」不用责怪父母，也不必一下改掉，每多停一秒，就多一次换种方式的机会。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "self-reflection",
+      "patterns",
+      "parent"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "book-whole-brain"
+    ],
+    "basis": "ZERO TO THREE：家长自己的成长经历会影响教养方式，觉察这些模式才能有意识地选择回应。"
+  },
+  {
+    "id": "family-045",
+    "category": "family",
+    "title": "陪得少，就陪得专心",
+    "body": "工作日只有晚上一两个小时陪她，心里愧疚很正常，但不必自责。对孩子发展真正起作用的，是一来一回的专心互动：她说话你回应，她看你，你也看着她。与其边刷手机边陪三小时，不如专心陪 20 分钟。今晚试试：洗澡和睡前这两段，完全属于她。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "working-parent",
+      "guilt",
+      "quality-time"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛儿童发展中心：日常“发球-回球”式的回应互动是大脑发育的基础，重在质量。"
+  }
+]

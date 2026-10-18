@@ -1,0 +1,47 @@
+# Generate the Xcode project with XcodeGen:  brew install xcodegen && xcodegen generate
+# Before generating, build the content bundle:  python3 ../pipeline/validate_tips.py --bundle
+name: OneTip
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: zh-Hans
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  OneTip:
+    type: application
+    platform: iOS
+    sources:
+      - path: OneTip
+      - path: ../data/tips.bundle.json
+        buildPhase: resources
+      - path: ../data/sources.bundle.json
+        buildPhase: resources
+    info:
+      path: OneTip/Info.plist
+      properties:
+        CFBundleDisplayName: 每日一招
+        CFBundleDevelopmentRegion: zh-Hans
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.onetip
+        TARGETED_DEVICE_FAMILY: "1"
+  OneTipTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [OneTipTests]
+    dependencies:
+      - target: OneTip
+schemes:
+  OneTip:
+    build:
+      targets:
+        OneTip: all
+    test:
+      targets: [OneTipTests]

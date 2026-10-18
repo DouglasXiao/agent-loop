@@ -1,0 +1,506 @@
+<title>每日一招</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Serif+SC:wght@700&display=swap">
+<style>
+/* Layout: a tear-off daily calendar pad on a desk; one big button in thumb reach tears off a page. */
+:root {
+  --desk: #e7eeec;
+  --paper: #fffefb;
+  --paper-edge: #e3e6e2;
+  --ink: #1f2a37;
+  --muted: #5f6b73;
+  --red: #d7322b;
+  --red-ink: #ffffff;
+  --chip: #fbe7e5;
+  --line: #e9ece8;
+  --shadow: 0 1px 0 var(--paper-edge), 0 18px 40px -18px rgba(31, 42, 55, 0.35);
+  --font-num: "DM Serif Display", "Didot", Georgia, serif;
+  --font-title: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --font-body: -apple-system, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #11171b; --paper: #1d252b; --paper-edge: #2a343b; --ink: #e8ecee; --muted: #9aa6ae;
+    --red: #ff6a5c; --red-ink: #1b0f0e; --chip: #3b2422; --line: #2b353c;
+    --shadow: 0 1px 0 var(--paper-edge), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --desk: #11171b; --paper: #1d252b; --paper-edge: #2a343b; --ink: #e8ecee; --muted: #9aa6ae;
+  --red: #ff6a5c; --red-ink: #1b0f0e; --chip: #3b2422; --line: #2b353c;
+  --shadow: 0 1px 0 var(--paper-edge), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--desk);
+  color: var(--ink);
+  font: 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+.app {
+  height: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px 16px;
+  box-sizing: border-box;
+}
+
+.topbar { display: flex; align-items: center; gap: 8px; }
+.brand { font-family: var(--font-title); font-size: 17px; letter-spacing: 0.06em; margin-right: auto; }
+.icon-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: transparent; border: 0; padding: 8px 10px; border-radius: 999px;
+  color: var(--muted); font-size: 13px; cursor: pointer;
+}
+.icon-btn:hover { background: var(--line); color: var(--ink); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* The pad: binding strip on top, a stack of pages under it. */
+.pad { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; margin-bottom: 10px; }
+.binding {
+  height: 22px; border-radius: 10px 10px 4px 4px; background: var(--red);
+  display: flex; justify-content: center; gap: 120px; align-items: center; position: relative; z-index: 3;
+}
+.binding::before, .binding::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--desk); }
+.stack { position: relative; flex: 1; min-height: 0; margin-top: -4px; }
+.stack::before, .stack::after {
+  content: ""; position: absolute; left: 6px; right: 6px; bottom: -6px; height: 100%;
+  background: var(--paper); border-radius: 0 0 14px 14px; box-shadow: var(--shadow); z-index: 0;
+}
+.stack::after { left: 12px; right: 12px; bottom: -11px; opacity: 0.7; z-index: -1; }
+
+.page {
+  position: absolute; inset: 0; z-index: 1;
+  background: var(--paper); border-radius: 0 0 14px 14px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; overflow: hidden;
+  transform-origin: 50% 0;
+}
+.page::before { /* perforation where the page tears from the pad */
+  content: ""; display: block; height: 8px; flex: none;
+  background: radial-gradient(circle at 4px 0, var(--desk) 2.4px, transparent 2.6px) 0 0 / 12px 8px repeat-x;
+  opacity: 0.9;
+}
+.page-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 22px 20px; display: flex; flex-direction: column; gap: 12px; }
+.page.tearing { animation: tear 520ms cubic-bezier(.5, -0.2, .7, .6) forwards; z-index: 2; }
+@keyframes tear {
+  0% { transform: none; }
+  30% { transform: rotate(-3deg) translateY(4px); }
+  100% { transform: rotate(-14deg) translate(-30%, 120%); opacity: 0; }
+}
+.page.arriving { animation: arrive 360ms ease-out; }
+@keyframes arrive { from { filter: brightness(0.94); } to { filter: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .page.tearing { animation: fade 160ms linear forwards; }
+  .page.arriving { animation: none; }
+  @keyframes fade { to { opacity: 0; } }
+}
+
+/* Cover page = today's calendar sheet. */
+.cover { align-items: center; text-align: center; justify-content: center; }
+.cover .month { font-size: 15px; letter-spacing: 0.3em; color: var(--muted); }
+.cover .day { font-family: var(--font-num); font-size: clamp(120px, 34vw, 168px); line-height: 0.9; color: var(--red); font-variant-numeric: tabular-nums; }
+.cover .weekday { font-size: 15px; letter-spacing: 0.3em; color: var(--muted); }
+.cover .age { margin-top: 10px; font-family: var(--font-title); font-size: 20px; }
+.cover .hint { color: var(--muted); font-size: 14px; }
+.demo-note {
+  font-size: 12px; color: var(--muted); background: var(--line); border: 0; border-radius: 999px;
+  padding: 4px 12px; cursor: pointer;
+}
+
+/* Tip page. */
+.tip-head { display: flex; align-items: baseline; gap: 10px; color: var(--muted); font-size: 13px; }
+.tip-date { font-family: var(--font-num); font-size: 30px; line-height: 1; color: var(--red); font-variant-numeric: tabular-nums; }
+.chip { margin-left: auto; background: var(--chip); color: var(--red); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.tip-title { font-family: var(--font-title); font-size: 25px; line-height: 1.3; margin: 2px 0 0; text-wrap: balance; }
+.tip-body { margin: 0; font-size: 17px; line-height: 1.85; max-width: 34em; }
+details.basis { border-top: 1px dashed var(--paper-edge); padding-top: 10px; color: var(--muted); font-size: 13px; }
+details.basis summary { cursor: pointer; }
+details.basis p { margin: 8px 0 4px; }
+details.basis a { color: var(--muted); text-underline-offset: 3px; }
+details.basis ul { margin: 4px 0 0; padding-left: 18px; }
+.actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: auto; padding-top: 6px; }
+.act {
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px; border: 1px solid var(--line); background: transparent;
+  border-radius: 999px; padding: 7px 4px; font-size: 13px; color: var(--muted); cursor: pointer; white-space: nowrap;
+}
+.act svg { width: 16px; height: 16px; }
+.act[aria-pressed="true"] { color: var(--red); border-color: var(--red); }
+.act:hover { color: var(--ink); }
+
+/* The one big button. */
+.big {
+  flex: none; border: 0; cursor: pointer; border-radius: 28px; min-height: 104px;
+  background: var(--red); color: var(--red-ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  box-shadow: 0 14px 30px -12px var(--red);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.big:active { transform: scale(0.97); box-shadow: 0 6px 16px -10px var(--red); }
+.big .label { font-family: var(--font-title); font-size: 28px; letter-spacing: 0.12em; }
+.big .sub { font-size: 13px; opacity: 0.85; }
+
+/* Sheets: favourites, all tips, settings. */
+.sheet {
+  position: fixed; inset: 0; z-index: 20; background: var(--desk); overflow-y: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: calc(env(safe-area-inset-top, 0px) + 12px) calc(env(safe-area-inset-bottom, 0px) + 24px);
+}
+.sheet-inner { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.sheet-head { display: flex; align-items: center; gap: 8px; position: sticky; top: 0; background: var(--desk); padding-block: 6px; z-index: 1; }
+.sheet-head h2 { font-family: var(--font-title); font-size: 20px; margin: 0 auto 0 0; }
+.filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+.filter { flex: none; border: 1px solid var(--paper-edge); background: var(--paper); color: var(--muted); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; }
+.filter[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: var(--red-ink); }
+.list { display: flex; flex-direction: column; gap: 8px; }
+.row { background: var(--paper); border-radius: 12px; padding: 12px 14px; box-shadow: 0 1px 0 var(--paper-edge); }
+.row summary { cursor: pointer; display: flex; gap: 8px; align-items: baseline; list-style: none; }
+.row summary::-webkit-details-marker { display: none; }
+.row .t { font-weight: 600; min-width: 0; }
+.row .meta { margin-left: auto; flex: none; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.row p { margin: 8px 0 0; line-height: 1.8; }
+.row.read .t::after { content: " · 读过"; color: var(--muted); font-weight: 400; font-size: 12px; }
+.empty { color: var(--muted); text-align: center; padding: 40px 0; }
+.field { display: flex; flex-direction: column; gap: 6px; background: var(--paper); border-radius: 12px; padding: 14px; }
+.field label { font-weight: 600; }
+.field input { font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--paper-edge); background: var(--desk); color: var(--ink); }
+.field small, .note { color: var(--muted); font-size: 13px; }
+.danger { align-self: flex-start; border: 1px solid var(--red); color: var(--red); background: transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--paper); border-radius: 12px; padding: 10px; text-align: center; }
+.stat b { display: block; font-family: var(--font-num); font-size: 26px; color: var(--red); font-weight: 400; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+.toast {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); transform: translateX(-50%);
+  background: var(--ink); color: var(--paper); padding: 8px 16px; border-radius: 999px; font-size: 14px; z-index: 30;
+}
+</style>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand">每日一招</div>
+    <button class="icon-btn" id="open-favs" type="button" aria-label="收藏">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span id="fav-count">0</span>
+    </button>
+    <button class="icon-btn" id="open-all" type="button">全部</button>
+    <button class="icon-btn" id="open-settings" type="button" aria-label="设置">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
+  </header>
+
+  <div class="pad">
+    <div class="binding" aria-hidden="true"></div>
+    <div class="stack" id="stack" aria-live="polite"></div>
+  </div>
+
+  <button class="big" id="big" type="button">
+    <span class="label" id="big-label">今日一招</span>
+    <span class="sub" id="big-sub">按一下，撕开今天这一页</span>
+  </button>
+</div>
+
+<section class="sheet" id="sheet-favs" hidden>
+  <div class="sheet-inner">
+    <div class="sheet-head"><h2>收藏</h2><button class="icon-btn" data-close type="button">关闭</button></div>
+    <div class="list" id="fav-list"></div>
+  </div>
+</section>
+
+<section class="sheet" id="sheet-all" hidden>
+  <div class="sheet-inner">
+    <div class="sheet-head"><h2 id="all-title">全部</h2><button class="icon-btn" data-close type="button">关闭</button></div>
+    <div class="filters" id="filters"></div>
+    <div class="list" id="all-list"></div>
+  </div>
+</section>
+
+<section class="sheet" id="sheet-settings" hidden>
+  <div class="sheet-inner">
+    <div class="sheet-head"><h2>设置</h2><button class="icon-btn" data-close type="button">关闭</button></div>
+    <div class="field">
+      <label for="birthday">她的生日</label>
+      <input type="date" id="birthday">
+      <small id="age-line"></small>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stat-read">0</b><span>已读</span></div>
+      <div class="stat"><b id="stat-fit">0</b><span>适合现在月龄</span></div>
+      <div class="stat"><b id="stat-total">0</b><span>内容库</span></div>
+    </div>
+    <p class="note">这是网页原型：数据只存在这台设备的浏览器里。iOS 版会每天定时推送当天这一条。</p>
+    <p class="note">内容是一般性的养育建议，不能代替医生或专业人士对你家孩子的具体判断。</p>
+    <button class="danger" id="reset" type="button">清空已读和“不适合”记录</button>
+    <p class="note" id="reset-confirm" hidden>再按一次确认清空（收藏会保留）。</p>
+  </div>
+</section>
+
+<script type="application/json" id="tips-data">/*__TIPS__*/</script>
+<script type="application/json" id="sources-data">/*__SOURCES__*/</script>
+<script>/*__PICKER__*/</script>
+<script>
+(function () {
+  const P = window.OneTipPicker;
+  const TIPS = JSON.parse(document.getElementById("tips-data").textContent);
+  const SOURCES = Object.fromEntries(JSON.parse(document.getElementById("sources-data").textContent).map((s) => [s.id, s]));
+  const BY_ID = Object.fromEntries(TIPS.map((t) => [t.id, t]));
+  const CATS = {
+    language: "语言与沟通", emotion: "情绪与情商", discipline: "规则与正面管教", play: "游戏与学习",
+    selfcare: "生活自理", sleep: "睡眠", food: "饮食营养", safety: "健康安全", social: "社交与入园", family: "亲子与家庭",
+  };
+  const MONTHS = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+  const WEEKDAYS = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  const KEY = "onetip.v1";
+  const $ = (id) => document.getElementById(id);
+
+  function defaultBirthday() {
+    const d = new Date();
+    d.setMonth(d.getMonth() - 35);
+    return P.dayKey(d);
+  }
+  function load() {
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
+    return Object.assign({ birthday: null, history: [], daily: {}, favorites: [], liked: [], disliked: [] }, saved);
+  }
+  const state = load();
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode: keep in memory */ } }
+
+  const birthday = () => { const [y, m, d] = (state.birthday || defaultBirthday()).split("-").map(Number); return new Date(y, m - 1, d); };
+  const age = (date = new Date()) => P.ageInMonths(birthday(), date);
+
+  function pick(seed) {
+    const now = new Date();
+    const todayKey = P.dayKey(now);
+    const reserved = Object.keys(state.daily).filter((k) => k >= todayKey).sort().map((k) => state.daily[k]);
+    const history = state.history.concat(reserved.filter((id) => !state.history.includes(id)));
+    return P.next(TIPS, { age: age(now), history, disliked: state.disliked, seed });
+  }
+  function todayTip() {
+    const now = new Date();
+    const key = P.dayKey(now);
+    const id = state.daily[key];
+    if (id && BY_ID[id] && !state.disliked.includes(id)) return BY_ID[id];
+    const tip = pick(P.daySeed(now));
+    if (tip) { state.daily[key] = tip.id; save(); }
+    return tip;
+  }
+  const extraTip = () => pick(P.daySeed(new Date()) * 31 + state.history.length);
+  function markRead(tip) {
+    if (state.history[state.history.length - 1] !== tip.id) { state.history.push(tip.id); save(); }
+  }
+
+  // ---------- rendering ----------
+  const icon = {
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+    up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10v11H4V10h3zm0 0l4-7a2 2 0 0 1 2 2v4h5.5a2 2 0 0 1 2 2.3l-1.2 7A2 2 0 0 1 17.3 20H7"/></svg>',
+    down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 14V3H4v11h3zm0 0l4 7a2 2 0 0 0 2-2v-4h5.5a2 2 0 0 0 2-2.3l-1.2-7A2 2 0 0 0 17.3 4H7"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  function coverPage() {
+    const now = new Date();
+    const el = document.createElement("article");
+    el.className = "page cover";
+    el.innerHTML = `<div class="page-scroll cover">
+      <div class="month">${now.getFullYear()} · ${MONTHS[now.getMonth()]}</div>
+      <div class="day">${now.getDate()}</div>
+      <div class="weekday">${WEEKDAYS[now.getDay()]}</div>
+      <div class="age">她今天 ${esc(P.ageText(birthday(), now))}</div>
+      <div class="hint">今天这一页还没撕开</div>
+      ${state.birthday ? "" : '<button class="demo-note" type="button" data-set-birthday>示例生日 · 点这里改成她的</button>'}
+    </div>`;
+    return el;
+  }
+
+  function sourcesHtml(tip) {
+    return tip.source_ids.map((id) => {
+      const s = SOURCES[id];
+      if (!s) return `<li>${esc(id)}</li>`;
+      return s.url ? `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a></li>` : `<li>${esc(s.name)}</li>`;
+    }).join("");
+  }
+
+  function tipPage(tip) {
+    const now = new Date();
+    const el = document.createElement("article");
+    el.className = "page arriving";
+    const fav = state.favorites.includes(tip.id);
+    const liked = state.liked.includes(tip.id);
+    el.innerHTML = `<div class="page-scroll">
+      <div class="tip-head"><span class="tip-date">${now.getDate()}</span><span>${MONTHS[now.getMonth()]} · ${WEEKDAYS[now.getDay()]}</span><span class="chip">${CATS[tip.category] || tip.category}</span></div>
+      <h1 class="tip-title">${esc(tip.title)}</h1>
+      <p class="tip-body">${esc(tip.body)}</p>
+      <details class="basis"><summary>依据</summary><p>${esc(tip.basis)}</p><ul>${sourcesHtml(tip)}</ul></details>
+      <div class="actions">
+        <button class="act" type="button" data-act="fav" aria-pressed="${fav}">${icon.heart}收藏</button>
+        <button class="act" type="button" data-act="like" aria-pressed="${liked}">${icon.up}有用</button>
+        <button class="act" type="button" data-act="dislike">${icon.down}不适合</button>
+        <button class="act" type="button" data-act="copy">${icon.copy}复制</button>
+      </div>
+    </div>`;
+    el.dataset.tipId = tip.id;
+    return el;
+  }
+
+  let pressedThisVisit = false;
+  let busy = false;
+  const stack = $("stack");
+
+  function showPage(newPage) {
+    const old = stack.querySelector(".page:not(.tearing)");
+    stack.insertBefore(newPage, stack.firstChild); // new page sits underneath the old one
+    if (!old) return;
+    busy = true;
+    old.classList.add("tearing");
+    old.addEventListener("animationend", () => { old.remove(); busy = false; }, { once: true });
+    setTimeout(() => { if (old.isConnected) { old.remove(); busy = false; } }, 700);
+  }
+
+  function press() {
+    if (busy) return;
+    const tip = pressedThisVisit ? extraTip() : todayTip();
+    if (!tip) return;
+    markRead(tip);
+    pressedThisVisit = true;
+    showPage(tipPage(tip));
+    $("big-label").textContent = "再来一条";
+    $("big-sub").textContent = "再撕一页，换个角度";
+  }
+
+  function toast(text) {
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 1600);
+  }
+
+  function toggle(list, id) {
+    const i = list.indexOf(id);
+    if (i >= 0) list.splice(i, 1); else list.unshift(id);
+    return i < 0;
+  }
+
+  stack.addEventListener("click", (e) => {
+    if (e.target.closest("[data-set-birthday]")) { openSheet("sheet-settings"); return; }
+    const btn = e.target.closest("[data-act]");
+    if (!btn) return;
+    const page = btn.closest(".page");
+    const tip = BY_ID[page.dataset.tipId];
+    const act = btn.dataset.act;
+    if (act === "fav") {
+      btn.setAttribute("aria-pressed", toggle(state.favorites, tip.id));
+      save(); updateFavCount();
+    } else if (act === "like") {
+      const on = toggle(state.liked, tip.id);
+      btn.setAttribute("aria-pressed", on);
+      state.disliked = state.disliked.filter((id) => id !== tip.id);
+      save();
+      if (on) toast("记下了");
+    } else if (act === "dislike") {
+      if (!state.disliked.includes(tip.id)) state.disliked.push(tip.id);
+      state.liked = state.liked.filter((id) => id !== tip.id);
+      save();
+      toast("以后不再出现这条");
+      pressedThisVisit = true;
+      press();
+    } else if (act === "copy") {
+      const text = `【${tip.title}】${tip.body}`;
+      const done = () => toast("已复制，可以发给家人");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, () => selectBody(page));
+      } else selectBody(page);
+    }
+  });
+
+  function selectBody(page) {
+    const range = document.createRange();
+    range.selectNodeContents(page.querySelector(".tip-body"));
+    const sel = window.getSelection();
+    sel.removeAllRanges(); sel.addRange(range);
+    toast("已选中正文，长按复制");
+  }
+
+  // ---------- sheets ----------
+  function openSheet(id) {
+    if (id === "sheet-favs") renderFavs();
+    if (id === "sheet-all") renderAll();
+    if (id === "sheet-settings") renderSettings();
+    $(id).hidden = false;
+  }
+  document.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", () => { b.closest(".sheet").hidden = true; }));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") document.querySelectorAll(".sheet").forEach((s) => (s.hidden = true)); });
+  $("open-favs").addEventListener("click", () => openSheet("sheet-favs"));
+  $("open-all").addEventListener("click", () => openSheet("sheet-all"));
+  $("open-settings").addEventListener("click", () => openSheet("sheet-settings"));
+
+  function row(tip) {
+    const read = state.history.includes(tip.id);
+    return `<details class="row${read ? " read" : ""}"><summary><span class="t">${esc(tip.title)}</span><span class="meta">${CATS[tip.category]} · ${tip.age_min_months}–${tip.age_max_months}月</span></summary><p>${esc(tip.body)}</p></details>`;
+  }
+  function updateFavCount() { $("fav-count").textContent = state.favorites.length; }
+  function renderFavs() {
+    const tips = state.favorites.map((id) => BY_ID[id]).filter(Boolean);
+    $("fav-list").innerHTML = tips.length ? tips.map(row).join("") : '<div class="empty">还没有收藏。读到好用的招，点“收藏”留下来。</div>';
+  }
+
+  let filter = "fit";
+  function renderAll() {
+    const a = age();
+    const options = [["fit", "适合现在"], ["all", "全部"]].concat(Object.entries(CATS));
+    $("filters").innerHTML = options.map(([k, v]) => `<button class="filter" type="button" data-filter="${k}" aria-pressed="${k === filter}">${v}</button>`).join("");
+    let tips = TIPS;
+    if (filter === "fit") tips = TIPS.filter((t) => t.age_min_months <= a && a <= t.age_max_months);
+    else if (filter !== "all") tips = TIPS.filter((t) => t.category === filter);
+    $("all-title").textContent = `全部 ${TIPS.length} 招`;
+    $("all-list").innerHTML = tips.map(row).join("") || '<div class="empty">这个分类暂时没有内容。</div>';
+  }
+  $("filters").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-filter]");
+    if (b) { filter = b.dataset.filter; renderAll(); }
+  });
+
+  function renderSettings() {
+    $("birthday").value = state.birthday || defaultBirthday();
+    $("birthday").max = P.dayKey(new Date());
+    const a = age();
+    $("age-line").textContent = `${state.birthday ? "" : "示例生日。"}她今天 ${P.ageText(birthday(), new Date())}，按 ${a} 个月挑选内容。`;
+    $("stat-read").textContent = new Set(state.history).size;
+    $("stat-fit").textContent = TIPS.filter((t) => t.age_min_months <= a && a <= t.age_max_months).length;
+    $("stat-total").textContent = TIPS.length;
+  }
+  $("birthday").addEventListener("change", (e) => {
+    if (!e.target.value) return;
+    state.birthday = e.target.value;
+    const todayKey = P.dayKey(new Date());
+    Object.keys(state.daily).forEach((k) => { if (k >= todayKey) delete state.daily[k]; });
+    save(); renderSettings();
+    if (!pressedThisVisit) { stack.innerHTML = ""; stack.appendChild(coverPage()); }
+  });
+  let resetArmed = false;
+  $("reset").addEventListener("click", () => {
+    if (!resetArmed) { resetArmed = true; $("reset-confirm").hidden = false; return; }
+    state.history = []; state.disliked = []; state.liked = []; state.daily = {};
+    save(); resetArmed = false; $("reset-confirm").hidden = true; renderSettings(); toast("已清空");
+  });
+
+  $("big").addEventListener("click", press);
+  stack.appendChild(coverPage());
+  updateFavCount();
+})();
+</script>
