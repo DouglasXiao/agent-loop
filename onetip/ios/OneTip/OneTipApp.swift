@@ -25,11 +25,13 @@ struct OneTipApp: App {
     }
 }
 
-/// Routes a tapped notification to the tip it announced. A cold launch from a
-/// notification can arrive before the store is attached, so hold it until then.
+/// Routes a tapped notification to the tip it announced, or the playdate
+/// reminder to the invite card. A cold launch from a notification can arrive
+/// before the store is attached, so hold it until then.
 final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     weak var store: TipStore? { didSet { deliverPending() } }
     private var pendingTipId: String?
+    private var pendingPlaydate = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
@@ -37,9 +39,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        let tipId = response.notification.request.content.userInfo["tipId"] as? String
+        let info = response.notification.request.content.userInfo
+        let tipId = info["tipId"] as? String
+        let isPlaydate = info["kind"] as? String == "playdate"
         await MainActor.run {
             pendingTipId = tipId
+            pendingPlaydate = isPlaydate
             deliverPending()
         }
     }
@@ -49,8 +54,14 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     }
 
     private func deliverPending() {
-        guard let store, let id = pendingTipId else { return }
-        store.pendingTipId = id
-        pendingTipId = nil
+        guard let store else { return }
+        if let id = pendingTipId {
+            store.pendingTipId = id
+            pendingTipId = nil
+        }
+        if pendingPlaydate {
+            store.pendingPlaydateInvite = true
+            pendingPlaydate = false
+        }
     }
 }

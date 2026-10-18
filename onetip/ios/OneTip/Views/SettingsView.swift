@@ -15,6 +15,11 @@ struct SettingsView: View {
                 DatePicker("时间", selection: notifyTime, displayedComponents: .hourAndMinute)
                     .disabled(!store.state.notificationsOn)
             }
+            Section("约玩") {
+                NavigationLink { WeeklyPlaydateView() } label: {
+                    LabeledContent("每周固定约玩", value: store.state.weeklyPlaydate.map(Playdate.summary) ?? "未设置")
+                }
+            }
             Section("内容") {
                 LabeledContent("已读", value: "\(Set(store.state.history).count) / \(store.tips.count)")
                 LabeledContent("标记不适合", value: "\(store.state.disliked.count)")

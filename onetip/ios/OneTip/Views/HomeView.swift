@@ -8,6 +8,7 @@ struct HomeView: View {
     @State private var current: Tip?
     @State private var readToday = false
     @State private var pressCount = 0
+    @State private var showInvite = false
 
     var body: some View {
         NavigationStack {
@@ -41,7 +42,16 @@ struct HomeView: View {
                 }
             }
             .onChange(of: store.pendingTipId) { _, id in openFromNotification(id) }
-            .onAppear { openFromNotification(store.pendingTipId) }
+            .onChange(of: store.pendingPlaydateInvite) { openInviteFromNotification() }
+            .onAppear {
+                openFromNotification(store.pendingTipId)
+                openInviteFromNotification()
+            }
+            .sheet(isPresented: $showInvite) {
+                let defaults = store.inviteDefaults()
+                PlaydateInviteView(date: defaults.date, place: defaults.place)
+                    .environment(store)
+            }
         }
     }
 
@@ -52,6 +62,15 @@ struct HomeView: View {
                 .foregroundStyle(.secondary)
             Text(store.ageText())
                 .font(.title3.weight(.semibold))
+            Button { showInvite = true } label: {
+                Label(store.state.weeklyPlaydate.map { "约个玩伴 · \(Playdate.summary($0))" } ?? "约个玩伴", systemImage: "figure.2.and.child.holdinghands")
+                    .font(.footnote.weight(.medium))
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .controlSize(.small)
+            .tint(.pink)
+            .padding(.top, 6)
         }
         .padding(.top, 8)
     }
@@ -82,6 +101,19 @@ struct HomeView: View {
         store.markRead(tip)
         withAnimation { current = tip; readToday = true }
     }
+
+    private func openInviteFromNotification() {
+        guard store.pendingPlaydateInvite else { return }
+        store.pendingPlaydateInvite = false
+        showInvite = true
+    }
+}
+
+extension ShapeStyle where Self == LinearGradient {
+    /// The app's coral-to-pink accent (big button, invite card header).
+    static var onetipWarm: LinearGradient {
+        LinearGradient(colors: [Color(red: 1.0, green: 0.55, blue: 0.45), Color(red: 0.96, green: 0.36, blue: 0.45)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
 }
 
 struct BigButton: View {
@@ -100,7 +132,7 @@ struct BigButton: View {
             .frame(height: 132)
             .background(
                 RoundedRectangle(cornerRadius: 36, style: .continuous)
-                    .fill(LinearGradient(colors: [Color(red: 1.0, green: 0.55, blue: 0.45), Color(red: 0.96, green: 0.36, blue: 0.45)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .fill(.onetipWarm)
             )
             .shadow(color: Color(red: 0.96, green: 0.36, blue: 0.45).opacity(0.35), radius: 16, y: 8)
         }

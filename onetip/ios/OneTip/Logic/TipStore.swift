@@ -15,18 +15,44 @@ struct PersistedState: Codable {
     var favorites: [String] = []
     var liked: Set<String> = []
     var disliked: Set<String> = []
+    /// Prefills the next invite's 地点.
+    var lastPlaydatePlace = ""
+    var weeklyPlaydate: WeeklyPlaydate?
+}
+
+extension PersistedState {
+    /// Field by field, so state saved by an older build (missing newer keys)
+    /// keeps its history and favorites instead of failing to decode wholesale.
+    /// Add every new field here with `decodeIfPresent`.
+    init(from decoder: Decoder) throws {
+        self.init()
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        birthday = try c.decodeIfPresent(Date.self, forKey: .birthday)
+        notifyHour = try c.decodeIfPresent(Int.self, forKey: .notifyHour) ?? notifyHour
+        notifyMinute = try c.decodeIfPresent(Int.self, forKey: .notifyMinute) ?? notifyMinute
+        notificationsOn = try c.decodeIfPresent(Bool.self, forKey: .notificationsOn) ?? notificationsOn
+        history = try c.decodeIfPresent([String].self, forKey: .history) ?? history
+        dailyTips = try c.decodeIfPresent([String: String].self, forKey: .dailyTips) ?? dailyTips
+        favorites = try c.decodeIfPresent([String].self, forKey: .favorites) ?? favorites
+        liked = try c.decodeIfPresent(Set<String>.self, forKey: .liked) ?? liked
+        disliked = try c.decodeIfPresent(Set<String>.self, forKey: .disliked) ?? disliked
+        lastPlaydatePlace = try c.decodeIfPresent(String.self, forKey: .lastPlaydatePlace) ?? lastPlaydatePlace
+        weeklyPlaydate = try c.decodeIfPresent(WeeklyPlaydate.self, forKey: .weeklyPlaydate)
+    }
 }
 
 @MainActor
 @Observable
 final class TipStore {
-    static let planDays = 60 // iOS keeps at most 64 pending local notifications
+    static let planDays = 60 // leaves room under NotificationScheduler.maxPending for the playdate reminder
 
     private(set) var tips: [Tip] = []
     private(set) var sources: [String: TipSource] = [:]
     private(set) var state: PersistedState
     /// Set when the user taps a notification; HomeView reveals this tip.
     var pendingTipId: String?
+    /// Set when the user taps the playdate reminder; HomeView opens the invite.
+    var pendingPlaydateInvite = false
 
     private let defaults: UserDefaults
     private let stateKey = "onetip.state.v1"
@@ -145,6 +171,35 @@ final class TipStore {
         Task { await rescheduleNotifications() }
     }
 
+    // MARK: Playdates
+
+    /// What a new invite starts with: the weekly playdate if one is set,
+    /// otherwise next Saturday 10:00 at the last place used.
+    func inviteDefaults(now: Date = .now) -> (date: Date, place: String) {
+        if let weekly = state.weeklyPlaydate {
+            return (Playdate.nextOccurrence(of: weekly, after: now), weekly.place.isEmpty ? state.lastPlaydatePlace : weekly.place)
+        }
+        return (Playdate.defaultDate(after: now), state.lastPlaydatePlace)
+    }
+
+    /// "2岁10个月" on the playdate's day.
+    func inviteAge(on date: Date) -> String {
+        guard let birthday = state.birthday else { return "" }
+        return ChildAge.short(birthday: birthday, on: date)
+    }
+
+    func rememberPlace(_ place: String) {
+        let place = place.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !place.isEmpty, place != state.lastPlaydatePlace else { return }
+        state.lastPlaydatePlace = place
+        save()
+    }
+
+    func setWeeklyPlaydate(_ playdate: WeeklyPlaydate?) {
+        guard playdate != state.weeklyPlaydate else { return }
+        update { $0.weeklyPlaydate = playdate }
+    }
+
     // MARK: Notifications
 
     /// Re-plans tomorrow onward and replaces all pending notifications. Called on
@@ -172,7 +227,8 @@ final class TipStore {
         await NotificationScheduler.replaceAll(
             with: state.notificationsOn ? schedule : [],
             hour: state.notifyHour,
-            minute: state.notifyMinute
+            minute: state.notifyMinute,
+            playdate: state.weeklyPlaydate
         )
     }
 
