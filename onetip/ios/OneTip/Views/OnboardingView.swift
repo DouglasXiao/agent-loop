@@ -2,7 +2,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Environment(TipStore.self) private var store
-    @State private var birthday = Calendar.current.date(byAdding: .month, value: -35, to: .now) ?? .now
+    @State private var birthday = Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 1)) ?? .now
     @State private var notifyTime = Calendar.current.date(bySettingHour: 8, minute: 0, second: 0, of: .now) ?? .now
 
     var body: some View {

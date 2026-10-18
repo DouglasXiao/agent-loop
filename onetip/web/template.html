@@ -115,10 +115,6 @@ button { font: inherit; color: inherit; }
 .cover .weekday { font-size: 15px; letter-spacing: 0.3em; color: var(--muted); }
 .cover .age { margin-top: 10px; font-family: var(--font-title); font-size: 20px; }
 .cover .hint { color: var(--muted); font-size: 14px; }
-.demo-note {
-  font-size: 12px; color: var(--muted); background: var(--line); border: 0; border-radius: 999px;
-  padding: 4px 12px; cursor: pointer;
-}
 
 /* Tip page. */
 .tip-head { display: flex; align-items: baseline; gap: 10px; color: var(--muted); font-size: 13px; }
@@ -266,11 +262,9 @@ details.basis ul { margin: 4px 0 0; padding-left: 18px; }
   const KEY = "onetip.v1";
   const $ = (id) => document.getElementById(id);
 
-  function defaultBirthday() {
-    const d = new Date();
-    d.setMonth(d.getMonth() - 35);
-    return P.dayKey(d);
-  }
+  // Her birthday (month known; day defaults to the 1st, editable in 设置).
+  const DEFAULT_BIRTHDAY = "2023-11-01";
+  const defaultBirthday = () => DEFAULT_BIRTHDAY;
   function load() {
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
@@ -322,7 +316,6 @@ details.basis ul { margin: 4px 0 0; padding-left: 18px; }
       <div class="weekday">${WEEKDAYS[now.getDay()]}</div>
       <div class="age">她今天 ${esc(P.ageText(birthday(), now))}</div>
       <div class="hint">今天这一页还没撕开</div>
-      ${state.birthday ? "" : '<button class="demo-note" type="button" data-set-birthday>示例生日 · 点这里改成她的</button>'}
     </div>`;
     return el;
   }
@@ -397,7 +390,6 @@ details.basis ul { margin: 4px 0 0; padding-left: 18px; }
   }
 
   stack.addEventListener("click", (e) => {
-    if (e.target.closest("[data-set-birthday]")) { openSheet("sheet-settings"); return; }
     const btn = e.target.closest("[data-act]");
     if (!btn) return;
     const page = btn.closest(".page");
@@ -479,7 +471,7 @@ details.basis ul { margin: 4px 0 0; padding-left: 18px; }
     $("birthday").value = state.birthday || defaultBirthday();
     $("birthday").max = P.dayKey(new Date());
     const a = age();
-    $("age-line").textContent = `${state.birthday ? "" : "示例生日。"}她今天 ${P.ageText(birthday(), new Date())}，按 ${a} 个月挑选内容。`;
+    $("age-line").textContent = `她今天 ${P.ageText(birthday(), new Date())}，按 ${a} 个月挑选内容。`;
     $("stat-read").textContent = new Set(state.history).size;
     $("stat-fit").textContent = TIPS.filter((t) => t.age_min_months <= a && a <= t.age_max_months).length;
     $("stat-total").textContent = TIPS.length;
