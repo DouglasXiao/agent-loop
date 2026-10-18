@@ -1,0 +1,600 @@
+[
+  {
+    "id": "social-001",
+    "category": "social",
+    "title": "一起玩是慢慢学会的",
+    "body": "两个三岁孩子并排各玩各的，偶尔看看对方，这不是“不合群”，而是走向合作游戏的必经一步。分角色、定规则地一起玩，多在3到4岁之间一点点出现；在这之前，递玩具、模仿对方、一起傻笑，都是交朋友的开始。你可以在旁边搭个桥：「你在盖房子，他有小车，要不要请小车开进来？」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "play",
+      "peers"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "zero-to-three"
+    ],
+    "basis": "CDC里程碑：3岁会注意其他孩子并加入游戏，4岁会扮演角色；合作游戏是逐步发展的。"
+  },
+  {
+    "id": "social-002",
+    "category": "social",
+    "title": "轮流比分享好学",
+    "body": "三岁孩子很难把正在玩的东西让出去，被逼着分享只会更护着。换成轮流：「你玩完就给他」，或者用沙漏、手机计时：「铃响就换人。」轮到她时说到做到；轮到别人时，帮她撑过等待：「等好难啊，我们一起数到二十。」几次下来她会发现东西还会回来，就没那么紧张了。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "sharing",
+      "turn-taking"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "aap",
+      "book-good-inside"
+    ],
+    "basis": "ZERO TO THREE：幼儿分享能力尚在发展，强迫分享无益；轮流和计时更易学会。"
+  },
+  {
+    "id": "social-003",
+    "category": "social",
+    "title": "我还在玩，等一下给你",
+    "body": "别人伸手来抢，她只会尖叫或者推人？教她一句完整的话：「我还在玩，等一下给你。」这比一句“不给”更容易被接受。在家用玩偶演几遍，你演来抢的小朋友，她来说。真遇到时你站在她身边撑腰，帮着转达：「她说玩完就给你。」反过来，别人这样说时，她也得等一等。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "conflict",
+      "words"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "zero-to-three"
+    ],
+    "basis": "《3–6岁指南》3–4岁目标：在成人指导下不争抢、不独霸玩具，冲突时能听从劝解。"
+  },
+  {
+    "id": "social-004",
+    "category": "social",
+    "title": "想加入，先在旁边玩",
+    "body": "直接问“我能跟你们玩吗”，常常换来一句“不行”，不是讨厌她，只是怕游戏被打乱。更容易成功的办法是：先在旁边看一会儿，拿相似的玩具跟着玩，再顺着他们的游戏提个建议：「我来当送快递的好吗？」去游乐场之前，可以先在家用玩偶跟她演练这一招。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "joining",
+      "peers"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "《3–6岁指南》：3–4岁想加入同伴游戏时能友好请求，4–5岁会用简单技巧加入游戏。"
+  },
+  {
+    "id": "social-005",
+    "category": "social",
+    "title": "被拒绝了，抱抱再找",
+    "body": "小伙伴说“不跟你玩”，对她来说是真实的难过。先接住情绪：「你很想跟她玩，被拒绝了很失落吧。」不用急着去找对方家长理论，三四岁孩子的拒绝往往一会儿就变，明天可能又玩到一块儿了。等她缓过来，再一起看看：「滑梯那边也有小朋友，要不要过去瞧瞧？」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "rejection",
+      "feelings"
+    ],
+    "source_ids": [
+      "gottman",
+      "raising-children-au"
+    ],
+    "basis": "Gottman情绪辅导：先命名并认可失落；Raising Children：学前期同伴拒绝很常见。"
+  },
+  {
+    "id": "social-006",
+    "category": "social",
+    "title": "她动手时，先拦住",
+    "body": "她打了人，先稳稳握住她的手：「我不会让你打人。」接着先照顾被打的孩子，让她看见你在关心对方。等两个人都平静了，再帮她把原因说出来：“你是想要那个铲子”，并教她替代办法：说“我想要”，或者来找大人。道歉不必当场逼，等她平静后你陪着去。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "hitting",
+      "conflict"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "book-whole-brain",
+      "aap"
+    ],
+    "basis": "《Good Inside》《全脑教养法》：先冷静地阻止行为，平静后再教替代做法和修复关系。"
+  },
+  {
+    "id": "social-007",
+    "category": "social",
+    "title": "被打了，先抱住她",
+    "body": "她被别的孩子推倒，先蹲下抱住她，把经过说出来：「他推了你，你吓了一跳。」等她缓过来，再一起去找对方家长或老师。老人常教“谁打你就打回去”，可以换个说法：「有人打你，你就走开，大声喊老师或妈妈。」以打还打，往往让冲突升级，也会让她更常用拳头解决问题。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "hit",
+      "grandparents"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "aap"
+    ],
+    "basis": "ZERO TO THREE：孩子受欺负时先安抚并描述经过，教其离开并求助成人。"
+  },
+  {
+    "id": "social-008",
+    "category": "social",
+    "title": "一次约一个小伙伴",
+    "body": "比起热闹的大聚会，一对一的玩伴时间更容易让三岁孩子交到朋友。约一个熟悉的小伙伴来家里，一两个小时就够。来之前让她先把最舍不得的玩具收起来，留下能一起玩的积木、橡皮泥、过家家，可以问她：「哪些玩具愿意和朋友一起玩？」快结束前五分钟提醒一声，分别会顺利些。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "playdate",
+      "friends"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "naeyc"
+    ],
+    "basis": "Raising Children：学龄前玩伴聚会宜短、人少，提前收起不愿分享的玩具。"
+  },
+  {
+    "id": "social-009",
+    "category": "social",
+    "title": "别替她说“害羞”",
+    "body": "她见到生人往你身后躲，你脱口一句“她害羞”，她就会慢慢相信“我是个害羞的人”。换个说法：「她喜欢先看一看，熟了就会玩。」给她热身时间，先陪她在旁边站一会儿，别推她上前。别人当面说她胆小，你可以轻松回一句：「她在观察呢。」慢热是一种性格，不是缺点。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "shy",
+      "temperament"
+    ],
+    "source_ids": [
+      "child-mind",
+      "raising-children-au"
+    ],
+    "basis": "Child Mind Institute：避免贴「害羞」标签，给足热身时间，逐步接触新人新环境。"
+  },
+  {
+    "id": "social-010",
+    "category": "social",
+    "title": "挥挥手也算打招呼",
+    "body": "电梯里遇到邻居，“快叫奶奶！”她却把脸埋进你怀里。这很常见，三岁孩子被围观时更容易卡住。与其催促，不如你先热情地打招呼做个示范，告诉她挥挥手、点点头也可以；走亲戚前，先说说今天会见到谁。事后具体地夸：「刚才你冲奶奶笑了一下，奶奶可高兴了。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "greeting",
+      "manners"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "book-how-to-talk"
+    ],
+    "basis": "Raising Children：慢热孩子打招呼需要时间，家长示范并接受挥手等方式更有效。"
+  },
+  {
+    "id": "social-011",
+    "category": "social",
+    "title": "大声说「停！我不喜欢」",
+    "body": "教她一句保护自己的话：「停！我不喜欢！」再配上伸出手掌的动作。平时用游戏练习：挠痒痒、举高高时她一喊停，你立刻停下来，让她体会到这句话真的管用。以后在外面被抢、被推、被挤，她就有现成的话可用，而不是只会哭或动手。反过来，别人对她喊停，她也要停。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "boundaries",
+      "assertive"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "moe-3-6-guide"
+    ],
+    "basis": "Raising Children：教孩子用坚定的话和手势说「停」，并让她体验到拒绝会被尊重。"
+  },
+  {
+    "id": "social-012",
+    "category": "social",
+    "title": "告状时先听完",
+    "body": "她跑来说“他抢我的球”，先蹲下来听完：「哦，他拿走了你的球，你不高兴。」然后问她：「你想跟他说什么？」帮她想好一句，比如「请把球还给我」，再陪她走过去说；试过还不行，再由你出面。有人受伤或有危险时要马上告诉大人，这和告状不一样，要让她分得清。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "tattling",
+      "problem-solving"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "raising-children-au"
+    ],
+    "basis": "《如何说孩子才会听》：先倾听并复述孩子的感受，再引导孩子自己想办法表达。"
+  },
+  {
+    "id": "social-013",
+    "category": "social",
+    "title": "看见别人哭，问一句",
+    "body": "同理心从“注意到别人”开始。看到有小朋友摔哭了，指给她看：「他摔疼了，脸都哭红了，我们能做点什么呢？」她也许会递纸巾、拿个玩具过去，哪怕只是站在旁边看，也是在学关心。读绘本时也可以停下来问：「小熊现在是什么心情？」事后具体地说：「你给他递了纸巾，他好受多了。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "empathy",
+      "kindness"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "moe-3-6-guide"
+    ],
+    "basis": "CDC：4岁会安慰受伤或难过的人；《3–6岁指南》：3–4岁对他人不开心表示同情。"
+  },
+  {
+    "id": "social-014",
+    "category": "social",
+    "title": "让她当个小帮手",
+    "body": "三岁孩子特别喜欢被需要。给她真实的小任务：帮奶奶拿拖鞋、给客人递水果、给楼下邻居送一个橘子、在超市帮你把菜放进购物车。别嫌她慢，也别当着她的面返工，说一句「谢谢你，帮了大忙」就够了。常被需要的孩子，会更主动地去帮助别人；到了幼儿园，帮老师分碗筷、发图书也会让她更有自信。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "helping",
+      "prosocial"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "book-hunt-gather-parent"
+    ],
+    "basis": "CDC：4岁喜欢当小帮手；《Hunt, Gather, Parent》：让孩子参与真实事务培养助人。"
+  },
+  {
+    "id": "social-015",
+    "category": "social",
+    "title": "礼貌是看会的",
+    "body": "比起反复提醒“说谢谢”，她更会学你怎么做。你对她说「请帮我拿一下」「谢谢你」，对快递员、保安、服务员也这样说；你急躁了，也跟她说「对不起，我刚才太急了」。这些她都看在眼里。她忘了说时，你轻轻替她补一句就好，不用当着大家追问：“你该说什么？”",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "manners",
+      "modeling"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "book-positive-discipline"
+    ],
+    "basis": "CDC积极养育：孩子主要通过模仿学习，家长示范礼貌比反复说教更有效。"
+  },
+  {
+    "id": "social-016",
+    "category": "social",
+    "title": "聚会前先演一遍",
+    "body": "热闹的生日会可能让她又兴奋又紧张。去之前讲清楚流程：先给小寿星送礼物，再玩游戏、唱生日歌、吃蛋糕，在家用玩偶演一遍。约好一个“想休息”的暗号，她累了就带她去安静处待一会儿。早点到场，人少时更容易进入状态；也提前说好什么时候回家。回来后聊聊她最喜欢哪个环节。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "party",
+      "preparation"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children：提前讲流程、预演并准备退出方式，帮助孩子应对聚会等新场合。"
+  },
+  {
+    "id": "social-017",
+    "category": "social",
+    "title": "想象中的朋友不用担心",
+    "body": "她说“我的朋友小兔也要一个碗”，不用担心。想象中的朋友在三到七岁的孩子里很常见，研究发现这和想象力、理解别人想法的能力发展有关；她跟小兔对话，也是在练说话、消化情绪。你可以好奇地问问小兔喜欢什么，规矩照旧：小兔打翻了牛奶，也得一起擦干净。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "imagination",
+      "pretend"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children：想象中的朋友在学龄前常见且正常，与想象力和社交理解发展相关。"
+  },
+  {
+    "id": "social-018",
+    "category": "social",
+    "title": "大孩子小孩子都去玩",
+    "body": "和大孩子玩，她会模仿更复杂的游戏和说话方式；和小弟弟小妹妹玩，她有机会当“照顾人的那个”，练耐心和体贴。小区里混龄玩耍时，不用急着把她拉回同龄孩子堆里，你在旁边留意大孩子别玩得太猛就好。可以请大孩子帮个忙：「她还小，你教教她好吗？」",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "mixed-age",
+      "peers"
+    ],
+    "source_ids": [
+      "book-hunt-gather-parent",
+      "raising-children-au"
+    ],
+    "basis": "《Hunt, Gather, Parent》：混龄玩耍让孩子既能向大孩子学，也能练习照顾小的。"
+  },
+  {
+    "id": "social-019",
+    "category": "social",
+    "title": "不一样，就平常地说",
+    "body": "她指着坐轮椅的叔叔大声问“他怎么了”，别慌着捂她的嘴。用平常的语气回答：「他的腿走路不方便，轮椅帮他去想去的地方。」肤色、口音不同的人，只有爸爸或跟着奶奶生活的家庭，也都这样简单真实地说。你越自然，她越明白：人本来就各不一样，不一样不等于奇怪。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "diversity",
+      "questions"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：幼儿很早就会注意肤色等差异，家长坦然、正面地回应有助于培养包容。"
+  },
+  {
+    "id": "social-020",
+    "category": "social",
+    "title": "为什么他站着尿尿",
+    "body": "三四岁的孩子开始好奇男孩女孩哪里不一样，这很正常。用简单真实的话回答：「男孩有阴茎，女孩有外阴，所以上厕所的方式不一样。」不用回避，也不用讲太多，她问到哪儿就答到哪儿，讲身体的绘本也能帮忙。顺带说一句：这些话题随时可以来问爸爸妈妈。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "gender",
+      "curiosity"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "aap"
+    ],
+    "basis": "Raising Children学前性发展：对性别和身体差异好奇很正常，宜用正确名称简单作答。"
+  },
+  {
+    "id": "social-021",
+    "category": "social",
+    "title": "先去幼儿园门口转转",
+    "body": "入园前几周，带她路过幼儿园，隔着栏杆看小朋友做操、玩滑梯，聊一聊：「以后你也会在这里玩。」也可以走走以后每天上学的那条路。园里有开放日或亲子体验活动就去参加，让她摸摸教室里的玩具、见见老师。陌生的地方先变熟悉，第一天就没那么吓人。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "transition"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "naeyc"
+    ],
+    "basis": "Raising Children、NAEYC：入园前参观、熟悉环境和老师，可减轻初入园的焦虑。"
+  },
+  {
+    "id": "social-022",
+    "category": "social",
+    "title": "用绘本预习幼儿园",
+    "body": "绘本能让她提前看看幼儿园的一天。可以选《魔法亲亲》这类讲入园、结局温暖的故事，读到一半停下来问：「小浣熊有点害怕，你觉得它在怕什么？」「你到幼儿园最想玩什么？」再讲讲你小时候上幼儿园的趣事。把她的回答记下来，入园后还能翻出来聊。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "books"
+    ],
+    "source_ids": [
+      "dialogic-reading",
+      "raising-children-au"
+    ],
+    "basis": "对话式阅读：边读边提开放式问题、联系孩子经验；入园主题绘本帮助预习新环境。"
+  },
+  {
+    "id": "social-023",
+    "category": "social",
+    "title": "过家家演“上幼儿园”",
+    "body": "用毛绒玩具玩“上幼儿园”：小熊背上书包，跟妈妈抱一下说再见，然后做游戏、吃饭、午睡，睡醒吃完点心，妈妈来接了。让她轮流演老师、小熊和妈妈；演到小熊哭了，问她：「小熊可以怎么办？」多演几遍“妈妈回来了”这一段，她会把“分开以后会回来”记在心里。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "pretend"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "raising-children-au"
+    ],
+    "basis": "ZERO TO THREE：通过假装游戏演练分离与重逢，帮助幼儿理解和应对入园。"
+  },
+  {
+    "id": "social-024",
+    "category": "social",
+    "title": "从短短的分开练起",
+    "body": "如果她很少离开过你，入园前可以先练短时间分开：在奶奶家或熟悉的朋友家待半小时，再慢慢延长到半天，可以带上她喜欢的小玩偶。每次都正式告别，说好什么时候回来，并且准时出现。可以这样说：「妈妈去买菜，你吃完水果我就回来。」说到做到，她才敢放心。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "separation",
+      "kindergarten"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind"
+    ],
+    "basis": "Child Mind Institute：从短时分离练起、说到做到准时回来，逐步建立孩子的安全感。"
+  },
+  {
+    "id": "social-025",
+    "category": "social",
+    "title": "告别要短，不要溜",
+    "body": "趁她玩得开心偷偷溜走，看起来省事，却会让她更不放心，下次更黏你。固定一个简短的告别仪式：抱一下、亲一下、击个掌，说一句「午睡起来吃完点心，妈妈就来接你」，然后把她交给老师，转身离开，别回头反复安慰。接的时候准时出现，让这句话变得可信。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "goodbye",
+      "separation"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind",
+      "raising-children-au"
+    ],
+    "basis": "ZERO TO THREE、Child Mind：告别简短一致、不偷偷溜走，孩子更易建立信任。"
+  },
+  {
+    "id": "social-026",
+    "category": "social",
+    "title": "入园哭几周很正常",
+    "body": "刚入园的头几周，早上哭着说“不去幼儿园”很常见，很多孩子在你走后不久就能平静下来去玩。可以问问老师她白天的状态，别只凭早上那一幕下判断。如果过了一两个月仍然每天哭得很厉害，或者吃饭、睡觉明显变差，就和老师、儿科医生聊聊。接园时抱抱她：「你今天坚持下来了。」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "kindergarten",
+      "crying"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "raising-children-au"
+    ],
+    "basis": "CDC：3岁孩子在家长离开后约10分钟内能平静；Raising Children：入园适应常需数周。"
+  },
+  {
+    "id": "social-027",
+    "category": "social",
+    "title": "给老师一张小卡片",
+    "body": "老师要同时照顾很多孩子，你给的小信息能帮她更快读懂你的女儿。写一张小卡片，有过敏写在最前面，再写她怎么表达要尿尿、怕什么、喜欢怎样被安慰、吃饭和午睡的习惯、小名叫什么。接送时跟老师打个招呼、道声谢，她看到你信任老师，也会更快信任老师。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "teacher",
+      "kindergarten"
+    ],
+    "source_ids": [
+      "naeyc",
+      "raising-children-au"
+    ],
+    "basis": "NAEYC：家园沟通、向老师介绍孩子的习惯与需要，有助孩子适应和建立信任。"
+  },
+  {
+    "id": "social-028",
+    "category": "social",
+    "title": "别问“今天开心吗”",
+    "body": "“今天开心吗？”多半换来一个“嗯”或“不知道”。换成具体、好回答的问题：「今天谁让你笑了？」「午饭吃了什么？」「在外面玩了什么？」你也先讲讲自己今天的一件小事，她更愿意接话。刚接到时她可能不想说，先给点吃的、抱一抱，睡前躺下时往往更愿意讲。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "kindergarten",
+      "conversation"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "raising-children-au"
+    ],
+    "basis": "CDC：4岁能讲述当天发生的至少一件事；具体的问题比笼统的问题更容易引出回答。"
+  },
+  {
+    "id": "social-029",
+    "category": "social",
+    "title": "回家后的大爆发",
+    "body": "在园里“表现很好”，一回家就为小事崩溃？这往往是她守了一天规矩、憋了一天，到了最安全的人身边才敢放松，说明她信任你，不代表幼儿园有问题。接园后先别急着问话和安排，给点吃的、抱一抱，留点安静或跑跳的时间。可以说：「今天辛苦啦，到家了，可以放松了。」",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "meltdown",
+      "kindergarten"
+    ],
+    "source_ids": [
+      "child-mind",
+      "zero-to-three"
+    ],
+    "basis": "Child Mind Institute：孩子在外克制一天后回家情绪爆发很常见，需要先连接和休息。"
+  },
+  {
+    "id": "social-030",
+    "category": "social",
+    "title": "入园后常生病",
+    "body": "刚上幼儿园的头一年，感冒、咳嗽、拉肚子一个接一个很常见，她在接触大量新病毒，免疫力也在这个过程中慢慢建立。教她回家第一件事是洗手：搓手心、手背和指缝，唱完一首短儿歌再冲水。按时打疫苗、睡够觉，生病了在家养好再回去，别为了全勤硬送。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "illness",
+      "handwashing"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：集体托育初期呼吸道感染更频繁，正确洗手（搓约20秒）可减少传播。"
+  },
+  {
+    "id": "social-031",
+    "category": "social",
+    "title": "练习说“我要尿尿”",
+    "body": "不少孩子刚入园时不敢跟老师说要上厕所、要喝水，憋到尿了裤子。在家用过家家练习：你当老师，她举手说「老师，我要尿尿」「老师，我想喝水」，你马上回应。入园穿容易自己脱提的松紧裤。再告诉她：「老师最喜欢小朋友说出来，说了就有人帮你。」",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "kindergarten",
+      "needs"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "《3–6岁指南》：3–4岁愿意表达自己的需要；入园前演练向老师求助可减少憋尿。"
+  },
+  {
+    "id": "social-032",
+    "category": "social",
+    "title": "午睡时间提前对齐",
+    "body": "幼儿园一般十二点多就午睡，家里却常常两三点才睡。入园前一个月起，把起床、午饭和午睡一点点往前挪，向园里的作息靠拢；睡前固定讲个短故事，到园里也容易进入状态。问问老师能不能带一条有家里味道的小毯子。睡不着也没关系，告诉她安静躺着也是休息。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "nap",
+      "kindergarten"
+    ],
+    "source_ids": [
+      "aasm",
+      "raising-children-au"
+    ],
+    "basis": "AASM：3–5岁每天需10–13小时睡眠（含午睡）；入园前逐步调整作息更易适应。"
+  },
+  {
+    "id": "social-033",
+    "category": "social",
+    "title": "周一早上更难",
+    "body": "周末作息一乱，周一早上就更难出门。周末尽量保持差不多的起床和午睡时间；周日晚上聊聊明天：「明天去幼儿园能见到乐乐，还有你喜欢的滑梯。」周一早上多留出十分钟，别在赶时间时再加一场拉锯战；接园后安排一件小期待，比如去楼下荡秋千。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "monday",
+      "routine"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "aasm"
+    ],
+    "basis": "Raising Children：规律作息帮助孩子适应托育，周末作息变化大易让周一分离更难。"
+  },
+  {
+    "id": "social-034",
+    "category": "social",
+    "title": "你的不舍，留到门外",
+    "body": "孩子很会看大人的脸色。你在门口眼泛泪光、一步三回头，她会觉得“这里大概不安全”。告别时用平静、笃定的语气，把担心留到转身以后：给伴侣发条消息，或者约老师找时间聊聊她的情况。舍不得是正常的，你也在适应，需要一点时间。你稳住了，她才敢放心去探索。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "parent",
+      "separation"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind"
+    ],
+    "basis": "ZERO TO THREE：幼儿会从大人表情判断环境是否安全，家长平静告别有助孩子安心。"
+  },
+  {
+    "id": "social-035",
+    "category": "social",
+    "title": "“我不跟你好了”",
+    "body": "四岁前后，孩子之间常冒出“你不给我玩，我就不跟你好了”。这是在试着用关系表达情绪，不必当成霸凌。先帮她说出背后的感受：「你是生气她先拿了娃娃吗？」再一起想个更好的说法：「我也想玩娃娃，能分我一个吗？」如果某个孩子总被大家排除在外，就跟老师聊聊。",
+    "age_min_months": 40,
+    "age_max_months": 60,
+    "tags": [
+      "friendship",
+      "feelings"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "gottman"
+    ],
+    "basis": "Raising Children：学龄前拿友谊当筹码很常见，宜帮孩子识别情绪、练习更好的表达。"
+  }
+]

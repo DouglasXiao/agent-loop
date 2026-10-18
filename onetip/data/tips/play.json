@@ -1,0 +1,866 @@
+[
+  {
+    "id": "play-001",
+    "category": "play",
+    "title": "火车开上屋顶也行",
+    "body": "她让火车开上屋顶、让恐龙坐进锅里，你可能忍不住想说「不对，火车要在轨道上跑」。先忍一忍，跟着她的剧情走：「火车开到屋顶啦，呜——」游戏没有标准玩法，她当导演，你演配角。少一句纠正和指挥，她能玩得更久，也更爱喊你一起玩。今天就试：陪玩时只跟，不领。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "follow-lead",
+      "pretend-play"
+    ],
+    "source_ids": [
+      "pcit",
+      "zero-to-three"
+    ],
+    "basis": "PCIT 亲子游戏阶段：由孩子主导，家长不指挥、不批评，跟随孩子的游戏思路。"
+  },
+  {
+    "id": "play-002",
+    "category": "play",
+    "title": "她搭你也搭",
+    "body": "想让她多玩一会儿？试试当她的「复读机」。她敲鼓你也敲，她把积木排成一排你也排一排；她说「小狗饿了」，你接一句「小狗饿了，要吃饭啦」。被模仿、被复述，孩子会觉得「我的点子真棒」，也更愿意跟你一来一回地玩下去。她说错的词，你复述时顺手说对就好，不用专门纠正。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "follow-lead",
+      "imitation"
+    ],
+    "source_ids": [
+      "pcit"
+    ],
+    "basis": "PCIT 的 PRIDE 技巧包括模仿孩子的游戏、复述孩子的话，传递认可并延长共同游戏。"
+  },
+  {
+    "id": "play-003",
+    "category": "play",
+    "title": "客厅闯关赛",
+    "body": "下雨出不了门，就在客厅摆一条闯关路线：钻过餐桌底下，踩着靠垫走「石头路」，跳进呼啦圈，最后把小熊送回沙发。你先示范一遍，再请她挑战，熟了让她自己设计关卡、给你下指令。钻、爬、跳都是她这个年纪需要的大动作。开始前挪开有尖角的家具，地上别留小东西。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "gross-motor",
+      "indoor",
+      "rainy-day"
+    ],
+    "source_ids": [
+      "who-under5",
+      "cn-preschool-exercise"
+    ],
+    "basis": "WHO 2019 建议 3–4 岁每天多种形式活动累计 180 分钟；运动指南鼓励钻爬跳等基本动作。"
+  },
+  {
+    "id": "play-004",
+    "category": "play",
+    "title": "一天动够三小时",
+    "body": "WHO 和我国学龄前儿童运动指南都建议：3岁左右的孩子每天各种活动累计约3小时，其中至少1小时是跑跳到微微喘气的。不用一次完成，走路去幼儿园、爬楼梯、在小区追泡泡、爬攀爬架都算；也尽量别让她一坐超过1小时。今晚回想一下：她今天动了多久？哪段是真正跑起来的？",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "exercise",
+      "daily-activity"
+    ],
+    "source_ids": [
+      "who-under5",
+      "cn-preschool-exercise"
+    ],
+    "basis": "WHO 2019 与我国 2018 运动指南：每天活动累计 180 分钟，中高强度至少 60 分钟，少久坐。"
+  },
+  {
+    "id": "play-005",
+    "category": "play",
+    "title": "户外两小时，拆开攒",
+    "body": "运动指南建议学龄前孩子每天户外活动至少2小时。可以拆开攒：早上送园路上走半小时，傍晚在小区玩一小时，周末去公园补一补；冬天挑中午暖和的时候出门。白天的户外光照对预防近视也有帮助。遇上雾霾、酷暑或严寒可以少出门，但在家也要让她动起来。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "outdoor",
+      "exercise",
+      "eyes"
+    ],
+    "source_ids": [
+      "cn-preschool-exercise",
+      "cn-myopia"
+    ],
+    "basis": "我国学龄前儿童运动指南建议每天户外活动不少于 120 分钟；近视防控方案鼓励日间户外活动。"
+  },
+  {
+    "id": "play-006",
+    "category": "play",
+    "title": "让她无聊一会儿",
+    "body": "她拖着你喊「没意思」时，先别急着递玩具或手机。等一等，说一句：「嗯，是有点无聊。你想想可以玩点什么？」然后去忙你的事，不用一直陪着。几分钟的空白，常常会冒出把枕头当船、让勺子开会的点子。没人安排的自由玩耍里，她在练习自己找乐子、自己拿主意。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "free-play",
+      "boredom",
+      "creativity"
+    ],
+    "source_ids": [
+      "aap",
+      "book-gardener-carpenter"
+    ],
+    "basis": "AAP《游戏的力量》报告强调非结构化自由游戏的价值；Gopnik 主张给孩子自由探索的空间。"
+  },
+  {
+    "id": "play-007",
+    "category": "play",
+    "title": "超市开张啦",
+    "body": "把几个空盒子、几只水果和一个小篮子摆上桌，超市就开张了。她当收银员，你来买东西：「老板，我要两个苹果。」角色扮演时，她得记住自己是谁、该说什么、按什么规则来，这正是在练自控和计划。过几天换成餐厅、快递站，让她自己找道具、定规矩，你只管当顾客。",
+    "age_min_months": 34,
+    "age_max_months": 54,
+    "tags": [
+      "pretend-play",
+      "self-control"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "cdc-milestones"
+    ],
+    "basis": "哈佛执行功能活动指南：扮演游戏需记住角色规则，锻炼自控；CDC：4 岁左右常玩角色扮演。"
+  },
+  {
+    "id": "play-008",
+    "category": "play",
+    "title": "今天你当医生",
+    "body": "一个玩具听诊器，一只躺平的毛绒熊，小诊所就开张了。让她当医生，你来演病人：「医生，我肚子咕咕叫，是不是生病了？」纸巾当绷带，勺子当体温计，纸盒当挂号窗口。当医生时，她要照顾人、安慰人，还能把自己看病时的紧张演出来、慢慢消化掉。你也可以当护士，听她指挥。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "pretend-play",
+      "doctor",
+      "empathy"
+    ],
+    "source_ids": [
+      "zero-to-three"
+    ],
+    "basis": "ZERO TO THREE：假装游戏帮助幼儿理解和消化真实经历，也让孩子练习照顾和体谅他人。"
+  },
+  {
+    "id": "play-009",
+    "category": "play",
+    "title": "毛绒玩具开会",
+    "body": "周末把她的毛绒玩具排成一圈，请她当主持人：「今天小兔有什么事要说？」她也许让小兔讲幼儿园的事，或者让大熊发了一通脾气。别纠正剧情，跟着问一句「那小兔怎么办呢？」，你也可以拿一只玩偶加入，用它的口气说话。借玩偶开口，孩子更容易说出白天的经历和心里的感受。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "pretend-play",
+      "stuffed-animals",
+      "storytelling"
+    ],
+    "source_ids": [
+      "zero-to-three"
+    ],
+    "basis": "ZERO TO THREE：玩偶和假装游戏让幼儿以安全的方式表达经历与情绪。"
+  },
+  {
+    "id": "play-010",
+    "category": "play",
+    "title": "搭座桥给小车钻",
+    "body": "给积木游戏加个小任务：「小汽车要过河，能搭一座让它钻过去的桥吗？」两根柱子上架一块长积木，桥太矮车过不去，柱子离太远桥会掉，她得自己琢磨。熟练后，你先搭个三四块的小造型，请她照着搭一个一样的。这类搭建和孩子日后的空间、数学能力都有关系。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "blocks",
+      "spatial",
+      "problem-solving"
+    ],
+    "source_ids": [
+      "hirsh-pasek"
+    ],
+    "basis": "Hirsh-Pasek、Golinkoff 团队研究：学前儿童照样搭积木的能力与早期数学能力相关。"
+  },
+  {
+    "id": "play-011",
+    "category": "play",
+    "title": "上楼梯，数台阶",
+    "body": "上楼时一边走一边数，每踩一级说一个数。3岁多的孩子常常嘴比脚快，数着数着就跳号，一步一个数正好帮她做到手口一致。到4岁前后，很多孩子能一个个数清5个以内的东西，再说出一共几个。所以先从5级台阶开始，数完问一句：「一共几级？」数错了不用纠正，你再陪她数一遍。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "math",
+      "counting"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部《3–6 岁儿童学习与发展指南》：3–4 岁能手口一致点数 5 个以内物体并说出总数。"
+  },
+  {
+    "id": "play-012",
+    "category": "play",
+    "title": "每个娃娃一块饼干",
+    "body": "摆一场娃娃茶会：请小熊、小兔、洋娃娃围坐一圈，请她给每位客人发一块「饼干」，积木或纸片都能当。发完多出一块，还是有人没拿到？她不会数数也能看出谁多谁少，这就是一一对应，数概念的地基。再来个新客人：「小狗也来了，饼干够不够分？」发漏了也别急着纠正，让玩偶自己「抗议」：「我还没有呢！」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "math",
+      "one-to-one",
+      "pretend-play"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4 岁能用一一对应的方法比较两组物体的多少，建议在生活和游戏中引导。"
+  },
+  {
+    "id": "play-013",
+    "category": "play",
+    "title": "我看到一个圆的",
+    "body": "等车、排队、在餐厅等上菜时，玩「我看到一个……」：你说「我看到一个圆圆的东西」，让她猜是井盖、时钟还是车轮，猜中了换她出题。先从颜色、形状玩起，慢慢加上「方方的」「比你高的」。这个小游戏练观察，也把形状和比较词自然放进了生活里，比掏出手机更能打发等待。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "observation",
+      "shapes",
+      "waiting"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "moe-3-6-guide"
+    ],
+    "basis": "哈佛儿童发展中心推荐「我看到」类观察游戏；指南要求 3–4 岁注意并描述物体形状特征。"
+  },
+  {
+    "id": "play-014",
+    "category": "play",
+    "title": "大中小排排队",
+    "body": "找三个大小不同的碗、三只鞋或三个毛绒玩具，请她来排队：「谁最大？谁站第一个？」排好后，悄悄抽走中间那个，看她能不能放回原位。按大小、高矮排一排，是数学里「比较」的开始，你可以用「大、更大、最大」说给她听。三个玩得轻松了，再加到四五个，或者给全家人按高矮排个队。",
+    "age_min_months": 33,
+    "age_max_months": 48,
+    "tags": [
+      "math",
+      "ordering",
+      "comparing"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4 岁能感知和区分物体的大小、多少、高矮长短，并能用相应的词表示。"
+  },
+  {
+    "id": "play-015",
+    "category": "play",
+    "title": "换个规则再分一次",
+    "body": "收玩具时，把积木、球、小车倒在一起，先请她按颜色分进不同的筐。分完别急着收，换个新规则：「这次把会滚的和不会滚的分开。」同一堆东西换规则重新分，她得放下刚才的规则、记住新的，这是在练灵活思维。分得和你想的不一样？问问她：「你是按什么分的？」说得通就算对。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "sorting",
+      "flexibility"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛执行功能活动指南（3–5 岁）：配对分类时中途更换分类规则，可锻炼认知灵活性。"
+  },
+  {
+    "id": "play-016",
+    "category": "play",
+    "title": "拼图难一点点",
+    "body": "她闭着眼都能拼完的拼图，再玩就只是重复。换一盒多几块的，难到要想一想、努把力又能拼成，就是刚刚好的难度。把盒子上的图立在旁边，边拼边对照：「这块蓝蓝的，是天空还是大海？」越来越复杂的拼图能锻炼视觉记忆和空间思维。旧拼图先收起来，过几个月再拿出来，她会发现自己变快了。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "puzzles",
+      "spatial",
+      "challenge"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "hirsh-pasek"
+    ],
+    "basis": "哈佛执行功能活动指南：逐步变难的拼图锻炼视觉工作记忆；Hirsh-Pasek 研究支持拼图促进空间能力。"
+  },
+  {
+    "id": "play-017",
+    "category": "play",
+    "title": "跟我讲讲你的画",
+    "body": "她递来一张涂得满满的画，比起「你画的是什么？」，试试说「跟我讲讲你的画吧」。前者像在考她画得像不像，后者让她决定这是一只猫、一场雨，还是一个故事。也别顺手帮她添个太阳、改个形状，那是她的作品。想留作纪念，就把她讲的话写在画的背面，标上日期。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "drawing",
+      "art",
+      "conversation"
+    ],
+    "source_ids": [
+      "naeyc"
+    ],
+    "basis": "NAEYC：用开放式邀请回应孩子的画、不替孩子修改，比追问「画的是什么」更能鼓励创作。"
+  },
+  {
+    "id": "play-018",
+    "category": "play",
+    "title": "一团面的玩法",
+    "body": "包饺子、蒸馒头时，揪一小团面给她：搓长条、压扁、团圆球，用叉子按出花纹。揉、捏、搓能锻炼小手的力量，为以后握笔、用筷子打基础。也可以买儿童彩泥，配上小擀面杖和模具，铺块旧桌布就不怕弄脏。今天就说：「我们给小熊做一盘面条吧！」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "fine-motor",
+      "playdough"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "教育部指南把「手的动作灵活协调」列为发展目标；Raising Children 推荐彩泥练手部力量。"
+  },
+  {
+    "id": "play-019",
+    "category": "play",
+    "title": "第一把小剪刀",
+    "body": "3岁多可以开始学用剪刀了。选圆头的儿童安全剪刀，让她坐在桌前，先剪一指宽的硬卡纸条，一刀剪断最有成就感；剪下的小段还能贴成一幅画。教她大拇指朝上，用完放回原处。到4岁左右，不少孩子已能沿着直线剪开。剪的时候你在旁边陪着，约好剪刀不拿着走动。",
+    "age_min_months": 34,
+    "age_max_months": 54,
+    "tags": [
+      "fine-motor",
+      "scissors"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4 岁能用剪刀沿直线剪，边线基本吻合；建议提供安全剪刀并示范用法。"
+  },
+  {
+    "id": "play-020",
+    "category": "play",
+    "title": "穿一串珠子",
+    "body": "把大木珠或卷纸芯剪成的纸圈穿到鞋带上，串一条长长的「毛毛虫」。穿珠子要两只手配合、眼睛对准小孔，是3岁左右很多孩子都能学会的事。鞋带一头打个大结，另一头用胶带缠硬会更好穿。珠子要大到塞不进卫生纸芯，玩时你在旁边，玩完收进盒子，家里有小宝宝更要注意。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "fine-motor",
+      "beads",
+      "safety"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "aap"
+    ],
+    "basis": "CDC 3 岁里程碑：能把大珠子或通心粉穿成串；AAP 提醒小物件有窒息风险，需看护。"
+  },
+  {
+    "id": "play-021",
+    "category": "play",
+    "title": "马路牙子走一走",
+    "body": "散步时牵着她，走一走花坛边、地上的直线或砖缝，这就是在练平衡。到4岁左右，她多半能在窄窄、矮矮的边沿上稳稳走一段。熟了再玩火烈鸟：「我们单脚站，看谁先放下脚！」一开始只站一两秒很正常，你也来比，故意先晃一晃。挑离地不高、远离车道和水边的地方走。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "gross-motor",
+      "balance",
+      "outdoor"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4 岁能沿地面直线或在较窄的低矮物体上走一段距离，具有一定平衡能力。"
+  },
+  {
+    "id": "play-022",
+    "category": "play",
+    "title": "双脚跳过小河",
+    "body": "在地上摆两根跳绳当「小河」，或用粉笔画几片「荷叶」，请她双脚并拢跳过去：「小青蛙，跳到下一片荷叶！」稳稳地连着往前跳，是这个年纪正在学的本领。先跳一下停一下，再慢慢连起来，荷叶之间的距离随她调。跳完换你跳，让她当裁判喊开始。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "gross-motor",
+      "jumping"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "cn-preschool-exercise"
+    ],
+    "basis": "教育部指南：3–4 岁能身体平稳地双脚连续向前跳；运动指南鼓励发展跳跃等基本动作。"
+  },
+  {
+    "id": "play-023",
+    "category": "play",
+    "title": "抛高高，接住它",
+    "body": "找一个软软的大皮球或沙滩球，站近一点，从下往上轻轻抛给她：「准备，接——」。CDC 提到4岁左右的孩子大多能接住大球，3岁接不住很常见，先让她张开双臂把球抱住就好。接到了你往后退一小步；也可以换她往上抛、你来接，或者对着墙滚球、踢球。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "gross-motor",
+      "ball"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "moe-3-6-guide"
+    ],
+    "basis": "CDC 4 岁里程碑：多数时候能接住大球；教育部指南：3–4 岁能双手向上抛球。"
+  },
+  {
+    "id": "play-024",
+    "category": "play",
+    "title": "平衡车先走后滑",
+    "body": "三轮车练蹬，平衡车练平衡，选一样就好。平衡车刚上手，让她先跨坐着用脚走，再慢慢迈大步「滑」起来，敢抬起脚滑一小段就是大进步。座椅调到她双脚能平踩地面的高度。只在小区空地或公园平路上骑，远离马路和斜坡，头盔照例戴好，你跟在伸手能扶到的地方。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "gross-motor",
+      "bike",
+      "balance"
+    ],
+    "source_ids": [
+      "cn-preschool-exercise",
+      "cn-child-injury"
+    ],
+    "basis": "运动指南鼓励学龄前儿童多做平衡、协调类活动；儿童伤害预防：骑行戴头盔、远离道路。"
+  },
+  {
+    "id": "play-025",
+    "category": "play",
+    "title": "锅碗瓢盆乐队",
+    "body": "拿出锅、盆、塑料碗和两把木勺，家里就有了一支乐队。你先敲一个节奏「咚、咚、咚咚咚」，让她跟着敲；再换她出题，你来模仿。还可以玩「大声敲、小声敲」「快快敲、慢慢敲」，或者放首儿歌一起合奏。听着节奏控制手，练的是倾听和自控。太吵时约好：「举手就停。」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "music",
+      "rhythm",
+      "self-control"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "harvard-cdc"
+    ],
+    "basis": "ZERO TO THREE 推荐音乐节奏游戏；哈佛执行功能指南：按信号快慢、停止有助练自控。"
+  },
+  {
+    "id": "play-026",
+    "category": "play",
+    "title": "音乐停，木头人",
+    "body": "放一首她喜欢的歌，一起乱跳；音乐一停，所有人马上变「木头人」，谁动谁笑场。熟练后加难度：快歌跳快、慢歌跳慢，或者停下时要摆出指定姿势，比如「变成一棵树」「变成小猫」。想动的时候也能停住，这就是在练自控。让她来按暂停键，她会更来劲。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "self-control",
+      "dance",
+      "movement"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛执行功能活动指南（3–5 岁）：冰冻舞、快慢舞和定格造型可锻炼抑制控制。"
+  },
+  {
+    "id": "play-027",
+    "category": "play",
+    "title": "红灯停，绿灯跳",
+    "body": "你当红绿灯，她站在房间另一头。喊「绿灯」她就往前走，喊「红灯」立刻停住，先摸到你就算赢；再加个「黄灯」慢慢走。停不住、冲过头都很正常，笑着让她退回一步就好。等她4岁左右，把规则反过来：红灯走、绿灯停，难度一下就上去了。也可以换她当红绿灯来指挥你。",
+    "age_min_months": 36,
+    "age_max_months": 60,
+    "tags": [
+      "self-control",
+      "movement",
+      "rules"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛儿童发展中心游戏指南：红绿灯类游戏需按口令停走，反转规则可加大抑制控制挑战。"
+  },
+  {
+    "id": "play-028",
+    "category": "play",
+    "title": "少了哪一个",
+    "body": "在托盘上摆三四样她熟悉的东西，比如勺子、小车、牙刷。请她看一会儿，再闭上眼睛，你悄悄拿走一样：「猜猜少了什么？」答对了换她来藏、你来猜，你偶尔猜错，她会特别得意。熟练后加到五样，或者不拿走、只调换位置。这个游戏能锻炼工作记忆和专注力，等饭时就能玩。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "memory",
+      "attention"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛执行功能活动指南：记忆类游戏（藏物、找不同）适合幼儿练习工作记忆。"
+  },
+  {
+    "id": "play-029",
+    "category": "play",
+    "title": "家里的藏宝图",
+    "body": "快4岁时，可以玩看图找宝：和她一起在纸上画客厅，沙发画个长方块，桌子画个圆，门画一条线。你把贴纸藏好，在图上对应的地方画颗星星，请她拿着图去找，一开始藏在露出一角的地方。找到了换她来藏、来画星星。看懂「纸上的这里就是屋里的那里」，是空间思维的一大步。",
+    "age_min_months": 38,
+    "age_max_months": 60,
+    "tags": [
+      "map",
+      "spatial",
+      "treasure-hunt"
+    ],
+    "source_ids": [
+      "hirsh-pasek"
+    ],
+    "basis": "Hirsh-Pasek 等空间学习研究：学看简单地图和模型，能促进学前儿童的空间思维。"
+  },
+  {
+    "id": "play-030",
+    "category": "play",
+    "title": "掷骰子，走几格",
+    "body": "挑一款走格子的棋，或自己在纸上画一条1到10的格子路。掷到几就走几步，边走边数：「1、2、3，到3啦！」玩多了，她能一眼认出骰子上的点数，也会发现走到8比走到3更远。一局几分钟就好，轮流掷骰子，也在练等待。骰子挑大号的，玩完收好。",
+    "age_min_months": 40,
+    "age_max_months": 60,
+    "tags": [
+      "board-games",
+      "math",
+      "counting"
+    ],
+    "source_ids": [
+      "hirsh-pasek",
+      "harvard-cdc"
+    ],
+    "basis": "Hirsh-Pasek 游戏化学习综述引用的研究：数字格子棋能提升学前儿童数感；轮流练抑制控制。"
+  },
+  {
+    "id": "play-031",
+    "category": "play",
+    "title": "纸箱比玩具好玩",
+    "body": "快递纸箱先别扔：它可以是汽车、山洞，也可以是小狗的家。积木、纸箱、布、玩偶这类由她决定怎么玩的东西，比一按就唱歌的声光玩具更耐玩。AAP 也提醒，简单的传统玩具更能带来大人和孩子的互动。今天就问：「这个箱子想变成什么？」再递给她一支笔，让她自己画窗户。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "open-ended",
+      "toys",
+      "creativity"
+    ],
+    "source_ids": [
+      "aap"
+    ],
+    "basis": "AAP 2019 玩具临床报告：积木、玩偶等传统开放式玩具更能促进互动，电子玩具不能替代陪伴。"
+  },
+  {
+    "id": "play-032",
+    "category": "play",
+    "title": "玩具分批上岗",
+    "body": "玩具堆满一地，她反而东摸一下西摸一下。试着只在架子上留七八样，其余收进箱子，过一两周换一批。东西少了，她更容易专注地玩，旧玩具「回来」时也像新的一样。她正迷着的那件先别收。收哪些也可以让她参与：「这个想留在外面，还是先休息一阵？」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "toy-rotation",
+      "focus"
+    ],
+    "source_ids": [
+      "book-montessori-toddler"
+    ],
+    "basis": "《蒙特梭利幼儿教育》建议玩具少量陈列、定期轮换，帮助孩子专注、减少过度刺激。"
+  },
+  {
+    "id": "play-033",
+    "category": "play",
+    "title": "散步口袋",
+    "body": "出门散步给她一个小袋子当「宝贝袋」，落叶、石子、松果、掉在地上的花瓣都能装。回家倒在桌上，按大小排一排、按颜色分一分，或者拼成一张笑脸。不认识的叶子拍下来一起查名字，下次路过再去看看那棵树。约好只捡地上的、不摘花、不往嘴里放，捡完洗手。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "nature",
+      "outdoor",
+      "collecting"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "raising-children-au"
+    ],
+    "basis": "教育部指南科学领域：引导幼儿亲近自然，在观察、比较、分类中发现事物特征。"
+  },
+  {
+    "id": "play-034",
+    "category": "play",
+    "title": "踩影子，变影子",
+    "body": "晴天出门时，指给她看地上的影子：「你的影子一直跟着你呢！」玩踩影子，你躲她追；再看看影子什么时候长、什么时候短，转个身它跑到哪边去了。晚上关灯打开手电，用手在墙上变小狗、小鸟，再让她试试手离墙近一点、远一点，影子怎么变。提醒她手电别对着眼睛照。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "science",
+      "shadows",
+      "outdoor"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-gardener-carpenter"
+    ],
+    "basis": "教育部指南科学领域：支持幼儿观察身边的自然现象并动手试一试；Gopnik：幼儿靠探索学因果。"
+  },
+  {
+    "id": "play-035",
+    "category": "play",
+    "title": "雨后去踩水坑",
+    "body": "雨停了，给她穿上雨靴和旧衣服，去找水坑踩一踩：大坑溅得高，还是小坑溅得高？扔片叶子，会不会漂走？衣服脏了洗得掉，玩得尽兴的体验却换不来。沙坑、泥地也一样，备好湿巾和换洗衣服就行。只踩浅浅的小水坑，远离井盖、河边和深积水，你始终在她身边。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "outdoor",
+      "messy-play",
+      "nature"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "cn-child-injury"
+    ],
+    "basis": "Raising Children：玩水玩泥等脏乱游戏有益探索与感官发展；伤害预防：远离深水与井盖。"
+  },
+  {
+    "id": "play-036",
+    "category": "play",
+    "title": "沉下去还是浮起来",
+    "body": "洗澡时拿几样东西：塑料碗、钢勺、海绵、一个苹果，先让她猜：「你觉得它会沉下去还是浮起来？」再放进水里看。猜错了最有意思，可以接着问：「为什么呢？」再试试把碗装满水会怎样。先猜后试，就是小科学家的做法。玩水时你一直待在伸手够得着的地方，不离开。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "science",
+      "bath",
+      "prediction"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter",
+      "cn-child-injury"
+    ],
+    "basis": "Gopnik 研究：幼儿像科学家一样通过预测和试验学习；溺水预防要求成人全程看护。"
+  },
+  {
+    "id": "play-037",
+    "category": "play",
+    "title": "冰块里的救援",
+    "body": "前一晚把几个巴掌大的塑料小动物冻进一碗冰里。第二天交给她一个「救援任务」：用温水、勺子和滴管，想办法把小动物救出来。她会发现温水比冷水化得快，撒点盐冰面会出现小坑。边玩边问：「哪种办法最快？」放在大托盘里或浴室玩，水温由你来调，弄湿了也不要紧。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "science",
+      "ice",
+      "sensory"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "book-gardener-carpenter"
+    ],
+    "basis": "教育部指南科学探究：支持幼儿动手操作，在观察变化中发现问题、尝试解决。"
+  },
+  {
+    "id": "play-038",
+    "category": "play",
+    "title": "沙发垫城堡",
+    "body": "把沙发垫、旧床单和几把椅子交给她，搭一座城堡或帐篷。别急着帮她搭漂亮，让她自己琢磨怎样才不塌，你只当搬运工：「需要我递哪块？」塌了就问：「怎么能让它更结实？」搭好后在里面讲故事、吃水果、玩打电话。一个属于自己的小空间，孩子能玩很久。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "building",
+      "pretend-play",
+      "problem-solving"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "aap"
+    ],
+    "basis": "Raising Children 推荐用家中物品搭建游戏；AAP 认为自主游戏锻炼问题解决与创造力。"
+  },
+  {
+    "id": "play-039",
+    "category": "play",
+    "title": "黄加蓝变成什么",
+    "body": "准备几个透明杯子装上清水，再备好黄、蓝、红三种儿童可水洗颜料，或几滴食用色素。先让她猜：「黄色和蓝色倒在一起，会变成什么？」再亲手倒一倒、搅一搅。让她自己调出新颜色，再起个名字：「这是青蛙绿！」穿上旧衣服、铺好报纸，脏了洗掉就是。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "science",
+      "art",
+      "colors"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "naeyc"
+    ],
+    "basis": "教育部指南：鼓励幼儿动手操作、观察变化，在艺术活动中大胆表现；NAEYC 推荐混色探索。"
+  },
+  {
+    "id": "play-040",
+    "category": "play",
+    "title": "闭上眼，听听这是啥",
+    "body": "请她闭上眼睛，你在家里弄出一个声音：关冰箱门、拧水龙头、摇钥匙、撕纸，让她猜是什么。猜对了换她来出题，你来猜。出门时也能玩：「嘘——听，是小鸟、汽车还是风声？」这个小游戏练的是静下来专心听、分辨细微的不同，不用任何道具，晚饭前十分钟就能玩。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "listening",
+      "attention",
+      "sensory"
+    ],
+    "source_ids": [
+      "vroom",
+      "zero-to-three"
+    ],
+    "basis": "Vroom 与 ZERO TO THREE 推荐用日常声音做猜谜游戏，练习专注倾听和分辨。"
+  },
+  {
+    "id": "play-041",
+    "category": "play",
+    "title": "玩前说计划",
+    "body": "开始玩之前问一句：「今天想玩什么？先做什么？」她也许只说「搭大楼」，也可以让她画个简单的计划。玩完再聊：「刚才怎么搭的？哪里最难？下次想怎么改？」先想、再做、后回顾，是在练想清楚再动手。中途改主意也没关系。玩扮演前一起定好「谁演谁、先演什么」，也是一种计划。",
+    "age_min_months": 38,
+    "age_max_months": 60,
+    "tags": [
+      "planning",
+      "executive-function"
+    ],
+    "source_ids": [
+      "harvard-cdc"
+    ],
+    "basis": "哈佛执行功能活动指南（3–5 岁）：扮演游戏需要计划，游戏计划可帮助孩子组织和坚持。"
+  },
+  {
+    "id": "play-042",
+    "category": "play",
+    "title": "做完这一件再换",
+    "body": "她一会儿拼图、一会儿画画，地上铺满了半成品？试着约个小规矩：「这个做完，我们再拿下一个。」任务挑小一点，比如穿完五颗珠子、只画完一个小人。快做完时帮她看见终点：「还剩两颗，马上就成一串了！」做完一起拍手，把作品摆上架子。坚持和专注，是从一件件小事里攒出来的。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "persistence",
+      "focus"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "hirsh-pasek"
+    ],
+    "basis": "教育部指南强调学习品质（认真专注、不怕困难）；Hirsh-Pasek 将坚持与自信列为核心能力。"
+  },
+  {
+    "id": "play-043",
+    "category": "play",
+    "title": "用事情说时间",
+    "body": "3岁的孩子还分不太清「昨天」「明天」，过去的事可能都叫「昨天」。用她经历的事来锚定时间更好懂：「睡一觉起来就是明天，明天去奶奶家。」日历上贴贴纸、数还有几次睡觉，或看看树叶变色聊聊季节。她说错了不用纠正，你换个说法自然地再说一遍，慢慢她就对上了。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "time",
+      "concepts",
+      "routine"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "raising-children-au"
+    ],
+    "basis": "ZERO TO THREE：学前儿童的时间概念尚在发展，用日常事件和作息锚定时间更易理解。"
+  },
+  {
+    "id": "play-044",
+    "category": "play",
+    "title": "不急着认字算数",
+    "body": "看到别家孩子认了几百个字，难免心慌。其实这个年纪最扎实的学习就藏在游戏里：数台阶、分饼干、搭积木、过家家。教育部的指南明确反对拔苗助长式的超前训练；研究也发现，在好玩的游戏里学到的东西，比背闪卡更扎实。兴趣班不必排满，给她留出自由玩的时间。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "early-learning",
+      "playful-learning"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "hirsh-pasek"
+    ],
+    "basis": "教育部指南反对超前教育和强化训练；Hirsh-Pasek《爱因斯坦从不用闪卡》：游戏化学习更有效。"
+  },
+  {
+    "id": "play-045",
+    "category": "play",
+    "title": "挑好节目，陪着看",
+    "body": "WHO 建议3–4岁的孩子每天看屏幕不超过1小时，越少越好。看什么也要紧：节奏慢、情节简单、没有广告的节目，比快切换、闹哄哄的更适合她。尽量坐在旁边一起看，聊一聊：「小猪去踩泥坑了，我们明天也去找找？」看完把节目里的事玩一玩，屏幕就成了你们的话题。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "screen-time",
+      "co-viewing"
+    ],
+    "source_ids": [
+      "who-under5",
+      "aap"
+    ],
+    "basis": "WHO 2019：3–4 岁久坐屏幕时间每天不超过 1 小时、越少越好；AAP 强调选优质内容、陪看交流。"
+  },
+  {
+    "id": "play-046",
+    "category": "play",
+    "title": "图书馆探险日",
+    "body": "周末带她去一次图书馆、博物馆或植物园，出发前定个小目标：「今天去找一本有恐龙的书」「去看看最大的那条鱼」。让她决定先去哪、停多久，喜欢的地方多待一会儿，累了就回家。回家请她当小导游，把看到的讲给爷爷奶奶听，下次过家家也多了新素材。",
+    "age_min_months": 30,
+    "age_max_months": 60,
+    "tags": [
+      "outing",
+      "curiosity",
+      "library"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "naeyc"
+    ],
+    "basis": "哈佛执行功能活动指南：读书和外出参观能丰富孩子扮演游戏的素材；NAEYC 鼓励家庭探访。"
+  },
+  {
+    "id": "play-047",
+    "category": "play",
+    "title": "掂一掂哪个重",
+    "body": "拿一个苹果和一个橘子，请她一手一个掂一掂：「哪个重？哪个轻？」再比比一本书和一只袜子、一瓶水和一个空瓶，还有大毛绒熊和小苹果。猜完用衣架两头各挂一个袋子，做个简易天平，看哪边往下沉。大的不一定重，这个发现会让她很惊讶。轻重、长短、多少，就在一次次掂和比里慢慢弄明白。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "math",
+      "measurement",
+      "comparing"
+    ],
+    "source_ids": [
+      "moe-3-6-guide"
+    ],
+    "basis": "教育部指南：3–4 岁能感知和区分物体大小、多少、高矮长短等量的特点，并用相应的词表示。"
+  },
+  {
+    "id": "play-048",
+    "category": "play",
+    "title": "镜子里的我",
+    "body": "在穿衣镜前一起玩：你做鬼脸她来学，再换她做、你来学。还可以面对面玩「照镜子」：你慢慢抬手，她像镜子一样同步跟着做，再换她来领头。做出开心、生气、吃惊的脸，顺口说出名字：「这是吃惊的脸。」这个游戏练观察和模仿，也帮她认识表情，睡前几分钟就能玩。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "mirror",
+      "imitation",
+      "emotions"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "harvard-cdc"
+    ],
+    "basis": "哈佛执行功能活动指南（幼儿）推荐模仿游戏；ZERO TO THREE：认识表情是情绪发展基础。"
+  },
+  {
+    "id": "play-049",
+    "category": "play",
+    "title": "如果小猫会说话",
+    "body": "吃饭、散步时随口抛一个「如果」：「如果小猫会说话，它会说什么？」「如果天上下的是果汁呢？」「如果你变得像蚂蚁一样小呢？」没有标准答案，她的回答再天马行空也认真回应：「果汁雨？那出门要带杯子还是带伞？」想象不存在的事，和她日后的推理、解决问题能力有关。",
+    "age_min_months": 38,
+    "age_max_months": 60,
+    "tags": [
+      "imagination",
+      "what-if",
+      "conversation"
+    ],
+    "source_ids": [
+      "book-gardener-carpenter"
+    ],
+    "basis": "Gopnik 研究：假装游戏与「如果……会怎样」的反事实思考相关，是推理能力的早期基础。"
+  },
+  {
+    "id": "play-050",
+    "category": "play",
+    "title": "把绘本演出来",
+    "body": "读完一本她爱听的书，比如《拔萝卜》，一起把它演出来：她当小老鼠，你当老爷爷，毛绒玩具当小狗。道具不用买，围巾当胡子，枕头当萝卜。演着演着，她会记住故事的先后顺序，还会自己加戏。4岁左右，很多孩子能说出熟悉的故事接下来会发生什么。演过的书，她会更想再读。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "pretend-play",
+      "books",
+      "sequencing"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "harvard-cdc"
+    ],
+    "basis": "CDC 4 岁里程碑：能说出熟悉故事接下来发生什么；哈佛指南：把故事演出来锻炼工作记忆。"
+  }
+]

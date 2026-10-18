@@ -1,0 +1,202 @@
+[
+ {
+  "id": "aap",
+  "name": "美国儿科学会（AAP）家长网站 HealthyChildren.org",
+  "url": "https://www.healthychildren.org/English/ages-stages/preschool/Pages/Developmental-Milestones-3-to-4-Year-Olds.aspx"
+ },
+ {
+  "id": "aap-bright-futures",
+  "name": "美国儿科学会 Bright Futures 3 岁/4 岁体检家长指导",
+  "url": "https://www.aap.org/en/practice-management/bright-futures/bright-futures-family-centered-care/well-child-visits-parent-and-patient-education/"
+ },
+ {
+  "id": "aasm",
+  "name": "美国睡眠医学会 AASM 儿童睡眠时长共识（2016）",
+  "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.5866"
+ },
+ {
+  "id": "asha",
+  "name": "美国言语听力协会 ASHA（语言发育里程碑）",
+  "url": "https://www.asha.org/public/developmental-milestones/communication-milestones-3-to-4-years/"
+ },
+ {
+  "id": "book-30m-words",
+  "name": "《父母的语言》Dana Suskind",
+  "url": "https://tmwcenter.uchicago.edu/"
+ },
+ {
+  "id": "book-gardener-carpenter",
+  "name": "《园丁与木匠》Alison Gopnik",
+  "url": null
+ },
+ {
+  "id": "book-good-inside",
+  "name": "《Good Inside》Becky Kennedy",
+  "url": "https://www.goodinside.com/"
+ },
+ {
+  "id": "book-how-to-talk",
+  "name": "《如何说孩子才会听（2–7 岁版）》Faber & King",
+  "url": null
+ },
+ {
+  "id": "book-hunt-gather-parent",
+  "name": "《Hunt, Gather, Parent》Michaeleen Doucleff",
+  "url": null
+ },
+ {
+  "id": "book-montessori-toddler",
+  "name": "《蒙特梭利幼儿教育》Simone Davies",
+  "url": "https://www.themontessorinotebook.com/"
+ },
+ {
+  "id": "book-positive-discipline",
+  "name": "《正面管教（学龄前）》Nelsen",
+  "url": "https://www.positivediscipline.com/"
+ },
+ {
+  "id": "book-whole-brain",
+  "name": "《全脑教养法》《不打不骂》Siegel & Bryson",
+  "url": "https://drdansiegel.com/"
+ },
+ {
+  "id": "cdc-milestones",
+  "name": "美国疾控中心「早发现早行动」3 岁/4 岁发育里程碑",
+  "url": "https://www.cdc.gov/act-early/milestones/3-years.html"
+ },
+ {
+  "id": "cdc-parenting",
+  "name": "美国疾控中心 积极养育小贴士（学步儿/学龄前）与《幼儿养育要点》",
+  "url": "https://www.cdc.gov/child-development/positive-parenting-tips/preschooler-3-5-years.html"
+ },
+ {
+  "id": "child-mind",
+  "name": "美国儿童心智研究所 Child Mind Institute",
+  "url": "https://childmind.org/"
+ },
+ {
+  "id": "cn-child-injury",
+  "name": "儿童伤害预防（中国疾控中心 / 国家卫健委）",
+  "url": null
+ },
+ {
+  "id": "cn-myopia",
+  "name": "综合防控儿童青少年近视实施方案（及近视防控技术指南）",
+  "url": "http://www.moe.gov.cn/srcsite/A17/moe_943/s3285/201808/t20180830_346672.html"
+ },
+ {
+  "id": "cn-oral-health",
+  "name": "儿童口腔保健（国家卫健委 / 中华口腔医学会相关文件）",
+  "url": null
+ },
+ {
+  "id": "cn-preschool-exercise",
+  "name": "学龄前儿童（3～6岁）运动指南",
+  "url": "https://cjchc.xjtu.edu.cn/CN/10.11852/zgetbjzz2020-0982"
+ },
+ {
+  "id": "cns-preschool-diet",
+  "name": "中国学龄前儿童膳食指南（2022）",
+  "url": "http://dg.cnsoc.org/"
+ },
+ {
+  "id": "dialogic-reading",
+  "name": "对话式阅读（Whitehurst，PEER/CROWD）",
+  "url": "https://ies.ed.gov/ncee/wwc/"
+ },
+ {
+  "id": "dxy-mama",
+  "name": "丁香妈妈",
+  "url": "https://mama.dxy.com/"
+ },
+ {
+  "id": "gottman",
+  "name": "Gottman 情绪辅导（Emotion Coaching）",
+  "url": "https://www.gottman.com/"
+ },
+ {
+  "id": "hanen",
+  "name": "加拿大 Hanen 中心（幼儿语言发展）",
+  "url": "https://www.hanen.org/"
+ },
+ {
+  "id": "harvard-cdc",
+  "name": "哈佛大学儿童发展中心（serve & return、执行功能、压力与韧性）",
+  "url": "https://developingchild.harvard.edu/resource-guides/guide-serve-and-return/"
+ },
+ {
+  "id": "hirsh-pasek",
+  "name": "Hirsh-Pasek & Golinkoff 游戏化学习研究（《爱因斯坦从不用闪卡》《成为聪明人》）",
+  "url": "https://playfullearninglandscapes.com/"
+ },
+ {
+  "id": "kidshealth",
+  "name": "Nemours KidsHealth 儿童健康网",
+  "url": "https://kidshealth.org/en/parents/development-4yrs.html"
+ },
+ {
+  "id": "moe-3-6-guide",
+  "name": "3-6岁儿童学习与发展指南",
+  "url": "http://www.moe.gov.cn/srcsite/A06/s3327/201210/t20121009_143254.html"
+ },
+ {
+  "id": "naeyc",
+  "name": "全美幼教协会 NAEYC 家长资源",
+  "url": "https://www.naeyc.org/our-work/families"
+ },
+ {
+  "id": "nhc-care-guide",
+  "name": "3岁以下婴幼儿健康养育照护指南（试行）",
+  "url": "https://www.gov.cn/zhengce/zhengceku/2022-11/29/content_5729421.htm"
+ },
+ {
+  "id": "nhc-psych-norm",
+  "name": "儿童心理保健技术规范",
+  "url": "https://www.nhc.gov.cn/wjw/gfxwj/201304/a60624807528402eb7f72ed447eb41dc/files/1733384819948_65252.doc"
+ },
+ {
+  "id": "nhs",
+  "name": "英国国家医疗服务体系 NHS（Best Start in Life / Start for Life）",
+  "url": "https://www.nhs.uk/best-start-in-life/"
+ },
+ {
+  "id": "pcit",
+  "name": "亲子互动疗法 PCIT（PRIDE 技巧）",
+  "url": "https://www.pcit.org/"
+ },
+ {
+  "id": "raising-children-au",
+  "name": "澳大利亚 Raising Children Network 育儿网（学龄前）",
+  "url": "https://raisingchildren.net.au/preschoolers"
+ },
+ {
+  "id": "satter",
+  "name": "Ellyn Satter 喂养责任分工",
+  "url": "https://www.ellynsatterinstitute.org/"
+ },
+ {
+  "id": "triple-p",
+  "name": "Triple P 积极养育项目",
+  "url": "https://www.triplep.net/"
+ },
+ {
+  "id": "vroom",
+  "name": "Vroom 大脑建构日常小活动",
+  "url": "https://www.vroom.org/"
+ },
+ {
+  "id": "who-under5",
+  "name": "世界卫生组织《5 岁以下儿童身体活动、久坐行为和睡眠指南》（2019）",
+  "url": "https://www.who.int/publications/i/item/9789241550536"
+ },
+ {
+  "id": "who-unicef-nurturing-care",
+  "name": "世卫组织/联合国儿基会「养育照护」框架与 UNICEF 育儿指导",
+  "url": "https://nurturing-care.org/about/what-is-the-nurturing-care-framework/"
+ },
+ {
+  "id": "zero-to-three",
+  "name": "ZERO TO THREE（零到三岁）家长资源",
+  "url": "https://www.zerotothree.org/resources/for-families/"
+ }
+]

@@ -1,0 +1,765 @@
+[
+  {
+    "id": "emotion-001",
+    "category": "emotion",
+    "title": "先接住，再讲理",
+    "body": "她哭到打挺时，负责讲道理的那部分大脑基本“下线”了，规则说再多也听不进，就像对着关了机的电脑打字。先蹲下来靠近她，少说话，陪着就好；等她呼吸慢下来、肯看你了，再聊刚才的事。今天就试：先说「我在这儿，等你好一点我们再说」，把道理留到十分钟后。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "tantrum",
+      "connection"
+    ],
+    "source_ids": [
+      "book-whole-brain",
+      "harvard-cdc"
+    ],
+    "basis": "Siegel《全脑教养法》：情绪高涨时先用情感连接安抚，再引导思考（connect and redirect）。"
+  },
+  {
+    "id": "emotion-002",
+    "category": "emotion",
+    "title": "给委屈一个名字",
+    "body": "三岁的她常把所有不舒服都叫“生气”。帮她多认识几个词：没买到想要的叫“失望”，被冤枉了叫“委屈”，上台前心怦怦跳叫“紧张”。说的时候带上原因：「你本来想先玩滑梯，结果排在后面，有点失望，对吗？」词多了，她就能说出来，而不是只能哭。睡前也可以聊聊：「今天有没有哪一刻觉得委屈？」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "vocabulary",
+      "labeling"
+    ],
+    "source_ids": [
+      "gottman",
+      "zero-to-three"
+    ],
+    "basis": "Gottman 情绪辅导：帮孩子准确命名情绪，与更好的情绪调节能力相关。"
+  },
+  {
+    "id": "emotion-003",
+    "category": "emotion",
+    "title": "可以生气，不可以打人",
+    "body": "抢不到玩具，她抬手就打。这时把两件事分开：情绪全部允许，行为划清界线。轻轻握住她的手：「你很生气，生气没关系。打人不行，我不会让你打人。」再给一个出口：跺跺脚、捶枕头、大声说“我生气了”。同样的话说上几十遍，她会慢慢换个方式。等她平静了，再陪她把玩具的事解决。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "hitting",
+      "limits"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "gottman"
+    ],
+    "basis": "Gottman 情绪辅导与《Good Inside》：接纳所有情绪，同时对伤人的行为设清楚的界限。"
+  },
+  {
+    "id": "emotion-004",
+    "category": "emotion",
+    "title": "先别说“别哭了”",
+    "body": "「别哭了」「这有什么好哭的」，大人是想让她快点好起来，可她听到的是：我的感受是错的。哭本身就是在释放压力，不必马上止住，也不用急着拿零食或手机转移。换成陪着她：「很难过，是吧？想哭就哭一会儿，我陪着你。」被允许哭完的孩子，往往反而平复得更快。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "crying",
+      "validation"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "gottman"
+    ],
+    "basis": "《如何说孩子才会听》：否认感受会让孩子更难平静，接纳感受有助于孩子恢复。"
+  },
+  {
+    "id": "emotion-005",
+    "category": "emotion",
+    "title": "冷静角，是陪她去的",
+    "body": "冷静角不是“去墙角反省”，而是一个她喜欢的小窝：软垫、抱枕、几本绘本、一个毛绒玩具。平时先一起布置、一起在里面玩，让她觉得那里很舒服。情绪上来时邀请她：「要不要去小窝待一会儿？我陪你。」去不去由她选，不想去也没关系。平静了自己走出来就好，不需要先“认错”。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "calm-down",
+      "space"
+    ],
+    "source_ids": [
+      "book-positive-discipline",
+      "book-montessori-toddler"
+    ],
+    "basis": "Nelsen《正面管教》：“积极暂停”区由孩子参与布置，用来帮助平静，而不是惩罚。"
+  },
+  {
+    "id": "emotion-006",
+    "category": "emotion",
+    "title": "闻闻花，吹蜡烛",
+    "body": "跟三岁孩子说“深呼吸”太抽象，换成游戏：竖起一根手指当花，「闻一闻花香」用鼻子吸气；再把手指当蜡烛，「呼——把它吹灭」。平静的时候每天玩几回，练熟了，生气时才用得上；她发火时你先做给她看，不要求她马上照做。今天就试：睡前一起闻五朵花、吹五根蜡烛，比比谁吹得最慢。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "breathing",
+      "calm-down"
+    ],
+    "source_ids": [
+      "child-mind",
+      "harvard-cdc"
+    ],
+    "basis": "Child Mind Institute：用具体形象的呼吸游戏，在平静时反复练习，帮幼儿学会自我平静。"
+  },
+  {
+    "id": "emotion-007",
+    "category": "emotion",
+    "title": "抱紧自己，当个小粽子",
+    "body": "有的孩子一着急，身体就停不下来。用力的动作反而能帮她安定：双手抱紧自己数到五再松开，用力推一推墙，或者裹进毯子里当“小粽子”。平时当游戏玩，配一句口令「我抱抱自己」。情绪上来时你先做给她看，她常常会跟着做。不是每个孩子都喜欢同一招，多试几种，找到属于她的那一个。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "self-soothing",
+      "body"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind"
+    ],
+    "basis": "ZERO TO THREE：帮幼儿积累自我安抚的办法，身体动作是常用且有效的一类。"
+  },
+  {
+    "id": "emotion-008",
+    "category": "emotion",
+    "title": "香蕉断了也是大事",
+    "body": "香蕉掰断了、杯子不是粉色的，她就崩溃大哭，大人觉得莫名其妙。对三岁孩子来说，事情“没按她想的来”就是真实的失落，何况常常还叠加了累和饿。不用修好香蕉，也不用讲道理，先认可：「你想要一整根的，断了好失望。」陪她难过完，事情就过去了。下次可以先问：「要掰开，还是整根？」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "meltdown",
+      "validation"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "nhs"
+    ],
+    "basis": "NHS：幼儿发脾气多源于挫败感，累和饿会放大；Good Inside：先认可孩子的失落。"
+  },
+  {
+    "id": "emotion-009",
+    "category": "emotion",
+    "title": "离开前，给五分钟预告",
+    "body": "从游乐场突然被抱走，谁都会抗议。三岁孩子还没有清楚的时间感，需要提前准备：「再玩五分钟就回家」，到点说「最后滑两次」。也可以定个闹钟，让“闹钟”来当坏人，再让她挑个告别方式：跟滑梯说拜拜，或者比赛跑到门口。哭了也照样走，边走边说：「你还想玩，我们下次再来。」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "transitions",
+      "routine"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "cdc-parenting"
+    ],
+    "basis": "ZERO TO THREE：转换前预告并给孩子小选择，能减少幼儿在活动切换时的抗拒。"
+  },
+  {
+    "id": "emotion-010",
+    "category": "emotion",
+    "title": "拼不上时，夸她在坚持",
+    "body": "拼图拼不上，她一把全推翻了。先接住：「拼不进去，真让人着急。」再帮她把难度降一格（别直接替她拼好），比如先只找带角的那几块。成功后别只说「你真聪明」，而是说出她做了什么：「你换了三个方向试，终于找到了！」想放弃也行：「休息一下，等会儿再来。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "frustration",
+      "praise"
+    ],
+    "source_ids": [
+      "pcit",
+      "book-how-to-talk"
+    ],
+    "basis": "PCIT 具体表扬与《如何说》描述式赞赏：描述孩子的努力和方法，更能强化坚持。"
+  },
+  {
+    "id": "emotion-011",
+    "category": "emotion",
+    "title": "输了也可以难过",
+    "body": "玩飞行棋一输就掀棋盘，这在三四岁很常见：她刚开始在意输赢，还不会消化失落。先允许：「输了很不开心，我懂。」平时多玩轮流、几分钟一局的小游戏，你输的时候做个示范：「哎，我输了，有点可惜，再来一局！」别总故意让她赢，否则她没机会练。输了还愿意再来一局，也值得夸一句。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "losing",
+      "games"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "zero-to-three"
+    ],
+    "basis": "Raising Children：学龄前孩子输不起很常见，可通过大人示范和简短的轮流游戏练习。"
+  },
+  {
+    "id": "emotion-012",
+    "category": "emotion",
+    "title": "怪兽不用证明不存在",
+    "body": "睡前她说床底下有怪兽，大人第一反应是「哪有什么怪兽」。可三四岁正是想象和现实还分不太清的年纪，她的害怕是真的。先认真听，再给她一点掌控感：一起拿手电筒检查床底，让毛绒熊在床头“站岗”，也千万别用“再不睡怪兽来抓你”吓她。可以说：「你害怕了，我们一起想办法让房间变安全。」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "fear",
+      "bedtime"
+    ],
+    "source_ids": [
+      "child-mind",
+      "raising-children-au"
+    ],
+    "basis": "Child Mind Institute：认真对待幼儿的恐惧并一起想应对办法，比否认更能让孩子安心。"
+  },
+  {
+    "id": "emotion-013",
+    "category": "emotion",
+    "title": "怕狗，从远远看开始",
+    "body": "在小区见到狗就尖叫、往你身上爬？别逼她“摸一下就不怕了”，也别从此见狗就绕道。一级一级来：先看绘本里的狗，再隔着马路远远看，再看邻居遛狗，停在哪一步由她决定。每次都告诉她：「你在我身边，很安全。想看多久都行。」往前迈一小步就说出来：「今天比上次站得近一点。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "fear",
+      "animals"
+    ],
+    "source_ids": [
+      "child-mind"
+    ],
+    "basis": "Child Mind Institute：循序渐进、可控地接触害怕的事物，比回避或强迫更能缓解焦虑。"
+  },
+  {
+    "id": "emotion-014",
+    "category": "emotion",
+    "title": "她不是害羞，是在热身",
+    "body": "走亲戚时，长辈一句「这孩子怎么这么害羞」，她可能就躲得更深了。有的孩子天生慢热，习惯先观察再加入，这是气质，不是缺点。你可以帮她解围：「她喜欢先看一看，等会儿就来了。」出门前告诉她要见谁，到了先让她靠着你，不催她叫人。回家后夸她具体做到的：「你今天跟姥姥挥手了。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "shyness",
+      "temperament"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind"
+    ],
+    "basis": "ZERO TO THREE：慢热是常见的气质类型，贴“害羞”标签可能强化退缩，宜给时间适应。"
+  },
+  {
+    "id": "emotion-015",
+    "category": "emotion",
+    "title": "告别要短，回来要准",
+    "body": "送托班时她抱着你的腿哭，偷偷溜走只会让她更不安。把告别变成固定的小仪式：抱一下，亲一下，说一句「睡完午觉、吃完点心，我就来接你」，然后坚定地离开。用她能懂的事件代替钟点，并且说到做到。很多孩子在大人离开后十分钟内就能平静。接她时说：「我说话算话，来接你啦。」",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "separation",
+      "daycare"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "zero-to-three"
+    ],
+    "basis": "CDC 3 岁里程碑：家长离开后（如送托时）10 分钟内能平静下来。"
+  },
+  {
+    "id": "emotion-016",
+    "category": "emotion",
+    "title": "吃醋时，说出她的酸",
+    "body": "你抱了一下表妹，她立刻冲过来把人推开。先护住妹妹、拦下她的手，再照顾她的心：嫉妒说明她在乎你，不是“小心眼”。帮她说出来：「你看到我抱妹妹，心里酸酸的，是不是怕我不爱你了？」再给一句确定的话：「我的心很大，永远有你的位置。」回家后找机会单独陪她玩十分钟。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "jealousy",
+      "attention"
+    ],
+    "source_ids": [
+      "book-how-to-talk",
+      "raising-children-au"
+    ],
+    "basis": "《如何说孩子才会听》：说出孩子的嫉妒感受而非批评，配合单独陪伴，能减少争宠行为。"
+  },
+  {
+    "id": "emotion-017",
+    "category": "emotion",
+    "title": "你的观众只有她",
+    "body": "超市里她躺在地上大哭，最难熬的往往是周围的目光。提醒自己：此刻你的观众只有一个，就是她。先把她带到人少的角落或车里，蹲下来少说话，等她平静。出门前可以先约好：「今天只买牛奶和面包。」真闹起来，决定也不变：「你很想要，我知道。今天不买。」别人怎么看，没那么重要。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "public",
+      "tantrum"
+    ],
+    "source_ids": [
+      "nhs",
+      "book-good-inside"
+    ],
+    "basis": "NHS：孩子发脾气时家长保持冷静，不为结束哭闹而改变决定，否则孩子会学到哭闹有用。"
+  },
+  {
+    "id": "emotion-018",
+    "category": "emotion",
+    "title": "先喂饱，再谈情绪",
+    "body": "下午五点特别容易崩？很多“情绪问题”其实是饿了、困了、玩太久没歇。三岁孩子的耐心和体力一样容易见底。出门带上点心和水，行程别排太满，午觉尽量守住；傍晚接回家，先吃点水果垫一垫。今天就试：她快发火前，先问自己一句「她是不是饿了或累了？」，先补口吃的、歇一歇再说。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "hunger",
+      "tiredness"
+    ],
+    "source_ids": [
+      "nhs",
+      "zero-to-three"
+    ],
+    "basis": "NHS：孩子累了或饿了更容易发脾气，这时先满足基本需要往往就能化解。"
+  },
+  {
+    "id": "emotion-019",
+    "category": "emotion",
+    "title": "吼完以后，回去修复",
+    "body": "你冲她吼了，事后很内疚？关系里的“破裂”谁都难免，关键是修复。等你们都平静了，蹲下来说：「刚才我太大声了，吓到你了，对不起。是我没控制好，不是你的错。下次我生气，会先深呼吸。」孩子会学到：犯了错可以弥补，爱不会因此消失。道歉不等于收回规矩，该做的事稍后照做。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "repair",
+      "apology"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "book-whole-brain"
+    ],
+    "basis": "《Good Inside》与 Siegel：亲子冲突后由大人主动修复，能维护孩子的安全感并示范担当。"
+  },
+  {
+    "id": "emotion-020",
+    "category": "emotion",
+    "title": "把你的烦躁说出来",
+    "body": "孩子学管理情绪，主要靠看你怎么做。下次你快冒火时，试着把它说出来，再示范怎么处理：「我现在有点烦躁，要先深呼吸三次。」做完再告诉她：「好多了。」这比讲一百遍“要冷静”都管用，她也会明白：大人也有情绪，而且能处理好。不用每次都做到，偶尔做到就是示范。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "modeling",
+      "parent"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "harvard-cdc"
+    ],
+    "basis": "教育部《3-6岁儿童学习与发展指南》：成人以恰当方式表达和调控情绪，为幼儿做出榜样。"
+  },
+  {
+    "id": "emotion-021",
+    "category": "emotion",
+    "title": "读绘本时，停一页",
+    "body": "讲生气、害怕、想念的绘本，比如《菲菲生气了》《我的情绪小怪兽》，是聊感受的好入口。读的时候别一口气读完，在关键那页停一停，指着人物的脸问：「你看他的眉毛，他现在是什么心情？」「要是你，你会怎么办？」她答不上来也没关系，你说说自己的猜测，就是在示范。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "books",
+      "empathy"
+    ],
+    "source_ids": [
+      "dialogic-reading",
+      "zero-to-three"
+    ],
+    "basis": "对话式阅读（PEER）：读时提问并扩展孩子的回答，比单纯朗读更能促进理解与表达。"
+  },
+  {
+    "id": "emotion-022",
+    "category": "emotion",
+    "title": "那个小朋友怎么了？",
+    "body": "小区里看到别的孩子在哭，是练习共情的好时机。不用说教，轻声和她一起观察：「那个小哥哥在哭，你猜他怎么了？」「他的风筝挂树上了，要是你，会是什么感觉？」还可以问：「我们能帮点什么吗？」四岁前后，很多孩子开始会主动安慰难过的朋友。她不想接话也没关系，观察本身就是练习。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "empathy",
+      "others"
+    ],
+    "source_ids": [
+      "cdc-milestones",
+      "gottman"
+    ],
+    "basis": "CDC 4 岁里程碑：会安慰受伤或难过的人，比如拥抱正在哭的朋友。"
+  },
+  {
+    "id": "emotion-023",
+    "category": "emotion",
+    "title": "今天的心情几度？",
+    "body": "画一张简单的“心情温度计”贴在冰箱上：最下面蓝色是平静，往上是有点烦、很生气，最上面红色是火山爆发。每天晚饭后请她指一指：「今天最开心的时候在哪儿？最生气的时候呢？」你也说说自己的：「我下午堵车时，大概到橙色了。」情绪有了刻度，她就能慢慢分清“有点不高兴”和“特别生气”。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "feelings-chart",
+      "awareness"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "child-mind"
+    ],
+    "basis": "ZERO TO THREE 等：用视觉化工具帮幼儿识别情绪及其强弱，是社会情绪学习的常用方法。"
+  },
+  {
+    "id": "emotion-024",
+    "category": "emotion",
+    "title": "开心也要说出来",
+    "body": "我们常在她哭的时候才谈情绪，其实开心、骄傲、兴奋也需要名字。她自己穿好鞋时说：「你自己做到了，看起来好骄傲！」去公园的路上：「你一蹦一跳的，是不是很期待？」睡前互相讲一件今天开心的事；她兴奋得手舞足蹈时，跟着一起笑就够了。好心情被看见，她也更愿意跟你分享。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "joy",
+      "sharing"
+    ],
+    "source_ids": [
+      "moe-3-6-guide",
+      "gottman"
+    ],
+    "basis": "教育部《3-6岁指南》4–5岁目标：愿意把自己的情绪告诉亲近的人，一起分享快乐。"
+  },
+  {
+    "id": "emotion-025",
+    "category": "emotion",
+    "title": "小兔子可以一直陪着",
+    "body": "她离不开那条旧毯子或那只小兔子，老人担心“太依赖”。其实安抚物是孩子自我安慰的工具，在入园、出远门、生病时特别管用，大多数孩子会慢慢自己放下，不用强行戒掉或取笑她。可以准备一个一样的备份，洗的时候说：「小兔去洗澡啦，很快就回来。」上托班前，也可以问问老师能不能带着。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "comfort-object",
+      "security"
+    ],
+    "source_ids": [
+      "aap",
+      "raising-children-au"
+    ],
+    "basis": "AAP：安抚物帮助幼儿应对分离和压力，属正常发展，多数孩子会自行逐渐放下。"
+  },
+  {
+    "id": "emotion-026",
+    "category": "emotion",
+    "title": "小鱼死了，就说“死了”",
+    "body": "家里的小鱼死了，别说“它睡着了”“它去旅行了”，三岁孩子会当真，甚至会害怕睡觉。用简单、真实的话：「小鱼死了，它的身体停止工作了，不会再游，也不会疼了。」她可能一遍遍问同样的问题，每次都耐心用同样的话回答。也要告诉她，这不是任何人的错。可以一起画张画，跟小鱼说再见。",
+    "age_min_months": 33,
+    "age_max_months": 60,
+    "tags": [
+      "death",
+      "grief"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children 等：向幼儿解释死亡要用“死了”等直白词，避免“睡着了”这类委婉说法。"
+  },
+  {
+    "id": "emotion-027",
+    "category": "emotion",
+    "title": "共情了，规矩还在",
+    "body": "有人担心：一共情，孩子就更闹了。其实理解感受和改变决定是两回事。「你还想看动画片，关掉真舍不得。时间到了，我们去洗澡。」说完照样关，语气温和、动作坚定。她会哭一会儿，但会慢慢明白：我的感受被听见了，规矩不会因为哭就改变。下次提前预告“还有一集”，会顺利一些。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "empathy",
+      "boundaries"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "nhs"
+    ],
+    "basis": "NHS：不要为了结束哭闹而改口；《Good Inside》：认可感受的同时坚守界限。"
+  },
+  {
+    "id": "emotion-028",
+    "category": "emotion",
+    "title": "不说“我走了，不要你了”",
+    "body": "「再哭我就走了」「不听话让警察来抓你」，一时管用，代价是她的安全感：最依赖的人可能会丢下她。害怕只会让情绪更难平复。换成说清你会怎么做：「我在这儿等你，你准备好了，我们一起穿鞋。」真要走，就抱起她一起走。以前说过也没关系，从今天换掉就好，再补一句：「我不会丢下你。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "threats",
+      "security"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "book-good-inside"
+    ],
+    "basis": "ZERO TO THREE：幼儿的安全感来自可预期的照护者，用“不要你”来威胁只会制造恐惧。"
+  },
+  {
+    "id": "emotion-029",
+    "category": "emotion",
+    "title": "睡前，讲讲下午那场哭",
+    "body": "下午那场大哭过去了，晚上抱着她时，可以像讲故事一样轻轻回顾：「今天在公园，你还想玩，我说要回家，你特别生气，哭了好久。后来你抱着我，慢慢就好了。」不批评，不追问“你错在哪”，最后加一句：「下次生气，我们可以试试吹蜡烛。」她插嘴补充细节，就让她讲，这是在练习整理自己的经历。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "reflection",
+      "storytelling"
+    ],
+    "source_ids": [
+      "book-whole-brain"
+    ],
+    "basis": "Siegel《全脑教养法》“说出来才能驯服它”：平静后复述经历，帮孩子整合情绪体验。"
+  },
+  {
+    "id": "emotion-030",
+    "category": "emotion",
+    "title": "暴风雨过后，先抱一抱",
+    "body": "大哭过去，她抽抽搭搭地靠过来。这时别急着总结“你看你刚才多不乖”，先抱住她，摸摸她的背。这个拥抱在告诉她：你最糟糕的样子我也接得住，我们之间没有坏掉。等她身体放松下来，再接着做刚才的事，日子照常往下过。如果她还在气头上不让抱，就坐近一点，等她准备好。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "hug",
+      "after-tantrum"
+    ],
+    "source_ids": [
+      "nhs",
+      "book-good-inside"
+    ],
+    "basis": "NHS：发脾气结束后安抚孩子，然后照常继续一天的安排，不翻旧账。"
+  },
+  {
+    "id": "emotion-031",
+    "category": "emotion",
+    "title": "小拳头握紧了",
+    "body": "情绪常常先出现在身体上：生气时拳头攥紧、脸发烫，害怕时心跳咚咚。帮她留意这些信号，就能更早踩刹车。平静时一起玩：「你假装生气，小手是什么样？」「跑完步摸摸心口，跳得快不快？」下次看到她握拳，可以轻声提醒：「你的拳头握紧了，是不是生气了？」这就像给她装了个“预警器”。",
+    "age_min_months": 36,
+    "age_max_months": 54,
+    "tags": [
+      "body-signals",
+      "awareness"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "harvard-cdc"
+    ],
+    "basis": "哈佛儿童发展中心：觉察自身状态是自我调节的基础，可在游戏中帮幼儿练习。"
+  },
+  {
+    "id": "emotion-032",
+    "category": "emotion",
+    "title": "给她一句现成的话",
+    "body": "她一着急就尖叫、拽你衣服。光说「好好说话」不够，她需要一句现成的句子。替她示范：「你可以说：‘请帮我开盖子。’」她跟着说一遍，你立刻回应。说得不完整也先满足，再帮她补全。慢慢地，她会发现说出来比尖叫更快得到帮助。平时也和她练几句常用的：「请帮我」「我还要」「我不想要」。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "words",
+      "needs"
+    ],
+    "source_ids": [
+      "cdc-parenting",
+      "zero-to-three"
+    ],
+    "basis": "CDC 积极育儿：教孩子用语言表达需要，并在她这样做时及时回应和表扬。"
+  },
+  {
+    "id": "emotion-033",
+    "category": "emotion",
+    "title": "二选一，反抗少一半",
+    "body": "三岁正是“我自己来”的年纪，事事被安排，就容易事事反抗。在你能接受的范围里给她二选一：「穿红袜子还是蓝袜子？」「你自己走到车边，还是我抱你过去？」两个选项你都能接受，结果一样，她却得到了一点掌控感，冲突自然少很多。选项别超过两个，太多她反而选不出来。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "choices",
+      "autonomy"
+    ],
+    "source_ids": [
+      "book-positive-discipline",
+      "cdc-parenting"
+    ],
+    "basis": "CDC 积极育儿（3–5 岁）：在可能时给孩子有限的选择，有助于减少对抗、培养自主。"
+  },
+  {
+    "id": "emotion-034",
+    "category": "emotion",
+    "title": "说出来，情绪会变小",
+    "body": "很多大人怕一提“你很难过”，她会哭得更凶。其实恰恰相反：情绪被准确说出来，往往会慢慢降温，因为她觉得被懂了。说的时候语气平稳，像在描述天气：「你很失望，因为饼干碎了。」后面不加“但是”，也不急着解决，给她几秒钟消化。猜错了也没关系，她会纠正你，这本身就是在表达。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "labeling",
+      "calm"
+    ],
+    "source_ids": [
+      "book-whole-brain",
+      "gottman"
+    ],
+    "basis": "Siegel“说出来才能驯服它”（name it to tame it）：为情绪命名有助于平复情绪反应。"
+  },
+  {
+    "id": "emotion-035",
+    "category": "emotion",
+    "title": "亲戚逗她，你来接住",
+    "body": "过年总有亲戚逗她：「你妈妈不要你了，跟我回家吧。」大人觉得好玩，她却可能当真，吓得大哭。你可以笑着把她揽过来，替她说出感受：「她当真了，有点害怕。」再对她说清楚：「爸爸妈妈永远不会不要你，这是大人在开玩笑。」事后也可以私下跟长辈说：「她还小，会当真，咱换个逗法。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "relatives",
+      "teasing"
+    ],
+    "source_ids": [
+      "zero-to-three",
+      "book-good-inside"
+    ],
+    "basis": "ZERO TO THREE：幼儿难以分辨玩笑与现实，大人及时澄清能保护孩子的安全感。"
+  },
+  {
+    "id": "emotion-036",
+    "category": "emotion",
+    "title": "打针前，不说“不疼”",
+    "body": "带她打疫苗前说“一点都不疼”，扎下去她会觉得被骗了。提前一天用她能懂的话说实话：「会像被捏一下，有点疼，很快就好。我一直抱着你。」玩玩具医生游戏，让她给小熊打针。打针时让她抱着安抚物，或者一起数“1、2、3”呼气。允许她哭，结束后告诉她：「你哭了，但还是坚持坐住了。」",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "doctor",
+      "fear"
+    ],
+    "source_ids": [
+      "aap",
+      "child-mind"
+    ],
+    "basis": "AAP：就医前诚实、简单地告诉孩子会发生什么，可减轻幼儿的恐惧和不信任。"
+  },
+  {
+    "id": "emotion-037",
+    "category": "emotion",
+    "title": "白天和黑暗做朋友",
+    "body": "怕黑在三到五岁很常见，越催她“勇敢点”越紧张。白天就和黑暗玩起来：拉上窗帘打着手电找玩具，在被子里搭“山洞”讲故事，在墙上玩手影。晚上开一盏昏暗的小夜灯也完全可以。让她发现：「灯关了，东西都还在原来的地方。」如果某段时间突然特别怕，想想最近是不是看了吓人的动画或家里有变化。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "fear",
+      "dark"
+    ],
+    "source_ids": [
+      "raising-children-au",
+      "child-mind"
+    ],
+    "basis": "Raising Children：怕黑在学龄前常见，用游戏让孩子熟悉黑暗、留小夜灯都有帮助。"
+  },
+  {
+    "id": "emotion-038",
+    "category": "emotion",
+    "title": "新事情，先用玩偶演",
+    "body": "要去新托班、第一次理发、第一次坐飞机？未知最容易让三岁孩子紧张。提前用玩偶演一遍：小熊进门，跟老师打招呼，找到自己的水杯，玩完等妈妈来接。让她当小熊，也让她当老师，反复玩几次，再加点小插曲：小熊想妈妈了怎么办？让她来出主意。真到那天，她心里已经“去过一回”了。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "anxiety",
+      "pretend-play"
+    ],
+    "source_ids": [
+      "child-mind",
+      "zero-to-three"
+    ],
+    "basis": "Child Mind Institute：提前预告和角色扮演能让孩子对新情境有预期，减轻焦虑。"
+  },
+  {
+    "id": "emotion-039",
+    "category": "emotion",
+    "title": "生气是什么颜色？",
+    "body": "有些情绪她说不清，却画得出来。准备一张纸和几支蜡笔，问她：「你的生气是什么颜色？有多大？」她可能用力涂出一大团红色，那就是她在表达。涂完再问：「现在的生气还有这么大吗？」也可以把纸揉成团，扔进“生气垃圾桶”。别评价画得好不好，你也可以画一张你的。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "art",
+      "expression"
+    ],
+    "source_ids": [
+      "naeyc",
+      "moe-3-6-guide"
+    ],
+    "basis": "NAEYC 与教育部《3-6岁指南》：绘画等艺术活动是幼儿表达情绪和感受的重要方式。"
+  },
+  {
+    "id": "emotion-040",
+    "category": "emotion",
+    "title": "下雨了，去不成公园",
+    "body": "说好去公园却下雨了，她哭着说「你骗人」。先别急着解释天气，承认她的失望：「你盼了一早上，现在去不成，太扫兴了。」等她缓过来，一起想个B计划：在家搭帐篷野餐，或者穿上雨靴去踩水坑，由她来挑。她会慢慢学到：失望会过去，总还有别的办法。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "disappointment",
+      "resilience"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "gottman"
+    ],
+    "basis": "哈佛儿童发展中心：在大人支持下经历可承受的挫折，有助于孩子建立应对能力和韧性。"
+  },
+  {
+    "id": "emotion-041",
+    "category": "emotion",
+    "title": "她说“讨厌你”，别接招",
+    "body": "被拒绝后，她冲你大喊「我讨厌你！我不要你了！」听着扎心，但这只是她能找到的最有力的词，意思是“我现在非常生气”。不用反击，也不用说“你这样说我好伤心”，平静地帮她翻译：「你很生我的气，因为我不让你吃糖。我还是很爱你。」等她平静，再教她换个说法：「我很生气！」",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "anger",
+      "words"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "child-mind"
+    ],
+    "basis": "《Good Inside》：孩子的狠话多是情绪的表达，大人不接招、翻译感受并守住界限即可。"
+  },
+  {
+    "id": "emotion-042",
+    "category": "emotion",
+    "title": "你越轻，她越快静",
+    "body": "孩子还不太会自己平静下来，要先“借用”大人的平静。她越吵，你越把声音放低、语速放慢，蹲到和她一样高，松开紧绷的肩膀。不需要说很多，你稳定地待在旁边，就是在告诉她：现在是安全的。今天就试：下次她大哭时，先只说一句「我在」。你自己也快绷不住时，确认她安全后，先给自己一分钟。",
+    "age_min_months": 30,
+    "age_max_months": 48,
+    "tags": [
+      "co-regulation",
+      "calm"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "zero-to-three"
+    ],
+    "basis": "哈佛儿童发展中心：幼儿的自我调节建立在与成人反复的“共同调节”之上。"
+  },
+  {
+    "id": "emotion-043",
+    "category": "emotion",
+    "title": "玩疯了，也要会刹车",
+    "body": "生日会、亲戚聚会之后，她跑来跑去尖叫停不下来，接着就崩溃大哭。兴奋过头也会让三岁孩子“超载”。提前留出安静时间：带她去人少的房间喝口水、讲个故事。平时多玩“一二三木头人”，练习说停就停。聚会前约个暗号：她捏捏你的手，就是想出去透透气。散场早一点，总比哭着收场好。",
+    "age_min_months": 30,
+    "age_max_months": 54,
+    "tags": [
+      "overexcitement",
+      "self-control"
+    ],
+    "source_ids": [
+      "harvard-cdc",
+      "zero-to-three"
+    ],
+    "basis": "哈佛儿童发展中心执行功能活动指南：“木头人”类游戏能练习抑制冲动与自我控制。"
+  },
+  {
+    "id": "emotion-044",
+    "category": "emotion",
+    "title": "要抱抱，还是要空间？",
+    "body": "有的孩子一哭就要抱，有的被碰一下更炸毛。别猜，直接问她：「你想让我抱着你，还是坐在旁边陪你？」她要空间，就坐在不远处：「我就在这儿，需要我就叫我。」平静时也可以聊聊：「你难过的时候，什么最能让你舒服一点？」答案每次可能不同，今天要抱、明天要空间，都正常。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "comfort",
+      "space"
+    ],
+    "source_ids": [
+      "book-good-inside",
+      "child-mind"
+    ],
+    "basis": "Child Mind Institute：孩子平复的方式各不相同，询问并尊重她的偏好更有效。"
+  },
+  {
+    "id": "emotion-045",
+    "category": "emotion",
+    "title": "她自己冷静了，要看见",
+    "body": "我们总在她发脾气时盯着她，却在她处理得好时一言不发。下次她生气了只是跺跺脚，或者主动去吹了吹“蜡烛”，马上具体地说出来：「你刚才很生气，但是用了深呼吸，没有扔东西，你做到了！」哪怕只做到一半，也值得说出来。被注意到的行为，会越来越多。",
+    "age_min_months": 33,
+    "age_max_months": 54,
+    "tags": [
+      "praise",
+      "self-regulation"
+    ],
+    "source_ids": [
+      "pcit",
+      "cdc-parenting"
+    ],
+    "basis": "PCIT 具体表扬：及时、具体地表扬期望行为，能增加这种行为出现的频率。"
+  }
+]
