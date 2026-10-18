@@ -511,7 +511,7 @@
       "hirsh-pasek",
       "harvard-cdc"
     ],
-    "basis": "Hirsh-Pasek 游戏化学习综述引用的研究：数字格子棋能提升学前儿童数感；轮流练抑制控制。"
+    "basis": "Ramani & Siegler 研究：玩线性数字格子棋能提升学前儿童数感；轮流练抑制控制。"
   },
   {
     "id": "play-031",
@@ -685,10 +685,9 @@
       "sensory"
     ],
     "source_ids": [
-      "vroom",
-      "zero-to-three"
+      "moe-3-6-guide"
     ],
-    "basis": "Vroom 与 ZERO TO THREE 推荐用日常声音做猜谜游戏，练习专注倾听和分辨。"
+    "basis": "教育部指南艺术领域：3–4 岁喜欢倾听各种声音，感知高低、长短、强弱等变化。"
   },
   {
     "id": "play-041",
