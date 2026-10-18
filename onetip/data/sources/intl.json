@@ -1,0 +1,1193 @@
+{
+  "meta": {
+    "generated": "2026-10-18",
+    "scope": "International / English-language sources from SPEC.md section 5 (all ids except the Chinese block), plus proposed new candidates.",
+    "method": "This sandbox's network policy blocked direct page fetches: WebFetch failed DNS for every host and curl got 403 from the egress proxy. All verification went through WebSearch, meaning the URL appears in the live search index as of 2026-10-18 and the facts were read from search-result extracts. The shared 200-call WebSearch budget ran out partway through. The ids after 'nhs' and nearly all candidates could not be checked, so their URLs and key points come from prior knowledge and are flagged.",
+    "verification_levels": {
+      "search_index": "URLs seen in the live search index and key points confirmed from search extracts of the source or faithful reproductions of it.",
+      "partial": "Some URLs or facts were confirmed. The notes say which.",
+      "unverified": "Nothing was checked this session. URLs and key_points_unverified come from prior knowledge. Re-check before citing them in a tip's basis."
+    },
+    "robots": "robots.txt could not be fetched for any host, so access.robots_ok is null throughout. Check it before any crawling (pipeline/harvest.py).",
+    "field_conventions": "access.api / access.sitemap / access.rss: a URL string = exists (verified unless notes say otherwise), false = verified absent, null = unknown. key_points = verified this session. key_points_unverified = prior knowledge, not re-checked."
+  },
+  "sources": [
+    {
+      "id": "cdc-milestones",
+      "name": "CDC Learn the Signs. Act Early. — Milestones by 3 and 4 Years",
+      "name_zh": "美国疾控中心「早发现早行动」3 岁/4 岁发育里程碑",
+      "publisher": "U.S. Centers for Disease Control and Prevention (National Center on Birth Defects and Developmental Disabilities)",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.cdc.gov/act-early/milestones/3-years.html",
+        "https://www.cdc.gov/act-early/milestones/4-years.html",
+        "https://www.cdc.gov/act-early/digital-online-checklist/4-years.html"
+      ],
+      "license": "US federal government work, mostly public domain. CDC 'Use of Agency Materials' (https://www.cdc.gov/other/agencymaterials.html): most CDC content can be used without permission. Attribution to CDC/HHS is required, with no implied endorsement. Exceptions: items carrying their own copyright statement (contractor or third-party material, e.g. some photos and videos). The CDC logo is a trademark.",
+      "reuse": "can_adapt",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": "https://tools.cdc.gov/api/v2",
+        "robots_ok": null
+      },
+      "categories": ["language", "social", "emotion", "play", "selfcare"],
+      "key_points": [
+        "CDC/AAP 2022 revision: a milestone is something most children (75% or more) can do by that age. Missing one is a reason to talk to the doctor, not a diagnosis. The checklists do not replace validated developmental screening.",
+        "By 3 y (social/emotional): calms down within about 10 minutes after the caregiver leaves, e.g. at childcare drop-off.",
+        "By 3 y (language/cognitive): holds a conversation with at least 2 back-and-forth exchanges. Draws a circle when shown how.",
+        "By 4 y (social/language): pretends to be something else in play (teacher, superhero, dog). Comforts others who are hurt or sad, e.g. hugs a crying friend. Says sentences of 4 or more words. Says some words from a song, story or nursery rhyme.",
+        "By 4 y (cognitive/movement): names a few colors of items. Draws a person with 3 or more body parts. Catches a large ball most of the time. Serves self food or pours water with adult supervision. Holds a crayon or pencil between fingers and thumb.",
+        "Act early: if the child misses milestones, loses skills she had, or the parent has other concerns, talk to the doctor, ask about developmental screening and contact early intervention. Don't wait and see."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "The 2024 restructure moved the pages to /act-early/milestones/{3-years,4-years}.html. The old URLs (/ncbddd/actearly/milestones/milestones-3yr.html, -4yr.html) are still in the index and presumably redirect. Live resolution could not be tested because direct fetch was blocked. The free CDC Milestone Tracker app (iOS/Android) and the digital checklists are linked from these pages. Third-party mirrors of 2025-era CDC pages exist at restoredcdc.org; cite cdc.gov. Content Services API v2 (JSON/XML, REST, no key mentioned) is listed on open.cdc.gov, but CDC notes that not all content is in its syndication catalog, and the syndication rules forbid altering syndicated content (adaptation must be your own rewrite). The full 3-y list also includes asks who/what/where/why questions, says first name when asked, puts on some clothes by herself, uses a fork, and avoids touching hot objects when warned (prior knowledge of the 2022 list; seen only in part this session)."
+    },
+    {
+      "id": "cdc-parenting",
+      "name": "CDC Positive Parenting Tips (Toddlers 2–3, Preschoolers 3–5) & Essentials for Parenting Toddlers and Preschoolers",
+      "name_zh": "美国疾控中心 积极养育小贴士（学步儿/学龄前）与《幼儿养育要点》",
+      "publisher": "U.S. Centers for Disease Control and Prevention",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.cdc.gov/child-development/positive-parenting-tips/preschooler-3-5-years.html",
+        "https://www.cdc.gov/child-development/positive-parenting-tips/toddlers-2-3-years.html",
+        "https://www.cdc.gov/parenting-toddlers/"
+      ],
+      "license": "US federal government work, mostly public domain (same CDC 'Use of Agency Materials' policy: attribute CDC/HHS, no implied endorsement, third-party items excepted). Videos in Essentials for Parenting may include third-party footage, so check per item.",
+      "reuse": "can_adapt",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": "https://tools.cdc.gov/api/v2",
+        "robots_ok": null
+      },
+      "categories": ["discipline", "sleep", "safety", "family", "play", "emotion"],
+      "key_points": [
+        "Preschoolers (3–5 y): 10–13 h of sleep per 24 h including naps. Keep TVs out of the bedroom. Limit screens to 1 h/day or less of quality programming and make a family media use plan. Offer age-appropriate play equipment (balls, plastic bats) and let the child choose what to play.",
+        "Toddlers (2–3 y): 11–14 h of sleep per 24 h including naps. Give attention and praise when the child follows instructions or behaves well, and limit attention for defiant behavior like tantrums. Teach acceptable ways to show she is upset.",
+        "Toddler safety: have her sit while eating and chew thoroughly to prevent choking. Check toys for loose parts. She rides in the back seat, buckled into a car seat with a harness.",
+        "Essentials for Parenting Toddlers and Preschoolers (ages 2–4, research-based): modules on communicating with your child, creating structure and rules, giving directions, discipline and consequences, and time-out. Includes free printable chore charts and daily schedules.",
+        "Time-out (CDC guide): give the warning only once, calmly and as a statement, not a question. If the behavior continues, use time-out. Afterwards the child still has to do what was asked. One version suggests about 1 minute per year of age.",
+        "Older CDC preschool handout (reproduced by state agencies): offer a limited number of simple choices (what to wear, which snack). When you say no, follow up with what she should do instead. Be consistent with discipline."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "Time-out page: https://www.cdc.gov/parenting-toddlers/time-out/index.html. The old Essentials URLs (cdc.gov/parents/essentials/...) are superseded by /parenting-toddlers/. The '≤1 h/day' screen advice on the preschool page mirrors AAP 2016, which the AAP replaced in Jan 2026 (see 'aap'). WHO 2019 and the UK 2026 guidance still use ≤1 h for this age."
+    },
+    {
+      "id": "aap",
+      "name": "American Academy of Pediatrics — HealthyChildren.org",
+      "name_zh": "美国儿科学会（AAP）家长网站 HealthyChildren.org",
+      "publisher": "American Academy of Pediatrics",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.healthychildren.org/English/ages-stages/preschool/Pages/Developmental-Milestones-3-to-4-Year-Olds.aspx",
+        "https://www.healthychildren.org/English/ages-stages/toddler/toilet-training/Pages/The-Right-Age-to-Toilet-Train.aspx",
+        "https://www.healthychildren.org/English/family-life/Media/Pages/Helping-Kids-Thrive-in-a-Digital-World-AAP-Policy-Explained.aspx"
+      ],
+      "license": "© American Academy of Pediatrics, all rights reserved. Terms of Use: only the Spanish version was seen (temporary single-copy download for informational use). The site's llms.txt (https://healthychildren.org/llms.txt) grants no copyright license. It allows automated systems to index, retrieve limited portions to answer a user, and cite/link the canonical page. It prohibits training or fine-tuning models on the content and republishing substantial portions.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["safety", "selfcare", "sleep", "food", "language", "discipline", "family", "play"],
+      "key_points": [
+        "AAP policy statement 'Digital Ecosystems, Children, and Adolescents' (Pediatrics, Feb 2026, online 20 Jan 2026) replaces the 2016 'Media and Young Minds' guidance. It shifts focus from screen-time totals to the quality of interactions, a family media plan, and platform design (engagement-driven business models harm sleep, learning and mood). Reports disagree on whether any numeric limit for ages 2–5 remains, so don't cite 'AAP: 1 hour' as current.",
+        "AAP 0–5 explainer (2026): heavy solo screen use can affect language and social skills. What matters includes daily hours and whether adults use screens to soothe or entertain. Misuse is linked to poor sleep and less time for reading, moving and exploring.",
+        "Toilet training: signs of bladder/bowel control typically appear at 18–24 months. The average US start is 2–3 y. Readiness signs include staying dry for at least 2 h during the day or after naps. Pediatricians raise the topic at the 18-month, 2, 2½ and 3-year visits.",
+        "Developmental milestones at 3–4 y (AAP list): hops on one foot for up to ~5 s, uses stairs without support, pedals a tricycle, tells stories, dresses and undresses without help.",
+        "Family Media Plan (healthychildren.org/MediaUsePlan): an interactive tool that builds a per-child plan covering screen-free zones and times, device curfews, sleep and exercise."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "notes": "All three URLs were confirmed in the search index. The AAP 2026 news release is at https://www.aap.org/en/news-room/news-releases/aap/2026/american-academy-of-pediatrics-calls-for-creating-a-child-friendly-digital-world/. The AAP 3–4 y milestone list (from 'Caring for Your Baby and Young Child') is not the same as the CDC 75%-threshold list. Prefer CDC for milestone claims. Superseded AAP 2016 advice (for context only): ages 2–5, ≤1 h/day of high-quality programming, co-viewed. Because llms.txt forbids training on this content, never put HealthyChildren text into fine-tuning or bulk-harvest pipelines. Use it as a reference and rewrite."
+    },
+    {
+      "id": "aap-bright-futures",
+      "name": "AAP Bright Futures — 3 Year and 4 Year Visit parent handouts",
+      "name_zh": "美国儿科学会 Bright Futures 3 岁/4 岁体检家长指导",
+      "publisher": "American Academy of Pediatrics (Bright Futures National Center; HRSA-supported)",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.aap.org/en/practice-management/bright-futures/bright-futures-family-centered-care/well-child-visits-parent-and-patient-education/",
+        "https://www.aap.org/en/practice-management/bright-futures/bright-futures-materials-and-tools/bright-futures-tool-and-resource-kit/bright-futures-early-childhood-tools/"
+      ],
+      "license": "© American Academy of Pediatrics. The handouts carry an AAP copyright notice saying the AAP does not endorse modifications. No open license was found.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["safety", "food", "selfcare", "family"],
+      "key_points": [
+        "Parent handouts exist for the 3 Year and 4 Year Visits, in English and Spanish, HTML and PDF (AAP page last updated 2024-05-30).",
+        "4-year handout: brush twice a day with a pea-sized amount of fluoride toothpaste. Some versions add: spit, don't rinse with water.",
+        "Juice is not necessary. If given, no more than 4 oz (~120 ml) of 100% juice a day, always with a meal.",
+        "Car safety: stay in the forward-facing harnessed seat until the child reaches its weight/height limit (shoulders above the top harness slots, or ears at the top of the seat), then move to a belt-positioning booster. The back seat is safest until age 13.",
+        "Sun: sunscreen SPF 15 or higher. Avoid peak sun from 11 a.m. to 3 p.m."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "notes": "The AAP index page was confirmed, but the exact official PDF URLs for the 3- and 4-year handouts were not surfaced. Handout content was confirmed from practice-hosted copies of the AAP handout, some of them practice-modified. Check the official AAP version before quoting exact wording. Bright Futures Guidelines 4th ed. is the underlying clinical reference."
+    },
+    {
+      "id": "who-under5",
+      "name": "WHO Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age (2019)",
+      "name_zh": "世界卫生组织《5 岁以下儿童身体活动、久坐行为和睡眠指南》（2019）",
+      "publisher": "World Health Organization",
+      "region": "Global",
+      "tier": "A",
+      "urls": [
+        "https://www.who.int/publications/i/item/9789241550536",
+        "https://iris.who.int/items/677e3562-1deb-48ec-bb1e-4bc8aad3ea09",
+        "https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more"
+      ],
+      "license": "CC BY-NC-SA 3.0 IGO, per the WHO IRIS record (handle 10665/311664). Non-commercial reuse and adaptation are allowed with citation. Adaptations must carry the same or an equivalent license. No WHO logo. Numeric recommendations (facts) can be restated freely. If the app is monetized, don't reproduce WHO text verbatim and treat the source as cite-only.",
+      "reuse": "can_adapt",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": false,
+        "robots_ok": null
+      },
+      "categories": ["play", "sleep", "selfcare", "family"],
+      "key_points": [
+        "Ages 3–4: at least 180 min/day in a variety of physical activities at any intensity, of which at least 60 min is moderate-to-vigorous, spread through the day. More is better.",
+        "Ages 3–4: not restrained for more than 1 h at a time (prams/strollers) and no long stretches of sitting. Sedentary screen time no more than 1 h/day, less is better.",
+        "When sedentary, reading and storytelling with a caregiver is encouraged.",
+        "Ages 3–4: 10–13 h of good-quality sleep, which may include a nap, with regular sleep and wake-up times.",
+        "Framing: the recommendations cover the whole 24-hour day (activity, restraint/screen time, sleep together), not separate targets."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "The 3–4 y wording was confirmed against the WHO 24 Apr 2019 news release (PAHO reprint identical). ISBN 978-92-4-155053-6. The PDF can be downloaded from IRIS. For the child's current age (35 mo), WHO's '1–2 years' group applies until she turns 3 (prior knowledge, not re-verified: ≥180 min any intensity, screen ≤1 h for 2-year-olds, 11–14 h sleep incl. naps)."
+    },
+    {
+      "id": "who-unicef-nurturing-care",
+      "name": "WHO/UNICEF Nurturing Care Framework, WHO ECD & parenting guidelines, UNICEF Parenting",
+      "name_zh": "世卫组织/联合国儿基会「养育照护」框架与 UNICEF 育儿指导",
+      "publisher": "World Health Organization, UNICEF, World Bank Group (with PMNCH and ECDAN)",
+      "region": "Global",
+      "tier": "A",
+      "urls": [
+        "https://nurturing-care.org/about/what-is-the-nurturing-care-framework/",
+        "https://www.who.int/teams/social-determinants-of-health/violence-prevention/parenting-guidelines",
+        "https://www.unicef.org/asia-pacific/place-for-parents/positive-parenting-ages-0-5"
+      ],
+      "license": "WHO guideline PDFs: CC BY-NC-SA 3.0 IGO. Confirmed for the 2020 ECD guideline (IRIS 10665/331306) and the 2022 parenting guideline (ISBN 978-92-4-006550-5). The license of the Framework document itself was not separately confirmed. UNICEF Parenting web pages: terms not found; treat as © UNICEF.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": false,
+        "robots_ok": null
+      },
+      "categories": ["family", "emotion", "play", "food", "safety"],
+      "key_points": [
+        "Nurturing Care Framework (launched 23 May 2018 at the 71st World Health Assembly): five indivisible components. They are good health, adequate nutrition, security and safety, responsive caregiving, and opportunities for early learning. Focus: pregnancy to age 3.",
+        "WHO 2020 ECD guideline: recommends responsive care and early-learning activities for caregivers of children in the first 3 years, built into nutrition interventions, plus psychosocial support for maternal mental health. Responsive caregiving means noticing, understanding and responding to the child's signals promptly and appropriately.",
+        "WHO 2022 guideline on parenting interventions (ages 0–17): recommends evidence-based parenting programs to reduce maltreatment and harsh parenting, strengthen the parent–child relationship, and reduce parental mental-health problems and child emotional/behavioral difficulties.",
+        "UNICEF positive parenting 0–5: treat crying and tantrums as communication. First check hunger, tiredness, discomfort or temperature. Repetitive behavior is how toddlers learn. Set clear expectations and repeat them, and don't push activities when the child is sleepy, hungry or tired."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "Other useful URLs: https://nurturing-care.org/nurturing-care-components ; WHO 2022 parenting guideline https://www.who.int/publications-detail-redirect/9789240065505 ; WHO 2020 ECD guideline https://apps.who.int/iris/handle/10665/331306 ; UNICEF India 'Handling temper tantrums' https://www.unicef.org/india/parentingtips/handling-temper-tantrums. UNICEF China runs a Chinese-language positive-parenting site (https://www.unicef.cn/en/parenting-site/2023parenting), useful for zh terminology. Sources disagree on whether the 2020 ECD guideline has 3 or 4 recommendations, so don't cite a count."
+    },
+    {
+      "id": "harvard-cdc",
+      "name": "Center on the Developing Child at Harvard University",
+      "name_zh": "哈佛大学儿童发展中心（serve & return、执行功能、压力与韧性）",
+      "publisher": "Center on the Developing Child, Harvard University",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://developingchild.harvard.edu/resource-guides/guide-serve-and-return/",
+        "https://developingchild.harvard.edu/resources/handouts-tools/activities-guide-enhancing-and-practicing-executive-function-skills/",
+        "https://developingchild.harvard.edu/resource-guides/guide-toxic-stress/"
+      ],
+      "license": "© President and Fellows of Harvard College (assumed). A Terms and Conditions page exists at https://developingchild.harvard.edu/terms-and-conditions, but its text could not be read. A republisher reports that the Center asks reuse to be nonprofit and educational, with materials reproduced in full and unedited (secondhand, unverified).",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": false,
+        "robots_ok": null
+      },
+      "categories": ["language", "emotion", "play", "family"],
+      "key_points": [
+        "Serve and return, 5 steps: (1) notice the serve and share the child's focus, (2) return the serve by supporting and encouraging, (3) give it a name (label what she sees, does or feels), (4) take turns and wait, since waiting is crucial, (5) practice endings and beginnings.",
+        "Responsive back-and-forth exchanges with a caring adult shape brain architecture. When adult responses are inconsistent or absent, development can be disrupted.",
+        "Executive-function activities guide (2014): ages 3–5 are when EF capacities spike. Suitable activities include imaginary play, movement games with stop/start rules such as freeze dance, songs with repeated or cumulative verses, and counting-backward songs.",
+        "Three kinds of stress response: positive (brief, normal, e.g. a first day with a new caregiver), tolerable (more severe, but time-limited and buffered by supportive adults), and toxic (prolonged activation without supportive relationships, which can impair brain architecture). Responsive adult relationships buffer stress and build resilience."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "The site seems to have been reorganized. The same resources appear under several path patterns (/resource-guides/..., /resources/handouts-tools/..., /key-concept/serve-and-return/, /science/key-concepts/toxic-stress/). Confirm the canonical path when the site can be reached. The 5-step wording was confirmed via faithful reproductions (Better Care Network and others) that cite the Center's PDF."
+    },
+    {
+      "id": "zero-to-three",
+      "name": "ZERO TO THREE — resources for families",
+      "name_zh": "ZERO TO THREE（零到三岁）家长资源",
+      "publisher": "ZERO TO THREE (US nonprofit)",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://www.zerotothree.org/resources/for-families/",
+        "https://www.zerotothree.org/resource/tantrums/",
+        "https://www.zerotothree.org/resource/tantrums-defiance-aggression-oh-my"
+      ],
+      "license": "All rights reserved. The Reprints & Permissions page (https://www.zerotothree.org/reprints-permissions) forbids reproducing, displaying or distributing materials in any format without express written consent. Individuals may make one personal non-commercial copy. Permission is per product, via a form or the Copyright Clearance Center for the Journal and Press, with up to 5 weeks to respond.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": false,
+        "robots_ok": null
+      },
+      "categories": ["emotion", "discipline", "play", "language", "family"],
+      "key_points": [
+        "Content covers pregnancy to age 3, so it applies mainly to 30–36 months. Use other sources for 3–4.5 y.",
+        "'Tantrums, Defiance, Aggression – Oh My!' (Magic of Everyday Moments series): set age-appropriate limits while helping toddlers learn to cope with their emotions.",
+        "'Responding to Challenging Behaviors' hub: guidance on biting and tantrums. The stated approach is to help parents build their own strategies rather than follow scripts."
+      ],
+      "key_points_unverified": [
+        "Tantrums at this age usually come from limited language and self-regulation, not manipulation. Stay calm and present, name the feeling, and hold the limit.",
+        "Pretend play at 2–3 y builds language, self-regulation and empathy. Join in and follow the child's lead."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "notes": "URLs and the permissions policy were confirmed in the search index. Only search snippets of the articles were available, so the evidence points here are thin. Spanish versions are under /espanol/."
+    },
+    {
+      "id": "vroom",
+      "name": "Vroom (brain-building tips)",
+      "name_zh": "Vroom 大脑建构日常小活动",
+      "publisher": "Bezos Family Foundation",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://www.vroom.org/",
+        "https://toolkit.vroom.org/module-1/brain-building-basics",
+        "https://www.vroom.org/for-professionals/adapting-vroom-content"
+      ],
+      "license": "All Vroom content licenses are free but apply to noncommercial use only. A Basic License covers unaltered use under the Content and Attribution Guidelines. Adapting, translating or localizing needs a free A.L.T. (Adaptation, Localization, Translation) license, and adaptations and trademark use are reviewed by the Bezos Family Foundation (about 7–8+ weeks). Vroom content, logos or trademarks may not be used commercially.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": false,
+        "robots_ok": null
+      },
+      "categories": ["play", "language", "family", "emotion"],
+      "key_points": [
+        "Five Brain Building Basics for caregivers: Look (notice what holds her attention), Chat (talk, sing or make sounds back and forth), Follow (tune into her words, sounds and ideas and respond), Stretch (extend the moment with open what/when/where/how/why questions), Take Turns (back-and-forth exchanges).",
+        "Over 1,000 free brain-building activity tips built around everyday routines (via the app and partner channels).",
+        "Same format as this app (short daily activity tips), so it is a useful benchmark for tone and length. Its tips must not be translated or adapted for a commercial app without a license."
+      ],
+      "verification": {"status": "search_index", "checked": "2026-10-18"},
+      "notes": "Still active under Bezos Family Foundation funding: a Feb 2026 Child Care Aware of America release describes a 3-year BFF grant using Vroom. The Washington State DOH says its Vroom work moved to Washington Communities for Children (undated). Content must be at or below primary-school reading level, a useful style cue."
+    },
+    {
+      "id": "nhs",
+      "name": "NHS (UK) — Best Start in Life / Start for Life, toddler behaviour, potty training, feeding",
+      "name_zh": "英国国家医疗服务体系 NHS（Best Start in Life / Start for Life）",
+      "publisher": "NHS England (nhs.uk); UK Department for Education and Department of Health and Social Care for the 2026 screen-time guidance",
+      "region": "UK",
+      "tier": "A",
+      "urls": [
+        "https://www.nhs.uk/best-start-in-life/",
+        "https://www.nhs.uk/conditions/baby/babys-development/behaviour/temper-tantrums/",
+        "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/"
+      ],
+      "license": "NHS website content can be republished by any organization under the Open Government Licence (v3.0), subject to the NHS website terms (https://www.nhs.uk/our-policies/terms-and-conditions/). Attribute as 'Information from the NHS website', with a date stamp if the copy isn't refreshed. Some content is excluded (https://www.nhs.uk/our-policies/terms-and-conditions/content-not-licensed-for-re-use/): certain named sub-sites, some images and videos, and third-party material.",
+      "reuse": "can_adapt",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": "https://digital.nhs.uk/developer/api-catalogue/nhs-website-content",
+        "robots_ok": null
+      },
+      "categories": ["emotion", "selfcare", "food", "language", "safety", "sleep"],
+      "key_points": [
+        "Tantrums usually start around 18 months and are very common in toddlers. By age 4 they are far less common. They come from frustration at wanting to express themselves and finding it hard. Check whether she is tired or hungry. You may feel angry too, but show it in other ways. See the health visitor or GP if seriously concerned.",
+        "The UK government recommends daily vitamin A, C and D supplements for children aged 6 months to 5 years. Children aged 1–4 need a daily supplement containing 10 µg of vitamin D.",
+        "UK DfE/DHSC under-5 screen-time guidance (27 Mar 2026, on Best Start in Life): ages 2–5, try to keep it to 1 h/day or less. Under 2s, avoid screens except shared activities that encourage bonding and conversation. No screens at mealtimes or in the hour before bed. Prefer slow-paced, age-appropriate content and watch together. Avoid fast-paced short-form video and AI toys for young children.",
+        "Evidence behind the UK guidance (EYSTAG, Mar 2026): toddlers with about 5 h of daily screen time learned significantly fewer words. About 98% of 2-year-olds watch screens daily.",
+        "Start for Life now lives inside the Best Start in Life hub, which covers learning to talk, potty training (a five-step guide), healthy eating and activity for toddlers."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "notes": "The tantrum page is past its review date (last reviewed 2022-11-07, next review due 2025-11-07), so re-check it. The NHS Website Content API is a free syndication programme. v1 is retired, so use v2, which needs developer-portal registration, acceptance of the terms, and a legal basis for use. The catalogue URL was seen only via mirrors of digital.nhs.uk. 2026 screen-time figures come from news reports (Irish Times 27 Mar 2026, Institute of Health Visiting) quoting the official tips. The official gov.uk/Best Start in Life page wasn't retrieved. The EYSTAG report PDF is at assets.publishing.service.gov.uk/media/69c53daf4a06660f085442a7/EYSTAG_report.pdf. UK CMO 2019 activity guidelines (pre-schoolers ≥180 min/day incl. ≥60 min MVPA) were not re-verified because the search budget ran out. Vitamin doses are evidence for basis only; SPEC forbids drug doses in tip bodies."
+    },
+    {
+      "id": "raising-children-au",
+      "name": "Raising Children Network (Australia) — preschoolers",
+      "name_zh": "澳大利亚 Raising Children Network 育儿网（学龄前）",
+      "publisher": "Raising Children Network (Australia) Limited, funded by the Australian Government",
+      "region": "AU",
+      "tier": "B",
+      "urls": [
+        "https://raisingchildren.net.au/preschoolers",
+        "https://raisingchildren.net.au/toddlers/behaviour/crying-tantrums/tantrums",
+        "https://raisingchildren.net.au/legal/terms-of-use"
+      ],
+      "license": "Copyright Raising Children Network. A Terms of Use page exists (URL seen in the search index), but its text was not retrieved. Assume all rights reserved.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["emotion", "discipline", "play", "social", "sleep", "food", "selfcare", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Australian 24-Hour Movement Guidelines for the Early Years (2017), preschoolers 3–5: at least 180 min/day of physical activity including at least 60 min of energetic play. Not restrained for more than 1 h at a time. Sedentary screen time 1 h/day or less. 10–13 h of good-quality sleep.",
+        "Tantrums are common at 1–3 y. Stay calm, keep her safe, wait it out without giving in, then reconnect. Reduce triggers such as tiredness, hunger and abrupt transitions.",
+        "Preschool behavior: describe the behavior you want, praise it specifically, and use consistent, calm consequences."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Only the terms-of-use URL turned up in the search index. The other two URLs and all key points come from prior knowledge, because the search budget ran out before this id. Re-verify."
+    },
+    {
+      "id": "child-mind",
+      "name": "Child Mind Institute",
+      "name_zh": "美国儿童心智研究所 Child Mind Institute",
+      "publisher": "Child Mind Institute (US nonprofit)",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://childmind.org/",
+        "https://childmind.org/article/how-to-handle-tantrums-and-meltdowns/"
+      ],
+      "license": "Not verified. Assume © Child Mind Institute, all rights reserved.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["emotion", "discipline", "social", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Tantrums: stay calm, don't reward the tantrum with what was demanded, use planned ignoring of attention-seeking behavior (while keeping her safe), and give specific labeled praise for calm behavior.",
+        "Separation anxiety at preschool drop-off: keep goodbyes short and predictable, don't sneak out, and acknowledge the feeling while expressing confidence.",
+        "Its behavior guidance draws on parent management training and PCIT principles: catch good behavior, give clear commands, and follow through consistently."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). The URLs come from prior knowledge, and the article URL in particular should be re-verified."
+    },
+    {
+      "id": "pcit",
+      "name": "Parent-Child Interaction Therapy (PCIT) — PRIDE skills",
+      "name_zh": "亲子互动疗法 PCIT（PRIDE 技巧）",
+      "publisher": "PCIT International; developed by Sheila Eyberg (University of Florida)",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://www.pcit.org/",
+        "https://www.cebc4cw.org/program/parent-child-interaction-therapy/"
+      ],
+      "license": "Not verified. The PCIT protocol and coding manuals are copyrighted, but the PRIDE skills themselves are widely described in peer-reviewed literature. Rewrite in your own words and cite.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["discipline", "play", "emotion", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "PRIDE skills during child-directed play ('special time'): labeled Praise, Reflect her words, Imitate her play, Describe what she's doing, Enjoy (show enthusiasm).",
+        "During special time, avoid commands, questions and criticism, and let the child lead.",
+        "Home practice: about 5 minutes of special time daily.",
+        "Parent-directed phase: give direct, specific, positively stated commands one at a time, praise compliance, and follow a consistent time-out sequence for non-compliance.",
+        "Designed for ages ~2–7. The California Evidence-Based Clearinghouse (CEBC) rates it 'Well-Supported by Research Evidence'."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). The UC Davis PCIT training site (pcit.ucdavis.edu) is another candidate URL. Re-verify the CEBC rating and URLs."
+    },
+    {
+      "id": "triple-p",
+      "name": "Triple P — Positive Parenting Program",
+      "name_zh": "Triple P 积极养育项目",
+      "publisher": "Triple P International / University of Queensland (Matthew Sanders)",
+      "region": "AU",
+      "tier": "B",
+      "urls": [
+        "https://www.triplep.net/",
+        "https://www.triplep-parenting.com/"
+      ],
+      "license": "Not verified. A proprietary licensed program, so assume all rights reserved.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["discipline", "family", "emotion"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Five core principles: a safe, engaging environment; a positive learning environment; assertive discipline; realistic expectations; parents taking care of themselves.",
+        "Sanders et al. 2014 (Clinical Psychology Review) meta-analysis of about 100 studies: small-to-moderate improvements in child social, emotional and behavioral outcomes and in parenting practices.",
+        "Practical techniques include quality time in brief frequent moments, descriptive praise, planned ignoring of minor problem behavior, clear calm instructions, and logical consequences."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). Triple P is available in China through local providers. Re-verify."
+    },
+    {
+      "id": "gottman",
+      "name": "Gottman Emotion Coaching",
+      "name_zh": "Gottman 情绪辅导（Emotion Coaching）",
+      "publisher": "John Gottman (University of Washington research); The Gottman Institute",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://www.gottman.com/"
+      ],
+      "license": "Not verified. Book and Institute materials are copyrighted.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["emotion", "family", "discipline"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Five steps of emotion coaching ('Raising an Emotionally Intelligent Child', 1997): (1) notice the child's emotion, (2) see it as a chance for connection and teaching, (3) listen with empathy and validate, (4) help her name the feeling, (5) set limits while helping her solve the problem.",
+        "Meta-emotion research (Gottman, Katz & Hooven 1996, J Family Psychology): children of emotion-coaching parents showed better emotion regulation and peer relations.",
+        "Four parent styles toward emotions: dismissing, disapproving, laissez-faire (accepting with no limits), and emotion coaching (accepting feelings while limiting behavior)."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). Only the root domain is given because the exact parenting-section URL is uncertain."
+    },
+    {
+      "id": "hanen",
+      "name": "The Hanen Centre",
+      "name_zh": "加拿大 Hanen 中心（幼儿语言发展）",
+      "publisher": "The Hanen Centre (Canadian nonprofit)",
+      "region": "CA",
+      "tier": "B",
+      "urls": [
+        "https://www.hanen.org/"
+      ],
+      "license": "Not verified. Assume © Hanen Centre, all rights reserved. Program names such as 'It Takes Two to Talk' are trademarks.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["language", "play", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "OWL (Observe, Wait, Listen): follow the child's lead. Pause long enough for her to start or answer before you speak.",
+        "Respond to her words and expand them by adding a word or idea ('Car!' → 'A red car, going fast!'), and comment more than you question.",
+        "Shared book reading: let the child choose, follow her interest in the pictures, and turn the reading into a conversation."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). The articles section (hanen.org Helpful-Info/Articles) has the most useful parent pages. The exact path wasn't verified."
+    },
+    {
+      "id": "asha",
+      "name": "American Speech-Language-Hearing Association (ASHA) — communication milestones",
+      "name_zh": "美国言语听力协会 ASHA（语言发育里程碑）",
+      "publisher": "American Speech-Language-Hearing Association",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.asha.org/public/developmental-milestones/communication-milestones-3-to-4-years/"
+      ],
+      "license": "Not verified. Assume © ASHA, all rights reserved.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["language", "social"],
+      "key_points": [],
+      "key_points_unverified": [
+        "ASHA updated its milestone pages by age band (2023). The 3–4 y band includes answering simple who/what/where questions, using pronouns and plurals, telling what happened during the day, and being understood by most listeners.",
+        "Learning two languages does not cause language delay. Families should keep using the home language(s).",
+        "If family members or strangers understand little of what a 3–4-year-old says, or she isn't combining words into sentences, ask about a speech-language evaluation."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). The URL comes from memory of the 2023 ASHA restructure. The older path was asha.org/public/speech/development/. Re-verify."
+    },
+    {
+      "id": "dialogic-reading",
+      "name": "Dialogic Reading (Whitehurst; PEER/CROWD) — What Works Clearinghouse",
+      "name_zh": "对话式阅读（Whitehurst，PEER/CROWD）",
+      "publisher": "Grover J. Whitehurst (Stony Brook Reading and Language Project); evidence review by the What Works Clearinghouse, U.S. Institute of Education Sciences",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://ies.ed.gov/ncee/wwc/"
+      ],
+      "license": "WWC intervention reports are US federal works (public domain). Third-party explainers such as Reading Rockets are copyrighted. Not re-verified this session.",
+      "reuse": "can_adapt",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["language", "play"],
+      "key_points": [],
+      "key_points_unverified": [
+        "PEER sequence: Prompt the child to say something about the book, Evaluate her response, Expand it by rephrasing and adding information, Repeat the prompt so she uses the expansion.",
+        "CROWD prompt types: Completion (fill in the blank), Recall, Open-ended, Wh- questions, Distancing (link the book to her own life).",
+        "The WWC early-childhood intervention report (2007) found positive effects of dialogic reading on preschoolers' oral language.",
+        "Whitehurst et al. 1988 (Developmental Psychology): about a month of parent dialogic reading with 2-year-olds produced substantially larger expressive-language gains than typical reading."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). Only the WWC root is given because the intervention-report URL wasn't verified. IES/WWC operations were disrupted in 2025, so confirm the report is still online or use an archived copy."
+    },
+    {
+      "id": "aasm",
+      "name": "American Academy of Sleep Medicine — pediatric sleep duration consensus (2016)",
+      "name_zh": "美国睡眠医学会 AASM 儿童睡眠时长共识（2016）",
+      "publisher": "American Academy of Sleep Medicine (Journal of Clinical Sleep Medicine)",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://jcsm.aasm.org/doi/10.5664/jcsm.5866"
+      ],
+      "license": "Not verified. Journal article © AASM, free to read. Facts (hour ranges) can be restated with citation.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["sleep"],
+      "key_points": [
+        "3–5 y: 10–13 h of sleep per 24 h including naps. CDC's preschool page uses the same range, so this is confirmed indirectly."
+      ],
+      "key_points_unverified": [
+        "Paruthi et al. 2016 (J Clin Sleep Med 12(6)): 1–2 y need 11–14 h per 24 h including naps. Endorsed by the AAP.",
+        "Regularly sleeping fewer than the recommended hours is linked to attention, behavior and learning problems and to a higher risk of accidents and injuries."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "DOI from prior knowledge, not re-verified."
+    },
+    {
+      "id": "satter",
+      "name": "Ellyn Satter Institute — Division of Responsibility in Feeding",
+      "name_zh": "Ellyn Satter 喂养责任分工",
+      "publisher": "Ellyn Satter Institute",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://www.ellynsatterinstitute.org/"
+      ],
+      "license": "Not verified. © Ellyn Satter Institute. The Institute asks for exact attribution of the Division of Responsibility (prior knowledge).",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["food", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Division of Responsibility: the parent decides what, when and where food is served. The child decides whether to eat and how much.",
+        "Toddlers and preschoolers do best with structured meals and sit-down snacks at predictable times, with nothing in between except water.",
+        "Avoid pressure ('one more bite'), bribes, praise for eating, and restriction. Include at least one food she usually eats at each meal."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). The Division of Responsibility page is under /how-to-feed/ on the Institute site. Exact path not verified."
+    },
+    {
+      "id": "naeyc",
+      "name": "NAEYC — For Families",
+      "name_zh": "全美幼教协会 NAEYC 家长资源",
+      "publisher": "National Association for the Education of Young Children",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://www.naeyc.org/our-work/families"
+      ],
+      "license": "Not verified. © NAEYC, with reprint permission required.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["play", "social", "language", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "NAEYC's Developmentally Appropriate Practice position statement (4th ed., 2020): play is a central context for learning at 3–5. Adults scaffold within the child's zone of proximal development.",
+        "Family articles cover choosing a preschool, easing transitions to a new class, and supporting early math and literacy through everyday play."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "kidshealth",
+      "name": "Nemours KidsHealth — for parents",
+      "name_zh": "Nemours KidsHealth 儿童健康网",
+      "publisher": "Nemours Children's Health (US nonprofit pediatric health system)",
+      "region": "US",
+      "tier": "B",
+      "urls": [
+        "https://kidshealth.org/en/parents/development-4yrs.html",
+        "https://kidshealth.org/en/parents/"
+      ],
+      "license": "Not verified. © Nemours, all rights reserved. KidsHealth offers content licensing (prior knowledge).",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["safety", "selfcare", "food", "sleep", "language"],
+      "key_points": [
+        "'Your Child's Development: 4 Years': many 4-year-olds can unbutton bigger buttons."
+      ],
+      "key_points_unverified": [
+        "Medically reviewed parent articles on preschool development, toilet training, picky eating, sleep problems, and common illnesses and injuries."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "notes": "The development-4yrs URL was confirmed in the search index. The parents root and a 3-year development page (likely development-3yrs.html) were not checked."
+    },
+    {
+      "id": "hirsh-pasek",
+      "name": "Hirsh-Pasek & Golinkoff — playful / guided-play learning research",
+      "name_zh": "Hirsh-Pasek & Golinkoff 游戏化学习研究（《爱因斯坦从不用闪卡》《成为聪明人》）",
+      "publisher": "Kathy Hirsh-Pasek (Temple University; Brookings) & Roberta Michnick Golinkoff (University of Delaware)",
+      "region": "US",
+      "tier": "A",
+      "urls": [
+        "https://playfullearninglandscapes.com/"
+      ],
+      "license": "Peer-reviewed papers and books are copyrighted. Cite and paraphrase.",
+      "reuse": "cite_only",
+      "access": {
+        "rss": null,
+        "sitemap": null,
+        "api": null,
+        "robots_ok": null
+      },
+      "categories": ["play", "language"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Guided play (child-led, with adult scaffolding toward a learning goal) beat direct instruction for some early math and shape outcomes in a meta-analysis (Skene et al. 2022, Child Development).",
+        "The quality of conversational exchanges (shared attention, turn-taking, routines) at age 2 predicted later language beyond word quantity (Hirsh-Pasek et al. 2015, Psychological Science).",
+        "'Becoming Brilliant' (2016) 6 Cs: collaboration, communication, content, critical thinking, creative innovation, confidence.",
+        "'Einstein Never Used Flash Cards' (2003): play, not drilling with flashcards, builds early learning."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Not checked (search budget exhausted). Covers both research and books. For a book-only citation, reuse = book."
+    },
+    {
+      "id": "book-how-to-talk",
+      "name": "How to Talk So Little Kids Will Listen: A Survival Guide to Life with Children Ages 2–7 (Joanna Faber & Julie King, 2017)",
+      "name_zh": "《如何说孩子才会听（2–7 岁版）》Faber & King",
+      "publisher": "Scribner (Simon & Schuster)",
+      "region": "US",
+      "tier": "C",
+      "urls": [],
+      "license": "Copyrighted book.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["discipline", "emotion", "language", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Acknowledge feelings before fixing: name the feeling, and grant in fantasy what you can't give in reality ('You wish we could stay at the park all day!').",
+        "Get cooperation with playfulness, choices, describing the problem instead of commanding, and a one-word reminder.",
+        "Alternatives to punishment: express your own feelings strongly without attacking her character, show how to make amends, take action to protect, and problem-solve together.",
+        "Praise descriptively (say what you see) instead of using global labels like 'good girl'."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "No URL given because no publisher or author page was verified (search budget exhausted)."
+    },
+    {
+      "id": "book-whole-brain",
+      "name": "The Whole-Brain Child (2011) & No-Drama Discipline (2014) — Daniel J. Siegel & Tina Payne Bryson",
+      "name_zh": "《全脑教养法》《不打不骂》Siegel & Bryson",
+      "publisher": "Delacorte Press / Bantam (Random House)",
+      "region": "US",
+      "tier": "C",
+      "urls": [
+        "https://drdansiegel.com/"
+      ],
+      "license": "Copyrighted books.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["emotion", "discipline", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Connect and redirect: soothe and connect emotionally first, then guide behavior once she is calm.",
+        "Name it to tame it: help her tell the story of an upsetting event in words to make sense of it.",
+        "Upstairs/downstairs brain: during a meltdown the reasoning 'upstairs' brain is offline, so lecturing doesn't work.",
+        "Discipline means teaching: ask why she did it, what lesson you want to teach, and how best to teach it."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Author-site URL from prior knowledge, not re-verified."
+    },
+    {
+      "id": "book-positive-discipline",
+      "name": "Positive Discipline for Preschoolers (Jane Nelsen, Cheryl Erwin, Roslyn Ann Duffy)",
+      "name_zh": "《正面管教（学龄前）》Nelsen",
+      "publisher": "Harmony / Three Rivers Press (Penguin Random House)",
+      "region": "US",
+      "tier": "C",
+      "urls": [
+        "https://www.positivediscipline.com/"
+      ],
+      "license": "Copyrighted book.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["discipline", "family", "selfcare"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Be kind and firm at the same time: connect before you correct.",
+        "Focus on solutions. Use logical consequences that are related, respectful and reasonable, rather than punishment.",
+        "Give limited choices and use routine charts the child helps make, so the chart is 'the boss'.",
+        "Positive time-out: a calm-down space the child helps design, used to regain calm, not as punishment."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Author-site URL from prior knowledge, not re-verified. Edition and year not verified."
+    },
+    {
+      "id": "book-good-inside",
+      "name": "Good Inside: A Guide to Becoming the Parent You Want to Be (Becky Kennedy, 2022)",
+      "name_zh": "《Good Inside》Becky Kennedy",
+      "publisher": "Harper Wave (HarperCollins)",
+      "region": "US",
+      "tier": "C",
+      "urls": [
+        "https://www.goodinside.com/"
+      ],
+      "license": "Copyrighted book. Good Inside is a commercial membership platform.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["emotion", "discipline", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Two things are true: you can hold a firm limit and also validate her disappointment.",
+        "Sturdy leadership: set boundaries as what you will do ('I won't let you hit') rather than trying to control the child's feelings.",
+        "Repair after ruptures: go back, take responsibility for your part, and reconnect. Repair matters more than never yelling."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "URL from prior knowledge, not re-verified."
+    },
+    {
+      "id": "book-gardener-carpenter",
+      "name": "The Gardener and the Carpenter (Alison Gopnik, 2016)",
+      "name_zh": "《园丁与木匠》Alison Gopnik",
+      "publisher": "Farrar, Straus and Giroux",
+      "region": "US",
+      "tier": "C",
+      "urls": [],
+      "license": "Copyrighted book.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["play", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Parenting as gardening, not carpentry: provide a safe, rich, stable environment rather than shaping the child to a blueprint.",
+        "Young children learn by exploring, imitating and pretend play. Pretending supports counterfactual thinking and theory of mind.",
+        "Direct instruction can narrow exploration: children shown one function of a toy explored it less (Bonawitz et al. 2011)."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "No URL verified (search budget exhausted)."
+    },
+    {
+      "id": "book-30m-words",
+      "name": "Thirty Million Words: Building a Child's Brain (Dana Suskind, 2015)",
+      "name_zh": "《父母的语言》Dana Suskind",
+      "publisher": "Dutton (Penguin Random House); TMW Center for Early Learning + Public Health, University of Chicago",
+      "region": "US",
+      "tier": "C",
+      "urls": [
+        "https://tmwcenter.uchicago.edu/"
+      ],
+      "license": "Copyrighted book. The TMW Center offers free parent resources, but their terms weren't verified.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["language", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "The 3 Ts: Tune In (notice what she is focused on), Talk More (narrate and describe), Take Turns (back-and-forth conversation).",
+        "Conversational turns matter more than words heard: Romeo et al. 2018 (Psychological Science) linked turn-taking to Broca's-area activation, independent of SES.",
+        "Caveat: the original Hart & Risley '30-million-word gap' has been contested (e.g. Sperry et al. 2019). Frame tips around back-and-forth talk, not word counts."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "URL from prior knowledge, not re-verified."
+    },
+    {
+      "id": "book-montessori-toddler",
+      "name": "The Montessori Toddler (Simone Davies, 2019)",
+      "name_zh": "《蒙特梭利幼儿教育》Simone Davies",
+      "publisher": "Workman Publishing",
+      "region": "NL/US",
+      "tier": "C",
+      "urls": [
+        "https://www.themontessorinotebook.com/"
+      ],
+      "license": "Copyrighted book.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["selfcare", "play", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Prepare the environment: child-sized, reachable tools such as a step stool, a low hook for her coat and a small pitcher, so she can do things herself.",
+        "Include her in practical life (pouring, wiping spills, food prep, dressing). 'Help me to do it by myself.'",
+        "Keep a few toys on an open shelf and rotate them, instead of large toy bins.",
+        "Observe and follow her interests. Allow time and don't rush in to help."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Author-site URL from prior knowledge, not re-verified."
+    },
+    {
+      "id": "book-hunt-gather-parent",
+      "name": "Hunt, Gather, Parent (Michaeleen Doucleff, 2021)",
+      "name_zh": "《Hunt, Gather, Parent》Michaeleen Doucleff",
+      "publisher": "Avid Reader Press (Simon & Schuster)",
+      "region": "US",
+      "tier": "C",
+      "urls": [],
+      "license": "Copyrighted book.",
+      "reuse": "book",
+      "access": {"rss": false, "sitemap": null, "api": false, "robots_ok": null},
+      "categories": ["family", "selfcare", "discipline", "emotion"],
+      "key_points": [],
+      "key_points_unverified": [
+        "TEAM framework: Togetherness, Encouragement, Autonomy, Minimal interference.",
+        "Invite young children into real household work. Even imperfect help builds a habit of helping without being asked (Maya 'acomedido').",
+        "Respond to anger with calm, low-key reactions rather than yelling. Use stories and gentle drama (Inuit practice) to teach behavior."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "notes": "Journalistic, anecdotal evidence (tier C). Pair with research sources in basis. No URL verified."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "parenting-for-lifelong-health",
+      "name": "Parenting for Lifelong Health (PLH)",
+      "name_zh": "终身健康育儿项目 PLH（WHO/UNICEF/牛津大学）",
+      "publisher": "University of Oxford, University of Cape Town, WHO, UNICEF and partners",
+      "region": "Global",
+      "tier": "A",
+      "urls": ["https://www.parentingforlifelonghealth.org/"],
+      "license": "Believed to be open-access under a Creative Commons NonCommercial license (prior knowledge). Not verified.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["discipline", "family", "emotion", "play"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Free, non-commercial parenting programmes tested in randomized trials in low- and middle-income countries. Includes PLH for Young Children (ages 2–9).",
+        "Its COVID-19 parenting tip sheets (with WHO/UNICEF) cover one-on-one time, keeping it positive, structure, and handling misbehavior, and were translated into 100+ languages, including Chinese."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Evidence-based, WHO/UNICEF-backed, and possibly open-licensed, with existing Chinese translations. It may be the most reusable high-tier parenting content.",
+      "notes": "Not checked (search budget exhausted). Verify the URL and exact license."
+    },
+    {
+      "id": "ready4k",
+      "name": "Ready4K / ParentPowered — text-message parenting tips",
+      "name_zh": "Ready4K 短信育儿提示（ParentPowered）",
+      "publisher": "ParentPowered (formerly Ready4K); research by Susanna Loeb, Benjamin York et al.",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://www.parentpowered.com/"],
+      "license": "Not verified. Proprietary program content.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["language", "play", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "York, Loeb & Doss 2019 (Journal of Human Resources): a year of weekly text messages to parents of preschoolers increased home literacy activities and improved some early literacy outcomes.",
+        "Its message design (a fact, then a concrete tip, then a growth message) maps directly onto this app's 'why + what to do + script' structure."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "The closest evidence that short, regular push tips to parents of 3–5-year-olds change behavior. Use it as a design reference and cite it as the evidence base for the app format.",
+      "notes": "Not checked (search budget exhausted). The rename from Ready4K to ParentPowered and its URL need checking."
+    },
+    {
+      "id": "pyramid-model",
+      "name": "National Center for Pyramid Model Innovations (NCPMI) — Backpack Connection Series",
+      "name_zh": "美国金字塔模型创新中心 NCPMI（家长「书包联络」系列）",
+      "publisher": "NCPMI, University of South Florida; funded by U.S. Dept. of Education, Office of Special Education Programs",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://challengingbehavior.org/"],
+      "license": "Not verified. Federally funded, and older CSEFEL/TACSEI materials said reproduction was encouraged and permission to copy was not required (prior knowledge). Confirm for current NCPMI materials.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["emotion", "discipline", "social", "selfcare"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Backpack Connection handouts give families one strategy at a time for ages 0–5, e.g. teaching feeling words, calming down with 'turtle technique', using visual schedules, and giving positive directions.",
+        "The Pyramid Model is a tiered framework for social-emotional competence in early childhood: nurturing relationships, then supportive environments, then targeted skill teaching."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Free, short, practical one-skill family handouts on exactly this app's emotion/discipline/social categories, possibly with a permissive license.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "reach-out-and-read",
+      "name": "Reach Out and Read",
+      "name_zh": "Reach Out and Read（儿科门诊早期阅读项目）",
+      "publisher": "Reach Out and Read, Inc. (US nonprofit)",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://reachoutandread.org/"],
+      "license": "Not verified. Assume all rights reserved.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["language", "play", "family"],
+      "key_points": [
+        "Active in 2026: it published a Feb 2026 podcast transcript on the new AAP digital-media guidance (Dr. Tiffany Munzer) and hosts summaries of AAP media research (e.g. Moreno et al. 2024)."
+      ],
+      "key_points_unverified": [
+        "Pediatric clinicians give a new book and model shared reading at well-child visits from 6 months to 5 years. Studies link participation to more frequent home reading and better receptive/expressive vocabulary."
+      ],
+      "verification": {"status": "partial", "checked": "2026-10-18"},
+      "why": "Clinic-based, AAP-aligned literacy promotion. Good for read-aloud tips and for tracking AAP media guidance.",
+      "notes": "Domain confirmed in the search index (reachoutandread.org/moreno_2024 and a 2026 PDF under /wp-content/uploads/2026/02/). Program evidence not re-verified."
+    },
+    {
+      "id": "talking-is-teaching",
+      "name": "Talking is Teaching: Talk, Read, Sing (Too Small to Fail)",
+      "name_zh": "「说话就是教育」Talking is Teaching（Too Small to Fail）",
+      "publisher": "Too Small to Fail (Clinton Foundation)",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://talkingisteaching.org/"],
+      "license": "Not verified.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["language", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Public-awareness campaign with simple talk/read/sing prompts tied to everyday places such as the grocery store, laundromat and bath time."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Ready-made 'everyday moment' language prompts that fit Chinese family routines when rewritten.",
+      "notes": "Not checked (search budget exhausted). Campaign activity level in 2026 unknown."
+    },
+    {
+      "id": "sesame-workshop",
+      "name": "Sesame Workshop — Sesame Street in Communities parent resources",
+      "name_zh": "芝麻街工作室 家长资源（Sesame Street in Communities）",
+      "publisher": "Sesame Workshop (US nonprofit)",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://sesameworkshop.org/", "https://sesamestreetincommunities.org/"],
+      "license": "Not verified. Characters are trademarked and content is copyrighted.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["emotion", "social", "selfcare", "family", "safety"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Free bilingual parent resources on routines, big feelings, starting school, new siblings, and coping with stress or grief, developed with child-development advisers."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Strong on transitions (starting school, a new sibling) and emotion vocabulary for 3–5-year-olds, with research-backed content development.",
+      "notes": "Not checked (search budget exhausted). The Sesame Street in Communities domain may have been folded into sesameworkshop.org."
+    },
+    {
+      "id": "incredible-years",
+      "name": "The Incredible Years (Carolyn Webster-Stratton)",
+      "name_zh": "Incredible Years 不可思议的岁月 家长培训项目",
+      "publisher": "The Incredible Years, Inc.",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://incredibleyears.com/"],
+      "license": "Not verified. Proprietary licensed program.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["discipline", "play", "emotion", "social"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Parenting 'pyramid': a large base of child-directed play, praise and coaching (academic, persistence, social, emotion coaching), with limit-setting, ignoring and time-out used sparingly at the top.",
+        "Preschool BASIC program (ages 3–6) is rated well-supported by multiple RCTs for reducing conduct problems."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Pairs with PCIT/Triple P as a third major evidence-based program, and is especially strong on child-directed play and coaching scripts.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "tools-of-the-mind",
+      "name": "Tools of the Mind",
+      "name_zh": "Tools of the Mind 心智工具（维果茨基式游戏课程）",
+      "publisher": "Tools of the Mind (Elena Bodrova & Deborah Leong)",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://toolsofthemind.org/"],
+      "license": "Not verified. Proprietary curriculum.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["play", "emotion"],
+      "key_points": [],
+      "key_points_unverified": [
+        "A Vygotskian curriculum built on mature make-believe play with 'play plans' (the child says or draws what she will play before starting), which builds self-regulation.",
+        "Diamond et al. 2007 (Science) reported executive-function benefits. Later large RCTs show mixed results, so frame claims modestly."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Turns EF research into home-adaptable play tactics (play plans, buddy reading, 'freeze' games) for 3–5-year-olds.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "yale-parenting-center",
+      "name": "Yale Parenting Center — Alan Kazdin (Kazdin Method / Everyday Parenting)",
+      "name_zh": "耶鲁育儿中心（Kazdin 方法）",
+      "publisher": "Yale University (Alan E. Kazdin)",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://www.coursera.org/learn/everyday-parenting"],
+      "license": "Not verified. Coursera course and books are copyrighted.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["discipline", "family"],
+      "key_points": [],
+      "key_points_unverified": [
+        "ABC approach: Antecedents (clear prompts, choices), Behavior (shape the positive opposite of the problem behavior, use practice and pretend 'games'), Consequences (effusive, specific praise right away; mild, brief punishment only).",
+        "Punishment alone suppresses behavior temporarily. Building the desired behavior through repetition and praise produces lasting change."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Clear behavior-science scripts (positive opposites, 'practice games') that fit 160-character tips well.",
+      "notes": "Not checked (search budget exhausted). The Yale Parenting Center's own page URL wasn't verified, so only the Coursera course URL (prior knowledge) is given."
+    },
+    {
+      "id": "the-basics",
+      "name": "The Basics (Boston Basics) — five evidence-based parenting practices",
+      "name_zh": "The Basics 五个养育基本功（源自哈佛成就差距研究所）",
+      "publisher": "The Basics, Inc. (originated at Harvard's Achievement Gap Initiative, Ronald Ferguson)",
+      "region": "US",
+      "tier": "B",
+      "urls": ["https://thebasics.org/"],
+      "license": "Not verified. Materials are offered free to communities (prior knowledge).",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["language", "play", "family", "emotion"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Five Basics for ages 0–3: Maximize Love, Manage Stress; Talk, Sing, and Point; Count, Group, and Compare; Explore Through Movement and Play; Read and Discuss Stories."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Simple, memorable framework with free short videos. Its 'Count, Group, and Compare' category fills an early-math gap in the current list.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "cps-caring-for-kids",
+      "name": "Canadian Paediatric Society — Caring for Kids",
+      "name_zh": "加拿大儿科学会 家长网站 Caring for Kids",
+      "publisher": "Canadian Paediatric Society",
+      "region": "CA",
+      "tier": "A",
+      "urls": ["https://caringforkids.cps.ca/"],
+      "license": "Not verified.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["safety", "sleep", "selfcare", "food", "language"],
+      "key_points": [],
+      "key_points_unverified": [
+        "CPS 2017 screen-time position: for ages 2–5, limit routine sedentary screen time to under 1 h/day, and avoid screens for 1 h before bed.",
+        "Parent pages on toilet learning, sleep, and safety."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "A second national pediatric society for cross-checking AAP claims, especially now that AAP has dropped numeric screen limits.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "aapd",
+      "name": "American Academy of Pediatric Dentistry (AAPD)",
+      "name_zh": "美国儿童牙科学会 AAPD",
+      "publisher": "American Academy of Pediatric Dentistry",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://www.aapd.org/"],
+      "license": "Not verified.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["safety", "selfcare", "food"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Use a smear (rice-grain amount) of fluoride toothpaste under age 3 and a pea-sized amount at ages 3–6. Parents brush or supervise twice daily.",
+        "First dental visit by the first birthday, then regular check-ups. Limit sugary drinks and frequent snacking."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Authoritative for oral-health tips (the SPEC safety category includes 口腔). The child turns 3 within the app window, when toothpaste amount changes.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "nhtsa-car-seats",
+      "name": "NHTSA — Car Seats and Booster Seats",
+      "name_zh": "美国国家公路交通安全管理局 儿童安全座椅指南",
+      "publisher": "U.S. National Highway Traffic Safety Administration",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://www.nhtsa.gov/vehicle-safety/car-seats-and-booster-seats"],
+      "license": "US federal government work, public domain (general principle). Page-specific terms not verified.",
+      "reuse": "can_adapt",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["safety"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Keep the child in a forward-facing seat with harness and tether until she reaches the seat maker's top height or weight limit, then a booster. All children under 13 ride in the back seat."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Public-domain, precise car-seat staging. Relevant to Chinese families, where car-seat use is still inconsistent.",
+      "notes": "Not checked (search budget exhausted)."
+    },
+    {
+      "id": "myplate-preschoolers",
+      "name": "USDA MyPlate — Preschoolers",
+      "name_zh": "美国农业部 MyPlate 学龄前儿童饮食",
+      "publisher": "U.S. Department of Agriculture",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://www.myplate.gov/life-stages/preschoolers"],
+      "license": "US federal government work, public domain (general principle). Page-specific terms not verified.",
+      "reuse": "can_adapt",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["food", "selfcare"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Preschooler pages cover food-group amounts by age, picky eating, letting kids help in the kitchen, and modeling healthy eating."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "Public-domain feeding tips (kitchen helper tasks by age, picky-eater strategies) that can be adapted.",
+      "notes": "Not checked (search budget exhausted). US dietary guidance was revised for 2025–2030, so check that the MyPlate pages reflect it."
+    },
+    {
+      "id": "healthy-drinks-healthy-kids",
+      "name": "Healthy Drinks, Healthy Kids — 2019 beverage recommendations for ages 0–5 (Healthy Eating Research)",
+      "name_zh": "0–5 岁儿童饮品共识建议（Healthy Eating Research 2019，AAP/AAPD/AND/AHA）",
+      "publisher": "Healthy Eating Research (Robert Wood Johnson Foundation), with the American Academy of Pediatrics, American Academy of Pediatric Dentistry, Academy of Nutrition and Dietetics, and American Heart Association",
+      "region": "US",
+      "tier": "A",
+      "urls": ["https://healthydrinkshealthykids.org/"],
+      "license": "Not verified.",
+      "reuse": "cite_only",
+      "access": {"rss": null, "sitemap": null, "api": null, "robots_ok": null},
+      "categories": ["food", "safety"],
+      "key_points": [],
+      "key_points_unverified": [
+        "Ages 2–5: water and plain milk are the main drinks. Limit 100% juice to about 4 oz/day at 2–3 y and 4–6 oz/day at 4–5 y. Avoid sugar-sweetened drinks, flavored milks, plant milks other than fortified soy (unless medically indicated), toddler formulas, and caffeinated or low-calorie sweetened drinks."
+      ],
+      "verification": {"status": "unverified", "checked": "2026-10-18"},
+      "why": "A multi-society consensus with specific numbers for one of the most common food questions (juice, milk, yogurt drinks).",
+      "notes": "Not checked (search budget exhausted). Re-verify the juice and milk ounce figures before use."
+    }
+  ]
+}

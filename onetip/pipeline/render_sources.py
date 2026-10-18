@@ -13,6 +13,12 @@ OUT = DATA / "SOURCES.md"
 
 REUSE_LABEL = {"can_adapt": "✅ 可改写引用", "cite_only": "🔗 仅参考+链接", "book": "📕 书籍，仅参考"}
 TIER_LABEL = {"A": "A 政府/国际组织/学术", "B": "B 循证项目/权威机构", "C": "C 书籍/商业科普"}
+VERIFY_LABEL = {
+    "verified": "✅ 已打开原页核实",
+    "search_index": "✅ 搜索索引中可见，要点与摘录一致",
+    "partial": "🟡 部分核实",
+    "unverified": "⚪ 未核实（凭已有知识，待复核）",
+}
 CATEGORY_ZH = {
     "language": "语言", "emotion": "情绪", "discipline": "管教", "play": "游戏", "selfcare": "自理",
     "sleep": "睡眠", "food": "饮食", "safety": "安全", "social": "社交", "family": "家庭",
@@ -50,6 +56,9 @@ def render_entry(src: dict) -> list[str]:
         f"- **获取**: {' · '.join(access_bits)}",
         f"- **擅长**: {'、'.join(CATEGORY_ZH.get(c, c) for c in src.get('categories', [])) or '—'}",
     ]
+    status = (src.get("verification") or {}).get("status")
+    if status:
+        lines.append(f"- **核实状态**: {VERIFY_LABEL.get(status, status)}")
     if urls:
         lines.append("- **链接**: " + " · ".join(f"[{i + 1}]({u})" for i, u in enumerate(urls)))
     if src.get("why"):
@@ -58,6 +67,10 @@ def render_entry(src: dict) -> list[str]:
     if points:
         lines.append("- **和 3–4 岁相关的要点**:")
         lines.extend(f"  - {p}" for p in points)
+    unverified = src.get("key_points_unverified") or []
+    if unverified:
+        lines.append("- **待核实要点**:")
+        lines.extend(f"  - {p}" for p in unverified)
     if src.get("notes"):
         lines.append(f"- **备注**: {src['notes']}")
     lines.append("")
@@ -89,10 +102,13 @@ def main() -> None:
         f"| {REUSE_LABEL['cite_only']} | {reuse_counts.get('cite_only', 0)} | 有版权的网站：不抓取正文，只作依据，用自己的话写并附链接 |",
         f"| {REUSE_LABEL['book']} | {reuse_counts.get('book', 0)} | 有版权的书：只参考思路 |",
         "",
+        "核实状态说明：本次在云端沙箱里整理，网络策略挡住了直接打开大多数来源网页，"
+        "核实主要靠搜索引擎索引和摘录；标 ⚪ 的条目是凭已有知识写的，上线前要逐条打开原页复核。",
+        "",
         "## 总览",
         "",
-        "| id | 来源 | 地区 | 层级 | 使用方式 | 擅长 |",
-        "|---|---|---|---|---|---|",
+        "| id | 来源 | 地区 | 层级 | 使用方式 | 核实 | 擅长 |",
+        "|---|---|---|---|---|---|---|",
     ]
     order = {"A": 0, "B": 1, "C": 2}
     ranked = sorted(sources, key=lambda s: (s.get("region") != "CN", order.get(s.get("tier"), 9), s["id"]))
@@ -100,7 +116,8 @@ def main() -> None:
         cats = "、".join(CATEGORY_ZH.get(c, c) for c in s.get("categories", []))
         out.append(
             f"| `{s['id']}` | {cell(display_name(s))} | {s.get('region', '')} | {s.get('tier', '')} "
-            f"| {REUSE_LABEL.get(s.get('reuse'), s.get('reuse', ''))} | {cats} |"
+            f"| {REUSE_LABEL.get(s.get('reuse'), s.get('reuse', ''))} "
+            f"| {VERIFY_LABEL.get((s.get('verification') or {}).get('status'), '—')[:1]} | {cats} |"
         )
     out += ["", "## 详情", ""]
     for s in ranked:
